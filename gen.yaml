@@ -1,0 +1,8 @@
+configVersion: 1.0.0
+generation:
+    telemetryEnabled: false
+    sdkClassName: SDK
+typescript:
+    version: 0.0.1
+    author: Speakeasy
+    packageName: ""
