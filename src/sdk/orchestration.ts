@@ -286,11 +286,7 @@ export class Orchestration {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.listRunsResponse = plainToInstance(
-                ,
-                httpRes?.data as ,
-                { excludeExtraneousValues: true }
-              );
+              res.listRunsResponse = httpRes?.data;
             }
             break;
           default:
