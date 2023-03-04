@@ -1,5 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
 
@@ -32,8 +33,11 @@ export class CountAccountsResponse extends SpeakeasyBase {
   errorResponse?: shared.ErrorResponse;
 
   @SpeakeasyMetadata()
-  headers: Record<string, string[]>;
+  headers?: Record<string, string[]>;
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 }

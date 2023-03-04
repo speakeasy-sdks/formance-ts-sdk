@@ -50,7 +50,7 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.AddTransientScopeResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.AddTransientScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -103,7 +103,7 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateScopeResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.CreateScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 201:
             if (utils.matchContentType(contentType, `application/json`)) {
@@ -150,7 +150,7 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteScopeResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.DeleteScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -190,7 +190,7 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteTransientScopeResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.DeleteTransientScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -225,7 +225,7 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListScopesResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.ListScopesResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
@@ -272,7 +272,7 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ReadScopeResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.ReadScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
@@ -332,7 +332,7 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UpdateScopeResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.UpdateScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {

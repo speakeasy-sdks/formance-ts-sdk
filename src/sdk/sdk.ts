@@ -36,7 +36,18 @@ export type SDKProps = {
   serverUrl?: string;
 }
 
-
+/* SDK Documentation: Open, modular foundation for unique payments flows
+ * 
+ * # Introduction
+ * This API is documented in **OpenAPI format**.
+ * 
+ * # Authentication
+ * Formance Stack offers one forms of authentication:
+ *   - OAuth2
+ * OAuth2 - an open protocol to allow secure authorization in a simple
+ * and standard method from web, mobile and desktop applications.
+ * <SecurityDefinitions />
+ * */
 export class SDK {
   public accounts: Accounts;
   public balances: Balances;
@@ -60,8 +71,8 @@ export class SDK {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "0.3.0";
-  private _genVersion = "1.7.1";
+  private _sdkVersion = "0.4.0";
+  private _genVersion = "1.8.2";
 
   constructor(props: SDKProps) {
     this._serverURL = props.serverUrl ?? ServerList[0];
@@ -255,7 +266,7 @@ export class SDK {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.GetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
@@ -294,7 +305,7 @@ export class SDK {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.PaymentsgetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.PaymentsgetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
@@ -333,7 +344,7 @@ export class SDK {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.SearchgetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.SearchgetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
