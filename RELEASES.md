@@ -29,3 +29,9 @@ Based on:
 Based on:
 - OpenAPI Doc v1.0.0-rc.5 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
 - Speakeasy CLI 1.8.4 https://github.com/speakeasy-api/speakeasy
+
+## Version 0.4.2
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0-rc.5 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.8.5 https://github.com/speakeasy-api/speakeasy
