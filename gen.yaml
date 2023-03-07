@@ -5,8 +5,8 @@ management:
     speakeasyVersion: 1.8.5
 generation:
     telemetryEnabled: false
-    sdkClassName: SDK
+    sdkClassName: formance
 typescript:
     version: 0.4.2
     author: Speakeasy
-    packageName: ""
+    packageName: @speakeasy-sdks/formance'
