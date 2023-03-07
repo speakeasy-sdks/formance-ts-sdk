@@ -48,7 +48,7 @@ export type SDKProps = {
  * and standard method from web, mobile and desktop applications.
  * <SecurityDefinitions />
  * */
-export class SDK {
+export class Formance {
   public accounts: Accounts;
   public balances: Balances;
   public clients: Clients;
@@ -71,7 +71,7 @@ export class SDK {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "0.4.2";
+  private _sdkVersion = "0.4.3";
   private _genVersion = "1.8.5";
 
   constructor(props: SDKProps) {

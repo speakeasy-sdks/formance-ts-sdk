@@ -6,13 +6,13 @@
 ### NPM
 
 ```bash
-npm add 
+npm add @speakeasy-sdks/formance
 ```
 
 ### Yarn
 
 ```bash
-yarn add 
+yarn add @speakeasy-sdks/formance
 ```
 <!-- End SDK Installation -->
 
@@ -21,16 +21,14 @@ yarn add
 ```typescript
 import {
   GetServerInfoResponse 
-} from "/dist/sdk/models/operations";
+} from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 import { AxiosError } from "axios";
-import { SDK } from "";
+import { Formance } from "@speakeasy-sdks/formance";
 
-const sdk = new SDK({
+const sdk = new Formance({
   security: {
-    authorization: {
-      authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
-    },
+    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
   }
 });
 
@@ -43,7 +41,7 @@ sdk.getServerInfo().then((res: GetServerInfoResponse | AxiosError) => {
 <!-- Start SDK Available Operations -->
 ## SDK Available Operations
 
-### SDK SDK
+### Formance SDK
 
 * `getServerInfo` - Get server info
 * `paymentsgetServerInfo` - Get server info

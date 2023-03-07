@@ -2,16 +2,14 @@
 ```typescript
 import {
   GetServerInfoResponse 
-} from "/dist/sdk/models/operations";
+} from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 import { AxiosError } from "axios";
-import { SDK } from "";
+import { Formance } from "@speakeasy-sdks/formance";
 
-const sdk = new SDK({
+const sdk = new Formance({
   security: {
-    authorization: {
-      authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
-    },
+    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
   }
 });
 
