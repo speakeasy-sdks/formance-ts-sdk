@@ -48,23 +48,26 @@ export class Mapping {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetMappingResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetMappingResponse =
+            new operations.GetMappingResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.mappingResponse = plainToInstance(
+              res.mappingResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.MappingResponse,
-                httpRes?.data as shared.MappingResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -116,23 +119,26 @@ export class Mapping {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UpdateMappingResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.UpdateMappingResponse =
+            new operations.UpdateMappingResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.mappingResponse = plainToInstance(
+              res.mappingResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.MappingResponse,
-                httpRes?.data as shared.MappingResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

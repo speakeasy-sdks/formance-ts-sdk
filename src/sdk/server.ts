@@ -43,23 +43,26 @@ export class Server {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetInfoResponse =
+            new operations.GetInfoResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.configInfoResponse = plainToInstance(
+              res.configInfoResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConfigInfoResponse,
-                httpRes?.data as shared.ConfigInfoResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

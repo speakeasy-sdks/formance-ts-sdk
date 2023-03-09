@@ -50,14 +50,18 @@ export class Webhooks {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ActivateConfigResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ActivateConfigResponse =
+            new operations.ActivateConfigResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.configResponse = plainToInstance(
+              res.configResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConfigResponse,
-                httpRes?.data as shared.ConfigResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -116,14 +120,18 @@ export class Webhooks {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ChangeConfigSecretResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ChangeConfigSecretResponse =
+            new operations.ChangeConfigSecretResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.configResponse = plainToInstance(
+              res.configResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConfigResponse,
-                httpRes?.data as shared.ConfigResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -163,14 +171,18 @@ export class Webhooks {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeactivateConfigResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeactivateConfigResponse =
+            new operations.DeactivateConfigResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.configResponse = plainToInstance(
+              res.configResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConfigResponse,
-                httpRes?.data as shared.ConfigResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -212,7 +224,12 @@ export class Webhooks {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteConfigResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteConfigResponse =
+            new operations.DeleteConfigResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             break;
@@ -253,14 +270,18 @@ export class Webhooks {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetManyConfigsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetManyConfigsResponse =
+            new operations.GetManyConfigsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.configsResponse = plainToInstance(
+              res.configsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConfigsResponse,
-                httpRes?.data as shared.ConfigsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -323,14 +344,18 @@ export class Webhooks {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.InsertConfigResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.InsertConfigResponse =
+            new operations.InsertConfigResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.configResponse = plainToInstance(
+              res.configResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConfigResponse,
-                httpRes?.data as shared.ConfigResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -375,14 +400,18 @@ export class Webhooks {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.TestConfigResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.TestConfigResponse =
+            new operations.TestConfigResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.attemptResponse = plainToInstance(
+              res.attemptResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.AttemptResponse,
-                httpRes?.data as shared.AttemptResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

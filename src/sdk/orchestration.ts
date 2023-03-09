@@ -63,23 +63,26 @@ export class Orchestration {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateWorkflowResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateWorkflowResponse =
+            new operations.CreateWorkflowResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 201:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createWorkflowResponse = plainToInstance(
+              res.createWorkflowResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.CreateWorkflowResponse,
-                httpRes?.data as shared.CreateWorkflowResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = plainToInstance(
+              res.error = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorT,
-                httpRes?.data as shared.ErrorT,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -119,23 +122,26 @@ export class Orchestration {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetFlowResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetFlowResponse =
+            new operations.GetFlowResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getWorkflowResponse = plainToInstance(
+              res.getWorkflowResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.GetWorkflowResponse,
-                httpRes?.data as shared.GetWorkflowResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = plainToInstance(
+              res.error = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorT,
-                httpRes?.data as shared.ErrorT,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -175,23 +181,26 @@ export class Orchestration {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetWorkflowOccurrenceResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetWorkflowOccurrenceResponse =
+            new operations.GetWorkflowOccurrenceResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getWorkflowOccurrenceResponse = plainToInstance(
+              res.getWorkflowOccurrenceResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.GetWorkflowOccurrenceResponse,
-                httpRes?.data as shared.GetWorkflowOccurrenceResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = plainToInstance(
+              res.error = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorT,
-                httpRes?.data as shared.ErrorT,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -226,23 +235,26 @@ export class Orchestration {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListFlowsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListFlowsResponse =
+            new operations.ListFlowsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.listWorkflowsResponse = plainToInstance(
+              res.listWorkflowsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ListWorkflowsResponse,
-                httpRes?.data as shared.ListWorkflowsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = plainToInstance(
+              res.error = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorT,
-                httpRes?.data as shared.ErrorT,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -282,7 +294,12 @@ export class Orchestration {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListRunsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListRunsResponse =
+            new operations.ListRunsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
@@ -291,10 +308,9 @@ export class Orchestration {
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = plainToInstance(
+              res.error = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorT,
-                httpRes?.data as shared.ErrorT,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -327,23 +343,26 @@ export class Orchestration {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.OrchestrationgetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.OrchestrationgetServerInfoResponse =
+            new operations.OrchestrationgetServerInfoResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.serverInfo = plainToInstance(
+              res.serverInfo = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ServerInfo,
-                httpRes?.data as shared.ServerInfo,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = plainToInstance(
+              res.error = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorT,
-                httpRes?.data as shared.ErrorT,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -397,23 +416,26 @@ export class Orchestration {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.RunWorkflowResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.RunWorkflowResponse =
+            new operations.RunWorkflowResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 201:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.runWorkflowResponse = plainToInstance(
+              res.runWorkflowResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.RunWorkflowResponse,
-                httpRes?.data as shared.RunWorkflowResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = plainToInstance(
+              res.error = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorT,
-                httpRes?.data as shared.ErrorT,
-                { excludeExtraneousValues: true }
               );
             }
             break;

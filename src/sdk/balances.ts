@@ -49,23 +49,26 @@ export class Balances {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetBalancesResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetBalancesResponse =
+            new operations.GetBalancesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.balancesCursorResponse = plainToInstance(
+              res.balancesCursorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.BalancesCursorResponse,
-                httpRes?.data as shared.BalancesCursorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -104,23 +107,26 @@ export class Balances {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetBalancesAggregatedResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetBalancesAggregatedResponse =
+            new operations.GetBalancesAggregatedResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.aggregateBalancesResponse = plainToInstance(
+              res.aggregateBalancesResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.AggregateBalancesResponse,
-                httpRes?.data as shared.AggregateBalancesResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

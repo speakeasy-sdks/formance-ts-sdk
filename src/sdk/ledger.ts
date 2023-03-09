@@ -48,7 +48,12 @@ export class Ledger {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetLedgerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetLedgerInfoResponse =
+            new operations.GetLedgerInfoResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
@@ -57,10 +62,9 @@ export class Ledger {
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

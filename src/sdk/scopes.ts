@@ -50,7 +50,12 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.AddTransientScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.AddTransientScopeResponse =
+            new operations.AddTransientScopeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -103,14 +108,18 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateScopeResponse =
+            new operations.CreateScopeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 201:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createScopeResponse = plainToInstance(
+              res.createScopeResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.CreateScopeResponse,
-                httpRes?.data as shared.CreateScopeResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -150,7 +159,12 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteScopeResponse =
+            new operations.DeleteScopeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -190,7 +204,12 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteTransientScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteTransientScopeResponse =
+            new operations.DeleteTransientScopeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -225,14 +244,18 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListScopesResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListScopesResponse =
+            new operations.ListScopesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.listScopesResponse = plainToInstance(
+              res.listScopesResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ListScopesResponse,
-                httpRes?.data as shared.ListScopesResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -272,14 +295,18 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ReadScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ReadScopeResponse =
+            new operations.ReadScopeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.readScopeResponse = plainToInstance(
+              res.readScopeResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ReadScopeResponse,
-                httpRes?.data as shared.ReadScopeResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -332,14 +359,18 @@ export class Scopes {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UpdateScopeResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.UpdateScopeResponse =
+            new operations.UpdateScopeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.updateScopeResponse = plainToInstance(
+              res.updateScopeResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.UpdateScopeResponse,
-                httpRes?.data as shared.UpdateScopeResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

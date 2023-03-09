@@ -45,14 +45,18 @@ export class Users {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListUsersResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListUsersResponse =
+            new operations.ListUsersResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.listUsersResponse = plainToInstance(
+              res.listUsersResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ListUsersResponse,
-                httpRes?.data as shared.ListUsersResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -92,14 +96,18 @@ export class Users {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ReadUserResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ReadUserResponse =
+            new operations.ReadUserResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.readUserResponse = plainToInstance(
+              res.readUserResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ReadUserResponse,
-                httpRes?.data as shared.ReadUserResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

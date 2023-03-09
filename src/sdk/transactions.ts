@@ -62,23 +62,26 @@ export class Transactions {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateTransactionsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateTransactionsResponse =
+            new operations.CreateTransactionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.transactionsResponse = plainToInstance(
+              res.transactionsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.TransactionsResponse,
-                httpRes?.data as shared.TransactionsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -129,16 +132,20 @@ export class Transactions {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.AddMetadataOnTransactionResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.AddMetadataOnTransactionResponse =
+            new operations.AddMetadataOnTransactionResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -177,16 +184,21 @@ export class Transactions {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CountTransactionsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes, headers: utils.getHeadersFromResponse(httpRes.headers)};
+        const res: operations.CountTransactionsResponse =
+            new operations.CountTransactionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+                headers: utils.getHeadersFromResponse(httpRes.headers)
+            });
         switch (true) {
           case httpRes?.status == 200:
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -239,23 +251,26 @@ export class Transactions {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateTransactionResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateTransactionResponse =
+            new operations.CreateTransactionResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.transactionsResponse = plainToInstance(
+              res.transactionsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.TransactionsResponse,
-                httpRes?.data as shared.TransactionsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -293,23 +308,26 @@ export class Transactions {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetTransactionResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetTransactionResponse =
+            new operations.GetTransactionResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.transactionResponse = plainToInstance(
+              res.transactionResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.TransactionResponse,
-                httpRes?.data as shared.TransactionResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -350,23 +368,26 @@ export class Transactions {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListTransactionsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListTransactionsResponse =
+            new operations.ListTransactionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.transactionsCursorResponse = plainToInstance(
+              res.transactionsCursorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.TransactionsCursorResponse,
-                httpRes?.data as shared.TransactionsCursorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -404,23 +425,26 @@ export class Transactions {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.RevertTransactionResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.RevertTransactionResponse =
+            new operations.RevertTransactionResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.transactionResponse = plainToInstance(
+              res.transactionResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.TransactionResponse,
-                httpRes?.data as shared.TransactionResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.errorResponse = plainToInstance(
+              res.errorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ErrorResponse,
-                httpRes?.data as shared.ErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

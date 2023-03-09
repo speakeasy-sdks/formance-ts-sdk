@@ -71,8 +71,8 @@ export class Formance {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "0.4.4";
-  private _genVersion = "1.8.6";
+  private _sdkVersion = "0.4.5";
+  private _genVersion = "1.8.7";
 
   constructor(props: SDKProps) {
     this._serverURL = props.serverUrl ?? ServerList[0];
@@ -266,14 +266,18 @@ export class Formance {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetServerInfoResponse =
+            new operations.GetServerInfoResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.serverInfo = plainToInstance(
+              res.serverInfo = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ServerInfo,
-                httpRes?.data as shared.ServerInfo,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -305,14 +309,18 @@ export class Formance {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.PaymentsgetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.PaymentsgetServerInfoResponse =
+            new operations.PaymentsgetServerInfoResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.serverInfo = plainToInstance(
+              res.serverInfo = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ServerInfo,
-                httpRes?.data as shared.ServerInfo,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -344,14 +352,18 @@ export class Formance {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.SearchgetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.SearchgetServerInfoResponse =
+            new operations.SearchgetServerInfoResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.serverInfo = plainToInstance(
+              res.serverInfo = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ServerInfo,
-                httpRes?.data as shared.ServerInfo,
-                { excludeExtraneousValues: true }
               );
             }
             break;

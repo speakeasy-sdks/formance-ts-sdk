@@ -64,11 +64,16 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ConnectorsStripeTransferResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ConnectorsStripeTransferResponse =
+            new operations.ConnectorsStripeTransferResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.stripeTransferResponse = httpRes?.data;
+              res.stripeTransferResponse = utils.deserializeJSONResponse(httpRes?.data);
             }
             break;
         }
@@ -107,14 +112,18 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetConnectorTaskResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetConnectorTaskResponse =
+            new operations.GetConnectorTaskResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.taskResponse = plainToInstance(
+              res.taskResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.TaskResponse,
-                httpRes?.data as shared.TaskResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -152,14 +161,18 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetPaymentResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetPaymentResponse =
+            new operations.GetPaymentResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.paymentResponse = plainToInstance(
+              res.paymentResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.PaymentResponse,
-                httpRes?.data as shared.PaymentResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -213,7 +226,12 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.InstallConnectorResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.InstallConnectorResponse =
+            new operations.InstallConnectorResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -248,14 +266,18 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListAllConnectorsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListAllConnectorsResponse =
+            new operations.ListAllConnectorsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.connectorsResponse = plainToInstance(
+              res.connectorsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConnectorsResponse,
-                httpRes?.data as shared.ConnectorsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -290,14 +312,18 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListConfigsAvailableConnectorsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListConfigsAvailableConnectorsResponse =
+            new operations.ListConfigsAvailableConnectorsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.connectorsConfigsResponse = plainToInstance(
+              res.connectorsConfigsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConnectorsConfigsResponse,
-                httpRes?.data as shared.ConnectorsConfigsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -338,14 +364,18 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListConnectorTasksResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListConnectorTasksResponse =
+            new operations.ListConnectorTasksResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.tasksCursor = plainToInstance(
+              res.tasksCursor = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.TasksCursor,
-                httpRes?.data as shared.TasksCursor,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -384,14 +414,18 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListPaymentsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListPaymentsResponse =
+            new operations.ListPaymentsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.paymentsCursor = plainToInstance(
+              res.paymentsCursor = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.PaymentsCursor,
-                httpRes?.data as shared.PaymentsCursor,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -430,14 +464,18 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.PaymentslistAccountsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.PaymentslistAccountsResponse =
+            new operations.PaymentslistAccountsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.accountsCursor = plainToInstance(
+              res.accountsCursor = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.AccountsCursor,
-                httpRes?.data as shared.AccountsCursor,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -477,14 +515,18 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ReadConnectorConfigResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ReadConnectorConfigResponse =
+            new operations.ReadConnectorConfigResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.connectorConfigResponse = plainToInstance(
+              res.connectorConfigResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ConnectorConfigResponse,
-                httpRes?.data as shared.ConnectorConfigResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -526,7 +568,12 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ResetConnectorResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ResetConnectorResponse =
+            new operations.ResetConnectorResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -566,7 +613,12 @@ export class Payments {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UninstallConnectorResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.UninstallConnectorResponse =
+            new operations.UninstallConnectorResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;

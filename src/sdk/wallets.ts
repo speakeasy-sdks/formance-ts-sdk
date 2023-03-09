@@ -61,16 +61,20 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ConfirmHoldResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ConfirmHoldResponse =
+            new operations.ConfirmHoldResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -121,23 +125,26 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateBalanceResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateBalanceResponse =
+            new operations.CreateBalanceResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 201:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createBalanceResponse = plainToInstance(
+              res.createBalanceResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.CreateBalanceResponse,
-                httpRes?.data as shared.CreateBalanceResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -188,23 +195,26 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateWalletResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateWalletResponse =
+            new operations.CreateWalletResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 201:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createWalletResponse = plainToInstance(
+              res.createWalletResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.CreateWalletResponse,
-                httpRes?.data as shared.CreateWalletResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -255,16 +265,20 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreditWalletResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreditWalletResponse =
+            new operations.CreditWalletResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -315,14 +329,18 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DebitWalletResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DebitWalletResponse =
+            new operations.DebitWalletResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.debitWalletResponse = plainToInstance(
+              res.debitWalletResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.DebitWalletResponse,
-                httpRes?.data as shared.DebitWalletResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -330,10 +348,9 @@ export class Wallets {
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -371,23 +388,26 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetBalanceResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetBalanceResponse =
+            new operations.GetBalanceResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getBalanceResponse = plainToInstance(
+              res.getBalanceResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.GetBalanceResponse,
-                httpRes?.data as shared.GetBalanceResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -425,23 +445,26 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetHoldResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetHoldResponse =
+            new operations.GetHoldResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getHoldResponse = plainToInstance(
+              res.getHoldResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.GetHoldResponse,
-                httpRes?.data as shared.GetHoldResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -480,23 +503,26 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetHoldsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetHoldsResponse =
+            new operations.GetHoldsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getHoldsResponse = plainToInstance(
+              res.getHoldsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.GetHoldsResponse,
-                httpRes?.data as shared.GetHoldsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -532,23 +558,26 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetTransactionsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetTransactionsResponse =
+            new operations.GetTransactionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getTransactionsResponse = plainToInstance(
+              res.getTransactionsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.GetTransactionsResponse,
-                httpRes?.data as shared.GetTransactionsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -586,14 +615,18 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetWalletResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetWalletResponse =
+            new operations.GetWalletResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getWalletResponse = plainToInstance(
+              res.getWalletResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.GetWalletResponse,
-                httpRes?.data as shared.GetWalletResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -601,10 +634,9 @@ export class Wallets {
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -642,14 +674,18 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListBalancesResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListBalancesResponse =
+            new operations.ListBalancesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.listBalancesResponse = plainToInstance(
+              res.listBalancesResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ListBalancesResponse,
-                httpRes?.data as shared.ListBalancesResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -688,14 +724,18 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListWalletsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListWalletsResponse =
+            new operations.ListWalletsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.listWalletsResponse = plainToInstance(
+              res.listWalletsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ListWalletsResponse,
-                httpRes?.data as shared.ListWalletsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -746,16 +786,20 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UpdateWalletResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.UpdateWalletResponse =
+            new operations.UpdateWalletResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -793,16 +837,20 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.VoidHoldResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.VoidHoldResponse =
+            new operations.VoidHoldResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -835,23 +883,26 @@ export class Wallets {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.WalletsgetServerInfoResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.WalletsgetServerInfoResponse =
+            new operations.WalletsgetServerInfoResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.serverInfo = plainToInstance(
+              res.serverInfo = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ServerInfo,
-                httpRes?.data as shared.ServerInfo,
-                { excludeExtraneousValues: true }
               );
             }
             break;
           default:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.walletsErrorResponse = plainToInstance(
+              res.walletsErrorResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.WalletsErrorResponse,
-                httpRes?.data as shared.WalletsErrorResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;

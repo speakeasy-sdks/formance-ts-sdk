@@ -48,7 +48,12 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.AddScopeToClientResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.AddScopeToClientResponse =
+            new operations.AddScopeToClientResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -99,14 +104,18 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateClientResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateClientResponse =
+            new operations.CreateClientResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 201:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createClientResponse = plainToInstance(
+              res.createClientResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.CreateClientResponse,
-                httpRes?.data as shared.CreateClientResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -157,14 +166,18 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateSecretResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateSecretResponse =
+            new operations.CreateSecretResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createSecretResponse = plainToInstance(
+              res.createSecretResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.CreateSecretResponse,
-                httpRes?.data as shared.CreateSecretResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -202,7 +215,12 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteClientResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteClientResponse =
+            new operations.DeleteClientResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -240,7 +258,12 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteScopeFromClientResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteScopeFromClientResponse =
+            new operations.DeleteScopeFromClientResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -278,7 +301,12 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteSecretResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteSecretResponse =
+            new operations.DeleteSecretResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 204:
             break;
@@ -311,14 +339,18 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListClientsResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ListClientsResponse =
+            new operations.ListClientsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.listClientsResponse = plainToInstance(
+              res.listClientsResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ListClientsResponse,
-                httpRes?.data as shared.ListClientsResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -356,14 +388,18 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ReadClientResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.ReadClientResponse =
+            new operations.ReadClientResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.readClientResponse = plainToInstance(
+              res.readClientResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.ReadClientResponse,
-                httpRes?.data as shared.ReadClientResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -414,14 +450,18 @@ export class Clients {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UpdateClientResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.UpdateClientResponse =
+            new operations.UpdateClientResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.updateClientResponse = plainToInstance(
+              res.updateClientResponse = utils.deserializeJSONResponse(
+                httpRes?.data,
                 shared.UpdateClientResponse,
-                httpRes?.data as shared.UpdateClientResponse,
-                { excludeExtraneousValues: true }
               );
             }
             break;
