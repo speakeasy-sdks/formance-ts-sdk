@@ -1,7 +1,7 @@
 <!-- Start SDK Example Usage -->
 ```typescript
 import {
-  GetServerInfoResponse 
+  GetServerInfoResponse
 } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 import { AxiosError } from "axios";
