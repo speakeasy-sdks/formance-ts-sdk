@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { PaymentStatusEnum } from "./paymentstatusenum";
 import { Expose, Transform } from "class-transformer";
 
-
 export class PaymentAdjustment extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "absolute" })

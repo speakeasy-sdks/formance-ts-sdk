@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Monetary } from "./monetary";
 import { Expose, Type } from "class-transformer";
 
-
 export class DebitWalletRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "amount" })

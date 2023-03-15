@@ -1,7 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
-
 export class Wallet extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "createdAt" })

@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { PaymentsAccount } from "./paymentsaccount";
 import { Expose, Type } from "class-transformer";
 
-
 export class AccountsCursorCursor extends SpeakeasyBase {
   @SpeakeasyMetadata({ elemType: PaymentsAccount })
   @Expose({ name: "data" })

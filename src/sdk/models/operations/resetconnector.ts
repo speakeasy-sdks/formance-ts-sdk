@@ -3,9 +3,10 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class ResetConnectorPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=connector" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=connector",
+  })
   connector: shared.ConnectorEnum;
 }
 

@@ -3,8 +3,8 @@ import { ConnectorEnum } from "./connectorenum";
 import { Expose, Transform } from "class-transformer";
 
 export enum PaymentsAccountTypeEnum {
-    Target = "TARGET",
-    Source = "SOURCE"
+  Target = "TARGET",
+  Source = "SOURCE",
 }
 
 export class PaymentsAccount extends SpeakeasyBase {

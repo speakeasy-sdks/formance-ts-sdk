@@ -3,18 +3,25 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class GetHoldsQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=cursor" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=cursor",
+  })
   cursor?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=deepObject;explode=true;name=metadata",
+  })
   metadata?: Record<string, any>;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pageSize" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=pageSize",
+  })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=walletID" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=walletID",
+  })
   walletID?: string;
 }
 

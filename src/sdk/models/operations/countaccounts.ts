@@ -3,17 +3,22 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class CountAccountsPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ledger" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=ledger",
+  })
   ledger: string;
 }
 
 export class CountAccountsQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=address" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=address",
+  })
   address?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=deepObject;explode=true;name=metadata",
+  })
   metadata?: Record<string, any>;
 }
 

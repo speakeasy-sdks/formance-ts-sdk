@@ -3,7 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class OrchestrationgetServerInfoResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;

@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ClientSecret } from "./clientsecret";
 import { Expose, Type } from "class-transformer";
 
-
 export class Client extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "description" })

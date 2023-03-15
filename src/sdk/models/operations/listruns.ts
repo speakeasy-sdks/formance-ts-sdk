@@ -3,9 +3,10 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class ListRunsPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=flowId" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=flowId",
+  })
   flowId: string;
 }
 

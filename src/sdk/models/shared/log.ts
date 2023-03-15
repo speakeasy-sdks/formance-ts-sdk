@@ -2,8 +2,8 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
 export enum LogTypeEnum {
-    NewTransaction = "NEW_TRANSACTION",
-    SetMetadata = "SET_METADATA"
+  NewTransaction = "NEW_TRANSACTION",
+  SetMetadata = "SET_METADATA",
 }
 
 export class Log extends SpeakeasyBase {

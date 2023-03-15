@@ -2,7 +2,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export enum ErrorErrorCodeEnum {
-    Validation = "VALIDATION"
+  Validation = "VALIDATION",
 }
 
 export class ErrorT extends SpeakeasyBase {

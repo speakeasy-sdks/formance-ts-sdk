@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { WorkflowConfig } from "./workflowconfig";
 import { Expose, Transform, Type } from "class-transformer";
 
-
 export class Workflow extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "config" })

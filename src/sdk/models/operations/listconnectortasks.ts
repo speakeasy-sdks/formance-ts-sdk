@@ -3,17 +3,22 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class ListConnectorTasksPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=connector" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=connector",
+  })
   connector: shared.ConnectorEnum;
 }
 
 export class ListConnectorTasksQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=cursor" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=cursor",
+  })
   cursor?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pageSize" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=pageSize",
+  })
   pageSize?: number;
 }
 

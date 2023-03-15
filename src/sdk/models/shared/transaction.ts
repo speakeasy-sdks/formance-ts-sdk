@@ -3,7 +3,6 @@ import { Posting } from "./posting";
 import { Volume } from "./volume";
 import { Expose, Transform, Type } from "class-transformer";
 
-
 export class Transaction extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "metadata" })

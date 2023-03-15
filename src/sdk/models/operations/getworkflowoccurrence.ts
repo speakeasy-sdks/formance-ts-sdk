@@ -3,12 +3,15 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class GetWorkflowOccurrencePathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=flowId" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=flowId",
+  })
   flowId: string;
 
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=runId" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=runId",
+  })
   runId: string;
 }
 

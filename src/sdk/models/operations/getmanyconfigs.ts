@@ -3,9 +3,10 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class GetManyConfigsQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=endpoint" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=endpoint",
+  })
   endpoint?: string;
 
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=id" })

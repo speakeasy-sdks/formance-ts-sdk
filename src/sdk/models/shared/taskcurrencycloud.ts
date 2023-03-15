@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { PaymentStatusEnum } from "./paymentstatusenum";
 import { Expose, Transform, Type } from "class-transformer";
 
-
 export class TaskCurrencyCloudDescriptor extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "name" })

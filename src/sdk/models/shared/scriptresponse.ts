@@ -3,7 +3,6 @@ import { ErrorsEnumEnum } from "./errorsenumenum";
 import { Transaction } from "./transaction";
 import { Expose, Type } from "class-transformer";
 
-
 export class ScriptResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "details" })

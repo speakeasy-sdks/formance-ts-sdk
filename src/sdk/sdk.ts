@@ -22,32 +22,29 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { plainToInstance } from "class-transformer";
 
 export const ServerList = [
-	"http://localhost",
-	"https://{organization}.sandbox.formance.cloud",
+  "http://localhost",
+  "https://{organization}.sandbox.formance.cloud",
 ] as const;
 
-
-
 export type SDKProps = {
-  defaultClient?: AxiosInstance;
-
   security?: shared.Security;
-
+  defaultClient?: AxiosInstance;
   serverUrl?: string;
-}
+};
 
 /* SDK Documentation: Open, modular foundation for unique payments flows
- * 
+ *
  * # Introduction
  * This API is documented in **OpenAPI format**.
- * 
+ *
  * # Authentication
  * Formance Stack offers one forms of authentication:
  *   - OAuth2
  * OAuth2 - an open protocol to allow secure authorization in a simple
  * and standard method from web, mobile and desktop applications.
  * <SecurityDefinitions />
- * */
+ *
+ */
 export class Formance {
   public accounts: Accounts;
   public balances: Balances;
@@ -71,13 +68,15 @@ export class Formance {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "0.5.1";
-  private _genVersion = "1.9.2";
+  private _sdkVersion = "0.6.0";
+  private _genVersion = "1.11.0";
+  private _globals: any;
 
   constructor(props?: SDKProps) {
     this._serverURL = props?.serverUrl ?? ServerList[0];
 
-    this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
+    this._defaultClient =
+      props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
     if (props?.security) {
       let security: shared.Security = props.security;
       if (!(props.security instanceof utils.SpeakeasyBase))
@@ -89,7 +88,7 @@ export class Formance {
     } else {
       this._securityClient = this._defaultClient;
     }
-    
+
     this.accounts = new Accounts(
       this._defaultClient,
       this._securityClient,
@@ -98,7 +97,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.balances = new Balances(
       this._defaultClient,
       this._securityClient,
@@ -107,7 +106,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.clients = new Clients(
       this._defaultClient,
       this._securityClient,
@@ -116,7 +115,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.ledger = new Ledger(
       this._defaultClient,
       this._securityClient,
@@ -125,7 +124,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.logs = new Logs(
       this._defaultClient,
       this._securityClient,
@@ -134,7 +133,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.mapping = new Mapping(
       this._defaultClient,
       this._securityClient,
@@ -143,7 +142,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.orchestration = new Orchestration(
       this._defaultClient,
       this._securityClient,
@@ -152,7 +151,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.payments = new Payments(
       this._defaultClient,
       this._securityClient,
@@ -161,7 +160,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.scopes = new Scopes(
       this._defaultClient,
       this._securityClient,
@@ -170,7 +169,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.script = new Script(
       this._defaultClient,
       this._securityClient,
@@ -179,7 +178,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.search = new Search(
       this._defaultClient,
       this._securityClient,
@@ -188,7 +187,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.server = new Server(
       this._defaultClient,
       this._securityClient,
@@ -197,7 +196,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.stats = new Stats(
       this._defaultClient,
       this._securityClient,
@@ -206,7 +205,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.transactions = new Transactions(
       this._defaultClient,
       this._securityClient,
@@ -215,7 +214,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.users = new Users(
       this._defaultClient,
       this._securityClient,
@@ -224,7 +223,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.wallets = new Wallets(
       this._defaultClient,
       this._securityClient,
@@ -233,7 +232,7 @@ export class Formance {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.webhooks = new Webhooks(
       this._defaultClient,
       this._securityClient,
@@ -243,134 +242,133 @@ export class Formance {
       this._genVersion
     );
   }
-  
+
   /**
    * getServerInfo - Get server info
-  **/
+   **/
   getServerInfo(
     config?: AxiosRequestConfig
   ): Promise<operations.GetServerInfoResponse> {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/api/auth/_info";
-    
+
     const client: AxiosInstance = this._securityClient!;
-    
-    
+
     const r = client.request({
       url: url,
       method: "get",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetServerInfoResponse =
-            new operations.GetServerInfoResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.serverInfo = utils.deserializeJSONResponse(
-                httpRes?.data,
-                shared.ServerInfo,
-              );
-            }
-            break;
-        }
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.GetServerInfoResponse =
+        new operations.GetServerInfoResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.serverInfo = utils.deserializeJSONResponse(
+              httpRes?.data,
+              shared.ServerInfo
+            );
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
 
   /**
    * paymentsgetServerInfo - Get server info
-  **/
+   **/
   paymentsgetServerInfo(
     config?: AxiosRequestConfig
   ): Promise<operations.PaymentsgetServerInfoResponse> {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/api/payments/_info";
-    
+
     const client: AxiosInstance = this._securityClient!;
-    
-    
+
     const r = client.request({
       url: url,
       method: "get",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.PaymentsgetServerInfoResponse =
-            new operations.PaymentsgetServerInfoResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.serverInfo = utils.deserializeJSONResponse(
-                httpRes?.data,
-                shared.ServerInfo,
-              );
-            }
-            break;
-        }
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.PaymentsgetServerInfoResponse =
+        new operations.PaymentsgetServerInfoResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.serverInfo = utils.deserializeJSONResponse(
+              httpRes?.data,
+              shared.ServerInfo
+            );
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
 
   /**
    * searchgetServerInfo - Get server info
-  **/
+   **/
   searchgetServerInfo(
     config?: AxiosRequestConfig
   ): Promise<operations.SearchgetServerInfoResponse> {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/api/search/_info";
-    
+
     const client: AxiosInstance = this._securityClient!;
-    
-    
+
     const r = client.request({
       url: url,
       method: "get",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.SearchgetServerInfoResponse =
-            new operations.SearchgetServerInfoResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.serverInfo = utils.deserializeJSONResponse(
-                httpRes?.data,
-                shared.ServerInfo,
-              );
-            }
-            break;
-        }
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.SearchgetServerInfoResponse =
+        new operations.SearchgetServerInfoResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.serverInfo = utils.deserializeJSONResponse(
+              httpRes?.data,
+              shared.ServerInfo
+            );
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
-
 }

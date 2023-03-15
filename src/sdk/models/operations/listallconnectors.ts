@@ -3,7 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class ListAllConnectorsResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   connectorsResponse?: shared.ConnectorsResponse;

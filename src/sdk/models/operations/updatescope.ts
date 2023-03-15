@@ -3,9 +3,10 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class UpdateScopePathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=scopeId" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=scopeId",
+  })
   scopeId: string;
 }
 

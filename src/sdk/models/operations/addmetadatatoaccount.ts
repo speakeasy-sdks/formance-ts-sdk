@@ -3,12 +3,15 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class AddMetadataToAccountPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=address" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=address",
+  })
   address: string;
 
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ledger" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=ledger",
+  })
   ledger: string;
 }
 

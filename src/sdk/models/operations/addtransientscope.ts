@@ -2,12 +2,15 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class AddTransientScopePathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=scopeId" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=scopeId",
+  })
   scopeId: string;
 
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=transientScopeId" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=transientScopeId",
+  })
   transientScopeId: string;
 }
 

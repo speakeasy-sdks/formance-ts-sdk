@@ -3,9 +3,10 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class GetBalancePathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=balanceName" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=balanceName",
+  })
   balanceName: string;
 
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })

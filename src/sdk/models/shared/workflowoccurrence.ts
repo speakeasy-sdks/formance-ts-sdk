@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { StageStatus } from "./stagestatus";
 import { Expose, Transform, Type } from "class-transformer";
 
-
 export class WorkflowOccurrence extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "createdAt" })

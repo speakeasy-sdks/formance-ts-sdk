@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ConnectorEnum } from "./connectorenum";
 import { Expose, Type } from "class-transformer";
 
-
 export class ConnectorsResponseData extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "enabled" })

@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Posting } from "./posting";
 import { Expose, Transform, Type } from "class-transformer";
 
-
 export class PostTransactionScript extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "plain" })

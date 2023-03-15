@@ -3,53 +3,80 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Transform, Type } from "class-transformer";
 
-
 export class ListTransactionsPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ledger" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=ledger",
+  })
   ledger: string;
 }
 
 export class ListTransactionsQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=account" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=account",
+  })
   account?: string;
 
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
   after?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=cursor" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=cursor",
+  })
   cursor?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=destination" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=destination",
+  })
   destination?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=endTime;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=endTime;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
+  })
   endTime?: Date;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=end_time;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=end_time;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
+  })
   endTimeDeprecated?: Date;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=deepObject;explode=true;name=metadata",
+  })
   metadata?: Record<string, any>;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pageSize" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=pageSize",
+  })
   pageSize?: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page_size" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=page_size",
+  })
   pageSizeDeprecated?: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pagination_token" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=pagination_token",
+  })
   paginationToken?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reference" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=reference",
+  })
   reference?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=source" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=source",
+  })
   source?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=startTime;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=startTime;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
+  })
   startTime?: Date;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=start_time;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ" })
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=start_time;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
+  })
   startTimeDeprecated?: Date;
 }
 

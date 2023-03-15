@@ -1,7 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-
 export class UpdateClientRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "description" })
