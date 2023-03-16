@@ -1,8 +1,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
-import { Type } from "class-transformer";
 
-export class DeleteSecretPathParams extends SpeakeasyBase {
+export class DeleteSecretRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=clientId",
   })
@@ -12,11 +11,6 @@ export class DeleteSecretPathParams extends SpeakeasyBase {
     data: "pathParam, style=simple;explode=false;name=secretId",
   })
   secretId: string;
-}
-
-export class DeleteSecretRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: DeleteSecretPathParams;
 }
 
 export class DeleteSecretResponse extends SpeakeasyBase {

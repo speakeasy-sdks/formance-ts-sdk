@@ -3,16 +3,11 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class ListRunsPathParams extends SpeakeasyBase {
+export class ListRunsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=flowId",
   })
   flowId: string;
-}
-
-export class ListRunsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: ListRunsPathParams;
 }
 
 export class ListRunsResponse extends SpeakeasyBase {

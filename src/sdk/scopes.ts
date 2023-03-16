@@ -45,7 +45,7 @@ export class Scopes {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/scopes/{scopeId}/transient/{transientScopeId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -82,11 +82,11 @@ export class Scopes {
    * Create scope
    **/
   createScope(
-    req: operations.CreateScopeRequest,
+    req: shared.CreateScopeRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateScopeResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateScopeRequest(req);
+      req = new shared.CreateScopeRequest(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -95,7 +95,11 @@ export class Scopes {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -157,7 +161,7 @@ export class Scopes {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/scopes/{scopeId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -205,7 +209,7 @@ export class Scopes {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/scopes/{scopeId}/transient/{transientScopeId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -298,7 +302,7 @@ export class Scopes {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/scopes/{scopeId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -352,13 +356,17 @@ export class Scopes {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/scopes/{scopeId}",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "updateScopeRequest",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);

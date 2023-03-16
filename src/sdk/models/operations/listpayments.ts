@@ -3,7 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class ListPaymentsQueryParams extends SpeakeasyBase {
+export class ListPaymentsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=cursor",
   })
@@ -16,11 +16,6 @@ export class ListPaymentsQueryParams extends SpeakeasyBase {
 
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=sort" })
   sort?: string[];
-}
-
-export class ListPaymentsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  queryParams: ListPaymentsQueryParams;
 }
 
 export class ListPaymentsResponse extends SpeakeasyBase {

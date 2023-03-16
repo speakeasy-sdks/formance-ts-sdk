@@ -3,31 +3,21 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class CountAccountsPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=ledger",
-  })
-  ledger: string;
-}
-
-export class CountAccountsQueryParams extends SpeakeasyBase {
+export class CountAccountsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=address",
   })
   address?: string;
 
   @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=ledger",
+  })
+  ledger: string;
+
+  @SpeakeasyMetadata({
     data: "queryParam, style=deepObject;explode=true;name=metadata",
   })
   metadata?: Record<string, any>;
-}
-
-export class CountAccountsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: CountAccountsPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: CountAccountsQueryParams;
 }
 
 export class CountAccountsResponse extends SpeakeasyBase {

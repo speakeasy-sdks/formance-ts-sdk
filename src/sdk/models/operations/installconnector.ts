@@ -1,21 +1,15 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
-import { Type } from "class-transformer";
 
-export class InstallConnectorPathParams extends SpeakeasyBase {
+export class InstallConnectorRequest extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  requestBody: any;
+
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=connector",
   })
   connector: shared.ConnectorEnum;
-}
-
-export class InstallConnectorRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: InstallConnectorPathParams;
-
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: any;
 }
 
 export class InstallConnectorResponse extends SpeakeasyBase {

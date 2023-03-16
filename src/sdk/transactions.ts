@@ -43,13 +43,17 @@ export class Transactions {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/transactions/batch",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "transactions",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -119,13 +123,17 @@ export class Transactions {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/transactions/{txid}/metadata",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "requestBody",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -187,12 +195,12 @@ export class Transactions {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/transactions",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -244,13 +252,17 @@ export class Transactions {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/transactions",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "postTransaction",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -260,7 +272,7 @@ export class Transactions {
     const client: AxiosInstance = this._securityClient!;
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
@@ -321,7 +333,7 @@ export class Transactions {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/transactions/{txid}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -383,12 +395,12 @@ export class Transactions {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/transactions",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -445,7 +457,7 @@ export class Transactions {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/transactions/{txid}/revert",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;

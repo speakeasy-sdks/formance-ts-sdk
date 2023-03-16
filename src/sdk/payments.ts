@@ -34,11 +34,11 @@ export class Payments {
    * Execute a transfer between two Stripe accounts.
    **/
   connectorsStripeTransfer(
-    req: operations.ConnectorsStripeTransferRequest,
+    req: shared.StripeTransferRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ConnectorsStripeTransferResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ConnectorsStripeTransferRequest(req);
+      req = new shared.StripeTransferRequest(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -48,7 +48,11 @@ export class Payments {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -111,7 +115,7 @@ export class Payments {
     const url: string = utils.generateURL(
       baseURL,
       "/api/payments/connectors/{connector}/tasks/{taskId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -163,7 +167,7 @@ export class Payments {
     const url: string = utils.generateURL(
       baseURL,
       "/api/payments/payments/{paymentId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -217,13 +221,17 @@ export class Payments {
     const url: string = utils.generateURL(
       baseURL,
       "/api/payments/connectors/{connector}",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "requestBody",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -372,12 +380,12 @@ export class Payments {
     const url: string = utils.generateURL(
       baseURL,
       "/api/payments/connectors/{connector}/tasks",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -427,7 +435,7 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -477,7 +485,7 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -528,7 +536,7 @@ export class Payments {
     const url: string = utils.generateURL(
       baseURL,
       "/api/payments/connectors/{connector}/config",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -584,7 +592,7 @@ export class Payments {
     const url: string = utils.generateURL(
       baseURL,
       "/api/payments/connectors/{connector}/reset",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -632,7 +640,7 @@ export class Payments {
     const url: string = utils.generateURL(
       baseURL,
       "/api/payments/connectors/{connector}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;

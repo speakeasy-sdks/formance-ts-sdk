@@ -43,12 +43,12 @@ export class Balances {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/balances",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -105,12 +105,12 @@ export class Balances {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/aggregate/balances",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,

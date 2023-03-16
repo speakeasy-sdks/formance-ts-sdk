@@ -3,16 +3,11 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class GetLedgerInfoPathParams extends SpeakeasyBase {
+export class GetLedgerInfoRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=ledger",
   })
   ledger: string;
-}
-
-export class GetLedgerInfoRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetLedgerInfoPathParams;
 }
 
 export class GetLedgerInfoResponse extends SpeakeasyBase {

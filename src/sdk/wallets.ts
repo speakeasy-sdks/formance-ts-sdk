@@ -43,13 +43,17 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/holds/{hold_id}/confirm",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "confirmHoldRequest",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -111,13 +115,17 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/wallets/{id}/balances",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "createBalanceRequest",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -174,11 +182,11 @@ export class Wallets {
    * createWallet - Create a new wallet
    **/
   createWallet(
-    req: operations.CreateWalletRequest,
+    req: shared.CreateWalletRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateWalletResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateWalletRequest(req);
+      req = new shared.CreateWalletRequest(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -187,7 +195,11 @@ export class Wallets {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -255,13 +267,17 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/wallets/{id}/credit",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "creditWalletRequest",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -323,13 +339,17 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/wallets/{id}/debit",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "debitWalletRequest",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -399,7 +419,7 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/wallets/{id}/balances/{balanceName}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -459,7 +479,7 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/holds/{holdID}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -519,7 +539,7 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -574,7 +594,7 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -631,7 +651,7 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/wallets/{id}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -693,7 +713,7 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/wallets/{id}/balances",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -746,7 +766,7 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -795,13 +815,17 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/wallets/{id}",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "requestBody",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -863,7 +887,7 @@ export class Wallets {
     const url: string = utils.generateURL(
       baseURL,
       "/api/wallets/holds/{hold_id}/void",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;

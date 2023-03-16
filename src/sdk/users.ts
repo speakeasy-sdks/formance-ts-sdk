@@ -90,7 +90,7 @@ export class Users {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/users/{userId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;

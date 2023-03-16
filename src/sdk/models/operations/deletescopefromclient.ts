@@ -1,8 +1,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
-import { Type } from "class-transformer";
 
-export class DeleteScopeFromClientPathParams extends SpeakeasyBase {
+export class DeleteScopeFromClientRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=clientId",
   })
@@ -12,11 +11,6 @@ export class DeleteScopeFromClientPathParams extends SpeakeasyBase {
     data: "pathParam, style=simple;explode=false;name=scopeId",
   })
   scopeId: string;
-}
-
-export class DeleteScopeFromClientRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: DeleteScopeFromClientPathParams;
 }
 
 export class DeleteScopeFromClientResponse extends SpeakeasyBase {

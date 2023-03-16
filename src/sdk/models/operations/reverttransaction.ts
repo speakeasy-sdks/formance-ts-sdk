@@ -3,7 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class RevertTransactionPathParams extends SpeakeasyBase {
+export class RevertTransactionRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=ledger",
   })
@@ -13,11 +13,6 @@ export class RevertTransactionPathParams extends SpeakeasyBase {
     data: "pathParam, style=simple;explode=false;name=txid",
   })
   txid: number;
-}
-
-export class RevertTransactionRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: RevertTransactionPathParams;
 }
 
 export class RevertTransactionResponse extends SpeakeasyBase {

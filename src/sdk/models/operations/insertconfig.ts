@@ -3,11 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class InsertConfigRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: shared.ConfigUser;
-}
-
 export class InsertConfigResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   configResponse?: shared.ConfigResponse;

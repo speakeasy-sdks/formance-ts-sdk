@@ -46,13 +46,17 @@ export class Script {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/script",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "script",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -62,7 +66,7 @@ export class Script {
     const client: AxiosInstance = this._securityClient!;
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 

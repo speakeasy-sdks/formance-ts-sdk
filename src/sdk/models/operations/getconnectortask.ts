@@ -3,7 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class GetConnectorTaskPathParams extends SpeakeasyBase {
+export class GetConnectorTaskRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=connector",
   })
@@ -13,11 +13,6 @@ export class GetConnectorTaskPathParams extends SpeakeasyBase {
     data: "pathParam, style=simple;explode=false;name=taskId",
   })
   taskId: string;
-}
-
-export class GetConnectorTaskRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetConnectorTaskPathParams;
 }
 
 export class GetConnectorTaskResponse extends SpeakeasyBase {

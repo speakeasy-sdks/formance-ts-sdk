@@ -3,12 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class ListAccountsPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=ledger",
-  })
-  ledger: string;
-}
 export enum ListAccountsBalanceOperatorEnum {
   Gte = "gte",
   Lte = "lte",
@@ -18,7 +12,7 @@ export enum ListAccountsBalanceOperatorEnum {
   Ne = "ne",
 }
 
-export class ListAccountsQueryParams extends SpeakeasyBase {
+export class ListAccountsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=address",
   })
@@ -48,6 +42,11 @@ export class ListAccountsQueryParams extends SpeakeasyBase {
   cursor?: string;
 
   @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=ledger",
+  })
+  ledger: string;
+
+  @SpeakeasyMetadata({
     data: "queryParam, style=deepObject;explode=true;name=metadata",
   })
   metadata?: Record<string, any>;
@@ -66,14 +65,6 @@ export class ListAccountsQueryParams extends SpeakeasyBase {
     data: "queryParam, style=form;explode=true;name=pagination_token",
   })
   paginationToken?: string;
-}
-
-export class ListAccountsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: ListAccountsPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: ListAccountsQueryParams;
 }
 
 export class ListAccountsResponse extends SpeakeasyBase {

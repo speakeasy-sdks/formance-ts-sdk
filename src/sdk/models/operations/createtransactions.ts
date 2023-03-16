@@ -3,19 +3,14 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class CreateTransactionsPathParams extends SpeakeasyBase {
+export class CreateTransactionsRequest extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  transactions: shared.Transactions;
+
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=ledger",
   })
   ledger: string;
-}
-
-export class CreateTransactionsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: CreateTransactionsPathParams;
-
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: shared.Transactions;
 }
 
 export class CreateTransactionsResponse extends SpeakeasyBase {

@@ -3,7 +3,10 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class AddMetadataToAccountPathParams extends SpeakeasyBase {
+export class AddMetadataToAccountRequest extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  requestBody: Record<string, any>;
+
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=address",
   })
@@ -13,14 +16,6 @@ export class AddMetadataToAccountPathParams extends SpeakeasyBase {
     data: "pathParam, style=simple;explode=false;name=ledger",
   })
   ledger: string;
-}
-
-export class AddMetadataToAccountRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: AddMetadataToAccountPathParams;
-
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: Record<string, any>;
 }
 
 export class AddMetadataToAccountResponse extends SpeakeasyBase {

@@ -3,7 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class GetWorkflowOccurrencePathParams extends SpeakeasyBase {
+export class GetWorkflowOccurrenceRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=flowId",
   })
@@ -13,11 +13,6 @@ export class GetWorkflowOccurrencePathParams extends SpeakeasyBase {
     data: "pathParam, style=simple;explode=false;name=runId",
   })
   runId: string;
-}
-
-export class GetWorkflowOccurrenceRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetWorkflowOccurrencePathParams;
 }
 
 export class GetWorkflowOccurrenceResponse extends SpeakeasyBase {

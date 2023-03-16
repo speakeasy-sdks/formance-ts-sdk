@@ -45,12 +45,12 @@ export class Logs {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/log",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,

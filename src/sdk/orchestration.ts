@@ -34,11 +34,11 @@ export class Orchestration {
    * Create a workflow
    **/
   createWorkflow(
-    req: operations.CreateWorkflowRequest,
+    req: shared.CreateWorkflowRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateWorkflowResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateWorkflowRequest(req);
+      req = new shared.CreateWorkflowRequest(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -47,7 +47,11 @@ export class Orchestration {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -117,7 +121,7 @@ export class Orchestration {
     const url: string = utils.generateURL(
       baseURL,
       "/api/orchestration/flows/{flowId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -178,7 +182,7 @@ export class Orchestration {
     const url: string = utils.generateURL(
       baseURL,
       "/api/orchestration/flows/{flowId}/runs/{runId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -293,7 +297,7 @@ export class Orchestration {
     const url: string = utils.generateURL(
       baseURL,
       "/api/orchestration/flows/{flowId}/runs",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -402,13 +406,17 @@ export class Orchestration {
     const url: string = utils.generateURL(
       baseURL,
       "/api/orchestration/flows/{flowId}/runs",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "requestBody",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -418,7 +426,7 @@ export class Orchestration {
     const client: AxiosInstance = this._securityClient!;
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,

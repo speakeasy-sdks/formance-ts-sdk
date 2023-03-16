@@ -46,7 +46,7 @@ export class Stats {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/stats",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;

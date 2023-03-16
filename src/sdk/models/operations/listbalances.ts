@@ -3,14 +3,9 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class ListBalancesPathParams extends SpeakeasyBase {
+export class ListBalancesRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
-}
-
-export class ListBalancesRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: ListBalancesPathParams;
 }
 
 export class ListBalancesResponse extends SpeakeasyBase {

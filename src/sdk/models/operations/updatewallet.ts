@@ -3,11 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class UpdateWalletPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
-}
-
 export class UpdateWalletRequestBody extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "metadata" })
@@ -15,11 +10,11 @@ export class UpdateWalletRequestBody extends SpeakeasyBase {
 }
 
 export class UpdateWalletRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: UpdateWalletPathParams;
-
   @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request?: UpdateWalletRequestBody;
+  requestBody?: UpdateWalletRequestBody;
+
+  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+  id: string;
 }
 
 export class UpdateWalletResponse extends SpeakeasyBase {

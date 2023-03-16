@@ -3,29 +3,19 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class RunScriptPathParams extends SpeakeasyBase {
+export class RunScriptRequest extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  script: shared.Script;
+
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=ledger",
   })
   ledger: string;
-}
 
-export class RunScriptQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=preview",
   })
   preview?: boolean;
-}
-
-export class RunScriptRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: RunScriptPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: RunScriptQueryParams;
-
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: shared.Script;
 }
 
 export class RunScriptResponse extends SpeakeasyBase {

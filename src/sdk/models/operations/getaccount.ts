@@ -3,7 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class GetAccountPathParams extends SpeakeasyBase {
+export class GetAccountRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=address",
   })
@@ -13,11 +13,6 @@ export class GetAccountPathParams extends SpeakeasyBase {
     data: "pathParam, style=simple;explode=false;name=ledger",
   })
   ledger: string;
-}
-
-export class GetAccountRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetAccountPathParams;
 }
 
 export class GetAccountResponse extends SpeakeasyBase {

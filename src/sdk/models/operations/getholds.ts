@@ -3,7 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class GetHoldsQueryParams extends SpeakeasyBase {
+export class GetHoldsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=cursor",
   })
@@ -23,11 +23,6 @@ export class GetHoldsQueryParams extends SpeakeasyBase {
     data: "queryParam, style=form;explode=true;name=walletID",
   })
   walletID?: string;
-}
-
-export class GetHoldsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  queryParams: GetHoldsQueryParams;
 }
 
 export class GetHoldsResponse extends SpeakeasyBase {

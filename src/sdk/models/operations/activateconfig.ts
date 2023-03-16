@@ -3,14 +3,9 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class ActivateConfigPathParams extends SpeakeasyBase {
+export class ActivateConfigRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
-}
-
-export class ActivateConfigRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: ActivateConfigPathParams;
 }
 
 export class ActivateConfigResponse extends SpeakeasyBase {

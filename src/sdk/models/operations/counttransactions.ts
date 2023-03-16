@@ -3,14 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Transform, Type } from "class-transformer";
 
-export class CountTransactionsPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=ledger",
-  })
-  ledger: string;
-}
-
-export class CountTransactionsQueryParams extends SpeakeasyBase {
+export class CountTransactionsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=account",
   })
@@ -30,6 +23,11 @@ export class CountTransactionsQueryParams extends SpeakeasyBase {
     data: "queryParam, style=form;explode=true;name=end_time;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
   })
   endTimeDeprecated?: Date;
+
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=ledger",
+  })
+  ledger: string;
 
   @SpeakeasyMetadata({
     data: "queryParam, style=deepObject;explode=true;name=metadata",
@@ -55,14 +53,6 @@ export class CountTransactionsQueryParams extends SpeakeasyBase {
     data: "queryParam, style=form;explode=true;name=start_time;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
   })
   startTimeDeprecated?: Date;
-}
-
-export class CountTransactionsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: CountTransactionsPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: CountTransactionsQueryParams;
 }
 
 export class CountTransactionsResponse extends SpeakeasyBase {

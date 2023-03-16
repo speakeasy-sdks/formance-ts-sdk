@@ -3,26 +3,16 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class GetBalancesAggregatedPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=ledger",
-  })
-  ledger: string;
-}
-
-export class GetBalancesAggregatedQueryParams extends SpeakeasyBase {
+export class GetBalancesAggregatedRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=address",
   })
   address?: string;
-}
 
-export class GetBalancesAggregatedRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetBalancesAggregatedPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: GetBalancesAggregatedQueryParams;
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=ledger",
+  })
+  ledger: string;
 }
 
 export class GetBalancesAggregatedResponse extends SpeakeasyBase {

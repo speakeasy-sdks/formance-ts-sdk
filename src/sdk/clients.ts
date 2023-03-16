@@ -43,7 +43,7 @@ export class Clients {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/clients/{clientId}/scopes/{scopeId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -78,11 +78,11 @@ export class Clients {
    * createClient - Create client
    **/
   createClient(
-    req: operations.CreateClientRequest,
+    req: shared.CreateClientRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateClientResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateClientRequest(req);
+      req = new shared.CreateClientRequest(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -91,7 +91,11 @@ export class Clients {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -151,13 +155,17 @@ export class Clients {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/clients/{clientId}/secrets",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "createSecretRequest",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -217,7 +225,7 @@ export class Clients {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/clients/{clientId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -263,7 +271,7 @@ export class Clients {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/clients/{clientId}/scopes/{scopeId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -309,7 +317,7 @@ export class Clients {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/clients/{clientId}/secrets/{secretId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -398,7 +406,7 @@ export class Clients {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/clients/{clientId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -450,13 +458,17 @@ export class Clients {
     const url: string = utils.generateURL(
       baseURL,
       "/api/auth/clients/{clientId}",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "updateClientRequest",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);

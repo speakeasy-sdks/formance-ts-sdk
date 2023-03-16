@@ -45,7 +45,7 @@ export class Webhooks {
     const url: string = utils.generateURL(
       baseURL,
       "/api/webhooks/configs/{id}/activate",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -105,13 +105,17 @@ export class Webhooks {
     const url: string = utils.generateURL(
       baseURL,
       "/api/webhooks/configs/{id}/secret/change",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "configChangeSecret",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -173,7 +177,7 @@ export class Webhooks {
     const url: string = utils.generateURL(
       baseURL,
       "/api/webhooks/configs/{id}/deactivate",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -229,7 +233,7 @@ export class Webhooks {
     const url: string = utils.generateURL(
       baseURL,
       "/api/webhooks/configs/{id}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
@@ -278,7 +282,7 @@ export class Webhooks {
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -327,11 +331,11 @@ export class Webhooks {
    *
    **/
   insertConfig(
-    req: operations.InsertConfigRequest,
+    req: shared.ConfigUser,
     config?: AxiosRequestConfig
   ): Promise<operations.InsertConfigResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.InsertConfigRequest(req);
+      req = new shared.ConfigUser(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -340,7 +344,11 @@ export class Webhooks {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -409,7 +417,7 @@ export class Webhooks {
     const url: string = utils.generateURL(
       baseURL,
       "/api/webhooks/configs/{id}/test",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;

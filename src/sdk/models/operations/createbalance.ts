@@ -3,17 +3,12 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class CreateBalancePathParams extends SpeakeasyBase {
+export class CreateBalanceRequest extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  createBalanceRequest?: shared.CreateBalanceRequest;
+
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
-}
-
-export class CreateBalanceRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: CreateBalancePathParams;
-
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request?: shared.CreateBalanceRequest;
 }
 
 export class CreateBalanceResponse extends SpeakeasyBase {

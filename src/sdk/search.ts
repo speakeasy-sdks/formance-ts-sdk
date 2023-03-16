@@ -34,11 +34,11 @@ export class Search {
    * ElasticSearch query engine
    **/
   search(
-    req: operations.SearchRequest,
+    req: shared.Query,
     config?: AxiosRequestConfig
   ): Promise<operations.SearchResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.SearchRequest(req);
+      req = new shared.Query(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -47,7 +47,11 @@ export class Search {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);

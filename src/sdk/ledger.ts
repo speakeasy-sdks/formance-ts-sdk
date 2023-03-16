@@ -43,7 +43,7 @@ export class Ledger {
     const url: string = utils.generateURL(
       baseURL,
       "/api/ledger/{ledger}/_info",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;

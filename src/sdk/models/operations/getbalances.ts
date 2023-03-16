@@ -3,14 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class GetBalancesPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=ledger",
-  })
-  ledger: string;
-}
-
-export class GetBalancesQueryParams extends SpeakeasyBase {
+export class GetBalancesRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=address",
   })
@@ -25,17 +18,14 @@ export class GetBalancesQueryParams extends SpeakeasyBase {
   cursor?: string;
 
   @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=ledger",
+  })
+  ledger: string;
+
+  @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=pagination_token",
   })
   paginationToken?: string;
-}
-
-export class GetBalancesRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetBalancesPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: GetBalancesQueryParams;
 }
 
 export class GetBalancesResponse extends SpeakeasyBase {
