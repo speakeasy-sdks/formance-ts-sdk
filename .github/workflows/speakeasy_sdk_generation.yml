@@ -21,6 +21,7 @@ jobs:
       languages: |-
         - typescript
       publish_typescript: true
+      mode: pr
     secrets:
       npm_token: ${{secrets.NPM_TOKEN}}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_PROD_API_KEY }}
