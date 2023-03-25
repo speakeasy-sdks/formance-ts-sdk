@@ -16,6 +16,7 @@ src/sdk/users.ts
 src/sdk/wallets.ts
 src/sdk/webhooks.ts
 src/sdk/sdk.ts
+.eslintrc.yml
 jest.config.js
 package-lock.json
 package.json
