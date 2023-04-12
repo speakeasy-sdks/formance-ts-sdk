@@ -140,7 +140,7 @@ export class Scopes {
       switch (true) {
         case httpRes?.status == 201:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.createScopeResponse = utils.deserializeJSONResponse(
+            res.createScopeResponse = utils.objectToClass(
               httpRes?.data,
               shared.CreateScopeResponse
             );
@@ -284,7 +284,7 @@ export class Scopes {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.listScopesResponse = utils.deserializeJSONResponse(
+            res.listScopesResponse = utils.objectToClass(
               httpRes?.data,
               shared.ListScopesResponse
             );
@@ -339,7 +339,7 @@ export class Scopes {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.readScopeResponse = utils.deserializeJSONResponse(
+            res.readScopeResponse = utils.objectToClass(
               httpRes?.data,
               shared.ReadScopeResponse
             );
@@ -412,7 +412,7 @@ export class Scopes {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.updateScopeResponse = utils.deserializeJSONResponse(
+            res.updateScopeResponse = utils.objectToClass(
               httpRes?.data,
               shared.UpdateScopeResponse
             );

@@ -74,7 +74,7 @@ export class Mapping {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.mappingResponse = utils.deserializeJSONResponse(
+            res.mappingResponse = utils.objectToClass(
               httpRes?.data,
               shared.MappingResponse
             );
@@ -82,7 +82,7 @@ export class Mapping {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -154,7 +154,7 @@ export class Mapping {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.mappingResponse = utils.deserializeJSONResponse(
+            res.mappingResponse = utils.objectToClass(
               httpRes?.data,
               shared.MappingResponse
             );
@@ -162,7 +162,7 @@ export class Mapping {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );

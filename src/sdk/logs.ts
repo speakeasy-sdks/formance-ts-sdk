@@ -78,7 +78,7 @@ export class Logs {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.logsCursorResponse = utils.deserializeJSONResponse(
+            res.logsCursorResponse = utils.objectToClass(
               httpRes?.data,
               shared.LogsCursorResponse
             );
@@ -86,7 +86,7 @@ export class Logs {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );

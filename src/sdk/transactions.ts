@@ -94,7 +94,7 @@ export class Transactions {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionsResponse = utils.deserializeJSONResponse(
+            res.transactionsResponse = utils.objectToClass(
               httpRes?.data,
               shared.TransactionsResponse
             );
@@ -102,7 +102,7 @@ export class Transactions {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -174,7 +174,7 @@ export class Transactions {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -231,7 +231,7 @@ export class Transactions {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -304,7 +304,7 @@ export class Transactions {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionsResponse = utils.deserializeJSONResponse(
+            res.transactionsResponse = utils.objectToClass(
               httpRes?.data,
               shared.TransactionsResponse
             );
@@ -312,7 +312,7 @@ export class Transactions {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -364,7 +364,7 @@ export class Transactions {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionResponse = utils.deserializeJSONResponse(
+            res.transactionResponse = utils.objectToClass(
               httpRes?.data,
               shared.TransactionResponse
             );
@@ -372,7 +372,7 @@ export class Transactions {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -429,7 +429,7 @@ export class Transactions {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionsCursorResponse = utils.deserializeJSONResponse(
+            res.transactionsCursorResponse = utils.objectToClass(
               httpRes?.data,
               shared.TransactionsCursorResponse
             );
@@ -437,7 +437,7 @@ export class Transactions {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -489,7 +489,7 @@ export class Transactions {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionResponse = utils.deserializeJSONResponse(
+            res.transactionResponse = utils.objectToClass(
               httpRes?.data,
               shared.TransactionResponse
             );
@@ -497,7 +497,7 @@ export class Transactions {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );

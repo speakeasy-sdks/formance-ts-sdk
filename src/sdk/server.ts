@@ -62,7 +62,7 @@ export class Server {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.configInfoResponse = utils.deserializeJSONResponse(
+            res.configInfoResponse = utils.objectToClass(
               httpRes?.data,
               shared.ConfigInfoResponse
             );
@@ -70,7 +70,7 @@ export class Server {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );

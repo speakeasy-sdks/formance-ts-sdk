@@ -96,7 +96,7 @@ export class Accounts {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -153,7 +153,7 @@ export class Accounts {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -205,7 +205,7 @@ export class Accounts {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.accountResponse = utils.deserializeJSONResponse(
+            res.accountResponse = utils.objectToClass(
               httpRes?.data,
               shared.AccountResponse
             );
@@ -213,7 +213,7 @@ export class Accounts {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -270,7 +270,7 @@ export class Accounts {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.accountsCursorResponse = utils.deserializeJSONResponse(
+            res.accountsCursorResponse = utils.objectToClass(
               httpRes?.data,
               shared.AccountsCursorResponse
             );
@@ -278,7 +278,7 @@ export class Accounts {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );

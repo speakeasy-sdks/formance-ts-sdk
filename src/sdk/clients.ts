@@ -134,7 +134,7 @@ export class Clients {
       switch (true) {
         case httpRes?.status == 201:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.createClientResponse = utils.deserializeJSONResponse(
+            res.createClientResponse = utils.objectToClass(
               httpRes?.data,
               shared.CreateClientResponse
             );
@@ -204,7 +204,7 @@ export class Clients {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.createSecretResponse = utils.deserializeJSONResponse(
+            res.createSecretResponse = utils.objectToClass(
               httpRes?.data,
               shared.CreateSecretResponse
             );
@@ -385,7 +385,7 @@ export class Clients {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.listClientsResponse = utils.deserializeJSONResponse(
+            res.listClientsResponse = utils.objectToClass(
               httpRes?.data,
               shared.ListClientsResponse
             );
@@ -437,7 +437,7 @@ export class Clients {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.readClientResponse = utils.deserializeJSONResponse(
+            res.readClientResponse = utils.objectToClass(
               httpRes?.data,
               shared.ReadClientResponse
             );
@@ -507,7 +507,7 @@ export class Clients {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.updateClientResponse = utils.deserializeJSONResponse(
+            res.updateClientResponse = utils.objectToClass(
               httpRes?.data,
               shared.UpdateClientResponse
             );

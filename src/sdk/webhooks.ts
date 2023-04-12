@@ -77,7 +77,7 @@ export class Webhooks {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.configResponse = utils.deserializeJSONResponse(
+            res.configResponse = utils.objectToClass(
               httpRes?.data,
               shared.ConfigResponse
             );
@@ -156,7 +156,7 @@ export class Webhooks {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.configResponse = utils.deserializeJSONResponse(
+            res.configResponse = utils.objectToClass(
               httpRes?.data,
               shared.ConfigResponse
             );
@@ -211,7 +211,7 @@ export class Webhooks {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.configResponse = utils.deserializeJSONResponse(
+            res.configResponse = utils.objectToClass(
               httpRes?.data,
               shared.ConfigResponse
             );
@@ -315,7 +315,7 @@ export class Webhooks {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.configsResponse = utils.deserializeJSONResponse(
+            res.configsResponse = utils.objectToClass(
               httpRes?.data,
               shared.ConfigsResponse
             );
@@ -395,7 +395,7 @@ export class Webhooks {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.configResponse = utils.deserializeJSONResponse(
+            res.configResponse = utils.objectToClass(
               httpRes?.data,
               shared.ConfigResponse
             );
@@ -455,7 +455,7 @@ export class Webhooks {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.attemptResponse = utils.deserializeJSONResponse(
+            res.attemptResponse = utils.objectToClass(
               httpRes?.data,
               shared.AttemptResponse
             );

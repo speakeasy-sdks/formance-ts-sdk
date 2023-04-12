@@ -78,7 +78,7 @@ export class Stats {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.statsResponse = utils.deserializeJSONResponse(
+            res.statsResponse = utils.objectToClass(
               httpRes?.data,
               shared.StatsResponse
             );
@@ -86,7 +86,7 @@ export class Stats {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );

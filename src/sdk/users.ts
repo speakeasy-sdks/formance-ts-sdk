@@ -68,7 +68,7 @@ export class Users {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.listUsersResponse = utils.deserializeJSONResponse(
+            res.listUsersResponse = utils.objectToClass(
               httpRes?.data,
               shared.ListUsersResponse
             );
@@ -122,7 +122,7 @@ export class Users {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.readUserResponse = utils.deserializeJSONResponse(
+            res.readUserResponse = utils.objectToClass(
               httpRes?.data,
               shared.ReadUserResponse
             );

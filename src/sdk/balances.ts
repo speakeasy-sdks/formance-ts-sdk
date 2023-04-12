@@ -76,7 +76,7 @@ export class Balances {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.balancesCursorResponse = utils.deserializeJSONResponse(
+            res.balancesCursorResponse = utils.objectToClass(
               httpRes?.data,
               shared.BalancesCursorResponse
             );
@@ -84,7 +84,7 @@ export class Balances {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
@@ -138,7 +138,7 @@ export class Balances {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.aggregateBalancesResponse = utils.deserializeJSONResponse(
+            res.aggregateBalancesResponse = utils.objectToClass(
               httpRes?.data,
               shared.AggregateBalancesResponse
             );
@@ -146,7 +146,7 @@ export class Balances {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.deserializeJSONResponse(
+            res.errorResponse = utils.objectToClass(
               httpRes?.data,
               shared.ErrorResponse
             );
