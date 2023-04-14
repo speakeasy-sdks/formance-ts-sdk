@@ -35,7 +35,7 @@ export class ListLogsRequest extends SpeakeasyBase {
    *
    */
   @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=endTime;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
+    data: "queryParam, style=form;explode=true;name=endTime",
   })
   endTime?: Date;
 
@@ -48,7 +48,7 @@ export class ListLogsRequest extends SpeakeasyBase {
    *
    */
   @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=end_time;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
+    data: "queryParam, style=form;explode=true;name=end_time",
   })
   endTimeDeprecated?: Date;
 
@@ -106,7 +106,7 @@ export class ListLogsRequest extends SpeakeasyBase {
    *
    */
   @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=startTime;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
+    data: "queryParam, style=form;explode=true;name=startTime",
   })
   startTime?: Date;
 
@@ -119,7 +119,7 @@ export class ListLogsRequest extends SpeakeasyBase {
    *
    */
   @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=start_time;dateTimeFormat=YYYY-MM-DDThh:mm:ss.sssZ",
+    data: "queryParam, style=form;explode=true;name=start_time",
   })
   startTimeDeprecated?: Date;
 }
