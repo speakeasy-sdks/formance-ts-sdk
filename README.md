@@ -31,12 +31,10 @@ yarn add @speakeasy-sdks/formance
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```typescript
-import {
-  GetServerInfoResponse
-} from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-
-import { AxiosError } from "axios";
 import { Formance } from "@speakeasy-sdks/formance";
+import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { AxiosError } from "axios";
+
 const sdk = new Formance({
   security: {
     authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
@@ -44,7 +42,9 @@ const sdk = new Formance({
 });
 
 sdk.getServerInfo().then((res: GetServerInfoResponse | AxiosError) => {
-   // handle response
+  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+    // handle response
+  }
 });
 ```
 <!-- End SDK Example Usage -->
@@ -52,142 +52,142 @@ sdk.getServerInfo().then((res: GetServerInfoResponse | AxiosError) => {
 <!-- Start SDK Available Operations -->
 ## Available Resources and Operations
 
-### Formance SDK
+### [Formance SDK](docs/formance/README.md)
 
-* `getServerInfo` - Get server info
-* `paymentsgetServerInfo` - Get server info
-* `searchgetServerInfo` - Get server info
+* [getServerInfo](docs/formance/README.md#getserverinfo) - Get server info
+* [paymentsgetServerInfo](docs/formance/README.md#paymentsgetserverinfo) - Get server info
+* [searchgetServerInfo](docs/formance/README.md#searchgetserverinfo) - Get server info
 
-### accounts
+### [accounts](docs/accounts/README.md)
 
-* `addMetadataToAccount` - Add metadata to an account
-* `countAccounts` - Count the accounts from a ledger
-* `getAccount` - Get account by its address
-* `listAccounts` - List accounts from a ledger
+* [addMetadataToAccount](docs/accounts/README.md#addmetadatatoaccount) - Add metadata to an account
+* [countAccounts](docs/accounts/README.md#countaccounts) - Count the accounts from a ledger
+* [getAccount](docs/accounts/README.md#getaccount) - Get account by its address
+* [listAccounts](docs/accounts/README.md#listaccounts) - List accounts from a ledger
 
-### balances
+### [balances](docs/balances/README.md)
 
-* `getBalances` - Get the balances from a ledger's account
-* `getBalancesAggregated` - Get the aggregated balances from selected accounts
+* [getBalances](docs/balances/README.md#getbalances) - Get the balances from a ledger's account
+* [getBalancesAggregated](docs/balances/README.md#getbalancesaggregated) - Get the aggregated balances from selected accounts
 
-### clients
+### [clients](docs/clients/README.md)
 
-* `addScopeToClient` - Add scope to client
-* `createClient` - Create client
-* `createSecret` - Add a secret to a client
-* `deleteClient` - Delete client
-* `deleteScopeFromClient` - Delete scope from client
-* `deleteSecret` - Delete a secret from a client
-* `listClients` - List clients
-* `readClient` - Read client
-* `updateClient` - Update client
+* [addScopeToClient](docs/clients/README.md#addscopetoclient) - Add scope to client
+* [createClient](docs/clients/README.md#createclient) - Create client
+* [createSecret](docs/clients/README.md#createsecret) - Add a secret to a client
+* [deleteClient](docs/clients/README.md#deleteclient) - Delete client
+* [deleteScopeFromClient](docs/clients/README.md#deletescopefromclient) - Delete scope from client
+* [deleteSecret](docs/clients/README.md#deletesecret) - Delete a secret from a client
+* [listClients](docs/clients/README.md#listclients) - List clients
+* [readClient](docs/clients/README.md#readclient) - Read client
+* [updateClient](docs/clients/README.md#updateclient) - Update client
 
-### ledger
+### [ledger](docs/ledger/README.md)
 
-* `getLedgerInfo` - Get information about a ledger
+* [getLedgerInfo](docs/ledger/README.md#getledgerinfo) - Get information about a ledger
 
-### logs
+### [logs](docs/logs/README.md)
 
-* `listLogs` - List the logs from a ledger
+* [listLogs](docs/logs/README.md#listlogs) - List the logs from a ledger
 
-### mapping
+### [mapping](docs/mapping/README.md)
 
-* `getMapping` - Get the mapping of a ledger
-* `updateMapping` - Update the mapping of a ledger
+* [getMapping](docs/mapping/README.md#getmapping) - Get the mapping of a ledger
+* [updateMapping](docs/mapping/README.md#updatemapping) - Update the mapping of a ledger
 
-### orchestration
+### [orchestration](docs/orchestration/README.md)
 
-* `createWorkflow` - Create workflow
-* `getFlow` - Get a flow by id
-* `getWorkflowOccurrence` - Get a workflow occurrence by id
-* `listFlows` - List registered flows
-* `listRuns` - List occurrences of a workflow
-* `orchestrationgetServerInfo` - Get server info
-* `runWorkflow` - Run workflow
+* [createWorkflow](docs/orchestration/README.md#createworkflow) - Create workflow
+* [getFlow](docs/orchestration/README.md#getflow) - Get a flow by id
+* [getWorkflowOccurrence](docs/orchestration/README.md#getworkflowoccurrence) - Get a workflow occurrence by id
+* [listFlows](docs/orchestration/README.md#listflows) - List registered flows
+* [listRuns](docs/orchestration/README.md#listruns) - List occurrences of a workflow
+* [orchestrationgetServerInfo](docs/orchestration/README.md#orchestrationgetserverinfo) - Get server info
+* [runWorkflow](docs/orchestration/README.md#runworkflow) - Run workflow
 
-### payments
+### [payments](docs/payments/README.md)
 
-* `connectorsStripeTransfer` - Transfer funds between Stripe accounts
-* `getConnectorTask` - Read a specific task of the connector
-* `getPayment` - Get a payment
-* `installConnector` - Install a connector
-* `listAllConnectors` - List all installed connectors
-* `listConfigsAvailableConnectors` - List the configs of each available connector
-* `listConnectorTasks` - List tasks from a connector
-* `listPayments` - List payments
-* `paymentslistAccounts` - List accounts
-* `readConnectorConfig` - Read the config of a connector
-* `resetConnector` - Reset a connector
-* `uninstallConnector` - Uninstall a connector
+* [connectorsStripeTransfer](docs/payments/README.md#connectorsstripetransfer) - Transfer funds between Stripe accounts
+* [getConnectorTask](docs/payments/README.md#getconnectortask) - Read a specific task of the connector
+* [getPayment](docs/payments/README.md#getpayment) - Get a payment
+* [installConnector](docs/payments/README.md#installconnector) - Install a connector
+* [listAllConnectors](docs/payments/README.md#listallconnectors) - List all installed connectors
+* [listConfigsAvailableConnectors](docs/payments/README.md#listconfigsavailableconnectors) - List the configs of each available connector
+* [listConnectorTasks](docs/payments/README.md#listconnectortasks) - List tasks from a connector
+* [listPayments](docs/payments/README.md#listpayments) - List payments
+* [paymentslistAccounts](docs/payments/README.md#paymentslistaccounts) - List accounts
+* [readConnectorConfig](docs/payments/README.md#readconnectorconfig) - Read the config of a connector
+* [resetConnector](docs/payments/README.md#resetconnector) - Reset a connector
+* [uninstallConnector](docs/payments/README.md#uninstallconnector) - Uninstall a connector
 
-### scopes
+### [scopes](docs/scopes/README.md)
 
-* `addTransientScope` - Add a transient scope to a scope
-* `createScope` - Create scope
-* `deleteScope` - Delete scope
-* `deleteTransientScope` - Delete a transient scope from a scope
-* `listScopes` - List scopes
-* `readScope` - Read scope
-* `updateScope` - Update scope
+* [addTransientScope](docs/scopes/README.md#addtransientscope) - Add a transient scope to a scope
+* [createScope](docs/scopes/README.md#createscope) - Create scope
+* [deleteScope](docs/scopes/README.md#deletescope) - Delete scope
+* [deleteTransientScope](docs/scopes/README.md#deletetransientscope) - Delete a transient scope from a scope
+* [listScopes](docs/scopes/README.md#listscopes) - List scopes
+* [readScope](docs/scopes/README.md#readscope) - Read scope
+* [updateScope](docs/scopes/README.md#updatescope) - Update scope
 
-### script
+### [script](docs/script/README.md)
 
-* `runScript` - Execute a Numscript
+* [runScript](docs/script/README.md#runscript) - Execute a Numscript
 
-### search
+### [search](docs/search/README.md)
 
-* `search` - Search
+* [search](docs/search/README.md#search) - Search
 
-### server
+### [server](docs/server/README.md)
 
-* `getInfo` - Show server information
+* [getInfo](docs/server/README.md#getinfo) - Show server information
 
-### stats
+### [stats](docs/stats/README.md)
 
-* `readStats` - Get statistics from a ledger
+* [readStats](docs/stats/README.md#readstats) - Get statistics from a ledger
 
-### transactions
+### [transactions](docs/transactions/README.md)
 
-* `createTransactions` - Create a new batch of transactions to a ledger
-* `addMetadataOnTransaction` - Set the metadata of a transaction by its ID
-* `countTransactions` - Count the transactions from a ledger
-* `createTransaction` - Create a new transaction to a ledger
-* `getTransaction` - Get transaction from a ledger by its ID
-* `listTransactions` - List transactions from a ledger
-* `revertTransaction` - Revert a ledger transaction by its ID
+* [createTransactions](docs/transactions/README.md#createtransactions) - Create a new batch of transactions to a ledger
+* [addMetadataOnTransaction](docs/transactions/README.md#addmetadataontransaction) - Set the metadata of a transaction by its ID
+* [countTransactions](docs/transactions/README.md#counttransactions) - Count the transactions from a ledger
+* [createTransaction](docs/transactions/README.md#createtransaction) - Create a new transaction to a ledger
+* [getTransaction](docs/transactions/README.md#gettransaction) - Get transaction from a ledger by its ID
+* [listTransactions](docs/transactions/README.md#listtransactions) - List transactions from a ledger
+* [revertTransaction](docs/transactions/README.md#reverttransaction) - Revert a ledger transaction by its ID
 
-### users
+### [users](docs/users/README.md)
 
-* `listUsers` - List users
-* `readUser` - Read user
+* [listUsers](docs/users/README.md#listusers) - List users
+* [readUser](docs/users/README.md#readuser) - Read user
 
-### wallets
+### [wallets](docs/wallets/README.md)
 
-* `confirmHold` - Confirm a hold
-* `createBalance` - Create a balance
-* `createWallet` - Create a new wallet
-* `creditWallet` - Credit a wallet
-* `debitWallet` - Debit a wallet
-* `getBalance` - Get detailed balance
-* `getHold` - Get a hold
-* `getHolds` - Get all holds for a wallet
-* `getTransactions`
-* `getWallet` - Get a wallet
-* `listBalances` - List balances of a wallet
-* `listWallets` - List all wallets
-* `updateWallet` - Update a wallet
-* `voidHold` - Cancel a hold
-* `walletsgetServerInfo` - Get server info
+* [confirmHold](docs/wallets/README.md#confirmhold) - Confirm a hold
+* [createBalance](docs/wallets/README.md#createbalance) - Create a balance
+* [createWallet](docs/wallets/README.md#createwallet) - Create a new wallet
+* [creditWallet](docs/wallets/README.md#creditwallet) - Credit a wallet
+* [debitWallet](docs/wallets/README.md#debitwallet) - Debit a wallet
+* [getBalance](docs/wallets/README.md#getbalance) - Get detailed balance
+* [getHold](docs/wallets/README.md#gethold) - Get a hold
+* [getHolds](docs/wallets/README.md#getholds) - Get all holds for a wallet
+* [getTransactions](docs/wallets/README.md#gettransactions)
+* [getWallet](docs/wallets/README.md#getwallet) - Get a wallet
+* [listBalances](docs/wallets/README.md#listbalances) - List balances of a wallet
+* [listWallets](docs/wallets/README.md#listwallets) - List all wallets
+* [updateWallet](docs/wallets/README.md#updatewallet) - Update a wallet
+* [voidHold](docs/wallets/README.md#voidhold) - Cancel a hold
+* [walletsgetServerInfo](docs/wallets/README.md#walletsgetserverinfo) - Get server info
 
-### webhooks
+### [webhooks](docs/webhooks/README.md)
 
-* `activateConfig` - Activate one config
-* `changeConfigSecret` - Change the signing secret of a config
-* `deactivateConfig` - Deactivate one config
-* `deleteConfig` - Delete one config
-* `getManyConfigs` - Get many configs
-* `insertConfig` - Insert a new config
-* `testConfig` - Test one config
+* [activateConfig](docs/webhooks/README.md#activateconfig) - Activate one config
+* [changeConfigSecret](docs/webhooks/README.md#changeconfigsecret) - Change the signing secret of a config
+* [deactivateConfig](docs/webhooks/README.md#deactivateconfig) - Deactivate one config
+* [deleteConfig](docs/webhooks/README.md#deleteconfig) - Delete one config
+* [getManyConfigs](docs/webhooks/README.md#getmanyconfigs) - Get many configs
+* [insertConfig](docs/webhooks/README.md#insertconfig) - Insert a new config
+* [testConfig](docs/webhooks/README.md#testconfig) - Test one config
 <!-- End SDK Available Operations -->
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)

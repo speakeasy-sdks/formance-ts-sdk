@@ -1,11 +1,9 @@
 <!-- Start SDK Example Usage -->
 ```typescript
-import {
-  GetServerInfoResponse
-} from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-
-import { AxiosError } from "axios";
 import { Formance } from "@speakeasy-sdks/formance";
+import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { AxiosError } from "axios";
+
 const sdk = new Formance({
   security: {
     authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
@@ -13,7 +11,9 @@ const sdk = new Formance({
 });
 
 sdk.getServerInfo().then((res: GetServerInfoResponse | AxiosError) => {
-   // handle response
+  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+    // handle response
+  }
 });
 ```
 <!-- End SDK Example Usage -->
