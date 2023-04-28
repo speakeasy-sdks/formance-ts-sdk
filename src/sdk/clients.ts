@@ -37,7 +37,7 @@ export class Clients {
   /**
    * Add scope to client
    */
-  addScopeToClient(
+  async addScopeToClient(
     req: operations.AddScopeToClientRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.AddScopeToClientResponse> {
@@ -54,36 +54,37 @@ export class Clients {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "put",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.AddScopeToClientResponse =
-        new operations.AddScopeToClientResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.AddScopeToClientResponse =
+      new operations.AddScopeToClientResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Create client
    */
-  createClient(
+  async createClient(
     req: shared.CreateClientRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateClientResponse> {
@@ -112,7 +113,8 @@ export class Clients {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -120,36 +122,36 @@ export class Clients {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateClientResponse =
-        new operations.CreateClientResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 201:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createClientResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.CreateClientResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateClientResponse =
+      new operations.CreateClientResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 201:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createClientResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.CreateClientResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Add a secret to a client
    */
-  createSecret(
+  async createSecret(
     req: operations.CreateSecretRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateSecretResponse> {
@@ -182,7 +184,8 @@ export class Clients {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -190,36 +193,36 @@ export class Clients {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateSecretResponse =
-        new operations.CreateSecretResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createSecretResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.CreateSecretResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateSecretResponse =
+      new operations.CreateSecretResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createSecretResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.CreateSecretResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Delete client
    */
-  deleteClient(
+  async deleteClient(
     req: operations.DeleteClientRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteClientResponse> {
@@ -236,36 +239,37 @@ export class Clients {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteClientResponse =
-        new operations.DeleteClientResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteClientResponse =
+      new operations.DeleteClientResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Delete scope from client
    */
-  deleteScopeFromClient(
+  async deleteScopeFromClient(
     req: operations.DeleteScopeFromClientRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteScopeFromClientResponse> {
@@ -282,36 +286,37 @@ export class Clients {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteScopeFromClientResponse =
-        new operations.DeleteScopeFromClientResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteScopeFromClientResponse =
+      new operations.DeleteScopeFromClientResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Delete a secret from a client
    */
-  deleteSecret(
+  async deleteSecret(
     req: operations.DeleteSecretRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteSecretResponse> {
@@ -328,36 +333,37 @@ export class Clients {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteSecretResponse =
-        new operations.DeleteSecretResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteSecretResponse =
+      new operations.DeleteSecretResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
    * List clients
    */
-  listClients(
+  async listClients(
     config?: AxiosRequestConfig
   ): Promise<operations.ListClientsResponse> {
     const baseURL: string = this._serverURL;
@@ -365,42 +371,43 @@ export class Clients {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListClientsResponse =
-        new operations.ListClientsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.listClientsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ListClientsResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListClientsResponse =
+      new operations.ListClientsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.listClientsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ListClientsResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Read client
    */
-  readClient(
+  async readClient(
     req: operations.ReadClientRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ReadClientResponse> {
@@ -417,42 +424,43 @@ export class Clients {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ReadClientResponse =
-        new operations.ReadClientResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.readClientResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ReadClientResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ReadClientResponse =
+      new operations.ReadClientResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.readClientResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ReadClientResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Update client
    */
-  updateClient(
+  async updateClient(
     req: operations.UpdateClientRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.UpdateClientResponse> {
@@ -485,7 +493,8 @@ export class Clients {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "put",
       headers: headers,
@@ -493,29 +502,29 @@ export class Clients {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UpdateClientResponse =
-        new operations.UpdateClientResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.updateClientResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.UpdateClientResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UpdateClientResponse =
+      new operations.UpdateClientResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.updateClientResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.UpdateClientResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

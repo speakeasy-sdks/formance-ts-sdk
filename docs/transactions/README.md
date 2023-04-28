@@ -22,9 +22,8 @@ Create a new batch of transactions to a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateTransactionsRequest, CreateTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { CreateTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -32,7 +31,7 @@ const sdk = new Formance({
   },
 });
 
-const req: CreateTransactionsRequest = {
+sdk.transactions.createTransactions({
   transactions: {
     transactions: [
       {
@@ -135,10 +134,8 @@ const req: CreateTransactionsRequest = {
     ],
   },
   ledger: "ledger001",
-};
-
-sdk.transactions.createTransactions(req).then((res: CreateTransactionsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateTransactionsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -152,9 +149,8 @@ Set the metadata of a transaction by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddMetadataOnTransactionRequest, AddMetadataOnTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { AddMetadataOnTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -162,7 +158,7 @@ const sdk = new Formance({
   },
 });
 
-const req: AddMetadataOnTransactionRequest = {
+sdk.transactions.addMetadataOnTransaction({
   requestBody: {
     "accusamus": "non",
     "occaecati": "enim",
@@ -170,10 +166,8 @@ const req: AddMetadataOnTransactionRequest = {
   },
   ledger: "ledger001",
   txid: 1234,
-};
-
-sdk.transactions.addMetadataOnTransaction(req).then((res: AddMetadataOnTransactionResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: AddMetadataOnTransactionResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -187,9 +181,8 @@ Count the transactions from a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CountTransactionsRequest, CountTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { CountTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -197,7 +190,7 @@ const sdk = new Formance({
   },
 });
 
-const req: CountTransactionsRequest = {
+sdk.transactions.countTransactions({
   account: "users:001",
   destination: "users:001",
   endTime: new Date("2021-10-28T10:05:29.849Z"),
@@ -212,10 +205,8 @@ const req: CountTransactionsRequest = {
   source: "users:001",
   startTime: new Date("2021-10-15T07:59:26.631Z"),
   startTimeDeprecated: new Date("2022-12-24T23:52:02.245Z"),
-};
-
-sdk.transactions.countTransactions(req).then((res: CountTransactionsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CountTransactionsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -229,9 +220,8 @@ Create a new transaction to a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateTransactionRequest, CreateTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { CreateTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -239,7 +229,7 @@ const sdk = new Formance({
   },
 });
 
-const req: CreateTransactionRequest = {
+sdk.transactions.createTransaction({
   postTransaction: {
     metadata: {
       "magnam": "distinctio",
@@ -278,10 +268,8 @@ const req: CreateTransactionRequest = {
   },
   ledger: "ledger001",
   preview: true,
-};
-
-sdk.transactions.createTransaction(req).then((res: CreateTransactionResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateTransactionResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -295,9 +283,8 @@ Get transaction from a ledger by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetTransactionRequest, GetTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -305,13 +292,11 @@ const sdk = new Formance({
   },
 });
 
-const req: GetTransactionRequest = {
+sdk.transactions.getTransaction({
   ledger: "ledger001",
   txid: 1234,
-};
-
-sdk.transactions.getTransaction(req).then((res: GetTransactionResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetTransactionResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -325,9 +310,8 @@ List transactions from a ledger, sorted by txid in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListTransactionsRequest, ListTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ListTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -335,7 +319,7 @@ const sdk = new Formance({
   },
 });
 
-const req: ListTransactionsRequest = {
+sdk.transactions.listTransactions({
   account: "users:001",
   after: "1234",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
@@ -355,10 +339,8 @@ const req: ListTransactionsRequest = {
   source: "users:001",
   startTime: new Date("2022-02-07T18:15:06.372Z"),
   startTimeDeprecated: new Date("2022-08-19T20:09:28.183Z"),
-};
-
-sdk.transactions.listTransactions(req).then((res: ListTransactionsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListTransactionsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -372,9 +354,8 @@ Revert a ledger transaction by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { RevertTransactionRequest, RevertTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { RevertTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -382,13 +363,11 @@ const sdk = new Formance({
   },
 });
 
-const req: RevertTransactionRequest = {
+sdk.transactions.revertTransaction({
   ledger: "ledger001",
   txid: 1234,
-};
-
-sdk.transactions.revertTransaction(req).then((res: RevertTransactionResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: RevertTransactionResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

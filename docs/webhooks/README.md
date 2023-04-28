@@ -22,8 +22,7 @@ Activate a webhooks config by ID, to start receiving webhooks to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ActivateConfigRequest, ActivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ActivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -31,12 +30,10 @@ const sdk = new Formance({
   },
 });
 
-const req: ActivateConfigRequest = {
+sdk.webhooks.activateConfig({
   id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-};
-
-sdk.webhooks.activateConfig(req).then((res: ActivateConfigResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ActivateConfigResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -54,8 +51,7 @@ The format is a random string of bytes of size 24, base64 encoded. (larger size 
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ChangeConfigSecretRequest, ChangeConfigSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ChangeConfigSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -63,15 +59,13 @@ const sdk = new Formance({
   },
 });
 
-const req: ChangeConfigSecretRequest = {
+sdk.webhooks.changeConfigSecret({
   configChangeSecret: {
     secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
   },
   id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-};
-
-sdk.webhooks.changeConfigSecret(req).then((res: ChangeConfigSecretResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ChangeConfigSecretResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -85,8 +79,7 @@ Deactivate a webhooks config by ID, to stop receiving webhooks to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeactivateConfigRequest, DeactivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { DeactivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -94,12 +87,10 @@ const sdk = new Formance({
   },
 });
 
-const req: DeactivateConfigRequest = {
+sdk.webhooks.deactivateConfig({
   id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-};
-
-sdk.webhooks.deactivateConfig(req).then((res: DeactivateConfigResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeactivateConfigResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -113,8 +104,7 @@ Delete a webhooks config by ID.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteConfigRequest, DeleteConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { DeleteConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -122,12 +112,10 @@ const sdk = new Formance({
   },
 });
 
-const req: DeleteConfigRequest = {
+sdk.webhooks.deleteConfig({
   id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-};
-
-sdk.webhooks.deleteConfig(req).then((res: DeleteConfigResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteConfigResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -141,8 +129,7 @@ Sorted by updated date descending
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetManyConfigsRequest, GetManyConfigsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { GetManyConfigsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -150,13 +137,11 @@ const sdk = new Formance({
   },
 });
 
-const req: GetManyConfigsRequest = {
+sdk.webhooks.getManyConfigs({
   endpoint: "https://example.com",
   id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-};
-
-sdk.webhooks.getManyConfigs(req).then((res: GetManyConfigsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetManyConfigsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -179,8 +164,7 @@ All eventTypes are converted to lower-case when inserted.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ConfigUser, InsertConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { InsertConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -188,7 +172,7 @@ const sdk = new Formance({
   },
 });
 
-const req: shared.ConfigUser = {
+sdk.webhooks.insertConfig({
   endpoint: "https://example.com",
   eventTypes: [
     "TYPE1",
@@ -197,10 +181,8 @@ const req: shared.ConfigUser = {
     "TYPE1",
   ],
   secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
-};
-
-sdk.webhooks.insertConfig(req).then((res: InsertConfigResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: InsertConfigResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -214,8 +196,7 @@ Test a config by sending a webhook to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { TestConfigRequest, TestConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { TestConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -223,12 +204,10 @@ const sdk = new Formance({
   },
 });
 
-const req: TestConfigRequest = {
+sdk.webhooks.testConfig({
   id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-};
-
-sdk.webhooks.testConfig(req).then((res: TestConfigResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: TestConfigResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

@@ -16,9 +16,8 @@ Get information about a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetLedgerInfoRequest, GetLedgerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetLedgerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum, MigrationInfoStateEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -26,12 +25,10 @@ const sdk = new Formance({
   },
 });
 
-const req: GetLedgerInfoRequest = {
+sdk.ledger.getLedgerInfo({
   ledger: "ledger001",
-};
-
-sdk.ledger.getLedgerInfo(req).then((res: GetLedgerInfoResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetLedgerInfoResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

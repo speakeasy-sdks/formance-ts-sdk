@@ -18,7 +18,6 @@ Show server information
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -26,8 +25,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.server.getInfo().then((res: GetInfoResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.server.getInfo().then((res: GetInfoResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

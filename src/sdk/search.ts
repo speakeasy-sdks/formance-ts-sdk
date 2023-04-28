@@ -40,7 +40,7 @@ export class Search {
    * @remarks
    * ElasticSearch query engine
    */
-  search(
+  async search(
     req: shared.Query,
     config?: AxiosRequestConfig
   ): Promise<operations.SearchResponse> {
@@ -71,7 +71,8 @@ export class Search {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -79,27 +80,27 @@ export class Search {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.SearchResponse = new operations.SearchResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.response = utils.objectToClass(httpRes?.data, shared.Response);
-          }
-          break;
-        default:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.SearchResponse = new operations.SearchResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.response = utils.objectToClass(httpRes?.data, shared.Response);
+        }
+        break;
+      default:
+        break;
+    }
+
+    return res;
   }
 }

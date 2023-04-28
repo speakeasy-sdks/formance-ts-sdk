@@ -40,7 +40,7 @@ export class Scopes {
    * @remarks
    * Add a transient scope to a scope
    */
-  addTransientScope(
+  async addTransientScope(
     req: operations.AddTransientScopeRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.AddTransientScopeResponse> {
@@ -57,30 +57,31 @@ export class Scopes {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "put",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.AddTransientScopeResponse =
-        new operations.AddTransientScopeResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.AddTransientScopeResponse =
+      new operations.AddTransientScopeResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -89,7 +90,7 @@ export class Scopes {
    * @remarks
    * Create scope
    */
-  createScope(
+  async createScope(
     req: shared.CreateScopeRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateScopeResponse> {
@@ -118,7 +119,8 @@ export class Scopes {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -126,30 +128,30 @@ export class Scopes {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateScopeResponse =
-        new operations.CreateScopeResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 201:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createScopeResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.CreateScopeResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateScopeResponse =
+      new operations.CreateScopeResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 201:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createScopeResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.CreateScopeResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -158,7 +160,7 @@ export class Scopes {
    * @remarks
    * Delete scope
    */
-  deleteScope(
+  async deleteScope(
     req: operations.DeleteScopeRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteScopeResponse> {
@@ -175,30 +177,31 @@ export class Scopes {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteScopeResponse =
-        new operations.DeleteScopeResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteScopeResponse =
+      new operations.DeleteScopeResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -207,7 +210,7 @@ export class Scopes {
    * @remarks
    * Delete a transient scope from a scope
    */
-  deleteTransientScope(
+  async deleteTransientScope(
     req: operations.DeleteTransientScopeRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteTransientScopeResponse> {
@@ -224,30 +227,31 @@ export class Scopes {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteTransientScopeResponse =
-        new operations.DeleteTransientScopeResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteTransientScopeResponse =
+      new operations.DeleteTransientScopeResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -256,7 +260,7 @@ export class Scopes {
    * @remarks
    * List Scopes
    */
-  listScopes(
+  async listScopes(
     config?: AxiosRequestConfig
   ): Promise<operations.ListScopesResponse> {
     const baseURL: string = this._serverURL;
@@ -264,36 +268,37 @@ export class Scopes {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListScopesResponse =
-        new operations.ListScopesResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.listScopesResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ListScopesResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListScopesResponse =
+      new operations.ListScopesResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.listScopesResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ListScopesResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -302,7 +307,7 @@ export class Scopes {
    * @remarks
    * Read scope
    */
-  readScope(
+  async readScope(
     req: operations.ReadScopeRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ReadScopeResponse> {
@@ -319,36 +324,36 @@ export class Scopes {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ReadScopeResponse =
-        new operations.ReadScopeResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.readScopeResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ReadScopeResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.ReadScopeResponse = new operations.ReadScopeResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.readScopeResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ReadScopeResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -357,7 +362,7 @@ export class Scopes {
    * @remarks
    * Update scope
    */
-  updateScope(
+  async updateScope(
     req: operations.UpdateScopeRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.UpdateScopeResponse> {
@@ -390,7 +395,8 @@ export class Scopes {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "put",
       headers: headers,
@@ -398,29 +404,29 @@ export class Scopes {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UpdateScopeResponse =
-        new operations.UpdateScopeResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.updateScopeResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.UpdateScopeResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UpdateScopeResponse =
+      new operations.UpdateScopeResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.updateScopeResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.UpdateScopeResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

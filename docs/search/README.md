@@ -16,8 +16,7 @@ ElasticSearch query engine
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { Query, SearchResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { SearchResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -25,7 +24,7 @@ const sdk = new Formance({
   },
 });
 
-const req: shared.Query = {
+sdk.search.search({
   after: [
     "users:002",
   ],
@@ -44,10 +43,8 @@ const req: shared.Query = {
     "destination=central_bank1",
     "destination=central_bank1",
   ],
-};
-
-sdk.search.search(req).then((res: SearchResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: SearchResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

@@ -40,7 +40,7 @@ export class Orchestration {
    * @remarks
    * Create a workflow
    */
-  createWorkflow(
+  async createWorkflow(
     req: shared.CreateWorkflowRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateWorkflowResponse> {
@@ -69,7 +69,8 @@ export class Orchestration {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -77,35 +78,35 @@ export class Orchestration {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateWorkflowResponse =
-        new operations.CreateWorkflowResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 201:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createWorkflowResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.CreateWorkflowResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateWorkflowResponse =
+      new operations.CreateWorkflowResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 201:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createWorkflowResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.CreateWorkflowResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -114,7 +115,7 @@ export class Orchestration {
    * @remarks
    * Get a flow by id
    */
-  getFlow(
+  async getFlow(
     req: operations.GetFlowRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetFlowResponse> {
@@ -131,40 +132,41 @@ export class Orchestration {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetFlowResponse = new operations.GetFlowResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getWorkflowResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.GetWorkflowResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.GetFlowResponse = new operations.GetFlowResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getWorkflowResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.GetWorkflowResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -173,7 +175,7 @@ export class Orchestration {
    * @remarks
    * Get a workflow occurrence by id
    */
-  getWorkflowOccurrence(
+  async getWorkflowOccurrence(
     req: operations.GetWorkflowOccurrenceRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetWorkflowOccurrenceResponse> {
@@ -190,41 +192,42 @@ export class Orchestration {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetWorkflowOccurrenceResponse =
-        new operations.GetWorkflowOccurrenceResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getWorkflowOccurrenceResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.GetWorkflowOccurrenceResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetWorkflowOccurrenceResponse =
+      new operations.GetWorkflowOccurrenceResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getWorkflowOccurrenceResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.GetWorkflowOccurrenceResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -233,7 +236,7 @@ export class Orchestration {
    * @remarks
    * List registered flows
    */
-  listFlows(
+  async listFlows(
     config?: AxiosRequestConfig
   ): Promise<operations.ListFlowsResponse> {
     const baseURL: string = this._serverURL;
@@ -241,41 +244,41 @@ export class Orchestration {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListFlowsResponse =
-        new operations.ListFlowsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.listWorkflowsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ListWorkflowsResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.ListFlowsResponse = new operations.ListFlowsResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.listWorkflowsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ListWorkflowsResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -284,7 +287,7 @@ export class Orchestration {
    * @remarks
    * List occurrences of a workflow
    */
-  listRuns(
+  async listRuns(
     req: operations.ListRunsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ListRunsResponse> {
@@ -301,46 +304,47 @@ export class Orchestration {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListRunsResponse = new operations.ListRunsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.listRunsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ListRunsResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.ListRunsResponse = new operations.ListRunsResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.listRunsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ListRunsResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get server info
    */
-  orchestrationgetServerInfo(
+  async orchestrationgetServerInfo(
     config?: AxiosRequestConfig
   ): Promise<operations.OrchestrationgetServerInfoResponse> {
     const baseURL: string = this._serverURL;
@@ -348,41 +352,42 @@ export class Orchestration {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.OrchestrationgetServerInfoResponse =
-        new operations.OrchestrationgetServerInfoResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.serverInfo = utils.objectToClass(
-              httpRes?.data,
-              shared.ServerInfo
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.OrchestrationgetServerInfoResponse =
+      new operations.OrchestrationgetServerInfoResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.serverInfo = utils.objectToClass(
+            httpRes?.data,
+            shared.ServerInfo
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -391,7 +396,7 @@ export class Orchestration {
    * @remarks
    * Run workflow
    */
-  runWorkflow(
+  async runWorkflow(
     req: operations.RunWorkflowRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.RunWorkflowResponse> {
@@ -425,7 +430,8 @@ export class Orchestration {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -433,34 +439,34 @@ export class Orchestration {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.RunWorkflowResponse =
-        new operations.RunWorkflowResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 201:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.runWorkflowResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.RunWorkflowResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.RunWorkflowResponse =
+      new operations.RunWorkflowResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 201:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.runWorkflowResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.RunWorkflowResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 }

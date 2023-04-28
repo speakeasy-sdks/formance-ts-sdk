@@ -24,8 +24,7 @@ Add scope to client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddScopeToClientRequest, AddScopeToClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { AddScopeToClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -33,13 +32,11 @@ const sdk = new Formance({
   },
 });
 
-const req: AddScopeToClientRequest = {
+sdk.clients.addScopeToClient({
   clientId: "temporibus",
   scopeId: "ab",
-};
-
-sdk.clients.addScopeToClient(req).then((res: AddScopeToClientResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: AddScopeToClientResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -53,8 +50,7 @@ Create client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateClientRequest, CreateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { CreateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -62,7 +58,7 @@ const sdk = new Formance({
   },
 });
 
-const req: shared.CreateClientRequest = {
+sdk.clients.createClient({
   description: "quis",
   metadata: {
     "deserunt": "perferendis",
@@ -82,10 +78,8 @@ const req: shared.CreateClientRequest = {
     "dolorum",
   ],
   trusted: false,
-};
-
-sdk.clients.createClient(req).then((res: CreateClientResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateClientResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -99,8 +93,7 @@ Add a secret to a client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateSecretRequest, CreateSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { CreateSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -108,7 +101,7 @@ const sdk = new Formance({
   },
 });
 
-const req: CreateSecretRequest = {
+sdk.clients.createSecret({
   createSecretRequest: {
     metadata: {
       "nam": "officia",
@@ -116,10 +109,8 @@ const req: CreateSecretRequest = {
     name: "Wayne Lind",
   },
   clientId: "totam",
-};
-
-sdk.clients.createSecret(req).then((res: CreateSecretResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateSecretResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -133,8 +124,7 @@ Delete client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteClientRequest, DeleteClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { DeleteClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -142,12 +132,10 @@ const sdk = new Formance({
   },
 });
 
-const req: DeleteClientRequest = {
+sdk.clients.deleteClient({
   clientId: "beatae",
-};
-
-sdk.clients.deleteClient(req).then((res: DeleteClientResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteClientResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -161,8 +149,7 @@ Delete scope from client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteScopeFromClientRequest, DeleteScopeFromClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { DeleteScopeFromClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -170,13 +157,11 @@ const sdk = new Formance({
   },
 });
 
-const req: DeleteScopeFromClientRequest = {
+sdk.clients.deleteScopeFromClient({
   clientId: "commodi",
   scopeId: "molestiae",
-};
-
-sdk.clients.deleteScopeFromClient(req).then((res: DeleteScopeFromClientResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteScopeFromClientResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -190,8 +175,7 @@ Delete a secret from a client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteSecretRequest, DeleteSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { DeleteSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -199,13 +183,11 @@ const sdk = new Formance({
   },
 });
 
-const req: DeleteSecretRequest = {
+sdk.clients.deleteSecret({
   clientId: "modi",
   secretId: "qui",
-};
-
-sdk.clients.deleteSecret(req).then((res: DeleteSecretResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteSecretResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -220,7 +202,6 @@ List clients
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListClientsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -228,8 +209,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.clients.listClients().then((res: ListClientsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.clients.listClients().then((res: ListClientsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -243,8 +224,7 @@ Read client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadClientRequest, ReadClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ReadClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -252,12 +232,10 @@ const sdk = new Formance({
   },
 });
 
-const req: ReadClientRequest = {
+sdk.clients.readClient({
   clientId: "impedit",
-};
-
-sdk.clients.readClient(req).then((res: ReadClientResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ReadClientResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -271,8 +249,7 @@ Update client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateClientRequest, UpdateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { UpdateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -280,7 +257,7 @@ const sdk = new Formance({
   },
 });
 
-const req: UpdateClientRequest = {
+sdk.clients.updateClient({
   updateClientRequest: {
     description: "cum",
     metadata: {
@@ -302,10 +279,8 @@ const req: UpdateClientRequest = {
     trusted: false,
   },
   clientId: "iure",
-};
-
-sdk.clients.updateClient(req).then((res: UpdateClientResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: UpdateClientResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

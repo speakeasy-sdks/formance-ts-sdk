@@ -17,9 +17,8 @@ Get the balances from a ledger's account
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetBalancesRequest, GetBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -27,16 +26,14 @@ const sdk = new Formance({
   },
 });
 
-const req: GetBalancesRequest = {
+sdk.balances.getBalances({
   address: "users:001",
   after: "users:003",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
   paginationToken: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-};
-
-sdk.balances.getBalances(req).then((res: GetBalancesResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetBalancesResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -50,9 +47,8 @@ Get the aggregated balances from selected accounts
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetBalancesAggregatedRequest, GetBalancesAggregatedResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetBalancesAggregatedResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -60,13 +56,11 @@ const sdk = new Formance({
   },
 });
 
-const req: GetBalancesAggregatedRequest = {
+sdk.balances.getBalancesAggregated({
   address: "users:001",
   ledger: "ledger001",
-};
-
-sdk.balances.getBalancesAggregated(req).then((res: GetBalancesAggregatedResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetBalancesAggregatedResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

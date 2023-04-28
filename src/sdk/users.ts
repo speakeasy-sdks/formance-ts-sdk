@@ -40,7 +40,7 @@ export class Users {
    * @remarks
    * List users
    */
-  listUsers(
+  async listUsers(
     config?: AxiosRequestConfig
   ): Promise<operations.ListUsersResponse> {
     const baseURL: string = this._serverURL;
@@ -48,36 +48,36 @@ export class Users {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListUsersResponse =
-        new operations.ListUsersResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.listUsersResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ListUsersResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.ListUsersResponse = new operations.ListUsersResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.listUsersResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ListUsersResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -86,7 +86,7 @@ export class Users {
    * @remarks
    * Read user
    */
-  readUser(
+  async readUser(
     req: operations.ReadUserRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ReadUserResponse> {
@@ -103,34 +103,35 @@ export class Users {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ReadUserResponse = new operations.ReadUserResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.readUserResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ReadUserResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.ReadUserResponse = new operations.ReadUserResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.readUserResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ReadUserResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

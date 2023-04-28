@@ -40,7 +40,7 @@ export class Webhooks {
    * @remarks
    * Activate a webhooks config by ID, to start receiving webhooks to its endpoint.
    */
-  activateConfig(
+  async activateConfig(
     req: operations.ActivateConfigRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ActivateConfigResponse> {
@@ -57,38 +57,39 @@ export class Webhooks {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "put",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ActivateConfigResponse =
-        new operations.ActivateConfigResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.configResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ConfigResponse
-            );
-          }
-          break;
-        case httpRes?.status == 304:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ActivateConfigResponse =
+      new operations.ActivateConfigResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.configResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ConfigResponse
+          );
+        }
+        break;
+      case httpRes?.status == 304:
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -101,7 +102,7 @@ export class Webhooks {
    * The format is a random string of bytes of size 24, base64 encoded. (larger size after encoding)
    *
    */
-  changeConfigSecret(
+  async changeConfigSecret(
     req: operations.ChangeConfigSecretRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ChangeConfigSecretResponse> {
@@ -134,7 +135,8 @@ export class Webhooks {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "put",
       headers: headers,
@@ -142,30 +144,30 @@ export class Webhooks {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ChangeConfigSecretResponse =
-        new operations.ChangeConfigSecretResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.configResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ConfigResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ChangeConfigSecretResponse =
+      new operations.ChangeConfigSecretResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.configResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ConfigResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -174,7 +176,7 @@ export class Webhooks {
    * @remarks
    * Deactivate a webhooks config by ID, to stop receiving webhooks to its endpoint.
    */
-  deactivateConfig(
+  async deactivateConfig(
     req: operations.DeactivateConfigRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeactivateConfigResponse> {
@@ -191,38 +193,39 @@ export class Webhooks {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "put",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeactivateConfigResponse =
-        new operations.DeactivateConfigResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.configResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ConfigResponse
-            );
-          }
-          break;
-        case httpRes?.status == 304:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeactivateConfigResponse =
+      new operations.DeactivateConfigResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.configResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ConfigResponse
+          );
+        }
+        break;
+      case httpRes?.status == 304:
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -231,7 +234,7 @@ export class Webhooks {
    * @remarks
    * Delete a webhooks config by ID.
    */
-  deleteConfig(
+  async deleteConfig(
     req: operations.DeleteConfigRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteConfigResponse> {
@@ -248,30 +251,31 @@ export class Webhooks {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteConfigResponse =
-        new operations.DeleteConfigResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteConfigResponse =
+      new operations.DeleteConfigResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -280,7 +284,7 @@ export class Webhooks {
    * @remarks
    * Sorted by updated date descending
    */
-  getManyConfigs(
+  async getManyConfigs(
     req: operations.GetManyConfigsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetManyConfigsResponse> {
@@ -295,36 +299,37 @@ export class Webhooks {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetManyConfigsResponse =
-        new operations.GetManyConfigsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.configsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ConfigsResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetManyConfigsResponse =
+      new operations.GetManyConfigsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.configsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ConfigsResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -342,7 +347,7 @@ export class Webhooks {
    * All eventTypes are converted to lower-case when inserted.
    *
    */
-  insertConfig(
+  async insertConfig(
     req: shared.ConfigUser,
     config?: AxiosRequestConfig
   ): Promise<operations.InsertConfigResponse> {
@@ -373,7 +378,8 @@ export class Webhooks {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -381,35 +387,35 @@ export class Webhooks {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.InsertConfigResponse =
-        new operations.InsertConfigResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.configResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ConfigResponse
-            );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.insertConfig400TextPlainString = JSON.stringify(httpRes?.data);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.InsertConfigResponse =
+      new operations.InsertConfigResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.configResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ConfigResponse
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.insertConfig400TextPlainString = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -418,7 +424,7 @@ export class Webhooks {
    * @remarks
    * Test a config by sending a webhook to its endpoint.
    */
-  testConfig(
+  async testConfig(
     req: operations.TestConfigRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.TestConfigResponse> {
@@ -435,35 +441,36 @@ export class Webhooks {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.TestConfigResponse =
-        new operations.TestConfigResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.attemptResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.AttemptResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.TestConfigResponse =
+      new operations.TestConfigResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.attemptResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.AttemptResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

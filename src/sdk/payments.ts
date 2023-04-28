@@ -40,7 +40,7 @@ export class Payments {
    * @remarks
    * Execute a transfer between two Stripe accounts.
    */
-  connectorsStripeTransfer(
+  async connectorsStripeTransfer(
     req: shared.StripeTransferRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ConnectorsStripeTransferResponse> {
@@ -72,7 +72,8 @@ export class Payments {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -80,27 +81,27 @@ export class Payments {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ConnectorsStripeTransferResponse =
-        new operations.ConnectorsStripeTransferResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.stripeTransferResponse = utils.objectToClass(httpRes?.data);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ConnectorsStripeTransferResponse =
+      new operations.ConnectorsStripeTransferResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.stripeTransferResponse = utils.objectToClass(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -109,7 +110,7 @@ export class Payments {
    * @remarks
    * Get a specific task associated to the connector.
    */
-  getConnectorTask(
+  async getConnectorTask(
     req: operations.GetConnectorTaskRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetConnectorTaskResponse> {
@@ -126,42 +127,43 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetConnectorTaskResponse =
-        new operations.GetConnectorTaskResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.taskResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.TaskResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetConnectorTaskResponse =
+      new operations.GetConnectorTaskResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.taskResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.TaskResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get a payment
    */
-  getPayment(
+  async getPayment(
     req: operations.GetPaymentRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetPaymentResponse> {
@@ -178,36 +180,37 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetPaymentResponse =
-        new operations.GetPaymentResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.paymentResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.PaymentResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetPaymentResponse =
+      new operations.GetPaymentResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.paymentResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.PaymentResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -216,7 +219,7 @@ export class Payments {
    * @remarks
    * Install a connector by its name and config.
    */
-  installConnector(
+  async installConnector(
     req: operations.InstallConnectorRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.InstallConnectorResponse> {
@@ -251,7 +254,8 @@ export class Payments {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -259,24 +263,24 @@ export class Payments {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.InstallConnectorResponse =
-        new operations.InstallConnectorResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.InstallConnectorResponse =
+      new operations.InstallConnectorResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -285,7 +289,7 @@ export class Payments {
    * @remarks
    * List all installed connectors.
    */
-  listAllConnectors(
+  async listAllConnectors(
     config?: AxiosRequestConfig
   ): Promise<operations.ListAllConnectorsResponse> {
     const baseURL: string = this._serverURL;
@@ -293,36 +297,37 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListAllConnectorsResponse =
-        new operations.ListAllConnectorsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.connectorsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ConnectorsResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListAllConnectorsResponse =
+      new operations.ListAllConnectorsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.connectorsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ConnectorsResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -331,7 +336,7 @@ export class Payments {
    * @remarks
    * List the configs of each available connector.
    */
-  listConfigsAvailableConnectors(
+  async listConfigsAvailableConnectors(
     config?: AxiosRequestConfig
   ): Promise<operations.ListConfigsAvailableConnectorsResponse> {
     const baseURL: string = this._serverURL;
@@ -340,36 +345,37 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListConfigsAvailableConnectorsResponse =
-        new operations.ListConfigsAvailableConnectorsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.connectorsConfigsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ConnectorsConfigsResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListConfigsAvailableConnectorsResponse =
+      new operations.ListConfigsAvailableConnectorsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.connectorsConfigsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ConnectorsConfigsResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -378,7 +384,7 @@ export class Payments {
    * @remarks
    * List all tasks associated with this connector.
    */
-  listConnectorTasks(
+  async listConnectorTasks(
     req: operations.ListConnectorTasksRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ListConnectorTasksResponse> {
@@ -397,42 +403,43 @@ export class Payments {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListConnectorTasksResponse =
-        new operations.ListConnectorTasksResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.tasksCursor = utils.objectToClass(
-              httpRes?.data,
-              shared.TasksCursor
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListConnectorTasksResponse =
+      new operations.ListConnectorTasksResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.tasksCursor = utils.objectToClass(
+            httpRes?.data,
+            shared.TasksCursor
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * List payments
    */
-  listPayments(
+  async listPayments(
     req: operations.ListPaymentsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ListPaymentsResponse> {
@@ -447,42 +454,43 @@ export class Payments {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListPaymentsResponse =
-        new operations.ListPaymentsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.paymentsCursor = utils.objectToClass(
-              httpRes?.data,
-              shared.PaymentsCursor
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListPaymentsResponse =
+      new operations.ListPaymentsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.paymentsCursor = utils.objectToClass(
+            httpRes?.data,
+            shared.PaymentsCursor
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * List accounts
    */
-  paymentslistAccounts(
+  async paymentslistAccounts(
     req: operations.PaymentslistAccountsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.PaymentslistAccountsResponse> {
@@ -497,36 +505,37 @@ export class Payments {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.PaymentslistAccountsResponse =
-        new operations.PaymentslistAccountsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.accountsCursor = utils.objectToClass(
-              httpRes?.data,
-              shared.AccountsCursor
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.PaymentslistAccountsResponse =
+      new operations.PaymentslistAccountsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.accountsCursor = utils.objectToClass(
+            httpRes?.data,
+            shared.AccountsCursor
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -535,7 +544,7 @@ export class Payments {
    * @remarks
    * Read connector config
    */
-  readConnectorConfig(
+  async readConnectorConfig(
     req: operations.ReadConnectorConfigRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ReadConnectorConfigResponse> {
@@ -552,36 +561,37 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ReadConnectorConfigResponse =
-        new operations.ReadConnectorConfigResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.connectorConfigResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ConnectorConfigResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ReadConnectorConfigResponse =
+      new operations.ReadConnectorConfigResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.connectorConfigResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ConnectorConfigResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -592,7 +602,7 @@ export class Payments {
    * It will remove the connector and ALL PAYMENTS generated with it.
    *
    */
-  resetConnector(
+  async resetConnector(
     req: operations.ResetConnectorRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ResetConnectorResponse> {
@@ -609,30 +619,31 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ResetConnectorResponse =
-        new operations.ResetConnectorResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ResetConnectorResponse =
+      new operations.ResetConnectorResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -641,7 +652,7 @@ export class Payments {
    * @remarks
    * Uninstall a connector by its name.
    */
-  uninstallConnector(
+  async uninstallConnector(
     req: operations.UninstallConnectorRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.UninstallConnectorResponse> {
@@ -658,29 +669,30 @@ export class Payments {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UninstallConnectorResponse =
-        new operations.UninstallConnectorResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UninstallConnectorResponse =
+      new operations.UninstallConnectorResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+    }
+
+    return res;
   }
 }

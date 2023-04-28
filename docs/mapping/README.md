@@ -17,9 +17,8 @@ Get the mapping of a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetMappingRequest, GetMappingResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetMappingResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -27,12 +26,10 @@ const sdk = new Formance({
   },
 });
 
-const req: GetMappingRequest = {
+sdk.mapping.getMapping({
   ledger: "ledger001",
-};
-
-sdk.mapping.getMapping(req).then((res: GetMappingResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetMappingResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -46,9 +43,8 @@ Update the mapping of a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateMappingRequest, UpdateMappingResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { UpdateMappingResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -56,7 +52,7 @@ const sdk = new Formance({
   },
 });
 
-const req: UpdateMappingRequest = {
+sdk.mapping.updateMapping({
   mapping: {
     contracts: [
       {
@@ -76,10 +72,8 @@ const req: UpdateMappingRequest = {
     ],
   },
   ledger: "ledger001",
-};
-
-sdk.mapping.updateMapping(req).then((res: UpdateMappingResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: UpdateMappingResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

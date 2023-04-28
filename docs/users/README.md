@@ -18,7 +18,6 @@ List users
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListUsersResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -26,8 +25,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.users.listUsers().then((res: ListUsersResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.users.listUsers().then((res: ListUsersResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -41,8 +40,7 @@ Read user
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadUserRequest, ReadUserResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ReadUserResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -50,12 +48,10 @@ const sdk = new Formance({
   },
 });
 
-const req: ReadUserRequest = {
+sdk.users.readUser({
   userId: "quasi",
-};
-
-sdk.users.readUser(req).then((res: ReadUserResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ReadUserResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

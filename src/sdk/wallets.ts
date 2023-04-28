@@ -37,7 +37,7 @@ export class Wallets {
   /**
    * Confirm a hold
    */
-  confirmHold(
+  async confirmHold(
     req: operations.ConfirmHoldRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ConfirmHoldResponse> {
@@ -70,7 +70,8 @@ export class Wallets {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -78,38 +79,38 @@ export class Wallets {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ConfirmHoldResponse =
-        new operations.ConfirmHoldResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ConfirmHoldResponse =
+      new operations.ConfirmHoldResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Create a balance
    */
-  createBalance(
+  async createBalance(
     req: operations.CreateBalanceRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateBalanceResponse> {
@@ -142,7 +143,8 @@ export class Wallets {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -150,44 +152,44 @@ export class Wallets {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateBalanceResponse =
-        new operations.CreateBalanceResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 201:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createBalanceResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.CreateBalanceResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateBalanceResponse =
+      new operations.CreateBalanceResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 201:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createBalanceResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.CreateBalanceResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Create a new wallet
    */
-  createWallet(
+  async createWallet(
     req: shared.CreateWalletRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateWalletResponse> {
@@ -216,7 +218,8 @@ export class Wallets {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -224,44 +227,44 @@ export class Wallets {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateWalletResponse =
-        new operations.CreateWalletResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 201:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createWalletResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.CreateWalletResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateWalletResponse =
+      new operations.CreateWalletResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 201:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createWalletResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.CreateWalletResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Credit a wallet
    */
-  creditWallet(
+  async creditWallet(
     req: operations.CreditWalletRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreditWalletResponse> {
@@ -294,7 +297,8 @@ export class Wallets {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -302,38 +306,38 @@ export class Wallets {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreditWalletResponse =
-        new operations.CreditWalletResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreditWalletResponse =
+      new operations.CreditWalletResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Debit a wallet
    */
-  debitWallet(
+  async debitWallet(
     req: operations.DebitWalletRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DebitWalletResponse> {
@@ -366,7 +370,8 @@ export class Wallets {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -374,46 +379,46 @@ export class Wallets {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DebitWalletResponse =
-        new operations.DebitWalletResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.debitWalletResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.DebitWalletResponse
-            );
-          }
-          break;
-        case httpRes?.status == 204:
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DebitWalletResponse =
+      new operations.DebitWalletResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.debitWalletResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.DebitWalletResponse
+          );
+        }
+        break;
+      case httpRes?.status == 204:
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get detailed balance
    */
-  getBalance(
+  async getBalance(
     req: operations.GetBalanceRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetBalanceResponse> {
@@ -430,50 +435,51 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetBalanceResponse =
-        new operations.GetBalanceResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getBalanceResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.GetBalanceResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetBalanceResponse =
+      new operations.GetBalanceResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getBalanceResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.GetBalanceResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get a hold
    */
-  getHold(
+  async getHold(
     req: operations.GetHoldRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetHoldResponse> {
@@ -490,49 +496,50 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetHoldResponse = new operations.GetHoldResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getHoldResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.GetHoldResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.GetHoldResponse = new operations.GetHoldResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getHoldResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.GetHoldResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get all holds for a wallet
    */
-  getHolds(
+  async getHolds(
     req: operations.GetHoldsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetHoldsResponse> {
@@ -547,46 +554,47 @@ export class Wallets {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetHoldsResponse = new operations.GetHoldsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getHoldsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.GetHoldsResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.GetHoldsResponse = new operations.GetHoldsResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getHoldsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.GetHoldsResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
-  getTransactions(
+  async getTransactions(
     req: operations.GetTransactionsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetTransactionsResponse> {
@@ -602,50 +610,51 @@ export class Wallets {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetTransactionsResponse =
-        new operations.GetTransactionsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getTransactionsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.GetTransactionsResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetTransactionsResponse =
+      new operations.GetTransactionsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getTransactionsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.GetTransactionsResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get a wallet
    */
-  getWallet(
+  async getWallet(
     req: operations.GetWalletRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetWalletResponse> {
@@ -662,52 +671,52 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetWalletResponse =
-        new operations.GetWalletResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getWalletResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.GetWalletResponse
-            );
-          }
-          break;
-        case httpRes?.status == 404:
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.GetWalletResponse = new operations.GetWalletResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getWalletResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.GetWalletResponse
+          );
+        }
+        break;
+      case httpRes?.status == 404:
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * List balances of a wallet
    */
-  listBalances(
+  async listBalances(
     req: operations.ListBalancesRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ListBalancesResponse> {
@@ -724,42 +733,43 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListBalancesResponse =
-        new operations.ListBalancesResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.listBalancesResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ListBalancesResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListBalancesResponse =
+      new operations.ListBalancesResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.listBalancesResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ListBalancesResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * List all wallets
    */
-  listWallets(
+  async listWallets(
     req: operations.ListWalletsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ListWalletsResponse> {
@@ -774,42 +784,43 @@ export class Wallets {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListWalletsResponse =
-        new operations.ListWalletsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.listWalletsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ListWalletsResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListWalletsResponse =
+      new operations.ListWalletsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.listWalletsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ListWalletsResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Update a wallet
    */
-  updateWallet(
+  async updateWallet(
     req: operations.UpdateWalletRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.UpdateWalletResponse> {
@@ -842,7 +853,8 @@ export class Wallets {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "patch",
       headers: headers,
@@ -850,38 +862,38 @@ export class Wallets {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UpdateWalletResponse =
-        new operations.UpdateWalletResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UpdateWalletResponse =
+      new operations.UpdateWalletResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Cancel a hold
    */
-  voidHold(
+  async voidHold(
     req: operations.VoidHoldRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.VoidHoldResponse> {
@@ -898,43 +910,44 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.VoidHoldResponse = new operations.VoidHoldResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.VoidHoldResponse = new operations.VoidHoldResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get server info
    */
-  walletsgetServerInfo(
+  async walletsgetServerInfo(
     config?: AxiosRequestConfig
   ): Promise<operations.WalletsgetServerInfoResponse> {
     const baseURL: string = this._serverURL;
@@ -942,43 +955,44 @@ export class Wallets {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.WalletsgetServerInfoResponse =
-        new operations.WalletsgetServerInfoResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.serverInfo = utils.objectToClass(
-              httpRes?.data,
-              shared.ServerInfo
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.walletsErrorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.WalletsErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.WalletsgetServerInfoResponse =
+      new operations.WalletsgetServerInfoResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.serverInfo = utils.objectToClass(
+            httpRes?.data,
+            shared.ServerInfo
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.walletsErrorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.WalletsErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

@@ -17,9 +17,8 @@ This route is deprecated, and has been merged into `POST /{ledger}/transactions`
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { RunScriptRequest, RunScriptResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { RunScriptResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -27,7 +26,7 @@ const sdk = new Formance({
   },
 });
 
-const req: RunScriptRequest = {
+sdk.script.runScript({
   script: {
     metadata: {
       "explicabo": "deserunt",
@@ -52,10 +51,8 @@ const req: RunScriptRequest = {
   },
   ledger: "ledger001",
   preview: true,
-};
-
-sdk.script.runScript(req).then((res: RunScriptResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: RunScriptResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

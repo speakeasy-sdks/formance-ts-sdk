@@ -19,9 +19,8 @@ Add metadata to an account
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddMetadataToAccountRequest, AddMetadataToAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { AddMetadataToAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -29,7 +28,7 @@ const sdk = new Formance({
   },
 });
 
-const req: AddMetadataToAccountRequest = {
+sdk.accounts.addMetadataToAccount({
   requestBody: {
     "provident": "distinctio",
     "quibusdam": "unde",
@@ -37,10 +36,8 @@ const req: AddMetadataToAccountRequest = {
   },
   address: "users:001",
   ledger: "ledger001",
-};
-
-sdk.accounts.addMetadataToAccount(req).then((res: AddMetadataToAccountResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: AddMetadataToAccountResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -54,9 +51,8 @@ Count the accounts from a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CountAccountsRequest, CountAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { CountAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -64,7 +60,7 @@ const sdk = new Formance({
   },
 });
 
-const req: CountAccountsRequest = {
+sdk.accounts.countAccounts({
   address: "users:.+",
   ledger: "ledger001",
   metadata: {
@@ -73,10 +69,8 @@ const req: CountAccountsRequest = {
     "iure": "magnam",
     "debitis": "ipsa",
   },
-};
-
-sdk.accounts.countAccounts(req).then((res: CountAccountsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CountAccountsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -90,9 +84,8 @@ Get account by its address
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetAccountRequest, GetAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -100,13 +93,11 @@ const sdk = new Formance({
   },
 });
 
-const req: GetAccountRequest = {
+sdk.accounts.getAccount({
   address: "users:001",
   ledger: "ledger001",
-};
-
-sdk.accounts.getAccount(req).then((res: GetAccountResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetAccountResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -120,9 +111,8 @@ List accounts from a ledger, sorted by address in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListAccountsBalanceOperatorEnum, ListAccountsRequest, ListAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ListAccountsBalanceOperatorEnum, ListAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -130,7 +120,7 @@ const sdk = new Formance({
   },
 });
 
-const req: ListAccountsRequest = {
+sdk.accounts.listAccounts({
   address: "users:.+",
   after: "users:003",
   balance: 2400,
@@ -147,10 +137,8 @@ const req: ListAccountsRequest = {
   pageSize: 392785,
   pageSizeDeprecated: 925597,
   paginationToken: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-};
-
-sdk.accounts.listAccounts(req).then((res: ListAccountsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListAccountsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

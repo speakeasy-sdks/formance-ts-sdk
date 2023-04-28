@@ -41,7 +41,7 @@ export class Script {
    * This route is deprecated, and has been merged into `POST /{ledger}/transactions`.
    *
    */
-  runScript(
+  async runScript(
     req: operations.RunScriptRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.RunScriptResponse> {
@@ -77,7 +77,8 @@ export class Script {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -85,29 +86,28 @@ export class Script {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.RunScriptResponse =
-        new operations.RunScriptResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.scriptResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ScriptResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.RunScriptResponse = new operations.RunScriptResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.scriptResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ScriptResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

@@ -41,7 +41,7 @@ export class Stats {
    * Get statistics from a ledger. (aggregate metrics on accounts and transactions)
    *
    */
-  readStats(
+  async readStats(
     req: operations.ReadStatsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ReadStatsResponse> {
@@ -58,43 +58,43 @@ export class Stats {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ReadStatsResponse =
-        new operations.ReadStatsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.statsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.StatsResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.ReadStatsResponse = new operations.ReadStatsResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.statsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.StatsResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

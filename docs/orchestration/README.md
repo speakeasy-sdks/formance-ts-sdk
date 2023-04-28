@@ -22,9 +22,8 @@ Create a workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateWorkflowRequest, CreateWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { CreateWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -32,7 +31,7 @@ const sdk = new Formance({
   },
 });
 
-const req: shared.CreateWorkflowRequest = {
+sdk.orchestration.createWorkflow({
   stages: [
     {
       "architecto": "mollitia",
@@ -53,10 +52,8 @@ const req: shared.CreateWorkflowRequest = {
       "quo": "sequi",
     },
   ],
-};
-
-sdk.orchestration.createWorkflow(req).then((res: CreateWorkflowResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateWorkflowResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -70,9 +67,8 @@ Get a flow by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetFlowRequest, GetFlowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetFlowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -80,12 +76,10 @@ const sdk = new Formance({
   },
 });
 
-const req: GetFlowRequest = {
+sdk.orchestration.getFlow({
   flowId: "tenetur",
-};
-
-sdk.orchestration.getFlow(req).then((res: GetFlowResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetFlowResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -99,9 +93,8 @@ Get a workflow occurrence by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWorkflowOccurrenceRequest, GetWorkflowOccurrenceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetWorkflowOccurrenceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -109,13 +102,11 @@ const sdk = new Formance({
   },
 });
 
-const req: GetWorkflowOccurrenceRequest = {
+sdk.orchestration.getWorkflowOccurrence({
   flowId: "ipsam",
   runId: "id",
-};
-
-sdk.orchestration.getWorkflowOccurrence(req).then((res: GetWorkflowOccurrenceResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetWorkflowOccurrenceResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -131,7 +122,6 @@ List registered flows
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListFlowsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -139,8 +129,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.orchestration.listFlows().then((res: ListFlowsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.orchestration.listFlows().then((res: ListFlowsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -154,9 +144,8 @@ List occurrences of a workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListRunsRequest, ListRunsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ListRunsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -164,12 +153,10 @@ const sdk = new Formance({
   },
 });
 
-const req: ListRunsRequest = {
+sdk.orchestration.listRuns({
   flowId: "possimus",
-};
-
-sdk.orchestration.listRuns(req).then((res: ListRunsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListRunsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -185,7 +172,6 @@ Get server info
 import { Formance } from "@speakeasy-sdks/formance";
 import { OrchestrationgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -193,8 +179,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.orchestration.orchestrationgetServerInfo().then((res: OrchestrationgetServerInfoResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.orchestration.orchestrationgetServerInfo().then((res: OrchestrationgetServerInfoResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -208,9 +194,8 @@ Run workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { RunWorkflowRequest, RunWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { RunWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -218,16 +203,14 @@ const sdk = new Formance({
   },
 });
 
-const req: RunWorkflowRequest = {
+sdk.orchestration.runWorkflow({
   requestBody: {
     "quasi": "error",
   },
   flowId: "temporibus",
   wait: false,
-};
-
-sdk.orchestration.runWorkflow(req).then((res: RunWorkflowResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: RunWorkflowResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

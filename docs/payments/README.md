@@ -27,8 +27,7 @@ Execute a transfer between two Stripe accounts.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ConnectorsStripeTransferResponse, StripeTransferRequest } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ConnectorsStripeTransferResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -36,7 +35,7 @@ const sdk = new Formance({
   },
 });
 
-const req: shared.StripeTransferRequest = {
+sdk.payments.connectorsStripeTransfer({
   amount: 100,
   asset: "USD",
   destination: "acct_1Gqj58KZcSIg2N2q",
@@ -45,10 +44,8 @@ const req: shared.StripeTransferRequest = {
     "voluptatibus": "vero",
     "nihil": "praesentium",
   },
-};
-
-sdk.payments.connectorsStripeTransfer(req).then((res: ConnectorsStripeTransferResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ConnectorsStripeTransferResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -62,9 +59,8 @@ Get a specific task associated to the connector.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetConnectorTaskRequest, GetConnectorTaskResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetConnectorTaskResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -72,13 +68,11 @@ const sdk = new Formance({
   },
 });
 
-const req: GetConnectorTaskRequest = {
+sdk.payments.getConnectorTask({
   connector: ConnectorEnum.BankingCircle,
   taskId: "ipsa",
-};
-
-sdk.payments.getConnectorTask(req).then((res: GetConnectorTaskResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetConnectorTaskResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -92,9 +86,8 @@ Get a payment
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetPaymentRequest, GetPaymentResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetPaymentResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum, PaymentSchemeEnum, PaymentStatusEnum, PaymentTypeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -102,12 +95,10 @@ const sdk = new Formance({
   },
 });
 
-const req: GetPaymentRequest = {
+sdk.payments.getPayment({
   paymentId: "omnis",
-};
-
-sdk.payments.getPayment(req).then((res: GetPaymentResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetPaymentResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -121,9 +112,8 @@ Install a connector by its name and config.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { InstallConnectorRequest, InstallConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { InstallConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -131,15 +121,13 @@ const sdk = new Formance({
   },
 });
 
-const req: InstallConnectorRequest = {
+sdk.payments.installConnector({
   requestBody: {
     apiKey: "XXX",
   },
   connector: ConnectorEnum.CurrencyCloud,
-};
-
-sdk.payments.installConnector(req).then((res: InstallConnectorResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: InstallConnectorResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -155,7 +143,6 @@ List all installed connectors.
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListAllConnectorsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -163,8 +150,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.payments.listAllConnectors().then((res: ListAllConnectorsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.payments.listAllConnectors().then((res: ListAllConnectorsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -179,7 +166,6 @@ List the configs of each available connector.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListConfigsAvailableConnectorsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -187,8 +173,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.payments.listConfigsAvailableConnectors().then((res: ListConfigsAvailableConnectorsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.payments.listConfigsAvailableConnectors().then((res: ListConfigsAvailableConnectorsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -202,9 +188,8 @@ List all tasks associated with this connector.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListConnectorTasksRequest, ListConnectorTasksResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ListConnectorTasksResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -212,14 +197,12 @@ const sdk = new Formance({
   },
 });
 
-const req: ListConnectorTasksRequest = {
+sdk.payments.listConnectorTasks({
   connector: ConnectorEnum.Stripe,
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   pageSize: 39187,
-};
-
-sdk.payments.listConnectorTasks(req).then((res: ListConnectorTasksResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListConnectorTasksResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -233,9 +216,8 @@ List payments
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListPaymentsRequest, ListPaymentsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ListPaymentsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum, PaymentSchemeEnum, PaymentStatusEnum, PaymentTypeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -243,17 +225,15 @@ const sdk = new Formance({
   },
 });
 
-const req: ListPaymentsRequest = {
+sdk.payments.listPayments({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   pageSize: 441711,
   sort: [
     "maiores",
     "dicta",
   ],
-};
-
-sdk.payments.listPayments(req).then((res: ListPaymentsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListPaymentsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -267,9 +247,8 @@ List accounts
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { PaymentslistAccountsRequest, PaymentslistAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { PaymentslistAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum, PaymentsAccountTypeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -277,17 +256,15 @@ const sdk = new Formance({
   },
 });
 
-const req: PaymentslistAccountsRequest = {
+sdk.payments.paymentslistAccounts({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   pageSize: 359444,
   sort: [
     "iusto",
     "dicta",
   ],
-};
-
-sdk.payments.paymentslistAccounts(req).then((res: PaymentslistAccountsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: PaymentslistAccountsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -301,9 +278,8 @@ Read connector config
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadConnectorConfigRequest, ReadConnectorConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ReadConnectorConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -311,12 +287,10 @@ const sdk = new Formance({
   },
 });
 
-const req: ReadConnectorConfigRequest = {
+sdk.payments.readConnectorConfig({
   connector: ConnectorEnum.CurrencyCloud,
-};
-
-sdk.payments.readConnectorConfig(req).then((res: ReadConnectorConfigResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ReadConnectorConfigResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -332,9 +306,8 @@ It will remove the connector and ALL PAYMENTS generated with it.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ResetConnectorRequest, ResetConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ResetConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -342,12 +315,10 @@ const sdk = new Formance({
   },
 });
 
-const req: ResetConnectorRequest = {
+sdk.payments.resetConnector({
   connector: ConnectorEnum.DummyPay,
-};
-
-sdk.payments.resetConnector(req).then((res: ResetConnectorResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ResetConnectorResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -361,9 +332,8 @@ Uninstall a connector by its name.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UninstallConnectorRequest, UninstallConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { UninstallConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -371,12 +341,10 @@ const sdk = new Formance({
   },
 });
 
-const req: UninstallConnectorRequest = {
+sdk.payments.uninstallConnector({
   connector: ConnectorEnum.BankingCircle,
-};
-
-sdk.payments.uninstallConnector(req).then((res: UninstallConnectorResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: UninstallConnectorResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

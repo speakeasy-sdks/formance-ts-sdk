@@ -22,8 +22,7 @@ Add a transient scope to a scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddTransientScopeRequest, AddTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { AddTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -31,13 +30,11 @@ const sdk = new Formance({
   },
 });
 
-const req: AddTransientScopeRequest = {
+sdk.scopes.addTransientScope({
   scopeId: "commodi",
   transientScopeId: "repudiandae",
-};
-
-sdk.scopes.addTransientScope(req).then((res: AddTransientScopeResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: AddTransientScopeResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -51,8 +48,7 @@ Create scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateScopeRequest, CreateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { CreateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -60,15 +56,13 @@ const sdk = new Formance({
   },
 });
 
-const req: shared.CreateScopeRequest = {
+sdk.scopes.createScope({
   label: "quae",
   metadata: {
     "quidem": "molestias",
   },
-};
-
-sdk.scopes.createScope(req).then((res: CreateScopeResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateScopeResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -82,8 +76,7 @@ Delete scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteScopeRequest, DeleteScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { DeleteScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -91,12 +84,10 @@ const sdk = new Formance({
   },
 });
 
-const req: DeleteScopeRequest = {
+sdk.scopes.deleteScope({
   scopeId: "excepturi",
-};
-
-sdk.scopes.deleteScope(req).then((res: DeleteScopeResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteScopeResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -110,8 +101,7 @@ Delete a transient scope from a scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteTransientScopeRequest, DeleteTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { DeleteTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -119,13 +109,11 @@ const sdk = new Formance({
   },
 });
 
-const req: DeleteTransientScopeRequest = {
+sdk.scopes.deleteTransientScope({
   scopeId: "pariatur",
   transientScopeId: "modi",
-};
-
-sdk.scopes.deleteTransientScope(req).then((res: DeleteTransientScopeResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteTransientScopeResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -140,7 +128,6 @@ List Scopes
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListScopesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -148,8 +135,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.scopes.listScopes().then((res: ListScopesResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.scopes.listScopes().then((res: ListScopesResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -163,8 +150,7 @@ Read scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadScopeRequest, ReadScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ReadScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -172,12 +158,10 @@ const sdk = new Formance({
   },
 });
 
-const req: ReadScopeRequest = {
+sdk.scopes.readScope({
   scopeId: "praesentium",
-};
-
-sdk.scopes.readScope(req).then((res: ReadScopeResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ReadScopeResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -191,8 +175,7 @@ Update scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateScopeRequest, UpdateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { UpdateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -200,7 +183,7 @@ const sdk = new Formance({
   },
 });
 
-const req: UpdateScopeRequest = {
+sdk.scopes.updateScope({
   updateScopeRequest: {
     label: "rem",
     metadata: {
@@ -211,10 +194,8 @@ const req: UpdateScopeRequest = {
     },
   },
   scopeId: "est",
-};
-
-sdk.scopes.updateScope(req).then((res: UpdateScopeResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: UpdateScopeResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

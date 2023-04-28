@@ -30,7 +30,6 @@ Get server info
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -38,8 +37,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.formance.getServerInfo().then((res: GetServerInfoResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.formance.getServerInfo().then((res: GetServerInfoResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -54,7 +53,6 @@ Get server info
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { PaymentsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -62,8 +60,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.formance.paymentsgetServerInfo().then((res: PaymentsgetServerInfoResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.formance.paymentsgetServerInfo().then((res: PaymentsgetServerInfoResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -78,7 +76,6 @@ Get server info
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { SearchgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -86,8 +83,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.formance.searchgetServerInfo().then((res: SearchgetServerInfoResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.formance.searchgetServerInfo().then((res: SearchgetServerInfoResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

@@ -37,7 +37,7 @@ export class Transactions {
   /**
    * Create a new batch of transactions to a ledger
    */
-  createTransactions(
+  async createTransactions(
     req: operations.CreateTransactionsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateTransactionsResponse> {
@@ -72,7 +72,8 @@ export class Transactions {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -80,44 +81,44 @@ export class Transactions {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateTransactionsResponse =
-        new operations.CreateTransactionsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.TransactionsResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateTransactionsResponse =
+      new operations.CreateTransactionsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.transactionsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.TransactionsResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Set the metadata of a transaction by its ID
    */
-  addMetadataOnTransaction(
+  async addMetadataOnTransaction(
     req: operations.AddMetadataOnTransactionRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.AddMetadataOnTransactionResponse> {
@@ -150,7 +151,8 @@ export class Transactions {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -158,38 +160,38 @@ export class Transactions {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.AddMetadataOnTransactionResponse =
-        new operations.AddMetadataOnTransactionResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 204:
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.AddMetadataOnTransactionResponse =
+      new operations.AddMetadataOnTransactionResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 204:
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Count the transactions from a ledger
    */
-  countTransactions(
+  async countTransactions(
     req: operations.CountTransactionsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CountTransactionsResponse> {
@@ -208,45 +210,46 @@ export class Transactions {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "head",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CountTransactionsResponse =
-        new operations.CountTransactionsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-          headers: utils.getHeadersFromResponse(httpRes.headers),
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CountTransactionsResponse =
+      new operations.CountTransactionsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+        headers: utils.getHeadersFromResponse(httpRes.headers),
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Create a new transaction to a ledger
    */
-  createTransaction(
+  async createTransaction(
     req: operations.CreateTransactionRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateTransactionResponse> {
@@ -282,7 +285,8 @@ export class Transactions {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -290,44 +294,44 @@ export class Transactions {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateTransactionResponse =
-        new operations.CreateTransactionResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionsResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.TransactionsResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateTransactionResponse =
+      new operations.CreateTransactionResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.transactionsResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.TransactionsResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get transaction from a ledger by its ID
    */
-  getTransaction(
+  async getTransaction(
     req: operations.GetTransactionRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetTransactionResponse> {
@@ -344,44 +348,45 @@ export class Transactions {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetTransactionResponse =
-        new operations.GetTransactionResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.TransactionResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetTransactionResponse =
+      new operations.GetTransactionResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.transactionResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.TransactionResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -390,7 +395,7 @@ export class Transactions {
    * @remarks
    * List transactions from a ledger, sorted by txid in descending order.
    */
-  listTransactions(
+  async listTransactions(
     req: operations.ListTransactionsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ListTransactionsResponse> {
@@ -409,50 +414,51 @@ export class Transactions {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListTransactionsResponse =
-        new operations.ListTransactionsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionsCursorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.TransactionsCursorResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListTransactionsResponse =
+      new operations.ListTransactionsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.transactionsCursorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.TransactionsCursorResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Revert a ledger transaction by its ID
    */
-  revertTransaction(
+  async revertTransaction(
     req: operations.RevertTransactionRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.RevertTransactionResponse> {
@@ -469,43 +475,44 @@ export class Transactions {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.RevertTransactionResponse =
-        new operations.RevertTransactionResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.transactionResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.TransactionResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.RevertTransactionResponse =
+      new operations.RevertTransactionResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.transactionResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.TransactionResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

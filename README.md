@@ -33,7 +33,6 @@ yarn add @speakeasy-sdks/formance
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -41,8 +40,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.getServerInfo().then((res: GetServerInfoResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.getServerInfo().then((res: GetServerInfoResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

@@ -30,9 +30,8 @@ Confirm a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ConfirmHoldRequest, ConfirmHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ConfirmHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -40,16 +39,14 @@ const sdk = new Formance({
   },
 });
 
-const req: ConfirmHoldRequest = {
+sdk.wallets.confirmHold({
   confirmHoldRequest: {
     amount: 100,
     final: true,
   },
   holdId: "iure",
-};
-
-sdk.wallets.confirmHold(req).then((res: ConfirmHoldResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ConfirmHoldResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -63,9 +60,8 @@ Create a balance
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateBalanceRequest, CreateBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { CreateBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -73,15 +69,13 @@ const sdk = new Formance({
   },
 });
 
-const req: CreateBalanceRequest = {
+sdk.wallets.createBalance({
   createBalanceRequest: {
     name: "Doyle Gibson",
   },
   id: "b711e5b7-fd2e-4d02-8921-cddc692601fb",
-};
-
-sdk.wallets.createBalance(req).then((res: CreateBalanceResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateBalanceResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -95,9 +89,8 @@ Create a new wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateWalletRequest, CreateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { CreateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -105,16 +98,14 @@ const sdk = new Formance({
   },
 });
 
-const req: shared.CreateWalletRequest = {
+sdk.wallets.createWallet({
   metadata: {
     "voluptate": "autem",
     "nam": "eaque",
   },
   name: "Dr. Herman Wolf",
-};
-
-sdk.wallets.createWallet(req).then((res: CreateWalletResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateWalletResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -128,9 +119,8 @@ Credit a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreditWalletRequest, CreditWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { CreditWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -138,7 +128,7 @@ const sdk = new Formance({
   },
 });
 
-const req: CreditWalletRequest = {
+sdk.wallets.creditWallet({
   creditWalletRequest: {
     amount: {
       amount: 11714,
@@ -160,10 +150,8 @@ const req: CreditWalletRequest = {
     ],
   },
   id: "73d5fe9b-90c2-4890-9b3f-e49a8d9cbf48",
-};
-
-sdk.wallets.creditWallet(req).then((res: CreditWalletResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreditWalletResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -177,9 +165,8 @@ Debit a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DebitWalletRequest, DebitWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { DebitWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -187,7 +174,7 @@ const sdk = new Formance({
   },
 });
 
-const req: DebitWalletRequest = {
+sdk.wallets.debitWallet({
   debitWalletRequest: {
     amount: {
       amount: 398221,
@@ -209,10 +196,8 @@ const req: DebitWalletRequest = {
     pending: false,
   },
   id: "100674eb-f692-480d-9ba7-7a89ebf737ae",
-};
-
-sdk.wallets.debitWallet(req).then((res: DebitWalletResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DebitWalletResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -226,9 +211,8 @@ Get detailed balance
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetBalanceRequest, GetBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -236,13 +220,11 @@ const sdk = new Formance({
   },
 });
 
-const req: GetBalanceRequest = {
+sdk.wallets.getBalance({
   balanceName: "eius",
   id: "203ce5e6-a95d-48a0-9446-ce2af7a73cf3",
-};
-
-sdk.wallets.getBalance(req).then((res: GetBalanceResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetBalanceResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -256,9 +238,8 @@ Get a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetHoldRequest, GetHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -266,12 +247,10 @@ const sdk = new Formance({
   },
 });
 
-const req: GetHoldRequest = {
+sdk.wallets.getHold({
   holdID: "tempore",
-};
-
-sdk.wallets.getHold(req).then((res: GetHoldResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetHoldResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -285,9 +264,8 @@ Get all holds for a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetHoldsRequest, GetHoldsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetHoldsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -295,7 +273,7 @@ const sdk = new Formance({
   },
 });
 
-const req: GetHoldsRequest = {
+sdk.wallets.getHolds({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   metadata: {
     "numquam": "enim",
@@ -305,10 +283,8 @@ const req: GetHoldsRequest = {
   },
   pageSize: 207470,
   walletID: "sed",
-};
-
-sdk.wallets.getHolds(req).then((res: GetHoldsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetHoldsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -320,9 +296,8 @@ sdk.wallets.getHolds(req).then((res: GetHoldsResponse | AxiosError) => {
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetTransactionsRequest, GetTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -330,14 +305,12 @@ const sdk = new Formance({
   },
 });
 
-const req: GetTransactionsRequest = {
+sdk.wallets.getTransactions({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   pageSize: 424685,
   walletId: "libero",
-};
-
-sdk.wallets.getTransactions(req).then((res: GetTransactionsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetTransactionsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -351,9 +324,8 @@ Get a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWalletRequest, GetWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -361,12 +333,10 @@ const sdk = new Formance({
   },
 });
 
-const req: GetWalletRequest = {
+sdk.wallets.getWallet({
   id: "5a73429c-db1a-4842-abb6-79d2322715bf",
-};
-
-sdk.wallets.getWallet(req).then((res: GetWalletResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetWalletResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -380,8 +350,7 @@ List balances of a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListBalancesRequest, ListBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ListBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -389,12 +358,10 @@ const sdk = new Formance({
   },
 });
 
-const req: ListBalancesRequest = {
+sdk.wallets.listBalances({
   id: "0cbb1e31-b8b9-40f3-843a-1108e0adcf4b",
-};
-
-sdk.wallets.listBalances(req).then((res: ListBalancesResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListBalancesResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -408,8 +375,7 @@ List all wallets
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListWalletsRequest, ListWalletsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ListWalletsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -417,7 +383,7 @@ const sdk = new Formance({
   },
 });
 
-const req: ListWalletsRequest = {
+sdk.wallets.listWallets({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   metadata: {
     "qui": "quae",
@@ -426,10 +392,8 @@ const req: ListWalletsRequest = {
   },
   name: "Ignacio Moen",
   pageSize: 961571,
-};
-
-sdk.wallets.listWallets(req).then((res: ListWalletsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListWalletsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -443,9 +407,8 @@ Update a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateWalletRequest, UpdateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { UpdateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -453,7 +416,7 @@ const sdk = new Formance({
   },
 });
 
-const req: UpdateWalletRequest = {
+sdk.wallets.updateWallet({
   requestBody: {
     metadata: {
       "consectetur": "vero",
@@ -461,10 +424,8 @@ const req: UpdateWalletRequest = {
     },
   },
   id: "fbc7abd7-4dd3-49c0-b5d2-cff7c70a4562",
-};
-
-sdk.wallets.updateWallet(req).then((res: UpdateWalletResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: UpdateWalletResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -478,9 +439,8 @@ Cancel a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { VoidHoldRequest, VoidHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { VoidHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -488,12 +448,10 @@ const sdk = new Formance({
   },
 });
 
-const req: VoidHoldRequest = {
+sdk.wallets.voidHold({
   holdId: "vel",
-};
-
-sdk.wallets.voidHold(req).then((res: VoidHoldResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: VoidHoldResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -509,7 +467,6 @@ Get server info
 import { Formance } from "@speakeasy-sdks/formance";
 import { WalletsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { WalletsErrorResponseErrorCodeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Formance({
   security: {
@@ -517,8 +474,8 @@ const sdk = new Formance({
   },
 });
 
-sdk.wallets.walletsgetServerInfo().then((res: WalletsgetServerInfoResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.wallets.walletsgetServerInfo().then((res: WalletsgetServerInfoResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

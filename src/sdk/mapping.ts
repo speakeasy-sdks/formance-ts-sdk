@@ -37,7 +37,7 @@ export class Mapping {
   /**
    * Get the mapping of a ledger
    */
-  getMapping(
+  async getMapping(
     req: operations.GetMappingRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetMappingResponse> {
@@ -54,50 +54,51 @@ export class Mapping {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetMappingResponse =
-        new operations.GetMappingResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.mappingResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.MappingResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetMappingResponse =
+      new operations.GetMappingResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.mappingResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.MappingResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Update the mapping of a ledger
    */
-  updateMapping(
+  async updateMapping(
     req: operations.UpdateMappingRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.UpdateMappingResponse> {
@@ -132,7 +133,8 @@ export class Mapping {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "put",
       headers: headers,
@@ -140,37 +142,37 @@ export class Mapping {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UpdateMappingResponse =
-        new operations.UpdateMappingResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.mappingResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.MappingResponse
-            );
-          }
-          break;
-        default:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.errorResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ErrorResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UpdateMappingResponse =
+      new operations.UpdateMappingResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.mappingResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.MappingResponse
+          );
+        }
+        break;
+      default:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.errorResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ErrorResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }
