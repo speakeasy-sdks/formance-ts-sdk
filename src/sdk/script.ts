@@ -40,6 +40,8 @@ export class Script {
    * @remarks
    * This route is deprecated, and has been merged into `POST /{ledger}/transactions`.
    *
+   *
+   * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
    */
   async runScript(
     req: operations.RunScriptRequest,

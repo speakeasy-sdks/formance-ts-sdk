@@ -42,6 +42,8 @@ export class CountTransactionsRequest extends SpeakeasyBase {
    * The format is RFC3339 and is exclusive (for example, "2023-01-02T15:04:01Z" excludes the first second of 4th minute).
    * Deprecated, please use `endTime` instead.
    *
+   *
+   * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
    */
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=end_time",
@@ -99,6 +101,8 @@ export class CountTransactionsRequest extends SpeakeasyBase {
    * The format is RFC3339 and is inclusive (for example, "2023-01-02T15:04:01Z" includes the first second of 4th minute).
    * Deprecated, please use `startTime` instead.
    *
+   *
+   * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
    */
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=start_time",

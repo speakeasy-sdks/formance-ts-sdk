@@ -61,6 +61,8 @@ export class ListAccountsRequest extends SpeakeasyBase {
    * @remarks
    * Deprecated, please use `balanceOperator` instead.
    *
+   *
+   * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
    */
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=balance_operator",
@@ -114,6 +116,8 @@ export class ListAccountsRequest extends SpeakeasyBase {
    * @remarks
    * Deprecated, please use `pageSize` instead.
    *
+   *
+   * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
    */
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=page_size",
@@ -129,6 +133,8 @@ export class ListAccountsRequest extends SpeakeasyBase {
    * No other parameters can be set when this parameter is set.
    * Deprecated, please use `cursor` instead.
    *
+   *
+   * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
    */
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=pagination_token",

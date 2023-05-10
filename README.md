@@ -131,7 +131,7 @@ sdk.getServerInfo().then((res: GetServerInfoResponse) => {
 
 ### [script](docs/script/README.md)
 
-* [runScript](docs/script/README.md#runscript) - Execute a Numscript
+* [~~runScript~~](docs/script/README.md#runscript) - Execute a Numscript :warning: **Deprecated**
 
 ### [search](docs/search/README.md)
 

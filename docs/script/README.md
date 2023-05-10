@@ -6,12 +6,14 @@ Everything related to Script
 
 ### Available Operations
 
-* [runScript](#runscript) - Execute a Numscript
+* [~~runScript~~](#runscript) - Execute a Numscript :warning: **Deprecated**
 
-## runScript
+## ~~runScript~~
 
 This route is deprecated, and has been merged into `POST /{ledger}/transactions`.
 
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

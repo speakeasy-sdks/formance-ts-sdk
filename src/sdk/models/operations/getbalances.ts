@@ -50,6 +50,8 @@ export class GetBalancesRequest extends SpeakeasyBase {
    * Set to the value of next for the next page of results.
    * Set to the value of previous for the previous page of results.
    * Deprecated, please use `cursor` instead.
+   *
+   * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
    */
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=pagination_token",
