@@ -147,8 +147,8 @@ export class Formance {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "0.20.0";
-  private _genVersion = "2.29.0";
+  private _sdkVersion = "0.21.0";
+  private _genVersion = "2.30.0";
   private _globals: any;
 
   constructor(props?: SDKProps) {
@@ -333,10 +333,16 @@ export class Formance {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
+    const headers = { ...config?.headers };
+    headers[
+      "user-agent"
+    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
     const httpRes: AxiosResponse = await client.request({
       validateStatus: () => true,
       url: url,
       method: "get",
+      headers: headers,
       ...config,
     });
 
@@ -377,10 +383,16 @@ export class Formance {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
+    const headers = { ...config?.headers };
+    headers[
+      "user-agent"
+    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
     const httpRes: AxiosResponse = await client.request({
       validateStatus: () => true,
       url: url,
       method: "get",
+      headers: headers,
       ...config,
     });
 
@@ -421,10 +433,16 @@ export class Formance {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
+    const headers = { ...config?.headers };
+    headers[
+      "user-agent"
+    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
     const httpRes: AxiosResponse = await client.request({
       validateStatus: () => true,
       url: url,
       method: "get",
+      headers: headers,
       ...config,
     });
 
