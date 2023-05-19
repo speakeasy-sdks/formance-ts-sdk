@@ -5,7 +5,7 @@
 /**
  * The name of the connector.
  */
-export enum ConnectorEnum {
+export enum Connector {
   Stripe = "STRIPE",
   DummyPay = "DUMMY-PAY",
   Wise = "WISE",

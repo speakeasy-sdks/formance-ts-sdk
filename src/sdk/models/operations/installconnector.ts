@@ -16,7 +16,7 @@ export class InstallConnectorRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=connector",
   })
-  connector: shared.ConnectorEnum;
+  connector: shared.Connector;
 }
 
 export class InstallConnectorResponse extends SpeakeasyBase {

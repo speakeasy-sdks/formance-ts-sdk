@@ -20,7 +20,7 @@ Add metadata to an account
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { AddMetadataToAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -52,7 +52,7 @@ Count the accounts from a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CountAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -85,7 +85,7 @@ Get account by its address
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -111,8 +111,8 @@ List accounts from a ledger, sorted by address in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListAccountsBalanceOperatorEnum, ListAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ListAccountsBalanceOperator, ListAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -124,8 +124,8 @@ sdk.accounts.listAccounts({
   address: "users:.+",
   after: "users:003",
   balance: 2400,
-  balanceOperator: ListAccountsBalanceOperatorEnum.Gte,
-  balanceOperatorDeprecated: ListAccountsBalanceOperatorEnum.Gte,
+  balanceOperator: ListAccountsBalanceOperator.Gte,
+  balanceOperatorDeprecated: ListAccountsBalanceOperator.Gte,
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
   metadata: {

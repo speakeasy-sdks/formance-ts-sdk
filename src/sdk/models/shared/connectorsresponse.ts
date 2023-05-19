@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ConnectorEnum } from "./connectorenum";
+import { Connector } from "./connector";
 import { Expose, Type } from "class-transformer";
 
 export class ConnectorsResponseData extends SpeakeasyBase {
@@ -13,7 +13,7 @@ export class ConnectorsResponseData extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "provider" })
-  provider?: ConnectorEnum;
+  provider?: Connector;
 }
 
 /**

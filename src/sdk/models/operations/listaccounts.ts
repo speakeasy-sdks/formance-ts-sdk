@@ -12,7 +12,7 @@ import { AxiosResponse } from "axios";
  * @remarks
  *
  */
-export enum ListAccountsBalanceOperatorEnum {
+export enum ListAccountsBalanceOperator {
   Gte = "gte",
   Lte = "lte",
   Gt = "gt",
@@ -53,7 +53,7 @@ export class ListAccountsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=balanceOperator",
   })
-  balanceOperator?: ListAccountsBalanceOperatorEnum;
+  balanceOperator?: ListAccountsBalanceOperator;
 
   /**
    * Operator used for the filtering of balances can be greater than/equal, less than/equal, greater than, less than, equal or not.
@@ -67,7 +67,7 @@ export class ListAccountsRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=balance_operator",
   })
-  balanceOperatorDeprecated?: ListAccountsBalanceOperatorEnum;
+  balanceOperatorDeprecated?: ListAccountsBalanceOperator;
 
   /**
    * Parameter used in pagination requests. Maximum page size is set to 15.

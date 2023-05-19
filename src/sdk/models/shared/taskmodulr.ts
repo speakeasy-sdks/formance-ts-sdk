@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { PaymentStatusEnum } from "./paymentstatusenum";
+import { PaymentStatus } from "./paymentstatus";
 import { Expose, Transform, Type } from "class-transformer";
 
 export class TaskModulrDescriptor extends SpeakeasyBase {
@@ -49,7 +49,7 @@ export class TaskModulr extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status: PaymentStatusEnum;
+  status: PaymentStatus;
 
   @SpeakeasyMetadata()
   @Expose({ name: "updatedAt" })

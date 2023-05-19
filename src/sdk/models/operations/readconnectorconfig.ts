@@ -13,7 +13,7 @@ export class ReadConnectorConfigRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=connector",
   })
-  connector: shared.ConnectorEnum;
+  connector: shared.Connector;
 }
 
 export class ReadConnectorConfigResponse extends SpeakeasyBase {

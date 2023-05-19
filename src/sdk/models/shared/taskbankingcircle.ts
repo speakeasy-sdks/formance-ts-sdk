@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { PaymentStatusEnum } from "./paymentstatusenum";
+import { PaymentStatus } from "./paymentstatus";
 import { Expose, Transform, Type } from "class-transformer";
 
 export class TaskBankingCircleDescriptor extends SpeakeasyBase {
@@ -45,7 +45,7 @@ export class TaskBankingCircle extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status: PaymentStatusEnum;
+  status: PaymentStatus;
 
   @SpeakeasyMetadata()
   @Expose({ name: "updatedAt" })

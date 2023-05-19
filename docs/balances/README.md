@@ -18,7 +18,7 @@ Get the balances from a ledger's account
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -48,7 +48,7 @@ Get the aggregated balances from selected accounts
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetBalancesAggregatedResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

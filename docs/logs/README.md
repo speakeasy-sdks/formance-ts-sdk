@@ -17,7 +17,7 @@ List the logs from a ledger, sorted by ID in descending order.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListLogsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum, LogTypeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum, LogType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

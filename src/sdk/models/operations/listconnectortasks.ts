@@ -13,7 +13,7 @@ export class ListConnectorTasksRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=connector",
   })
-  connector: shared.ConnectorEnum;
+  connector: shared.Connector;
 
   /**
    * Parameter used in pagination requests. Maximum page size is set to 15.

@@ -3,13 +3,13 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ConnectorEnum } from "./connectorenum";
+import { Connector } from "./connector";
 import { PaymentAdjustment } from "./paymentadjustment";
 import { PaymentMetadata } from "./paymentmetadata";
-import { PaymentStatusEnum } from "./paymentstatusenum";
+import { PaymentStatus } from "./paymentstatus";
 import { Expose, Transform, Type } from "class-transformer";
 
-export enum PaymentSchemeEnum {
+export enum PaymentScheme {
   Visa = "visa",
   Mastercard = "mastercard",
   Amex = "amex",
@@ -30,7 +30,7 @@ export enum PaymentSchemeEnum {
   Other = "other",
 }
 
-export enum PaymentTypeEnum {
+export enum PaymentType {
   PayIn = "PAY-IN",
   Payout = "PAYOUT",
   Transfer = "TRANSFER",
@@ -71,7 +71,7 @@ export class Payment extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "provider" })
-  provider: ConnectorEnum;
+  provider: Connector;
 
   @SpeakeasyMetadata()
   @Expose({ name: "raw" })
@@ -83,13 +83,13 @@ export class Payment extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "scheme" })
-  scheme: PaymentSchemeEnum;
+  scheme: PaymentScheme;
 
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status: PaymentStatusEnum;
+  status: PaymentStatus;
 
   @SpeakeasyMetadata()
   @Expose({ name: "type" })
-  type: PaymentTypeEnum;
+  type: PaymentType;
 }

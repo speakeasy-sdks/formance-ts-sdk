@@ -17,7 +17,7 @@ Get information about a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetLedgerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum, MigrationInfoStateEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum, MigrationInfoState } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

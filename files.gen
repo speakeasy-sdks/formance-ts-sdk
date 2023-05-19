@@ -119,7 +119,7 @@ src/sdk/models/operations/paymentsgetserverinfo.ts
 src/sdk/models/operations/searchgetserverinfo.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/errorresponse.ts
-src/sdk/models/shared/errorsenumenum.ts
+src/sdk/models/shared/errorsenum.ts
 src/sdk/models/shared/accountresponse.ts
 src/sdk/models/shared/accountwithvolumesandbalances.ts
 src/sdk/models/shared/accountscursorresponse.ts
@@ -161,13 +161,13 @@ src/sdk/models/shared/runworkflowresponse.ts
 src/sdk/models/shared/stripetransferrequest.ts
 src/sdk/models/shared/taskresponse.ts
 src/sdk/models/shared/taskstripe.ts
-src/sdk/models/shared/paymentstatusenum.ts
+src/sdk/models/shared/paymentstatus.ts
 src/sdk/models/shared/taskwise.ts
 src/sdk/models/shared/taskcurrencycloud.ts
 src/sdk/models/shared/taskdummypay.ts
 src/sdk/models/shared/taskmodulr.ts
 src/sdk/models/shared/taskbankingcircle.ts
-src/sdk/models/shared/connectorenum.ts
+src/sdk/models/shared/connector.ts
 src/sdk/models/shared/paymentresponse.ts
 src/sdk/models/shared/payment.ts
 src/sdk/models/shared/paymentmetadata.ts

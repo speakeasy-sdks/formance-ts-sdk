@@ -18,7 +18,7 @@ Get the mapping of a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetMappingResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -44,7 +44,7 @@ Update the mapping of a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { UpdateMappingResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnumEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

@@ -3,10 +3,10 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ConnectorEnum } from "./connectorenum";
+import { Connector } from "./connector";
 import { Expose, Transform } from "class-transformer";
 
-export enum PaymentsAccountTypeEnum {
+export enum PaymentsAccountType {
   Target = "TARGET",
   Source = "SOURCE",
 }
@@ -23,7 +23,7 @@ export class PaymentsAccount extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "provider" })
-  provider: ConnectorEnum;
+  provider: Connector;
 
   @SpeakeasyMetadata()
   @Expose({ name: "reference" })
@@ -31,5 +31,5 @@ export class PaymentsAccount extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "type" })
-  type: PaymentsAccountTypeEnum;
+  type: PaymentsAccountType;
 }

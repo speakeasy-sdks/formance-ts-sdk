@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ErrorsEnumEnum } from "./errorsenumenum";
+import { ErrorsEnum } from "./errorsenum";
 import { Expose } from "class-transformer";
 
 /**
@@ -16,7 +16,7 @@ export class ErrorResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "errorCode" })
-  errorCode?: ErrorsEnumEnum;
+  errorCode?: ErrorsEnum;
 
   @SpeakeasyMetadata()
   @Expose({ name: "errorMessage" })

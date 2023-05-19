@@ -60,7 +60,7 @@ Get a specific task associated to the connector.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetConnectorTaskResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -69,7 +69,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.getConnectorTask({
-  connector: ConnectorEnum.BankingCircle,
+  connector: Connector.BankingCircle,
   taskId: "ipsa",
 }).then((res: GetConnectorTaskResponse) => {
   if (res.statusCode == 200) {
@@ -87,7 +87,7 @@ Get a payment
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetPaymentResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum, PaymentSchemeEnum, PaymentStatusEnum, PaymentTypeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -113,7 +113,7 @@ Install a connector by its name and config.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { InstallConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -125,7 +125,7 @@ sdk.payments.installConnector({
   requestBody: {
     apiKey: "XXX",
   },
-  connector: ConnectorEnum.CurrencyCloud,
+  connector: Connector.CurrencyCloud,
 }).then((res: InstallConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -142,7 +142,7 @@ List all installed connectors.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListAllConnectorsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -189,7 +189,7 @@ List all tasks associated with this connector.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListConnectorTasksResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -198,7 +198,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.listConnectorTasks({
-  connector: ConnectorEnum.Stripe,
+  connector: Connector.Stripe,
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   pageSize: 39187,
 }).then((res: ListConnectorTasksResponse) => {
@@ -217,7 +217,7 @@ List payments
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListPaymentsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum, PaymentSchemeEnum, PaymentStatusEnum, PaymentTypeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -248,7 +248,7 @@ List accounts
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { PaymentslistAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum, PaymentsAccountTypeEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector, PaymentsAccountType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -279,7 +279,7 @@ Read connector config
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ReadConnectorConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -288,7 +288,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.readConnectorConfig({
-  connector: ConnectorEnum.CurrencyCloud,
+  connector: Connector.CurrencyCloud,
 }).then((res: ReadConnectorConfigResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -307,7 +307,7 @@ It will remove the connector and ALL PAYMENTS generated with it.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ResetConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -316,7 +316,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.resetConnector({
-  connector: ConnectorEnum.DummyPay,
+  connector: Connector.DummyPay,
 }).then((res: ResetConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -333,7 +333,7 @@ Uninstall a connector by its name.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { UninstallConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ConnectorEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -342,7 +342,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.uninstallConnector({
-  connector: ConnectorEnum.BankingCircle,
+  connector: Connector.BankingCircle,
 }).then((res: UninstallConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
