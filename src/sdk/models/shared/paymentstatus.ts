@@ -3,8 +3,8 @@
  */
 
 export enum PaymentStatus {
-  Pending = "PENDING",
-  Active = "ACTIVE",
-  Terminated = "TERMINATED",
-  Failed = "FAILED",
+    Pending = "PENDING",
+    Active = "ACTIVE",
+    Terminated = "TERMINATED",
+    Failed = "FAILED",
 }

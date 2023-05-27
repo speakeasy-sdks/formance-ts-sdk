@@ -7,34 +7,34 @@ import { WebhooksConfig } from "./webhooksconfig";
 import { Expose, Type } from "class-transformer";
 
 export class ConfigsResponseCursor extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: WebhooksConfig })
-  @Expose({ name: "data" })
-  @Type(() => WebhooksConfig)
-  data: WebhooksConfig[];
+    @SpeakeasyMetadata({ elemType: WebhooksConfig })
+    @Expose({ name: "data" })
+    @Type(() => WebhooksConfig)
+    data: WebhooksConfig[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "hasMore" })
-  hasMore?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "hasMore" })
+    hasMore?: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "next" })
-  next?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "next" })
+    next?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "pageSize" })
-  pageSize: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "pageSize" })
+    pageSize: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "previous" })
-  previous?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "previous" })
+    previous?: string;
 }
 
 /**
  * OK
  */
 export class ConfigsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "cursor" })
-  @Type(() => ConfigsResponseCursor)
-  cursor: ConfigsResponseCursor;
+    @SpeakeasyMetadata()
+    @Expose({ name: "cursor" })
+    @Type(() => ConfigsResponseCursor)
+    cursor: ConfigsResponseCursor;
 }

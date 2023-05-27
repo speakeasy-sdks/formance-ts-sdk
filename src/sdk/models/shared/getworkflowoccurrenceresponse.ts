@@ -10,8 +10,8 @@ import { Expose, Type } from "class-transformer";
  * The workflow occurrence
  */
 export class GetWorkflowOccurrenceResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "data" })
-  @Type(() => WorkflowOccurrence)
-  data: WorkflowOccurrence;
+    @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    @Type(() => WorkflowOccurrence)
+    data: WorkflowOccurrence;
 }

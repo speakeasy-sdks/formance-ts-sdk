@@ -7,42 +7,38 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetWorkflowOccurrenceRequest extends SpeakeasyBase {
-  /**
-   * The flow id
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=flowId",
-  })
-  flowId: string;
+    /**
+     * The flow id
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=flowId" })
+    flowId: string;
 
-  /**
-   * The occurrence id
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=runId",
-  })
-  runId: string;
+    /**
+     * The occurrence id
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=runId" })
+    runId: string;
 }
 
 export class GetWorkflowOccurrenceResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * General error
-   */
-  @SpeakeasyMetadata()
-  error?: shared.ErrorT;
+    /**
+     * General error
+     */
+    @SpeakeasyMetadata()
+    error?: shared.ErrorT;
 
-  /**
-   * The workflow occurrence
-   */
-  @SpeakeasyMetadata()
-  getWorkflowOccurrenceResponse?: shared.GetWorkflowOccurrenceResponse;
+    /**
+     * The workflow occurrence
+     */
+    @SpeakeasyMetadata()
+    getWorkflowOccurrenceResponse?: shared.GetWorkflowOccurrenceResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

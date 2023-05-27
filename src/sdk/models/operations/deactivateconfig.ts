@@ -7,26 +7,26 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class DeactivateConfigRequest extends SpeakeasyBase {
-  /**
-   * Config ID
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * Config ID
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 export class DeactivateConfigResponse extends SpeakeasyBase {
-  /**
-   * Config successfully deactivated.
-   */
-  @SpeakeasyMetadata()
-  configResponse?: shared.ConfigResponse;
+    /**
+     * Config successfully deactivated.
+     */
+    @SpeakeasyMetadata()
+    configResponse?: shared.ConfigResponse;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }
