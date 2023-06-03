@@ -51,11 +51,36 @@ export type SDKProps = {
      * Allows overriding the default axios client used by the SDK
      */
     defaultClient?: AxiosInstance;
+
+    /**
+     * Allows overriding the default server used by the SDK
+     */
+    serverIdx?: number;
+
+    /**
+     * Allows setting the organization variable for url substitution
+     */
+    organization?: string;
+
     /**
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
 };
+
+export class SDKConfiguration {
+    defaultClient: AxiosInstance;
+    securityClient: AxiosInstance;
+    serverURL: string;
+    serverDefaults: any;
+    language = "typescript";
+    sdkVersion = "0.25.0";
+    genVersion = "2.35.3";
+
+    public constructor(init?: Partial<SDKConfiguration>) {
+        Object.assign(this, init);
+    }
+}
 
 /**
  * Open, modular foundation for unique payments flows
@@ -143,195 +168,80 @@ export class Formance {
      */
     public webhooks: Webhooks;
 
-    public _defaultClient: AxiosInstance;
-    public _securityClient: AxiosInstance;
-    public _serverURL: string;
-    private _language = "typescript";
-    private _sdkVersion = "0.24.1";
-    private _genVersion = "2.34.7";
-    private _globals: any;
+    private sdkConfiguration: SDKConfiguration;
 
     constructor(props?: SDKProps) {
-        this._serverURL = props?.serverURL ?? ServerList[0];
+        let serverURL = props?.serverURL;
+        let defaults: any = {};
 
-        this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
-        if (props?.security) {
-            let security: shared.Security = props.security;
-            if (!(props.security instanceof utils.SpeakeasyBase))
-                security = new shared.Security(props.security);
-            this._securityClient = utils.createSecurityClient(this._defaultClient, security);
-        } else {
-            this._securityClient = this._defaultClient;
+        const serverDefaults = [
+            {},
+            {
+                organization: props?.organization?.toString() ?? "",
+            },
+        ];
+        const serverIdx = props?.serverIdx ?? 0;
+
+        if (!serverURL) {
+            serverURL = ServerList[serverIdx];
+            defaults = serverDefaults[serverIdx];
         }
 
-        this.accounts = new Accounts(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
+        let securityClient = defaultClient;
 
-        this.balances = new Balances(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        if (props?.security) {
+            let security: shared.Security = props.security;
+            if (!(props.security instanceof utils.SpeakeasyBase)) {
+                security = new shared.Security(props.security);
+            }
+            securityClient = utils.createSecurityClient(defaultClient, security);
+        }
 
-        this.clients = new Clients(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        this.sdkConfiguration = new SDKConfiguration({
+            defaultClient: defaultClient,
+            securityClient: securityClient,
+            serverURL: serverURL,
+            serverDefaults: defaults,
+        });
 
-        this.ledger = new Ledger(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.logs = new Logs(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.mapping = new Mapping(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.orchestration = new Orchestration(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.payments = new Payments(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.scopes = new Scopes(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.script = new Script(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.search = new Search(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.server = new Server(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.stats = new Stats(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.transactions = new Transactions(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.users = new Users(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.wallets = new Wallets(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.webhooks = new Webhooks(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        this.accounts = new Accounts(this.sdkConfiguration);
+        this.balances = new Balances(this.sdkConfiguration);
+        this.clients = new Clients(this.sdkConfiguration);
+        this.ledger = new Ledger(this.sdkConfiguration);
+        this.logs = new Logs(this.sdkConfiguration);
+        this.mapping = new Mapping(this.sdkConfiguration);
+        this.orchestration = new Orchestration(this.sdkConfiguration);
+        this.payments = new Payments(this.sdkConfiguration);
+        this.scopes = new Scopes(this.sdkConfiguration);
+        this.script = new Script(this.sdkConfiguration);
+        this.search = new Search(this.sdkConfiguration);
+        this.server = new Server(this.sdkConfiguration);
+        this.stats = new Stats(this.sdkConfiguration);
+        this.transactions = new Transactions(this.sdkConfiguration);
+        this.users = new Users(this.sdkConfiguration);
+        this.wallets = new Wallets(this.sdkConfiguration);
+        this.webhooks = new Webhooks(this.sdkConfiguration);
     }
 
     /**
      * Get server info
      */
     async getServerInfo(config?: AxiosRequestConfig): Promise<operations.GetServerInfoResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/api/auth/_info";
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -369,16 +279,20 @@ export class Formance {
     async paymentsgetServerInfo(
         config?: AxiosRequestConfig
     ): Promise<operations.PaymentsgetServerInfoResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/api/payments/_info";
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -417,16 +331,20 @@ export class Formance {
     async searchgetServerInfo(
         config?: AxiosRequestConfig
     ): Promise<operations.SearchgetServerInfoResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/api/search/_info";
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
