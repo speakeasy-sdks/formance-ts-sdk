@@ -28,7 +28,7 @@ import { AddScopeToClientResponse } from "@speakeasy-sdks/formance/dist/sdk/mode
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -54,7 +54,7 @@ import { CreateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/o
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -97,7 +97,7 @@ import { CreateSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/o
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -128,7 +128,7 @@ import { DeleteClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/o
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -153,7 +153,7 @@ import { DeleteScopeFromClientResponse } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -179,7 +179,7 @@ import { DeleteSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/o
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -205,7 +205,7 @@ import { ListClientsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/op
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -228,7 +228,7 @@ import { ReadClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/ope
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -253,7 +253,7 @@ import { UpdateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/o
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

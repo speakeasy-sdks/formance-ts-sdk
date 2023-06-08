@@ -5,7 +5,7 @@ import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

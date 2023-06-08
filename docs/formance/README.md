@@ -33,7 +33,7 @@ import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -56,7 +56,7 @@ import { PaymentsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -79,7 +79,7 @@ import { SearchgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/m
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

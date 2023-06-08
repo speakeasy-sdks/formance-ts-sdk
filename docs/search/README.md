@@ -20,7 +20,7 @@ import { SearchResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operati
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

@@ -35,7 +35,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -65,7 +65,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -94,7 +94,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -124,7 +124,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -170,7 +170,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -216,7 +216,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -243,7 +243,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -269,7 +269,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -301,7 +301,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -329,7 +329,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -354,7 +354,7 @@ import { ListBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/o
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -379,7 +379,7 @@ import { ListWalletsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/op
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -412,7 +412,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -444,7 +444,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -470,7 +470,7 @@ import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

@@ -21,7 +21,7 @@ import { ErrorsEnum, LogType } from "@speakeasy-sdks/formance/dist/sdk/models/sh
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

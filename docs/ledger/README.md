@@ -21,7 +21,7 @@ import { ErrorsEnum, MigrationInfoState } from "@speakeasy-sdks/formance/dist/sd
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

@@ -26,7 +26,7 @@ import { ActivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -55,7 +55,7 @@ import { ChangeConfigSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/mo
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -83,7 +83,7 @@ import { DeactivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/mode
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -108,7 +108,7 @@ import { DeleteConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/o
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -133,7 +133,7 @@ import { GetManyConfigsResponse } from "@speakeasy-sdks/formance/dist/sdk/models
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -168,7 +168,7 @@ import { InsertConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/o
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -200,7 +200,7 @@ import { TestConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/ope
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

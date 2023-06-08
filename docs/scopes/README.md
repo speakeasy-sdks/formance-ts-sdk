@@ -26,7 +26,7 @@ import { AddTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/mod
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -52,7 +52,7 @@ import { CreateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/op
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -80,7 +80,7 @@ import { DeleteScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/op
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -105,7 +105,7 @@ import { DeleteTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -131,7 +131,7 @@ import { ListScopesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/ope
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -154,7 +154,7 @@ import { ReadScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/oper
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -179,7 +179,7 @@ import { UpdateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/op
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 

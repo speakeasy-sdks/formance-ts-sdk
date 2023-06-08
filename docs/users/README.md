@@ -21,7 +21,7 @@ import { ListUsersResponse } from "@speakeasy-sdks/formance/dist/sdk/models/oper
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
@@ -44,7 +44,7 @@ import { ReadUserResponse } from "@speakeasy-sdks/formance/dist/sdk/models/opera
 
 const sdk = new Formance({
   security: {
-    authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    authorization: "",
   },
 });
 
