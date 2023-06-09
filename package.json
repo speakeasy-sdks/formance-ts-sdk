@@ -1,6 +1,6 @@
 {
   "name": "@speakeasy-sdks/formance",
-  "version": "0.26.0",
+  "version": "0.26.1",
   "author": "Speakeasy",
   "scripts": {
     "prepare": "tsc --build"
