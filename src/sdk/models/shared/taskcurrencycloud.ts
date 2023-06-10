@@ -12,6 +12,8 @@ export class TaskCurrencyCloudDescriptor extends SpeakeasyBase {
     name?: string;
 }
 
+export class TaskCurrencyCloudState extends SpeakeasyBase {}
+
 export class TaskCurrencyCloud extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "connectorId" })
@@ -37,7 +39,8 @@ export class TaskCurrencyCloud extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    state: Record<string, any>;
+    @Type(() => TaskCurrencyCloudState)
+    state: TaskCurrencyCloudState;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

@@ -6,6 +6,11 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
+/**
+ * Filter wallets by metadata key value pairs. Nested objects can be used as seen in the example below.
+ */
+export class ListWalletsMetadata extends SpeakeasyBase {}
+
 export class ListWalletsRequest extends SpeakeasyBase {
     /**
      * Parameter used in pagination requests.
@@ -23,7 +28,7 @@ export class ListWalletsRequest extends SpeakeasyBase {
      * Filter wallets by metadata key value pairs. Nested objects can be used as seen in the example below.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
-    metadata?: Record<string, any>;
+    metadata?: ListWalletsMetadata;
 
     /**
      * Filter on wallet name

@@ -3,7 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+export class ContractExpr extends SpeakeasyBase {}
 
 export class Contract extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -12,5 +14,6 @@ export class Contract extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "expr" })
-    expr: Record<string, any>;
+    @Type(() => ContractExpr)
+    expr: ContractExpr;
 }

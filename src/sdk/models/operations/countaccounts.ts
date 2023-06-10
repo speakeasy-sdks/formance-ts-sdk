@@ -6,6 +6,11 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
+/**
+ * Filter accounts by metadata key value pairs. Nested objects can be used as seen in the example below.
+ */
+export class CountAccountsMetadata extends SpeakeasyBase {}
+
 export class CountAccountsRequest extends SpeakeasyBase {
     /**
      * Filter accounts by address pattern (regular expression placed between ^ and $).
@@ -23,7 +28,7 @@ export class CountAccountsRequest extends SpeakeasyBase {
      * Filter accounts by metadata key value pairs. Nested objects can be used as seen in the example below.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
-    metadata?: Record<string, any>;
+    metadata?: CountAccountsMetadata;
 }
 
 export class CountAccountsResponse extends SpeakeasyBase {

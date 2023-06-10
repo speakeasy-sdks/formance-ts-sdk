@@ -4,7 +4,9 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { PaymentStatus } from "./paymentstatus";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
+
+export class PaymentAdjustmentRaw extends SpeakeasyBase {}
 
 export class PaymentAdjustment extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -22,7 +24,8 @@ export class PaymentAdjustment extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "raw" })
-    raw: Record<string, any>;
+    @Type(() => PaymentAdjustmentRaw)
+    raw: PaymentAdjustmentRaw;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

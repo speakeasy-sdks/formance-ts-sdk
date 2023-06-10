@@ -6,6 +6,11 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
+/**
+ * Filter transactions by metadata key value pairs. Nested objects can be used as seen in the example below.
+ */
+export class ListTransactionsMetadata extends SpeakeasyBase {}
+
 export class ListTransactionsRequest extends SpeakeasyBase {
     /**
      * Filter transactions with postings involving given account, either as source or destination (regular expression placed between ^ and $).
@@ -70,7 +75,7 @@ export class ListTransactionsRequest extends SpeakeasyBase {
      * Filter transactions by metadata key value pairs. Nested objects can be used as seen in the example below.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
-    metadata?: Record<string, any>;
+    metadata?: ListTransactionsMetadata;
 
     /**
      * The maximum number of results to return per page.

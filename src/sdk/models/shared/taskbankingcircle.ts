@@ -16,6 +16,8 @@ export class TaskBankingCircleDescriptor extends SpeakeasyBase {
     name?: string;
 }
 
+export class TaskBankingCircleState extends SpeakeasyBase {}
+
 export class TaskBankingCircle extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "connectorId" })
@@ -41,7 +43,8 @@ export class TaskBankingCircle extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    state: Record<string, any>;
+    @Type(() => TaskBankingCircleState)
+    state: TaskBankingCircleState;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

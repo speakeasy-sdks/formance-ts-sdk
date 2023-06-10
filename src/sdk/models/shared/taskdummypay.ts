@@ -20,6 +20,8 @@ export class TaskDummyPayDescriptor extends SpeakeasyBase {
     name?: string;
 }
 
+export class TaskDummyPayState extends SpeakeasyBase {}
+
 export class TaskDummyPay extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "connectorId" })
@@ -45,7 +47,8 @@ export class TaskDummyPay extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    state: Record<string, any>;
+    @Type(() => TaskDummyPayState)
+    state: TaskDummyPayState;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

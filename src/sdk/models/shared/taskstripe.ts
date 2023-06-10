@@ -20,6 +20,8 @@ export class TaskStripeDescriptor extends SpeakeasyBase {
     name: string;
 }
 
+export class TaskStripeState extends SpeakeasyBase {}
+
 export class TaskStripe extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "connectorId" })
@@ -45,7 +47,8 @@ export class TaskStripe extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    state: Record<string, any>;
+    @Type(() => TaskStripeState)
+    state: TaskStripeState;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

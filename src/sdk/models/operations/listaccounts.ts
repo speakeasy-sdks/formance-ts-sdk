@@ -21,6 +21,11 @@ export enum ListAccountsBalanceOperator {
     Ne = "ne",
 }
 
+/**
+ * Filter accounts by metadata key value pairs. Nested objects can be used as seen in the example below.
+ */
+export class ListAccountsMetadata extends SpeakeasyBase {}
+
 export class ListAccountsRequest extends SpeakeasyBase {
     /**
      * Filter accounts by address pattern (regular expression placed between ^ and $).
@@ -83,7 +88,7 @@ export class ListAccountsRequest extends SpeakeasyBase {
      * Filter accounts by metadata key value pairs. Nested objects can be used as seen in the example below.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
-    metadata?: Record<string, any>;
+    metadata?: ListAccountsMetadata;
 
     /**
      * The maximum number of results to return per page.

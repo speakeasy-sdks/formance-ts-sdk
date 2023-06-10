@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ConnectorsStripeTransferResponse extends SpeakeasyBase {
@@ -19,5 +20,5 @@ export class ConnectorsStripeTransferResponse extends SpeakeasyBase {
      * OK
      */
     @SpeakeasyMetadata()
-    stripeTransferResponse?: Record<string, any>;
+    stripeTransferResponse?: shared.StripeTransferResponse;
 }

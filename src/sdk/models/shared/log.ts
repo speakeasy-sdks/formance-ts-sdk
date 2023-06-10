@@ -3,7 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
+
+export class LogData extends SpeakeasyBase {}
 
 export enum LogType {
     NewTransaction = "NEW_TRANSACTION",
@@ -13,7 +15,8 @@ export enum LogType {
 export class Log extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
-    data: Record<string, any>;
+    @Type(() => LogData)
+    data: LogData;
 
     @SpeakeasyMetadata()
     @Expose({ name: "date" })

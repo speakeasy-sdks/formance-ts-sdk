@@ -20,6 +20,8 @@ export class TaskWiseDescriptor extends SpeakeasyBase {
     profileID?: number;
 }
 
+export class TaskWiseState extends SpeakeasyBase {}
+
 export class TaskWise extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "connectorId" })
@@ -45,7 +47,8 @@ export class TaskWise extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    state: Record<string, any>;
+    @Type(() => TaskWiseState)
+    state: TaskWiseState;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

@@ -3,7 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+export class ScriptVars extends SpeakeasyBase {}
 
 export class Script extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -23,5 +25,6 @@ export class Script extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "vars" })
-    vars?: Record<string, any>;
+    @Type(() => ScriptVars)
+    vars?: ScriptVars;
 }

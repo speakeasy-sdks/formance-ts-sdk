@@ -6,6 +6,11 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
+/**
+ * Filter holds by metadata key value pairs. Nested objects can be used as seen in the example below.
+ */
+export class GetHoldsMetadata extends SpeakeasyBase {}
+
 export class GetHoldsRequest extends SpeakeasyBase {
     /**
      * Parameter used in pagination requests.
@@ -23,7 +28,7 @@ export class GetHoldsRequest extends SpeakeasyBase {
      * Filter holds by metadata key value pairs. Nested objects can be used as seen in the example below.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
-    metadata?: Record<string, any>;
+    metadata?: GetHoldsMetadata;
 
     /**
      * The maximum number of results to return per page

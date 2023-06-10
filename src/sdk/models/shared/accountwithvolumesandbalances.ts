@@ -3,7 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+export class AccountWithVolumesAndBalancesMetadata extends SpeakeasyBase {}
 
 export class AccountWithVolumesAndBalances extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -16,7 +18,8 @@ export class AccountWithVolumesAndBalances extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    metadata?: Record<string, any>;
+    @Type(() => AccountWithVolumesAndBalancesMetadata)
+    metadata?: AccountWithVolumesAndBalancesMetadata;
 
     @SpeakeasyMetadata()
     @Expose({ name: "type" })

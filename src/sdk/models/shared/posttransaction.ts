@@ -6,6 +6,8 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Posting } from "./posting";
 import { Expose, Transform, Type } from "class-transformer";
 
+export class PostTransactionScriptVars extends SpeakeasyBase {}
+
 export class PostTransactionScript extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "plain" })
@@ -13,7 +15,8 @@ export class PostTransactionScript extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "vars" })
-    vars?: Record<string, any>;
+    @Type(() => PostTransactionScriptVars)
+    vars?: PostTransactionScriptVars;
 }
 
 /**

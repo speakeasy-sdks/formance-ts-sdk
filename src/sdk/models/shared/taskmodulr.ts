@@ -20,6 +20,8 @@ export class TaskModulrDescriptor extends SpeakeasyBase {
     name?: string;
 }
 
+export class TaskModulrState extends SpeakeasyBase {}
+
 export class TaskModulr extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "connectorId" })
@@ -45,7 +47,8 @@ export class TaskModulr extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    state: Record<string, any>;
+    @Type(() => TaskModulrState)
+    state: TaskModulrState;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })
