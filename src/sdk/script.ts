@@ -68,6 +68,7 @@ export class Script {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -83,10 +84,14 @@ export class Script {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.scriptResponse = utils.objectToClass(httpRes?.data, shared.ScriptResponse);
+                    res.scriptResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ScriptResponse
+                    );
                 }
                 break;
         }

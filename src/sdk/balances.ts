@@ -50,6 +50,7 @@ export class Balances {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -64,18 +65,22 @@ export class Balances {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.balancesCursorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.BalancesCursorResponse
                     );
                 }
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.errorResponse = utils.objectToClass(httpRes?.data, shared.ErrorResponse);
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
+                    );
                 }
                 break;
         }
@@ -119,6 +124,7 @@ export class Balances {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -134,18 +140,22 @@ export class Balances {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.aggregateBalancesResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.AggregateBalancesResponse
                     );
                 }
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.errorResponse = utils.objectToClass(httpRes?.data, shared.ErrorResponse);
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
+                    );
                 }
                 break;
         }

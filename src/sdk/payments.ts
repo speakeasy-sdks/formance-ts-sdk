@@ -64,6 +64,7 @@ export class Payments {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -80,11 +81,12 @@ export class Payments {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.stripeTransferResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.StripeTransferResponse
                     );
                 }
@@ -132,6 +134,7 @@ export class Payments {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -146,10 +149,14 @@ export class Payments {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.taskResponse = utils.objectToClass(httpRes?.data, shared.TaskResponse);
+                    res.taskResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.TaskResponse
+                    );
                 }
                 break;
         }
@@ -188,6 +195,7 @@ export class Payments {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -202,11 +210,12 @@ export class Payments {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.paymentResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.PaymentResponse
                     );
                 }
@@ -262,6 +271,7 @@ export class Payments {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -314,6 +324,7 @@ export class Payments {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -328,11 +339,12 @@ export class Payments {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.connectorsResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ConnectorsResponse
                     );
                 }
@@ -371,6 +383,7 @@ export class Payments {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -386,11 +399,12 @@ export class Payments {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.connectorsConfigsResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ConnectorsConfigsResponse
                     );
                 }
@@ -439,6 +453,7 @@ export class Payments {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -454,10 +469,14 @@ export class Payments {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.tasksCursor = utils.objectToClass(httpRes?.data, shared.TasksCursor);
+                    res.tasksCursor = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.TasksCursor
+                    );
                 }
                 break;
         }
@@ -497,6 +516,7 @@ export class Payments {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -511,10 +531,14 @@ export class Payments {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.paymentsCursor = utils.objectToClass(httpRes?.data, shared.PaymentsCursor);
+                    res.paymentsCursor = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.PaymentsCursor
+                    );
                 }
                 break;
         }
@@ -554,6 +578,7 @@ export class Payments {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -569,10 +594,14 @@ export class Payments {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.accountsCursor = utils.objectToClass(httpRes?.data, shared.AccountsCursor);
+                    res.accountsCursor = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.AccountsCursor
+                    );
                 }
                 break;
         }
@@ -618,6 +647,7 @@ export class Payments {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -633,11 +663,12 @@ export class Payments {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.connectorConfigResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ConnectorConfigResponse
                     );
                 }
@@ -687,6 +718,7 @@ export class Payments {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -743,6 +775,7 @@ export class Payments {
             url: url,
             method: "delete",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 

@@ -53,6 +53,7 @@ export class Logs {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -67,18 +68,22 @@ export class Logs {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.logsCursorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.LogsCursorResponse
                     );
                 }
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.errorResponse = utils.objectToClass(httpRes?.data, shared.ErrorResponse);
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
+                    );
                 }
                 break;
         }

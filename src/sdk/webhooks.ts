@@ -52,6 +52,7 @@ export class Webhooks {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -66,10 +67,14 @@ export class Webhooks {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.configResponse = utils.objectToClass(httpRes?.data, shared.ConfigResponse);
+                    res.configResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ConfigResponse
+                    );
                 }
                 break;
             case httpRes?.status == 304:
@@ -135,6 +140,7 @@ export class Webhooks {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -151,10 +157,14 @@ export class Webhooks {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.configResponse = utils.objectToClass(httpRes?.data, shared.ConfigResponse);
+                    res.configResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ConfigResponse
+                    );
                 }
                 break;
         }
@@ -200,6 +210,7 @@ export class Webhooks {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -214,10 +225,14 @@ export class Webhooks {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.configResponse = utils.objectToClass(httpRes?.data, shared.ConfigResponse);
+                    res.configResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ConfigResponse
+                    );
                 }
                 break;
             case httpRes?.status == 304:
@@ -261,6 +276,7 @@ export class Webhooks {
             url: url,
             method: "delete",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -318,6 +334,7 @@ export class Webhooks {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -332,11 +349,12 @@ export class Webhooks {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.configsResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ConfigsResponse
                     );
                 }
@@ -401,6 +419,7 @@ export class Webhooks {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -416,15 +435,19 @@ export class Webhooks {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.configResponse = utils.objectToClass(httpRes?.data, shared.ConfigResponse);
+                    res.configResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ConfigResponse
+                    );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.insertConfig400TextPlainString = JSON.stringify(httpRes?.data);
+                    res.insertConfig400TextPlainString = decodedRes;
                 }
                 break;
         }
@@ -466,6 +489,7 @@ export class Webhooks {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -480,11 +504,12 @@ export class Webhooks {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.attemptResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.AttemptResponse
                     );
                 }

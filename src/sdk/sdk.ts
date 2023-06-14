@@ -75,8 +75,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.0-rc.5";
-    sdkVersion = "0.27.1";
-    genVersion = "2.39.2";
+    sdkVersion = "0.28.0";
+    genVersion = "2.40.1";
 
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -249,6 +249,7 @@ export class Formance {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -263,10 +264,11 @@ export class Formance {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.serverInfo = utils.objectToClass(httpRes?.data, shared.ServerInfo);
+                    res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
                 }
                 break;
         }
@@ -300,6 +302,7 @@ export class Formance {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -315,10 +318,11 @@ export class Formance {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.serverInfo = utils.objectToClass(httpRes?.data, shared.ServerInfo);
+                    res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
                 }
                 break;
         }
@@ -352,6 +356,7 @@ export class Formance {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -367,10 +372,11 @@ export class Formance {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.serverInfo = utils.objectToClass(httpRes?.data, shared.ServerInfo);
+                    res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
                 }
                 break;
         }

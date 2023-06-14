@@ -64,6 +64,7 @@ export class Search {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -79,10 +80,11 @@ export class Search {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.response = utils.objectToClass(httpRes?.data, shared.Response);
+                    res.response = utils.objectToClass(JSON.parse(decodedRes), shared.Response);
                 }
                 break;
             default:

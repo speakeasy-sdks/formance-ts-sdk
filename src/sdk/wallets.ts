@@ -63,6 +63,7 @@ export class Wallets {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -78,13 +79,14 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -139,6 +141,7 @@ export class Wallets {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -154,11 +157,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.createBalanceResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.CreateBalanceResponse
                     );
                 }
@@ -166,7 +170,7 @@ export class Wallets {
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -217,6 +221,7 @@ export class Wallets {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -232,11 +237,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.createWalletResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.CreateWalletResponse
                     );
                 }
@@ -244,7 +250,7 @@ export class Wallets {
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -299,6 +305,7 @@ export class Wallets {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -314,13 +321,14 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -375,6 +383,7 @@ export class Wallets {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -390,11 +399,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.debitWalletResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.DebitWalletResponse
                     );
                 }
@@ -404,7 +414,7 @@ export class Wallets {
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -449,6 +459,7 @@ export class Wallets {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -463,11 +474,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.getBalanceResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.GetBalanceResponse
                     );
                 }
@@ -475,7 +487,7 @@ export class Wallets {
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -516,6 +528,7 @@ export class Wallets {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -530,11 +543,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.getHoldResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.GetHoldResponse
                     );
                 }
@@ -542,7 +556,7 @@ export class Wallets {
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -584,6 +598,7 @@ export class Wallets {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -598,11 +613,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.getHoldsResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.GetHoldsResponse
                     );
                 }
@@ -610,7 +626,7 @@ export class Wallets {
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -649,6 +665,7 @@ export class Wallets {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -663,11 +680,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.getTransactionsResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.GetTransactionsResponse
                     );
                 }
@@ -675,7 +693,7 @@ export class Wallets {
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -716,6 +734,7 @@ export class Wallets {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -730,11 +749,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.getWalletResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.GetWalletResponse
                     );
                 }
@@ -744,7 +764,7 @@ export class Wallets {
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -785,6 +805,7 @@ export class Wallets {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -799,11 +820,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.listBalancesResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ListBalancesResponse
                     );
                 }
@@ -845,6 +867,7 @@ export class Wallets {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -859,11 +882,12 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.listWalletsResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ListWalletsResponse
                     );
                 }
@@ -914,6 +938,7 @@ export class Wallets {
             url: url,
             method: "patch",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -929,13 +954,14 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -976,6 +1002,7 @@ export class Wallets {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -990,13 +1017,14 @@ export class Wallets {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
@@ -1032,6 +1060,7 @@ export class Wallets {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -1047,16 +1076,17 @@ export class Wallets {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.serverInfo = utils.objectToClass(httpRes?.data, shared.ServerInfo);
+                    res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
                 }
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.walletsErrorResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
                 }
