@@ -66,10 +66,10 @@ export class Payment extends SpeakeasyBase {
     @Expose({ name: "initialAmount" })
     initialAmount: number;
 
-    @SpeakeasyMetadata({ elemType: PaymentMetadata })
+    @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
     @Type(() => PaymentMetadata)
-    metadata: PaymentMetadata[];
+    metadata: PaymentMetadata;
 
     @SpeakeasyMetadata()
     @Expose({ name: "provider" })

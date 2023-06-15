@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class DeleteConfigRequest extends SpeakeasyBase {
@@ -16,6 +17,12 @@ export class DeleteConfigRequest extends SpeakeasyBase {
 export class DeleteConfigResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
+
+    /**
+     * Error
+     */
+    @SpeakeasyMetadata()
+    errorResponse?: shared.ErrorResponse;
 
     @SpeakeasyMetadata()
     statusCode: number;

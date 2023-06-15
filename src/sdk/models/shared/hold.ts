@@ -26,7 +26,7 @@ export class Hold extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    metadata: Record<string, any>;
+    metadata: Record<string, string>;
 
     /**
      * The ID of the wallet the hold is associated with.

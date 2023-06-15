@@ -8,9 +8,6 @@ import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-/**
- * Everything related to Wallets
- */
 export class Wallets {
     private sdkConfiguration: SDKConfiguration;
 
@@ -401,7 +398,7 @@ export class Wallets {
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
-            case httpRes?.status == 200:
+            case httpRes?.status == 201:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.debitWalletResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
@@ -756,6 +753,77 @@ export class Wallets {
                     res.getWalletResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.GetWalletResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+            default:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.walletsErrorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.WalletsErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Get wallet summary
+     */
+    async getWalletSummary(
+        req: operations.GetWalletSummaryRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetWalletSummaryResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetWalletSummaryRequest(req);
+        }
+
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = utils.generateURL(baseURL, "/api/wallets/wallets/{id}/summary", req);
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetWalletSummaryResponse = new operations.GetWalletSummaryResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getWalletSummaryResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.GetWalletSummaryResponse
                     );
                 }
                 break;

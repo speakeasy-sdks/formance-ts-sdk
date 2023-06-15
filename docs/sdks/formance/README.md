@@ -17,19 +17,17 @@ and standard method from web, mobile and desktop applications.
 
 ### Available Operations
 
-* [getServerInfo](#getserverinfo) - Get server info
-* [paymentsgetServerInfo](#paymentsgetserverinfo) - Get server info
-* [searchgetServerInfo](#searchgetserverinfo) - Get server info
+* [getVersions](#getversions) - Show stack version information
 
-## getServerInfo
+## getVersions
 
-Get server info
+Show stack version information
 
 ### Example Usage
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetVersionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -37,7 +35,7 @@ const sdk = new Formance({
   },
 });
 
-sdk.formance.getServerInfo().then((res: GetServerInfoResponse) => {
+sdk.formance.getVersions().then((res: GetVersionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -53,75 +51,5 @@ sdk.formance.getServerInfo().then((res: GetServerInfoResponse) => {
 
 ### Response
 
-**Promise<[operations.GetServerInfoResponse](../../models/operations/getserverinforesponse.md)>**
-
-
-## paymentsgetServerInfo
-
-Get server info
-
-### Example Usage
-
-```typescript
-import { Formance } from "@speakeasy-sdks/formance";
-import { PaymentsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.formance.paymentsgetServerInfo().then((res: PaymentsgetServerInfoResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.PaymentsgetServerInfoResponse](../../models/operations/paymentsgetserverinforesponse.md)>**
-
-
-## searchgetServerInfo
-
-Get server info
-
-### Example Usage
-
-```typescript
-import { Formance } from "@speakeasy-sdks/formance";
-import { SearchgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.formance.searchgetServerInfo().then((res: SearchgetServerInfoResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.SearchgetServerInfoResponse](../../models/operations/searchgetserverinforesponse.md)>**
+**Promise<[operations.GetVersionsResponse](../../models/operations/getversionsresponse.md)>**
 

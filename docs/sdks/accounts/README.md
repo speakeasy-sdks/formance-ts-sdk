@@ -1,9 +1,5 @@
 # accounts
 
-## Overview
-
-Everything related to Accounts
-
 ### Available Operations
 
 * [addMetadataToAccount](#addmetadatatoaccount) - Add metadata to an account
@@ -29,12 +25,15 @@ const sdk = new Formance({
 });
 
 sdk.accounts.addMetadataToAccount({
+  idempotencyKey: "corrupti",
   requestBody: {
-    "provident": "distinctio",
-    "quibusdam": "unde",
-    "nulla": "corrupti",
+    "distinctio": "quibusdam",
+    "unde": "nulla",
+    "corrupti": "illum",
   },
   address: "users:001",
+  async: true,
+  dryRun: true,
   ledger: "ledger001",
 }).then((res: AddMetadataToAccountResponse) => {
   if (res.statusCode == 200) {
@@ -156,16 +155,15 @@ const sdk = new Formance({
 
 sdk.accounts.listAccounts({
   address: "users:.+",
-  after: "users:003",
   balance: 2400,
   balanceOperator: ListAccountsBalanceOperator.Gte,
-  balanceOperatorDeprecated: ListAccountsBalanceOperator.Gte,
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
-  metadata: {},
-  pageSize: 847252,
-  pageSizeDeprecated: 423655,
-  paginationToken: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+  metadata: {
+    "error": "deserunt",
+    "suscipit": "iure",
+  },
+  pageSize: 297534,
 }).then((res: ListAccountsResponse) => {
   if (res.statusCode == 200) {
     // handle response

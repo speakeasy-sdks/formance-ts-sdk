@@ -30,15 +30,15 @@ export class GetTransactionResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     errorResponse?: shared.ErrorResponse;
 
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    getTransactionResponse?: shared.GetTransactionResponse;
+
     @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    transactionResponse?: shared.TransactionResponse;
 }

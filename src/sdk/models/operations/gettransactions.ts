@@ -28,8 +28,8 @@ export class GetTransactionsRequest extends SpeakeasyBase {
     /**
      * A wallet ID to filter on
      */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=wallet_id" })
-    walletId?: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=walletID" })
+    walletID?: string;
 }
 
 export class GetTransactionsResponse extends SpeakeasyBase {

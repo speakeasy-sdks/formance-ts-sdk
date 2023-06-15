@@ -29,7 +29,7 @@ export class DebitWalletRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    metadata?: Record<string, any>;
+    metadata: Record<string, string>;
 
     /**
      * Set to true to create a pending hold. If false, the wallet will be debited immediately.

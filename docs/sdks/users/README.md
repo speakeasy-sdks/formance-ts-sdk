@@ -1,9 +1,5 @@
 # users
 
-## Overview
-
-Everything related to Users
-
 ### Available Operations
 
 * [listUsers](#listusers) - List users
@@ -61,7 +57,7 @@ const sdk = new Formance({
 });
 
 sdk.users.readUser({
-  userId: "rerum",
+  userId: "corporis",
 }).then((res: ReadUserResponse) => {
   if (res.statusCode == 200) {
     // handle response

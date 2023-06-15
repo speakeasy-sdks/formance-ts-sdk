@@ -32,7 +32,7 @@ yarn add @speakeasy-sdks/formance
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetVersionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -40,7 +40,7 @@ const sdk = new Formance({
   },
 });
 
-sdk.getServerInfo().then((res: GetServerInfoResponse) => {
+sdk.getVersions().then((res: GetVersionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -53,9 +53,7 @@ sdk.getServerInfo().then((res: GetServerInfoResponse) => {
 
 ### [Formance SDK](docs/sdks/formance/README.md)
 
-* [getServerInfo](docs/sdks/formance/README.md#getserverinfo) - Get server info
-* [paymentsgetServerInfo](docs/sdks/formance/README.md#paymentsgetserverinfo) - Get server info
-* [searchgetServerInfo](docs/sdks/formance/README.md#searchgetserverinfo) - Get server info
+* [getVersions](docs/sdks/formance/README.md#getversions) - Show stack version information
 
 ### [accounts](docs/sdks/accounts/README.md)
 
@@ -63,6 +61,28 @@ sdk.getServerInfo().then((res: GetServerInfoResponse) => {
 * [countAccounts](docs/sdks/accounts/README.md#countaccounts) - Count the accounts from a ledger
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get account by its address
 * [listAccounts](docs/sdks/accounts/README.md#listaccounts) - List accounts from a ledger
+
+### [auth](docs/sdks/auth/README.md)
+
+* [addScopeToClient](docs/sdks/auth/README.md#addscopetoclient) - Add scope to client
+* [addTransientScope](docs/sdks/auth/README.md#addtransientscope) - Add a transient scope to a scope
+* [createClient](docs/sdks/auth/README.md#createclient) - Create client
+* [createScope](docs/sdks/auth/README.md#createscope) - Create scope
+* [createSecret](docs/sdks/auth/README.md#createsecret) - Add a secret to a client
+* [deleteClient](docs/sdks/auth/README.md#deleteclient) - Delete client
+* [deleteScope](docs/sdks/auth/README.md#deletescope) - Delete scope
+* [deleteScopeFromClient](docs/sdks/auth/README.md#deletescopefromclient) - Delete scope from client
+* [deleteSecret](docs/sdks/auth/README.md#deletesecret) - Delete a secret from a client
+* [deleteTransientScope](docs/sdks/auth/README.md#deletetransientscope) - Delete a transient scope from a scope
+* [getServerInfo](docs/sdks/auth/README.md#getserverinfo) - Get server info
+* [listClients](docs/sdks/auth/README.md#listclients) - List clients
+* [listScopes](docs/sdks/auth/README.md#listscopes) - List scopes
+* [listUsers](docs/sdks/auth/README.md#listusers) - List users
+* [readClient](docs/sdks/auth/README.md#readclient) - Read client
+* [readScope](docs/sdks/auth/README.md#readscope) - Read scope
+* [readUser](docs/sdks/auth/README.md#readuser) - Read user
+* [updateClient](docs/sdks/auth/README.md#updateclient) - Update client
+* [updateScope](docs/sdks/auth/README.md#updatescope) - Update scope
 
 ### [balances](docs/sdks/balances/README.md)
 
@@ -83,41 +103,59 @@ sdk.getServerInfo().then((res: GetServerInfoResponse) => {
 
 ### [ledger](docs/sdks/ledger/README.md)
 
+* [addMetadataOnTransaction](docs/sdks/ledger/README.md#addmetadataontransaction) - Set the metadata of a transaction by its ID
+* [addMetadataToAccount](docs/sdks/ledger/README.md#addmetadatatoaccount) - Add metadata to an account
+* [countAccounts](docs/sdks/ledger/README.md#countaccounts) - Count the accounts from a ledger
+* [countTransactions](docs/sdks/ledger/README.md#counttransactions) - Count the transactions from a ledger
+* [createTransaction](docs/sdks/ledger/README.md#createtransaction) - Create a new transaction to a ledger
+* [getAccount](docs/sdks/ledger/README.md#getaccount) - Get account by its address
+* [getBalances](docs/sdks/ledger/README.md#getbalances) - Get the balances from a ledger's account
+* [getBalancesAggregated](docs/sdks/ledger/README.md#getbalancesaggregated) - Get the aggregated balances from selected accounts
+* [getInfo](docs/sdks/ledger/README.md#getinfo) - Show server information
 * [getLedgerInfo](docs/sdks/ledger/README.md#getledgerinfo) - Get information about a ledger
+* [getTransaction](docs/sdks/ledger/README.md#gettransaction) - Get transaction from a ledger by its ID
+* [listAccounts](docs/sdks/ledger/README.md#listaccounts) - List accounts from a ledger
+* [listLogs](docs/sdks/ledger/README.md#listlogs) - List the logs from a ledger
+* [listTransactions](docs/sdks/ledger/README.md#listtransactions) - List transactions from a ledger
+* [readStats](docs/sdks/ledger/README.md#readstats) - Get statistics from a ledger
+* [revertTransaction](docs/sdks/ledger/README.md#reverttransaction) - Revert a ledger transaction by its ID
 
 ### [logs](docs/sdks/logs/README.md)
 
 * [listLogs](docs/sdks/logs/README.md#listlogs) - List the logs from a ledger
 
-### [mapping](docs/sdks/mapping/README.md)
-
-* [getMapping](docs/sdks/mapping/README.md#getmapping) - Get the mapping of a ledger
-* [updateMapping](docs/sdks/mapping/README.md#updatemapping) - Update the mapping of a ledger
-
 ### [orchestration](docs/sdks/orchestration/README.md)
 
+* [cancelEvent](docs/sdks/orchestration/README.md#cancelevent) - Cancel a running workflow
 * [createWorkflow](docs/sdks/orchestration/README.md#createworkflow) - Create workflow
-* [getFlow](docs/sdks/orchestration/README.md#getflow) - Get a flow by id
-* [getWorkflowOccurrence](docs/sdks/orchestration/README.md#getworkflowoccurrence) - Get a workflow occurrence by id
-* [listFlows](docs/sdks/orchestration/README.md#listflows) - List registered flows
-* [listRuns](docs/sdks/orchestration/README.md#listruns) - List occurrences of a workflow
+* [getInstance](docs/sdks/orchestration/README.md#getinstance) - Get a workflow instance by id
+* [getInstanceHistory](docs/sdks/orchestration/README.md#getinstancehistory) - Get a workflow instance history by id
+* [getInstanceStageHistory](docs/sdks/orchestration/README.md#getinstancestagehistory) - Get a workflow instance stage history
+* [getWorkflow](docs/sdks/orchestration/README.md#getworkflow) - Get a flow by id
+* [listInstances](docs/sdks/orchestration/README.md#listinstances) - List instances of a workflow
+* [listWorkflows](docs/sdks/orchestration/README.md#listworkflows) - List registered workflows
 * [orchestrationgetServerInfo](docs/sdks/orchestration/README.md#orchestrationgetserverinfo) - Get server info
 * [runWorkflow](docs/sdks/orchestration/README.md#runworkflow) - Run workflow
+* [sendEvent](docs/sdks/orchestration/README.md#sendevent) - Send an event to a running workflow
 
 ### [payments](docs/sdks/payments/README.md)
 
 * [connectorsStripeTransfer](docs/sdks/payments/README.md#connectorsstripetransfer) - Transfer funds between Stripe accounts
+* [connectorsTransfer](docs/sdks/payments/README.md#connectorstransfer) - Transfer funds between Connector accounts
 * [getConnectorTask](docs/sdks/payments/README.md#getconnectortask) - Read a specific task of the connector
 * [getPayment](docs/sdks/payments/README.md#getpayment) - Get a payment
 * [installConnector](docs/sdks/payments/README.md#installconnector) - Install a connector
 * [listAllConnectors](docs/sdks/payments/README.md#listallconnectors) - List all installed connectors
 * [listConfigsAvailableConnectors](docs/sdks/payments/README.md#listconfigsavailableconnectors) - List the configs of each available connector
 * [listConnectorTasks](docs/sdks/payments/README.md#listconnectortasks) - List tasks from a connector
+* [listConnectorsTransfers](docs/sdks/payments/README.md#listconnectorstransfers) - List transfers and their statuses
 * [listPayments](docs/sdks/payments/README.md#listpayments) - List payments
+* [paymentsgetServerInfo](docs/sdks/payments/README.md#paymentsgetserverinfo) - Get server info
 * [paymentslistAccounts](docs/sdks/payments/README.md#paymentslistaccounts) - List accounts
 * [readConnectorConfig](docs/sdks/payments/README.md#readconnectorconfig) - Read the config of a connector
 * [resetConnector](docs/sdks/payments/README.md#resetconnector) - Reset a connector
 * [uninstallConnector](docs/sdks/payments/README.md#uninstallconnector) - Uninstall a connector
+* [updateMetadata](docs/sdks/payments/README.md#updatemetadata) - Update metadata
 
 ### [scopes](docs/sdks/scopes/README.md)
 
@@ -129,13 +167,10 @@ sdk.getServerInfo().then((res: GetServerInfoResponse) => {
 * [readScope](docs/sdks/scopes/README.md#readscope) - Read scope
 * [updateScope](docs/sdks/scopes/README.md#updatescope) - Update scope
 
-### [script](docs/sdks/script/README.md)
-
-* [~~runScript~~](docs/sdks/script/README.md#runscript) - Execute a Numscript :warning: **Deprecated**
-
 ### [search](docs/sdks/search/README.md)
 
 * [search](docs/sdks/search/README.md#search) - Search
+* [searchgetServerInfo](docs/sdks/search/README.md#searchgetserverinfo) - Get server info
 
 ### [server](docs/sdks/server/README.md)
 
@@ -147,7 +182,6 @@ sdk.getServerInfo().then((res: GetServerInfoResponse) => {
 
 ### [transactions](docs/sdks/transactions/README.md)
 
-* [createTransactions](docs/sdks/transactions/README.md#createtransactions) - Create a new batch of transactions to a ledger
 * [addMetadataOnTransaction](docs/sdks/transactions/README.md#addmetadataontransaction) - Set the metadata of a transaction by its ID
 * [countTransactions](docs/sdks/transactions/README.md#counttransactions) - Count the transactions from a ledger
 * [createTransaction](docs/sdks/transactions/README.md#createtransaction) - Create a new transaction to a ledger
@@ -172,6 +206,7 @@ sdk.getServerInfo().then((res: GetServerInfoResponse) => {
 * [getHolds](docs/sdks/wallets/README.md#getholds) - Get all holds for a wallet
 * [getTransactions](docs/sdks/wallets/README.md#gettransactions)
 * [getWallet](docs/sdks/wallets/README.md#getwallet) - Get a wallet
+* [getWalletSummary](docs/sdks/wallets/README.md#getwalletsummary) - Get wallet summary
 * [listBalances](docs/sdks/wallets/README.md#listbalances) - List balances of a wallet
 * [listWallets](docs/sdks/wallets/README.md#listwallets) - List all wallets
 * [updateWallet](docs/sdks/wallets/README.md#updatewallet) - Update a wallet

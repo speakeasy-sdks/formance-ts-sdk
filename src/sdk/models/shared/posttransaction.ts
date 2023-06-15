@@ -30,7 +30,7 @@ export class PostTransactionScript extends SpeakeasyBase {
 export class PostTransaction extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    metadata?: Record<string, any>;
+    metadata: Record<string, string>;
 
     @SpeakeasyMetadata({ elemType: Posting })
     @Expose({ name: "postings" })

@@ -1,9 +1,5 @@
 # wallets
 
-## Overview
-
-Everything related to Wallets
-
 ### Available Operations
 
 * [confirmHold](#confirmhold) - Confirm a hold
@@ -16,6 +12,7 @@ Everything related to Wallets
 * [getHolds](#getholds) - Get all holds for a wallet
 * [getTransactions](#gettransactions)
 * [getWallet](#getwallet) - Get a wallet
+* [getWalletSummary](#getwalletsummary) - Get wallet summary
 * [listBalances](#listbalances) - List balances of a wallet
 * [listWallets](#listwallets) - List all wallets
 * [updateWallet](#updatewallet) - Update a wallet
@@ -44,7 +41,7 @@ sdk.wallets.confirmHold({
     amount: 100,
     final: true,
   },
-  holdId: "dicta",
+  holdId: "hic",
 }).then((res: ConfirmHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -84,9 +81,11 @@ const sdk = new Formance({
 
 sdk.wallets.createBalance({
   createBalanceRequest: {
-    name: "Blanca Schulist",
+    expiresAt: new Date("2021-07-02T12:00:47.197Z"),
+    name: "Beatrice Lebsack II",
+    priority: 199996,
   },
-  id: "ae395efb-9ba8-48f3-a669-97074ba4469b",
+  id: "202c73d5-fe9b-490c-a890-9b3fe49a8d9c",
 }).then((res: CreateBalanceResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -126,10 +125,11 @@ const sdk = new Formance({
 
 sdk.wallets.createWallet({
   metadata: {
-    "vero": "aspernatur",
-    "architecto": "magnam",
+    "delectus": "quaerat",
+    "quos": "aliquid",
+    "dolorem": "dolorem",
   },
-  name: "Miriam Hermann",
+  name: "Norma Erdman",
 }).then((res: CreateWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -170,41 +170,39 @@ const sdk = new Formance({
 sdk.wallets.creditWallet({
   creditWalletRequest: {
     amount: {
-      amount: 574325,
-      asset: "accusantium",
+      amount: 739551,
+      asset: "voluptate",
     },
-    balance: "mollitia",
+    balance: "dignissimos",
     metadata: {
-      "mollitia": "ad",
-      "eum": "dolor",
-      "necessitatibus": "odit",
-      "nemo": "quasi",
+      "amet": "dolorum",
+      "numquam": "veritatis",
+      "ipsa": "ipsa",
+      "iure": "odio",
     },
-    reference: "iure",
+    reference: "quaerat",
     sources: [
       {
-        balance: "eius",
-        identifier: "maxime",
-        type: "deleniti",
+        balance: "voluptatibus",
+        identifier: "voluptas",
+        type: "natus",
       },
       {
-        balance: "in",
-        identifier: "architecto",
-        type: "architecto",
+        identifier: "atque",
+        type: "sit",
       },
       {
-        balance: "ullam",
-        identifier: "expedita",
-        type: "nihil",
+        balance: "ab",
+        identifier: "soluta",
+        type: "dolorum",
       },
       {
-        balance: "quibusdam",
-        identifier: "sed",
-        type: "saepe",
+        identifier: "voluptate",
+        type: "dolorum",
       },
     ],
   },
-  id: "d028921c-ddc6-4926-81fb-576b0d5f0d30",
+  id: "89ebf737-ae42-403c-a5e6-a95d8a0d446c",
 }).then((res: CreditWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -245,26 +243,25 @@ const sdk = new Formance({
 sdk.wallets.debitWallet({
   debitWalletRequest: {
     amount: {
-      amount: 764912,
-      asset: "corporis",
+      amount: 885338,
+      asset: "qui",
     },
     balances: [
-      "libero",
-      "nobis",
-      "dolores",
-      "quis",
+      "a",
+      "esse",
+      "harum",
     ],
-    description: "totam",
+    description: "iusto",
     destination: {
-      identifier: "eaque",
-      type: "quis",
+      identifier: "quisquam",
+      type: "tenetur",
     },
     metadata: {
-      "eos": "perferendis",
+      "tempore": "accusamus",
     },
     pending: false,
   },
-  id: "2c73d5fe-9b90-4c28-909b-3fe49a8d9cbf",
+  id: "453f870b-326b-45a7-b429-cdb1a8422bb6",
 }).then((res: DebitWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -303,8 +300,8 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getBalance({
-  balanceName: "quaerat",
-  id: "8633323f-9b77-4f3a-8100-674ebf69280d",
+  balanceName: "quam",
+  id: "9d232271-5bf0-4cbb-9e31-b8b90f3443a1",
 }).then((res: GetBalanceResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -343,7 +340,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getHold({
-  holdID: "ab",
+  holdID: "quae",
 }).then((res: GetHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -383,9 +380,11 @@ const sdk = new Formance({
 
 sdk.wallets.getHolds({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  metadata: {},
-  pageSize: 743835,
-  walletID: "dolorum",
+  metadata: {
+    "quas": "itaque",
+  },
+  pageSize: 9240,
+  walletID: "est",
 }).then((res: GetHoldsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -423,8 +422,8 @@ const sdk = new Formance({
 
 sdk.wallets.getTransactions({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 478596,
-  walletId: "voluptate",
+  pageSize: 833038,
+  walletID: "porro",
 }).then((res: GetTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -463,7 +462,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getWallet({
-  id: "a89ebf73-7ae4-4203-8e5e-6a95d8a0d446",
+  id: "f4b92187-9fce-4953-b73e-f7fbc7abd74d",
 }).then((res: GetWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -484,6 +483,45 @@ sdk.wallets.getWallet({
 **Promise<[operations.GetWalletResponse](../../models/operations/getwalletresponse.md)>**
 
 
+## getWalletSummary
+
+Get wallet summary
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { GetWalletSummaryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.wallets.getWalletSummary({
+  id: "d39c0f5d-2cff-47c7-8a45-626d436813f1",
+}).then((res: GetWalletSummaryResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.GetWalletSummaryRequest](../../models/operations/getwalletsummaryrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+
+
+### Response
+
+**Promise<[operations.GetWalletSummaryResponse](../../models/operations/getwalletsummaryresponse.md)>**
+
+
 ## listBalances
 
 List balances of a wallet
@@ -501,7 +539,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.listBalances({
-  id: "ce2af7a7-3cf3-4be4-93f8-70b326b5a734",
+  id: "6d9f5fce-6c55-4614-ac3e-250fb008c42e",
 }).then((res: ListBalancesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -540,9 +578,11 @@ const sdk = new Formance({
 
 sdk.wallets.listWallets({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  metadata: {},
-  name: "Shelly Schoen",
-  pageSize: 117531,
+  metadata: {
+    "non": "et",
+  },
+  name: "Neal Schroeder",
+  pageSize: 420539,
 }).then((res: ListWalletsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -583,12 +623,13 @@ const sdk = new Formance({
 sdk.wallets.updateWallet({
   requestBody: {
     metadata: {
-      "totam": "incidunt",
-      "aspernatur": "dolores",
-      "distinctio": "facilis",
+      "quas": "assumenda",
+      "nulla": "voluptas",
+      "libero": "quasi",
+      "tempora": "numquam",
     },
   },
-  id: "679d2322-715b-4f0c-bb1e-31b8b90f3443",
+  id: "29074747-78a7-4bd4-a6d2-8c10ab3cdca4",
 }).then((res: UpdateWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -627,7 +668,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.voidHold({
-  holdId: "dolorum",
+  holdId: "eos",
 }).then((res: VoidHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -21,23 +21,12 @@ export enum ListAccountsBalanceOperator {
     Ne = "ne",
 }
 
-/**
- * Filter accounts by metadata key value pairs. Nested objects can be used as seen in the example below.
- */
-export class ListAccountsMetadata extends SpeakeasyBase {}
-
 export class ListAccountsRequest extends SpeakeasyBase {
     /**
      * Filter accounts by address pattern (regular expression placed between ^ and $).
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=address" })
     address?: string;
-
-    /**
-     * Pagination cursor, will return accounts after given address, in descending order.
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
-    after?: string;
 
     /**
      * Filter accounts by their balance (default operator is gte)
@@ -53,18 +42,6 @@ export class ListAccountsRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=balanceOperator" })
     balanceOperator?: ListAccountsBalanceOperator;
-
-    /**
-     * Operator used for the filtering of balances can be greater than/equal, less than/equal, greater than, less than, equal or not.
-     *
-     * @remarks
-     * Deprecated, please use `balanceOperator` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=balance_operator" })
-    balanceOperatorDeprecated?: ListAccountsBalanceOperator;
 
     /**
      * Parameter used in pagination requests. Maximum page size is set to 15.
@@ -88,7 +65,7 @@ export class ListAccountsRequest extends SpeakeasyBase {
      * Filter accounts by metadata key value pairs. Nested objects can be used as seen in the example below.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
-    metadata?: ListAccountsMetadata;
+    metadata?: Record<string, string>;
 
     /**
      * The maximum number of results to return per page.
@@ -98,33 +75,6 @@ export class ListAccountsRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pageSize" })
     pageSize?: number;
-
-    /**
-     * The maximum number of results to return per page.
-     *
-     * @remarks
-     * Deprecated, please use `pageSize` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page_size" })
-    pageSizeDeprecated?: number;
-
-    /**
-     * Parameter used in pagination requests. Maximum page size is set to 15.
-     *
-     * @remarks
-     * Set to the value of next for the next page of results.
-     * Set to the value of previous for the previous page of results.
-     * No other parameters can be set when this parameter is set.
-     * Deprecated, please use `cursor` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pagination_token" })
-    paginationToken?: string;
 }
 
 export class ListAccountsResponse extends SpeakeasyBase {

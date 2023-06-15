@@ -8,9 +8,6 @@ import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-/**
- * Everything related to Webhooks
- */
 export class Webhooks {
     private sdkConfiguration: SDKConfiguration;
 
@@ -42,7 +39,7 @@ export class Webhooks {
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
-        headers["Accept"] = "application/json";
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -77,7 +74,13 @@ export class Webhooks {
                     );
                 }
                 break;
-            case httpRes?.status == 304:
+            default:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
+                    );
+                }
                 break;
         }
 
@@ -130,7 +133,7 @@ export class Webhooks {
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
-        headers["Accept"] = "application/json";
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -167,6 +170,14 @@ export class Webhooks {
                     );
                 }
                 break;
+            default:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
+                    );
+                }
+                break;
         }
 
         return res;
@@ -200,7 +211,7 @@ export class Webhooks {
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
-        headers["Accept"] = "application/json";
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -235,7 +246,13 @@ export class Webhooks {
                     );
                 }
                 break;
-            case httpRes?.status == 304:
+            default:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
+                    );
+                }
                 break;
         }
 
@@ -266,7 +283,7 @@ export class Webhooks {
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
-        headers["Accept"] = "*/*";
+        headers["Accept"] = "application/json";
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -291,8 +308,17 @@ export class Webhooks {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
+                break;
+            default:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
+                    );
+                }
                 break;
         }
 
@@ -324,7 +350,7 @@ export class Webhooks {
 
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json";
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -356,6 +382,14 @@ export class Webhooks {
                     res.configsResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ConfigsResponse
+                    );
+                }
+                break;
+            default:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
                     );
                 }
                 break;
@@ -409,7 +443,7 @@ export class Webhooks {
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
-        headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -445,9 +479,12 @@ export class Webhooks {
                     );
                 }
                 break;
-            case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.insertConfig400TextPlainString = decodedRes;
+            default:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
+                    );
                 }
                 break;
         }
@@ -479,7 +516,7 @@ export class Webhooks {
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
-        headers["Accept"] = "application/json";
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -511,6 +548,14 @@ export class Webhooks {
                     res.attemptResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.AttemptResponse
+                    );
+                }
+                break;
+            default:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ErrorResponse
                     );
                 }
                 break;

@@ -8,9 +8,6 @@ import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-/**
- * Everything related to Accounts
- */
 export class Accounts {
     private sdkConfiguration: SDKConfiguration;
 
@@ -52,7 +49,12 @@ export class Accounts {
         const client: AxiosInstance =
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const headers = {
+            ...utils.getHeadersFromRequest(req),
+            ...reqBodyHeaders,
+            ...config?.headers,
+        };
+        const queryParams: string = utils.serializeQueryParams(req);
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
         headers["Accept"] = "application/json";
@@ -62,7 +64,7 @@ export class Accounts {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: url + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -149,7 +151,7 @@ export class Accounts {
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
-            case httpRes?.status == 200:
+            case httpRes?.status == 204:
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {

@@ -24,6 +24,12 @@ export class DeactivateConfigResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
+    /**
+     * Error
+     */
+    @SpeakeasyMetadata()
+    errorResponse?: shared.ErrorResponse;
+
     @SpeakeasyMetadata()
     statusCode: number;
 

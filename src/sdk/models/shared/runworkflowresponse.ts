@@ -3,15 +3,15 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { WorkflowOccurrence } from "./workflowoccurrence";
+import { WorkflowInstance } from "./workflowinstance";
 import { Expose, Type } from "class-transformer";
 
 /**
- * The workflow occurrence
+ * The workflow instance
  */
 export class RunWorkflowResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
-    @Type(() => WorkflowOccurrence)
-    data: WorkflowOccurrence;
+    @Type(() => WorkflowInstance)
+    data: WorkflowInstance;
 }

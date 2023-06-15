@@ -1,9 +1,5 @@
 # server
 
-## Overview
-
-Everything related to Server
-
 ### Available Operations
 
 * [getInfo](#getinfo) - Show server information

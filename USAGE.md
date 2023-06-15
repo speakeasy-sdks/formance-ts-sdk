@@ -1,7 +1,7 @@
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetVersionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 const sdk = new Formance({
   security: {
@@ -9,7 +9,7 @@ const sdk = new Formance({
   },
 });
 
-sdk.getServerInfo().then((res: GetServerInfoResponse) => {
+sdk.getVersions().then((res: GetVersionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

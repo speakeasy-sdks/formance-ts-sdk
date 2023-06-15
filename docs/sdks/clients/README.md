@@ -1,9 +1,5 @@
 # clients
 
-## Overview
-
-Everything related to Clients
-
 ### Available Operations
 
 * [addScopeToClient](#addscopetoclient) - Add scope to client
@@ -33,8 +29,8 @@ const sdk = new Formance({
 });
 
 sdk.clients.addScopeToClient({
-  clientId: "error",
-  scopeId: "deserunt",
+  clientId: "corporis",
+  scopeId: "explicabo",
 }).then((res: AddScopeToClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -72,23 +68,18 @@ const sdk = new Formance({
 });
 
 sdk.clients.createClient({
-  description: "suscipit",
+  description: "nobis",
   metadata: {
-    "magnam": "debitis",
-    "ipsa": "delectus",
+    "omnis": "nemo",
+    "minima": "excepturi",
   },
-  name: "Laurie Kreiger",
+  name: "Charlene Nicolas",
   postLogoutRedirectUris: [
-    "iusto",
-    "excepturi",
-    "nisi",
+    "mollitia",
   ],
   public: false,
   redirectUris: [
-    "temporibus",
-    "ab",
-    "quis",
-    "veritatis",
+    "culpa",
   ],
   trusted: false,
 }).then((res: CreateClientResponse) => {
@@ -130,13 +121,11 @@ const sdk = new Formance({
 sdk.clients.createSecret({
   createSecretRequest: {
     metadata: {
-      "perferendis": "ipsam",
-      "repellendus": "sapiente",
-      "quo": "odit",
+      "repellat": "mollitia",
     },
-    name: "Wilfred Wolff",
+    name: "Francis Jerde",
   },
-  clientId: "quod",
+  clientId: "velit",
 }).then((res: CreateSecretResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -174,7 +163,7 @@ const sdk = new Formance({
 });
 
 sdk.clients.deleteClient({
-  clientId: "esse",
+  clientId: "error",
 }).then((res: DeleteClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -212,8 +201,8 @@ const sdk = new Formance({
 });
 
 sdk.clients.deleteScopeFromClient({
-  clientId: "totam",
-  scopeId: "porro",
+  clientId: "quia",
+  scopeId: "quis",
 }).then((res: DeleteScopeFromClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -251,8 +240,8 @@ const sdk = new Formance({
 });
 
 sdk.clients.deleteSecret({
-  clientId: "dolorum",
-  secretId: "dicta",
+  clientId: "vitae",
+  secretId: "laborum",
 }).then((res: DeleteSecretResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -325,7 +314,7 @@ const sdk = new Formance({
 });
 
 sdk.clients.readClient({
-  clientId: "nam",
+  clientId: "animi",
 }).then((res: ReadClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -364,25 +353,26 @@ const sdk = new Formance({
 
 sdk.clients.updateClient({
   updateClientRequest: {
-    description: "officia",
+    description: "enim",
     metadata: {
-      "fugit": "deleniti",
-      "hic": "optio",
-      "totam": "beatae",
+      "quo": "sequi",
     },
-    name: "Tanya Gleason",
+    name: "Vernon Ondricka Sr.",
     postLogoutRedirectUris: [
-      "esse",
-      "ipsum",
-      "excepturi",
+      "temporibus",
+      "laborum",
+      "quasi",
     ],
     public: false,
     redirectUris: [
-      "perferendis",
+      "voluptatibus",
+      "vero",
+      "nihil",
+      "praesentium",
     ],
     trusted: false,
   },
-  clientId: "ad",
+  clientId: "voluptatibus",
 }).then((res: UpdateClientResponse) => {
   if (res.statusCode == 200) {
     // handle response

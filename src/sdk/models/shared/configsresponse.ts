@@ -14,19 +14,7 @@ export class ConfigsResponseCursor extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "hasMore" })
-    hasMore?: boolean;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "next" })
-    next?: string;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "pageSize" })
-    pageSize: number;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "previous" })
-    previous?: string;
+    hasMore: boolean;
 }
 
 /**

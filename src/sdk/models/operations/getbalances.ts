@@ -14,12 +14,6 @@ export class GetBalancesRequest extends SpeakeasyBase {
     address?: string;
 
     /**
-     * Pagination cursor, will return accounts after given address, in descending order.
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
-    after?: string;
-
-    /**
      * Parameter used in pagination requests. Maximum page size is set to 15.
      *
      * @remarks
@@ -38,17 +32,13 @@ export class GetBalancesRequest extends SpeakeasyBase {
     ledger: string;
 
     /**
-     * Parameter used in pagination requests.
+     * The maximum number of results to return per page.
      *
      * @remarks
-     * Set to the value of next for the next page of results.
-     * Set to the value of previous for the previous page of results.
-     * Deprecated, please use `cursor` instead.
      *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
      */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pagination_token" })
-    paginationToken?: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pageSize" })
+    pageSize?: number;
 }
 
 export class GetBalancesResponse extends SpeakeasyBase {

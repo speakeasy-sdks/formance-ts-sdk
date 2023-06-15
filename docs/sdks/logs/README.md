@@ -1,9 +1,5 @@
 # logs
 
-## Overview
-
-Everything related to Logs
-
 ### Available Operations
 
 * [listLogs](#listlogs) - List the logs from a ledger
@@ -26,16 +22,11 @@ const sdk = new Formance({
 });
 
 sdk.logs.listLogs({
-  after: "1234",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  endTime: new Date("2022-09-13T17:41:46.141Z"),
-  endTimeDeprecated: new Date("2022-07-22T16:55:44.795Z"),
+  endTime: new Date("2022-01-14T19:13:42.009Z"),
   ledger: "ledger001",
-  pageSize: 616934,
-  pageSizeDeprecated: 386489,
-  paginationToken: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  startTime: new Date("2020-04-17T15:42:43.722Z"),
-  startTimeDeprecated: new Date("2022-02-06T12:52:33.708Z"),
+  pageSize: 433288,
+  startTime: new Date("2022-03-31T00:30:19.135Z"),
 }).then((res: ListLogsResponse) => {
   if (res.statusCode == 200) {
     // handle response

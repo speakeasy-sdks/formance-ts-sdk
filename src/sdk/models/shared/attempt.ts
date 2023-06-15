@@ -10,16 +10,16 @@ export class Attempt extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "config" })
     @Type(() => WebhooksConfig)
-    config?: WebhooksConfig;
+    config: WebhooksConfig;
 
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
-    createdAt?: Date;
+    createdAt: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
-    id?: string;
+    id: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "nextRetryAfter" })
@@ -28,26 +28,26 @@ export class Attempt extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "payload" })
-    payload?: string;
+    payload: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "retryAttempt" })
-    retryAttempt?: number;
+    retryAttempt: number;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })
-    status?: string;
+    status: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "statusCode" })
-    statusCode?: number;
+    statusCode: number;
 
     @SpeakeasyMetadata()
     @Expose({ name: "updatedAt" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
-    updatedAt?: Date;
+    updatedAt: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "webhookID" })
-    webhookID?: string;
+    webhookID: string;
 }

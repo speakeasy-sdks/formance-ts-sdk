@@ -8,101 +8,11 @@ import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-/**
- * Everything related to Transactions
- */
 export class Transactions {
     private sdkConfiguration: SDKConfiguration;
 
     constructor(sdkConfig: SDKConfiguration) {
         this.sdkConfiguration = sdkConfig;
-    }
-
-    /**
-     * Create a new batch of transactions to a ledger
-     */
-    async createTransactions(
-        req: operations.CreateTransactionsRequest,
-        config?: AxiosRequestConfig
-    ): Promise<operations.CreateTransactionsResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.CreateTransactionsRequest(req);
-        }
-
-        const baseURL: string = utils.templateUrl(
-            this.sdkConfiguration.serverURL,
-            this.sdkConfiguration.serverDefaults
-        );
-        const url: string = utils.generateURL(
-            baseURL,
-            "/api/ledger/{ledger}/transactions/batch",
-            req
-        );
-
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-        try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "transactions", "json");
-        } catch (e: unknown) {
-            if (e instanceof Error) {
-                throw new Error(`Error serializing request body, cause: ${e.message}`);
-            }
-        }
-
-        const client: AxiosInstance =
-            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
-        if (reqBody == null || Object.keys(reqBody).length === 0)
-            throw new Error("request body is required");
-        headers["Accept"] = "application/json;q=1, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
-
-        const httpRes: AxiosResponse = await client.request({
-            validateStatus: () => true,
-            url: url,
-            method: "post",
-            headers: headers,
-            responseType: "arraybuffer",
-            data: reqBody,
-            ...config,
-        });
-
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-        if (httpRes?.status == null) {
-            throw new Error(`status code not found in response: ${httpRes}`);
-        }
-
-        const res: operations.CreateTransactionsResponse =
-            new operations.CreateTransactionsResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes,
-            });
-        const decodedRes = new TextDecoder().decode(httpRes?.data);
-        switch (true) {
-            case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.transactionsResponse = utils.objectToClass(
-                        JSON.parse(decodedRes),
-                        shared.TransactionsResponse
-                    );
-                }
-                break;
-            default:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.errorResponse = utils.objectToClass(
-                        JSON.parse(decodedRes),
-                        shared.ErrorResponse
-                    );
-                }
-                break;
-        }
-
-        return res;
     }
 
     /**
@@ -139,7 +49,12 @@ export class Transactions {
         const client: AxiosInstance =
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const headers = {
+            ...utils.getHeadersFromRequest(req),
+            ...reqBodyHeaders,
+            ...config?.headers,
+        };
+        const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
         headers[
             "user-agent"
@@ -147,7 +62,7 @@ export class Transactions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: url + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -234,7 +149,7 @@ export class Transactions {
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
-            case httpRes?.status == 200:
+            case httpRes?.status == 204:
                 break;
             default:
                 if (utils.matchContentType(contentType, `application/json`)) {
@@ -279,7 +194,11 @@ export class Transactions {
         const client: AxiosInstance =
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const headers = {
+            ...utils.getHeadersFromRequest(req),
+            ...reqBodyHeaders,
+            ...config?.headers,
+        };
         const queryParams: string = utils.serializeQueryParams(req);
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
@@ -313,9 +232,9 @@ export class Transactions {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.transactionsResponse = utils.objectToClass(
+                    res.createTransactionResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.TransactionsResponse
+                        shared.CreateTransactionResponse
                     );
                 }
                 break;
@@ -386,9 +305,9 @@ export class Transactions {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.transactionResponse = utils.objectToClass(
+                    res.getTransactionResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.TransactionResponse
+                        shared.GetTransactionResponse
                     );
                 }
                 break;
@@ -530,11 +449,11 @@ export class Transactions {
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
-            case httpRes?.status == 200:
+            case httpRes?.status == 201:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.transactionResponse = utils.objectToClass(
+                    res.revertTransactionResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.TransactionResponse
+                        shared.RevertTransactionResponse
                     );
                 }
                 break;

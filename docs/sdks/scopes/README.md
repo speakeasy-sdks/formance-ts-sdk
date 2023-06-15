@@ -1,9 +1,5 @@
 # scopes
 
-## Overview
-
-Everything related to Scopes
-
 ### Available Operations
 
 * [addTransientScope](#addtransientscope) - Add a transient scope to a scope
@@ -31,8 +27,8 @@ const sdk = new Formance({
 });
 
 sdk.scopes.addTransientScope({
-  scopeId: "aut",
-  transientScopeId: "quasi",
+  scopeId: "provident",
+  transientScopeId: "quos",
 }).then((res: AddTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -70,12 +66,9 @@ const sdk = new Formance({
 });
 
 sdk.scopes.createScope({
-  label: "error",
+  label: "sint",
   metadata: {
-    "laborum": "quasi",
-    "reiciendis": "voluptatibus",
-    "vero": "nihil",
-    "praesentium": "voluptatibus",
+    "mollitia": "reiciendis",
   },
 }).then((res: CreateScopeResponse) => {
   if (res.statusCode == 200) {
@@ -114,7 +107,7 @@ const sdk = new Formance({
 });
 
 sdk.scopes.deleteScope({
-  scopeId: "ipsa",
+  scopeId: "mollitia",
 }).then((res: DeleteScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -152,8 +145,8 @@ const sdk = new Formance({
 });
 
 sdk.scopes.deleteTransientScope({
-  scopeId: "omnis",
-  transientScopeId: "voluptate",
+  scopeId: "ad",
+  transientScopeId: "eum",
 }).then((res: DeleteTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -226,7 +219,7 @@ const sdk = new Formance({
 });
 
 sdk.scopes.readScope({
-  scopeId: "cum",
+  scopeId: "dolor",
 }).then((res: ReadScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -265,12 +258,12 @@ const sdk = new Formance({
 
 sdk.scopes.updateScope({
   updateScopeRequest: {
-    label: "perferendis",
+    label: "necessitatibus",
     metadata: {
-      "reprehenderit": "ut",
+      "nemo": "quasi",
     },
   },
-  scopeId: "maiores",
+  scopeId: "iure",
 }).then((res: UpdateScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -26,7 +26,7 @@ export class ExpandedDebitHold extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    metadata: Record<string, any>;
+    metadata: Record<string, string>;
 
     /**
      * Original amount on hold

@@ -8,12 +8,16 @@ import { WalletsVolume } from "./walletsvolume";
 import { Expose, Transform, Type } from "class-transformer";
 
 export class WalletsTransaction extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    @Expose({ name: "ledger" })
+    ledger?: string;
+
     /**
      * Metadata associated with the wallet.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    metadata?: Record<string, any>;
+    metadata: Record<string, string>;
 
     @SpeakeasyMetadata({ elemType: WalletsVolume, elemDepth: 2 })
     @Expose({ name: "postCommitVolumes" })

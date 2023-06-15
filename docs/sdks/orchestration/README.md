@@ -1,18 +1,57 @@
 # orchestration
 
-## Overview
-
-Everything related to Orchestration
-
 ### Available Operations
 
+* [cancelEvent](#cancelevent) - Cancel a running workflow
 * [createWorkflow](#createworkflow) - Create workflow
-* [getFlow](#getflow) - Get a flow by id
-* [getWorkflowOccurrence](#getworkflowoccurrence) - Get a workflow occurrence by id
-* [listFlows](#listflows) - List registered flows
-* [listRuns](#listruns) - List occurrences of a workflow
+* [getInstance](#getinstance) - Get a workflow instance by id
+* [getInstanceHistory](#getinstancehistory) - Get a workflow instance history by id
+* [getInstanceStageHistory](#getinstancestagehistory) - Get a workflow instance stage history
+* [getWorkflow](#getworkflow) - Get a flow by id
+* [listInstances](#listinstances) - List instances of a workflow
+* [listWorkflows](#listworkflows) - List registered workflows
 * [orchestrationgetServerInfo](#orchestrationgetserverinfo) - Get server info
 * [runWorkflow](#runworkflow) - Run workflow
+* [sendEvent](#sendevent) - Send an event to a running workflow
+
+## cancelEvent
+
+Cancel a running workflow
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { CancelEventResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.orchestration.cancelEvent({
+  instanceID: "sint",
+}).then((res: CancelEventResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.CancelEventRequest](../../models/operations/canceleventrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+
+
+### Response
+
+**Promise<[operations.CancelEventResponse](../../models/operations/canceleventresponse.md)>**
+
 
 ## createWorkflow
 
@@ -32,20 +71,13 @@ const sdk = new Formance({
 });
 
 sdk.orchestration.createWorkflow({
+  name: "Sherri Tremblay",
   stages: [
     {
-      "saepe": "quidem",
-      "architecto": "ipsa",
-    },
-    {
-      "est": "mollitia",
-      "laborum": "dolores",
-      "dolorem": "corporis",
-      "explicabo": "nobis",
-    },
-    {
-      "omnis": "nemo",
-      "minima": "excepturi",
+      "a": "dolorum",
+      "in": "in",
+      "illum": "maiores",
+      "rerum": "dicta",
     },
   ],
 }).then((res: CreateWorkflowResponse) => {
@@ -68,7 +100,125 @@ sdk.orchestration.createWorkflow({
 **Promise<[operations.CreateWorkflowResponse](../../models/operations/createworkflowresponse.md)>**
 
 
-## getFlow
+## getInstance
+
+Get a workflow instance by id
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { GetInstanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.orchestration.getInstance({
+  instanceID: "magnam",
+}).then((res: GetInstanceResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetInstanceRequest](../../models/operations/getinstancerequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+
+
+### Response
+
+**Promise<[operations.GetInstanceResponse](../../models/operations/getinstanceresponse.md)>**
+
+
+## getInstanceHistory
+
+Get a workflow instance history by id
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { GetInstanceHistoryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.orchestration.getInstanceHistory({
+  instanceID: "cumque",
+}).then((res: GetInstanceHistoryResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.GetInstanceHistoryRequest](../../models/operations/getinstancehistoryrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+
+
+### Response
+
+**Promise<[operations.GetInstanceHistoryResponse](../../models/operations/getinstancehistoryresponse.md)>**
+
+
+## getInstanceStageHistory
+
+Get a workflow instance stage history
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { GetInstanceStageHistoryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { Connector, ErrorErrorCode, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.orchestration.getInstanceStageHistory({
+  instanceID: "facere",
+  number: 411820,
+}).then((res: GetInstanceStageHistoryResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                              | [operations.GetInstanceStageHistoryRequest](../../models/operations/getinstancestagehistoryrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
+
+
+### Response
+
+**Promise<[operations.GetInstanceStageHistoryResponse](../../models/operations/getinstancestagehistoryresponse.md)>**
+
+
+## getWorkflow
 
 Get a flow by id
 
@@ -76,7 +226,7 @@ Get a flow by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetFlowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { GetWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
@@ -85,9 +235,9 @@ const sdk = new Formance({
   },
 });
 
-sdk.orchestration.getFlow({
-  flowId: "accusantium",
-}).then((res: GetFlowResponse) => {
+sdk.orchestration.getWorkflow({
+  flowId: "aliquid",
+}).then((res: GetWorkflowResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -96,26 +246,26 @@ sdk.orchestration.getFlow({
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `request`                                                              | [operations.GetFlowRequest](../../models/operations/getflowrequest.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
-| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetWorkflowRequest](../../models/operations/getworkflowrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetFlowResponse](../../models/operations/getflowresponse.md)>**
+**Promise<[operations.GetWorkflowResponse](../../models/operations/getworkflowresponse.md)>**
 
 
-## getWorkflowOccurrence
+## listInstances
 
-Get a workflow occurrence by id
+List instances of a workflow
 
 ### Example Usage
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWorkflowOccurrenceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ListInstancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
@@ -124,10 +274,10 @@ const sdk = new Formance({
   },
 });
 
-sdk.orchestration.getWorkflowOccurrence({
-  flowId: "iure",
-  runId: "culpa",
-}).then((res: GetWorkflowOccurrenceResponse) => {
+sdk.orchestration.listInstances({
+  running: false,
+  workflowID: "laborum",
+}).then((res: ListInstancesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -136,26 +286,26 @@ sdk.orchestration.getWorkflowOccurrence({
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.GetWorkflowOccurrenceRequest](../../models/operations/getworkflowoccurrencerequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.ListInstancesRequest](../../models/operations/listinstancesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.GetWorkflowOccurrenceResponse](../../models/operations/getworkflowoccurrenceresponse.md)>**
+**Promise<[operations.ListInstancesResponse](../../models/operations/listinstancesresponse.md)>**
 
 
-## listFlows
+## listWorkflows
 
-List registered flows
+List registered workflows
 
 ### Example Usage
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListFlowsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ListWorkflowsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
@@ -164,7 +314,7 @@ const sdk = new Formance({
   },
 });
 
-sdk.orchestration.listFlows().then((res: ListFlowsResponse) => {
+sdk.orchestration.listWorkflows().then((res: ListWorkflowsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -180,46 +330,7 @@ sdk.orchestration.listFlows().then((res: ListFlowsResponse) => {
 
 ### Response
 
-**Promise<[operations.ListFlowsResponse](../../models/operations/listflowsresponse.md)>**
-
-
-## listRuns
-
-List occurrences of a workflow
-
-### Example Usage
-
-```typescript
-import { Formance } from "@speakeasy-sdks/formance";
-import { ListRunsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
-
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.orchestration.listRuns({
-  flowId: "doloribus",
-}).then((res: ListRunsResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [operations.ListRunsRequest](../../models/operations/listrunsrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
-
-
-### Response
-
-**Promise<[operations.ListRunsResponse](../../models/operations/listrunsresponse.md)>**
+**Promise<[operations.ListWorkflowsResponse](../../models/operations/listworkflowsresponse.md)>**
 
 
 ## orchestrationgetServerInfo
@@ -277,13 +388,13 @@ const sdk = new Formance({
 
 sdk.orchestration.runWorkflow({
   requestBody: {
-    "architecto": "mollitia",
-    "dolorem": "culpa",
-    "consequuntur": "repellat",
-    "mollitia": "occaecati",
+    "non": "occaecati",
+    "enim": "accusamus",
+    "delectus": "quidem",
+    "provident": "nam",
   },
-  flowId: "numquam",
   wait: false,
+  workflowID: "id",
 }).then((res: RunWorkflowResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -302,4 +413,46 @@ sdk.orchestration.runWorkflow({
 ### Response
 
 **Promise<[operations.RunWorkflowResponse](../../models/operations/runworkflowresponse.md)>**
+
+
+## sendEvent
+
+Send an event to a running workflow
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { SendEventResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.orchestration.sendEvent({
+  requestBody: {
+    name: "Jaime Will",
+  },
+  instanceID: "nisi",
+}).then((res: SendEventResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [operations.SendEventRequest](../../models/operations/sendeventrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+
+
+### Response
+
+**Promise<[operations.SendEventResponse](../../models/operations/sendeventresponse.md)>**
 

@@ -7,6 +7,7 @@ import { Expose } from "class-transformer";
 
 export enum ErrorErrorCode {
     Validation = "VALIDATION",
+    NotFound = "NOT_FOUND",
 }
 
 /**

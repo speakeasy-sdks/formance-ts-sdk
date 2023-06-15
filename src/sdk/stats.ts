@@ -8,9 +8,6 @@ import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-/**
- * Everything related to Stats
- */
 export class Stats {
     private sdkConfiguration: SDKConfiguration;
 

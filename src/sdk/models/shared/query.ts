@@ -3,7 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+
+export class QueryRaw extends SpeakeasyBase {}
 
 export class Query extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -25,6 +27,11 @@ export class Query extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "policy" })
     policy?: string;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "raw" })
+    @Type(() => QueryRaw)
+    raw?: QueryRaw;
 
     @SpeakeasyMetadata()
     @Expose({ name: "sort" })

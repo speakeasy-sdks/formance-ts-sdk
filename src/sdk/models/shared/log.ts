@@ -10,6 +10,7 @@ export class LogData extends SpeakeasyBase {}
 export enum LogType {
     NewTransaction = "NEW_TRANSACTION",
     SetMetadata = "SET_METADATA",
+    RevertedTransaction = "REVERTED_TRANSACTION",
 }
 
 export class Log extends SpeakeasyBase {

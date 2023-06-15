@@ -1,9 +1,5 @@
 # balances
 
-## Overview
-
-Everything related to Balances
-
 ### Available Operations
 
 * [getBalances](#getbalances) - Get the balances from a ledger's account
@@ -28,10 +24,9 @@ const sdk = new Formance({
 
 sdk.balances.getBalances({
   address: "users:001",
-  after: "users:003",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
-  paginationToken: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+  pageSize: 210382,
 }).then((res: GetBalancesResponse) => {
   if (res.statusCode == 200) {
     // handle response

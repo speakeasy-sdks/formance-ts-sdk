@@ -1,9 +1,5 @@
 # stats
 
-## Overview
-
-Everything related to Stats
-
 ### Available Operations
 
 * [readStats](#readstats) - Get statistics from a ledger

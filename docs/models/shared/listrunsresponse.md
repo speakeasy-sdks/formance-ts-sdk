@@ -1,10 +1,10 @@
 # ListRunsResponse
 
-List of workflow occurrences
+List of workflow instances
 
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `cursor`                                                                | [ListRunsResponseCursor](../../models/shared/listrunsresponsecursor.md) | :heavy_check_mark:                                                      | N/A                                                                     |
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `data`                                                        | [WorkflowInstance](../../models/shared/workflowinstance.md)[] | :heavy_check_mark:                                            | N/A                                                           |

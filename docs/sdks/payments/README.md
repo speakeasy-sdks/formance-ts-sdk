@@ -1,23 +1,23 @@
 # payments
 
-## Overview
-
-Everything related to Payments
-
 ### Available Operations
 
 * [connectorsStripeTransfer](#connectorsstripetransfer) - Transfer funds between Stripe accounts
+* [connectorsTransfer](#connectorstransfer) - Transfer funds between Connector accounts
 * [getConnectorTask](#getconnectortask) - Read a specific task of the connector
 * [getPayment](#getpayment) - Get a payment
 * [installConnector](#installconnector) - Install a connector
 * [listAllConnectors](#listallconnectors) - List all installed connectors
 * [listConfigsAvailableConnectors](#listconfigsavailableconnectors) - List the configs of each available connector
 * [listConnectorTasks](#listconnectortasks) - List tasks from a connector
+* [listConnectorsTransfers](#listconnectorstransfers) - List transfers and their statuses
 * [listPayments](#listpayments) - List payments
+* [paymentsgetServerInfo](#paymentsgetserverinfo) - Get server info
 * [paymentslistAccounts](#paymentslistaccounts) - List accounts
 * [readConnectorConfig](#readconnectorconfig) - Read the config of a connector
 * [resetConnector](#resetconnector) - Reset a connector
 * [uninstallConnector](#uninstallconnector) - Uninstall a connector
+* [updateMetadata](#updatemetadata) - Update metadata
 
 ## connectorsStripeTransfer
 
@@ -60,6 +60,51 @@ sdk.payments.connectorsStripeTransfer({
 **Promise<[operations.ConnectorsStripeTransferResponse](../../models/operations/connectorsstripetransferresponse.md)>**
 
 
+## connectorsTransfer
+
+Execute a transfer between two accounts.
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { ConnectorsTransferResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.payments.connectorsTransfer({
+  transferRequest: {
+    amount: 100,
+    asset: "USD",
+    destination: "acct_1Gqj58KZcSIg2N2q",
+    source: "acct_1Gqj58KZcSIg2N2q",
+  },
+  connector: Connector.Wise,
+}).then((res: ConnectorsTransferResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.ConnectorsTransferRequest](../../models/operations/connectorstransferrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+
+
+### Response
+
+**Promise<[operations.ConnectorsTransferResponse](../../models/operations/connectorstransferresponse.md)>**
+
+
 ## getConnectorTask
 
 Get a specific task associated to the connector.
@@ -78,8 +123,8 @@ const sdk = new Formance({
 });
 
 sdk.payments.getConnectorTask({
-  connector: Connector.Wise,
-  taskId: "quam",
+  connector: Connector.Modulr,
+  taskId: "omnis",
 }).then((res: GetConnectorTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -158,11 +203,11 @@ const sdk = new Formance({
 
 sdk.payments.installConnector({
   requestBody: {
-    directory: "/tmp/dummypay",
-    fileGenerationPeriod: "60s",
-    filePollingPeriod: "60s",
+    apiKey: "XXX",
+    pageSize: 50,
+    pollingPeriod: "60s",
   },
-  connector: Connector.Modulr,
+  connector: Connector.Wise,
 }).then((res: InstallConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -272,9 +317,9 @@ const sdk = new Formance({
 });
 
 sdk.payments.listConnectorTasks({
-  connector: Connector.Stripe,
+  connector: Connector.DummyPay,
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 338007,
+  pageSize: 716075,
 }).then((res: ListConnectorTasksResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -293,6 +338,45 @@ sdk.payments.listConnectorTasks({
 ### Response
 
 **Promise<[operations.ListConnectorTasksResponse](../../models/operations/listconnectortasksresponse.md)>**
+
+
+## listConnectorsTransfers
+
+List transfers
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { ListConnectorsTransfersResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.payments.listConnectorsTransfers({
+  connector: Connector.Modulr,
+}).then((res: ListConnectorsTransfersResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                              | [operations.ListConnectorsTransfersRequest](../../models/operations/listconnectorstransfersrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
+
+
+### Response
+
+**Promise<[operations.ListConnectorsTransfersResponse](../../models/operations/listconnectorstransfersresponse.md)>**
 
 
 ## listPayments
@@ -314,11 +398,10 @@ const sdk = new Formance({
 
 sdk.payments.listPayments({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 110375,
+  pageSize: 287991,
   sort: [
-    "animi",
-    "enim",
-    "odit",
+    "suscipit",
+    "natus",
   ],
 }).then((res: ListPaymentsResponse) => {
   if (res.statusCode == 200) {
@@ -340,6 +423,41 @@ sdk.payments.listPayments({
 **Promise<[operations.ListPaymentsResponse](../../models/operations/listpaymentsresponse.md)>**
 
 
+## paymentsgetServerInfo
+
+Get server info
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { PaymentsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.payments.paymentsgetServerInfo().then((res: PaymentsgetServerInfoResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.PaymentsgetServerInfoResponse](../../models/operations/paymentsgetserverinforesponse.md)>**
+
+
 ## paymentslistAccounts
 
 List accounts
@@ -359,9 +477,10 @@ const sdk = new Formance({
 
 sdk.payments.paymentslistAccounts({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 778346,
+  pageSize: 749170,
   sort: [
-    "tenetur",
+    "vero",
+    "aspernatur",
   ],
 }).then((res: PaymentslistAccountsResponse) => {
   if (res.statusCode == 200) {
@@ -401,7 +520,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.readConnectorConfig({
-  connector: Connector.Wise,
+  connector: Connector.Stripe,
 }).then((res: ReadConnectorConfigResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -442,7 +561,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.resetConnector({
-  connector: Connector.Modulr,
+  connector: Connector.DummyPay,
 }).then((res: ResetConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -481,7 +600,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.uninstallConnector({
-  connector: Connector.CurrencyCloud,
+  connector: Connector.Stripe,
 }).then((res: UninstallConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -500,4 +619,45 @@ sdk.payments.uninstallConnector({
 ### Response
 
 **Promise<[operations.UninstallConnectorResponse](../../models/operations/uninstallconnectorresponse.md)>**
+
+
+## updateMetadata
+
+Update metadata
+
+### Example Usage
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+import { UpdateMetadataResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+
+const sdk = new Formance({
+  security: {
+    authorization: "",
+  },
+});
+
+sdk.payments.updateMetadata({
+  paymentMetadata: {
+    key: "excepturi",
+  },
+  paymentId: "ullam",
+}).then((res: UpdateMetadataResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.UpdateMetadataRequest](../../models/operations/updatemetadatarequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+
+
+### Response
+
+**Promise<[operations.UpdateMetadataResponse](../../models/operations/updatemetadataresponse.md)>**
 

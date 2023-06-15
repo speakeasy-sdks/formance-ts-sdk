@@ -4,17 +4,16 @@
 
 import * as utils from "../internal/utils";
 import { Accounts } from "./accounts";
+import { Auth } from "./auth";
 import { Balances } from "./balances";
 import { Clients } from "./clients";
 import { Ledger } from "./ledger";
 import { Logs } from "./logs";
-import { Mapping } from "./mapping";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { Orchestration } from "./orchestration";
 import { Payments } from "./payments";
 import { Scopes } from "./scopes";
-import { Script } from "./script";
 import { Search } from "./search";
 import { Server } from "./server";
 import { Stats } from "./stats";
@@ -74,8 +73,8 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    openapiDocVersion = "v1.0.0-rc.5";
-    sdkVersion = "0.28.0";
+    openapiDocVersion = "v1.0.20230614";
+    sdkVersion = "0.28.1";
     genVersion = "2.40.1";
 
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -100,73 +99,21 @@ export class SDKConfiguration {
  *
  */
 export class Formance {
-    /**
-     * Everything related to Accounts
-     */
     public accounts: Accounts;
-    /**
-     * Everything related to Balances
-     */
+    public auth: Auth;
     public balances: Balances;
-    /**
-     * Everything related to Clients
-     */
     public clients: Clients;
-    /**
-     * Everything related to Ledger
-     */
     public ledger: Ledger;
-    /**
-     * Everything related to Logs
-     */
     public logs: Logs;
-    /**
-     * Everything related to Mapping
-     */
-    public mapping: Mapping;
-    /**
-     * Everything related to Orchestration
-     */
     public orchestration: Orchestration;
-    /**
-     * Everything related to Payments
-     */
     public payments: Payments;
-    /**
-     * Everything related to Scopes
-     */
     public scopes: Scopes;
-    /**
-     * Everything related to Script
-     */
-    public script: Script;
-    /**
-     * Everything related to Search
-     */
     public search: Search;
-    /**
-     * Everything related to Server
-     */
     public server: Server;
-    /**
-     * Everything related to Stats
-     */
     public stats: Stats;
-    /**
-     * Everything related to Transactions
-     */
     public transactions: Transactions;
-    /**
-     * Everything related to Users
-     */
     public users: Users;
-    /**
-     * Everything related to Wallets
-     */
     public wallets: Wallets;
-    /**
-     * Everything related to Webhooks
-     */
     public webhooks: Webhooks;
 
     private sdkConfiguration: SDKConfiguration;
@@ -207,15 +154,14 @@ export class Formance {
         });
 
         this.accounts = new Accounts(this.sdkConfiguration);
+        this.auth = new Auth(this.sdkConfiguration);
         this.balances = new Balances(this.sdkConfiguration);
         this.clients = new Clients(this.sdkConfiguration);
         this.ledger = new Ledger(this.sdkConfiguration);
         this.logs = new Logs(this.sdkConfiguration);
-        this.mapping = new Mapping(this.sdkConfiguration);
         this.orchestration = new Orchestration(this.sdkConfiguration);
         this.payments = new Payments(this.sdkConfiguration);
         this.scopes = new Scopes(this.sdkConfiguration);
-        this.script = new Script(this.sdkConfiguration);
         this.search = new Search(this.sdkConfiguration);
         this.server = new Server(this.sdkConfiguration);
         this.stats = new Stats(this.sdkConfiguration);
@@ -226,14 +172,14 @@ export class Formance {
     }
 
     /**
-     * Get server info
+     * Show stack version information
      */
-    async getServerInfo(config?: AxiosRequestConfig): Promise<operations.GetServerInfoResponse> {
+    async getVersions(config?: AxiosRequestConfig): Promise<operations.GetVersionsResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/api/auth/_info";
+        const url: string = baseURL.replace(/\/$/, "") + "/versions";
 
         const client: AxiosInstance =
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
@@ -259,7 +205,7 @@ export class Formance {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetServerInfoResponse = new operations.GetServerInfoResponse({
+        const res: operations.GetVersionsResponse = new operations.GetVersionsResponse({
             statusCode: httpRes.status,
             contentType: contentType,
             rawResponse: httpRes,
@@ -268,115 +214,10 @@ export class Formance {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
-                }
-                break;
-        }
-
-        return res;
-    }
-
-    /**
-     * Get server info
-     */
-    async paymentsgetServerInfo(
-        config?: AxiosRequestConfig
-    ): Promise<operations.PaymentsgetServerInfoResponse> {
-        const baseURL: string = utils.templateUrl(
-            this.sdkConfiguration.serverURL,
-            this.sdkConfiguration.serverDefaults
-        );
-        const url: string = baseURL.replace(/\/$/, "") + "/api/payments/_info";
-
-        const client: AxiosInstance =
-            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
-
-        const headers = { ...config?.headers };
-        headers["Accept"] = "application/json";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
-
-        const httpRes: AxiosResponse = await client.request({
-            validateStatus: () => true,
-            url: url,
-            method: "get",
-            headers: headers,
-            responseType: "arraybuffer",
-            ...config,
-        });
-
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-        if (httpRes?.status == null) {
-            throw new Error(`status code not found in response: ${httpRes}`);
-        }
-
-        const res: operations.PaymentsgetServerInfoResponse =
-            new operations.PaymentsgetServerInfoResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes,
-            });
-        const decodedRes = new TextDecoder().decode(httpRes?.data);
-        switch (true) {
-            case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
-                }
-                break;
-        }
-
-        return res;
-    }
-
-    /**
-     * Get server info
-     */
-    async searchgetServerInfo(
-        config?: AxiosRequestConfig
-    ): Promise<operations.SearchgetServerInfoResponse> {
-        const baseURL: string = utils.templateUrl(
-            this.sdkConfiguration.serverURL,
-            this.sdkConfiguration.serverDefaults
-        );
-        const url: string = baseURL.replace(/\/$/, "") + "/api/search/_info";
-
-        const client: AxiosInstance =
-            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
-
-        const headers = { ...config?.headers };
-        headers["Accept"] = "application/json";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
-
-        const httpRes: AxiosResponse = await client.request({
-            validateStatus: () => true,
-            url: url,
-            method: "get",
-            headers: headers,
-            responseType: "arraybuffer",
-            ...config,
-        });
-
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-        if (httpRes?.status == null) {
-            throw new Error(`status code not found in response: ${httpRes}`);
-        }
-
-        const res: operations.SearchgetServerInfoResponse =
-            new operations.SearchgetServerInfoResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes,
-            });
-        const decodedRes = new TextDecoder().decode(httpRes?.data);
-        switch (true) {
-            case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
+                    res.getVersionsResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.GetVersionsResponse
+                    );
                 }
                 break;
         }

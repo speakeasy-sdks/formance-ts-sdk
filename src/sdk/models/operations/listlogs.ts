@@ -8,12 +8,6 @@ import { AxiosResponse } from "axios";
 
 export class ListLogsRequest extends SpeakeasyBase {
     /**
-     * Pagination cursor, will return the logs after a given ID. (in descending order).
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=after" })
-    after?: string;
-
-    /**
      * Parameter used in pagination requests. Maximum page size is set to 15.
      *
      * @remarks
@@ -36,19 +30,6 @@ export class ListLogsRequest extends SpeakeasyBase {
     endTime?: Date;
 
     /**
-     * Filter transactions that occurred before this timestamp.
-     *
-     * @remarks
-     * The format is RFC3339 and is exclusive (for example, "2023-01-02T15:04:01Z" excludes the first second of 4th minute).
-     * Deprecated, please use `endTime` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=end_time" })
-    endTimeDeprecated?: Date;
-
-    /**
      * Name of the ledger.
      */
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ledger" })
@@ -64,33 +45,6 @@ export class ListLogsRequest extends SpeakeasyBase {
     pageSize?: number;
 
     /**
-     * The maximum number of results to return per page.
-     *
-     * @remarks
-     * Deprecated, please use `pageSize` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page_size" })
-    pageSizeDeprecated?: number;
-
-    /**
-     * Parameter used in pagination requests. Maximum page size is set to 15.
-     *
-     * @remarks
-     * Set to the value of next for the next page of results.
-     * Set to the value of previous for the previous page of results.
-     * No other parameters can be set when this parameter is set.
-     * Deprecated, please use `cursor` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=pagination_token" })
-    paginationToken?: string;
-
-    /**
      * Filter transactions that occurred after this timestamp.
      *
      * @remarks
@@ -99,19 +53,6 @@ export class ListLogsRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=startTime" })
     startTime?: Date;
-
-    /**
-     * Filter transactions that occurred after this timestamp.
-     *
-     * @remarks
-     * The format is RFC3339 and is inclusive (for example, "2023-01-02T15:04:01Z" includes the first second of 4th minute).
-     * Deprecated, please use `startTime` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=start_time" })
-    startTimeDeprecated?: Date;
 }
 
 export class ListLogsResponse extends SpeakeasyBase {

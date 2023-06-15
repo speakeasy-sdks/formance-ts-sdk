@@ -6,11 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-/**
- * Filter transactions by metadata key value pairs. Nested objects can be used as seen in the example below.
- */
-export class CountTransactionsMetadata extends SpeakeasyBase {}
-
 export class CountTransactionsRequest extends SpeakeasyBase {
     /**
      * Filter transactions with postings involving given account, either as source or destination (regular expression placed between ^ and $).
@@ -35,19 +30,6 @@ export class CountTransactionsRequest extends SpeakeasyBase {
     endTime?: Date;
 
     /**
-     * Filter transactions that occurred before this timestamp.
-     *
-     * @remarks
-     * The format is RFC3339 and is exclusive (for example, "2023-01-02T15:04:01Z" excludes the first second of 4th minute).
-     * Deprecated, please use `endTime` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=end_time" })
-    endTimeDeprecated?: Date;
-
-    /**
      * Name of the ledger.
      */
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ledger" })
@@ -57,7 +39,7 @@ export class CountTransactionsRequest extends SpeakeasyBase {
      * Filter transactions by metadata key value pairs. Nested objects can be used as seen in the example below.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
-    metadata?: CountTransactionsMetadata;
+    metadata?: Record<string, string>;
 
     /**
      * Filter transactions by reference field.
@@ -80,19 +62,6 @@ export class CountTransactionsRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=startTime" })
     startTime?: Date;
-
-    /**
-     * Filter transactions that occurred after this timestamp.
-     *
-     * @remarks
-     * The format is RFC3339 and is inclusive (for example, "2023-01-02T15:04:01Z" includes the first second of 4th minute).
-     * Deprecated, please use `startTime` instead.
-     *
-     *
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
-     */
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=start_time" })
-    startTimeDeprecated?: Date;
 }
 
 export class CountTransactionsResponse extends SpeakeasyBase {

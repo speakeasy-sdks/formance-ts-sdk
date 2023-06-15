@@ -8,31 +8,31 @@ import { Expose, Transform } from "class-transformer";
 export class WebhooksConfig extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "active" })
-    active?: boolean;
+    active: boolean;
 
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
-    createdAt?: Date;
+    createdAt: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "endpoint" })
-    endpoint?: string;
+    endpoint: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "eventTypes" })
-    eventTypes?: string[];
+    eventTypes: string[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
-    id?: string;
+    id: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "secret" })
-    secret?: string;
+    secret: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "updatedAt" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
-    updatedAt?: Date;
+    updatedAt: Date;
 }

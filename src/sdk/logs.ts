@@ -8,9 +8,6 @@ import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-/**
- * Everything related to Logs
- */
 export class Logs {
     private sdkConfiguration: SDKConfiguration;
 
@@ -36,7 +33,7 @@ export class Logs {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/ledger/{ledger}/log", req);
+        const url: string = utils.generateURL(baseURL, "/api/ledger/{ledger}/logs", req);
 
         const client: AxiosInstance =
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;

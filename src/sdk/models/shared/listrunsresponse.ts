@@ -3,38 +3,15 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { WorkflowOccurrence } from "./workflowoccurrence";
+import { WorkflowInstance } from "./workflowinstance";
 import { Expose, Type } from "class-transformer";
 
-export class ListRunsResponseCursor extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: WorkflowOccurrence })
-    @Expose({ name: "data" })
-    @Type(() => WorkflowOccurrence)
-    data: WorkflowOccurrence[];
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "hasMore" })
-    hasMore?: boolean;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "next" })
-    next?: string;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "pageSize" })
-    pageSize: number;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "previous" })
-    previous?: string;
-}
-
 /**
- * List of workflow occurrences
+ * List of workflow instances
  */
 export class ListRunsResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    @Expose({ name: "cursor" })
-    @Type(() => ListRunsResponseCursor)
-    cursor: ListRunsResponseCursor;
+    @SpeakeasyMetadata({ elemType: WorkflowInstance })
+    @Expose({ name: "data" })
+    @Type(() => WorkflowInstance)
+    data: WorkflowInstance[];
 }

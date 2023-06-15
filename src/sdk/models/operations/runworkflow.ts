@@ -11,16 +11,16 @@ export class RunWorkflowRequest extends SpeakeasyBase {
     requestBody?: Record<string, string>;
 
     /**
-     * The flow id
-     */
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=flowId" })
-    flowId: string;
-
-    /**
      * Wait end of the workflow before return
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=wait" })
     wait?: boolean;
+
+    /**
+     * The flow id
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=workflowID" })
+    workflowID: string;
 }
 
 export class RunWorkflowResponse extends SpeakeasyBase {
@@ -34,7 +34,7 @@ export class RunWorkflowResponse extends SpeakeasyBase {
     error?: shared.ErrorT;
 
     /**
-     * The workflow occurrence
+     * The workflow instance
      */
     @SpeakeasyMetadata()
     runWorkflowResponse?: shared.RunWorkflowResponse;

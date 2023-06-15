@@ -11,8 +11,8 @@ export class StageStatus extends SpeakeasyBase {
     error?: string;
 
     @SpeakeasyMetadata()
-    @Expose({ name: "occurrenceID" })
-    occurrenceID: string;
+    @Expose({ name: "instanceID" })
+    instanceID: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "stage" })
