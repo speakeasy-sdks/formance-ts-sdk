@@ -23,7 +23,6 @@ Cancel a running workflow
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CancelEventResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -62,7 +61,6 @@ Create a workflow
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CreateWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -109,7 +107,6 @@ Get a workflow instance by id
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetInstanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -148,7 +145,6 @@ Get a workflow instance history by id
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetInstanceHistoryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -187,7 +183,6 @@ Get a workflow instance stage history
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetInstanceStageHistoryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector, ErrorErrorCode, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -227,7 +222,6 @@ Get a flow by id
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -266,7 +260,6 @@ List instances of a workflow
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListInstancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -306,7 +299,6 @@ List registered workflows
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListWorkflowsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -342,7 +334,6 @@ Get server info
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { OrchestrationgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -378,7 +369,6 @@ Run workflow
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { RunWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -424,7 +414,6 @@ Send an event to a running workflow
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { SendEventResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

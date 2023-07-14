@@ -28,7 +28,6 @@ Confirm a hold
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ConfirmHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -71,7 +70,6 @@ Create a balance
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CreateBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -115,7 +113,6 @@ Create a new wallet
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CreateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -159,7 +156,6 @@ Credit a wallet
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CreditWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -232,7 +228,6 @@ Debit a wallet
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { DebitWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -291,7 +286,6 @@ Get detailed balance
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -331,7 +325,6 @@ Get a hold
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -370,7 +363,6 @@ Get all holds for a wallet
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetHoldsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -412,7 +404,6 @@ sdk.wallets.getHolds({
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -453,7 +444,6 @@ Get a wallet
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -492,7 +482,6 @@ Get wallet summary
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetWalletSummaryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -612,7 +601,6 @@ Update a wallet
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { UpdateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -659,7 +647,6 @@ Cancel a hold
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { VoidHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -698,7 +685,6 @@ Get server info
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { WalletsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

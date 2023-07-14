@@ -499,3 +499,11 @@ Based on:
 - Speakeasy CLI 1.57.0 (2.62.1) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v0.37.0] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.37.0 - .
+
+## 2023-07-14 00:45:40
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.59.0 (2.65.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.38.0] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.38.0 - .

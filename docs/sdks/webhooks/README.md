@@ -19,7 +19,6 @@ Activate a webhooks config by ID, to start receiving webhooks to its endpoint.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ActivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -62,7 +61,6 @@ The format is a random string of bytes of size 24, base64 encoded. (larger size 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ChangeConfigSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -104,7 +102,6 @@ Deactivate a webhooks config by ID, to stop receiving webhooks to its endpoint.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { DeactivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -143,7 +140,6 @@ Delete a webhooks config by ID.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { DeleteConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -182,7 +178,6 @@ Sorted by updated date descending
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetManyConfigsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -231,7 +226,6 @@ All eventTypes are converted to lower-case when inserted.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { InsertConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -275,7 +269,6 @@ Test a config by sending a webhook to its endpoint.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { TestConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

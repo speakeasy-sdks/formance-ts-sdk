@@ -18,7 +18,6 @@ Set the metadata of a transaction by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { AddMetadataOnTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -65,7 +64,6 @@ Count the transactions from a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CountTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -116,7 +114,6 @@ Create a new transaction to a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CreateTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -205,7 +202,6 @@ Get transaction from a ledger by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -245,7 +241,6 @@ List transactions from a ledger, sorted by txid in descending order.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -297,7 +292,6 @@ Revert a ledger transaction by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { RevertTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

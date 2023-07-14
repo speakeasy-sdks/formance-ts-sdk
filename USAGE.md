@@ -1,4 +1,6 @@
 <!-- Start SDK Example Usage -->
+
+
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetVersionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";

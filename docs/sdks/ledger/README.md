@@ -28,7 +28,6 @@ Set the metadata of a transaction by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { AddMetadataOnTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -76,7 +75,6 @@ Add metadata to an account
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { AddMetadataToAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -122,7 +120,6 @@ Count the accounts from a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CountAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -163,7 +160,6 @@ Count the transactions from a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CountTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -213,7 +209,6 @@ Create a new transaction to a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CreateTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -302,7 +297,6 @@ Get account by its address
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -342,7 +336,6 @@ Get the balances from a ledger's account
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -384,7 +377,6 @@ Get the aggregated balances from selected accounts
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetBalancesAggregatedResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -424,7 +416,6 @@ Show server information
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -460,7 +451,6 @@ Get information about a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetLedgerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum, MigrationInfoState } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -499,7 +489,6 @@ Get transaction from a ledger by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -539,7 +528,6 @@ List accounts from a ledger, sorted by address in descending order.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListAccountsBalanceOperator, ListAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -588,7 +576,6 @@ List the logs from a ledger, sorted by ID in descending order.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListLogsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum, LogType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -631,7 +618,6 @@ List transactions from a ledger, sorted by txid in descending order.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -683,7 +669,6 @@ Get statistics from a ledger. (aggregate metrics on accounts and transactions)
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ReadStatsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -722,7 +707,6 @@ Revert a ledger transaction by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { RevertTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

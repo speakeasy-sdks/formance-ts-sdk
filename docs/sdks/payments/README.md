@@ -154,7 +154,6 @@ Get a payment
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetPaymentResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -237,7 +236,6 @@ List all installed connectors.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListAllConnectorsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -388,7 +386,6 @@ List payments
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListPaymentsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -467,7 +464,6 @@ List accounts
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { PaymentslistAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector, PaymentsAccountType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

@@ -13,7 +13,6 @@ Show server information
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {

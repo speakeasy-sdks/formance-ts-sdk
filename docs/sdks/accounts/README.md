@@ -16,7 +16,6 @@ Add metadata to an account
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { AddMetadataToAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -64,7 +63,6 @@ Count the accounts from a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { CountAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -105,7 +103,6 @@ Get account by its address
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { GetAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
@@ -145,7 +142,6 @@ List accounts from a ledger, sorted by address in descending order.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 import { ListAccountsBalanceOperator, ListAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
 const sdk = new Formance({
   security: {
