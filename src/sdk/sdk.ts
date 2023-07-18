@@ -9,6 +9,7 @@ import { Balances } from "./balances";
 import { Clients } from "./clients";
 import { Ledger } from "./ledger";
 import { Logs } from "./logs";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { Orchestration } from "./orchestration";
@@ -74,8 +75,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.20230614";
-    sdkVersion = "0.38.0";
-    genVersion = "2.65.0";
+    sdkVersion = "0.39.0";
+    genVersion = "2.70.0";
 
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -217,6 +218,13 @@ export class Formance {
                     res.getVersionsResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.GetVersionsResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

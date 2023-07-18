@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -86,6 +87,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -162,6 +170,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.CreateBalanceResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             default:
@@ -169,6 +184,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -242,6 +264,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.CreateWalletResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             default:
@@ -249,6 +278,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -328,6 +364,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -404,6 +447,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.DebitWalletResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 204:
@@ -413,6 +463,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -479,6 +536,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.GetBalanceResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             default:
@@ -486,6 +550,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -548,6 +619,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.GetHoldResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             default:
@@ -555,6 +633,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -618,6 +703,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.GetHoldsResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             default:
@@ -625,6 +717,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -685,6 +784,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.GetTransactionsResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             default:
@@ -692,6 +798,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -754,6 +867,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.GetWalletResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -763,6 +883,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -825,6 +952,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.GetWalletSummaryResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -834,6 +968,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -896,6 +1037,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.ListBalancesResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -957,6 +1105,13 @@ export class Wallets {
                     res.listWalletsResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ListWalletsResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -1032,6 +1187,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -1095,6 +1257,13 @@ export class Wallets {
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -1149,6 +1318,13 @@ export class Wallets {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             default:
@@ -1156,6 +1332,13 @@ export class Wallets {
                     res.walletsErrorResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.WalletsErrorResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

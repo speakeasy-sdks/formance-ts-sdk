@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -143,6 +144,13 @@ export class Scopes {
                     res.createScopeResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.CreateScopeResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -320,6 +328,13 @@ export class Scopes {
                         JSON.parse(decodedRes),
                         shared.ListScopesResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -383,6 +398,13 @@ export class Scopes {
                     res.readScopeResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ReadScopeResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -462,6 +484,13 @@ export class Scopes {
                     res.updateScopeResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.UpdateScopeResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

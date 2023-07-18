@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -138,6 +139,13 @@ export class Clients {
                         JSON.parse(decodedRes),
                         shared.CreateClientResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -213,6 +221,13 @@ export class Clients {
                     res.createSecretResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.CreateSecretResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -439,6 +454,13 @@ export class Clients {
                         JSON.parse(decodedRes),
                         shared.ListClientsResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -499,6 +521,13 @@ export class Clients {
                     res.readClientResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ReadClientResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -575,6 +604,13 @@ export class Clients {
                     res.updateClientResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.UpdateClientResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

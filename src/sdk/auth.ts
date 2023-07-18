@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -199,6 +200,13 @@ export class Auth {
                         JSON.parse(decodedRes),
                         shared.CreateClientResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -273,6 +281,13 @@ export class Auth {
                     res.createScopeResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.CreateScopeResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -349,6 +364,13 @@ export class Auth {
                     res.createSecretResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.CreateSecretResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -691,6 +713,13 @@ export class Auth {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.serverInfo = utils.objectToClass(JSON.parse(decodedRes), shared.ServerInfo);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -744,6 +773,13 @@ export class Auth {
                     res.listClientsResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ListClientsResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -802,6 +838,13 @@ export class Auth {
                         JSON.parse(decodedRes),
                         shared.ListScopesResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -858,6 +901,13 @@ export class Auth {
                     res.listUsersResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ListUsersResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -919,6 +969,13 @@ export class Auth {
                     res.readClientResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ReadClientResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -984,6 +1041,13 @@ export class Auth {
                         JSON.parse(decodedRes),
                         shared.ReadScopeResponse
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -1047,6 +1111,13 @@ export class Auth {
                     res.readUserResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ReadUserResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -1123,6 +1194,13 @@ export class Auth {
                     res.updateClientResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.UpdateClientResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -1202,6 +1280,13 @@ export class Auth {
                     res.updateScopeResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.UpdateScopeResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
