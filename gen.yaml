@@ -2,14 +2,14 @@ configVersion: 1.0.0
 management:
   docChecksum: 2f1ad9a515a2f02418a6e63ef5afbcf5
   docVersion: v1.0.20230614
-  speakeasyVersion: 1.68.1
-  generationVersion: 2.77.1
+  speakeasyVersion: 1.68.3
+  generationVersion: 2.81.1
 generation:
   sdkClassName: formance
   singleTagPerOp: false
   telemetryEnabled: false
 typescript:
-  version: 0.43.0
+  version: 0.44.0
   author: Speakeasy
   maxMethodParams: 0
   packageName: '@speakeasy-sdks/formance'
