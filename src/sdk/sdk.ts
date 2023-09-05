@@ -46,7 +46,7 @@ export type SDKProps = {
     /**
      * The security details required to authenticate the SDK
      */
-    security?: shared.Security;
+    security?: shared.Security | (() => Promise<shared.Security>);
     /**
      * Allows overriding the default axios client used by the SDK
      */
@@ -70,13 +70,13 @@ export type SDKProps = {
 
 export class SDKConfiguration {
     defaultClient: AxiosInstance;
-    securityClient: AxiosInstance;
+    security?: shared.Security | (() => Promise<shared.Security>);
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.20230614";
-    sdkVersion = "0.49.1";
-    genVersion = "2.93.0";
+    sdkVersion = "0.50.0";
+    genVersion = "2.96.3";
 
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -137,19 +137,9 @@ export class Formance {
         }
 
         const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
-        let securityClient = defaultClient;
-
-        if (props?.security) {
-            let security: shared.Security = props.security;
-            if (!(props.security instanceof utils.SpeakeasyBase)) {
-                security = new shared.Security(props.security);
-            }
-            securityClient = utils.createSecurityClient(defaultClient, security);
-        }
-
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
-            securityClient: securityClient,
+            security: props?.security,
             serverURL: serverURL,
             serverDefaults: defaults,
         });
@@ -181,11 +171,16 @@ export class Formance {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = baseURL.replace(/\/$/, "") + "/versions";
-
-        const client: AxiosInstance =
-            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
-
-        const headers = { ...config?.headers };
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
         headers[
