@@ -84,7 +84,7 @@ sdk.payments.connectorsTransfer({
     destination: "acct_1Gqj58KZcSIg2N2q",
     source: "acct_1Gqj58KZcSIg2N2q",
   },
-  connector: Connector.Wise,
+  connector: Connector.CurrencyCloud,
 }).then((res: ConnectorsTransferResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -123,8 +123,8 @@ const sdk = new Formance({
 });
 
 sdk.payments.getConnectorTask({
-  connector: Connector.Modulr,
-  taskId: "omnis",
+  connector: Connector.DummyPay,
+  taskId: "accusamus",
 }).then((res: GetConnectorTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -162,7 +162,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.getPayment({
-  paymentId: "molestiae",
+  paymentId: "commodi",
 }).then((res: GetPaymentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -202,11 +202,12 @@ const sdk = new Formance({
 
 sdk.payments.installConnector({
   requestBody: {
-    apiKey: "XXX",
-    pageSize: 50,
-    pollingPeriod: "60s",
+    authorizationEndpoint: "XXX",
+    endpoint: "XXX",
+    password: "XXX",
+    username: "XXX",
   },
-  connector: Connector.Wise,
+  connector: Connector.Stripe,
 }).then((res: InstallConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -317,7 +318,7 @@ const sdk = new Formance({
 sdk.payments.listConnectorTasks({
   connector: Connector.DummyPay,
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 716075,
+  pageSize: 692472,
 }).then((res: ListConnectorTasksResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -395,10 +396,9 @@ const sdk = new Formance({
 
 sdk.payments.listPayments({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 287991,
+  pageSize: 566602,
   sort: [
-    "suscipit",
-    "natus",
+    "pariatur",
   ],
 }).then((res: ListPaymentsResponse) => {
   if (res.statusCode == 200) {
@@ -473,10 +473,9 @@ const sdk = new Formance({
 
 sdk.payments.paymentslistAccounts({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 749170,
+  pageSize: 265389,
   sort: [
-    "vero",
-    "aspernatur",
+    "praesentium",
   ],
 }).then((res: PaymentslistAccountsResponse) => {
   if (res.statusCode == 200) {
@@ -516,7 +515,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.readConnectorConfig({
-  connector: Connector.Stripe,
+  connector: Connector.Modulr,
 }).then((res: ReadConnectorConfigResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -557,7 +556,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.resetConnector({
-  connector: Connector.DummyPay,
+  connector: Connector.BankingCircle,
 }).then((res: ResetConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -635,9 +634,9 @@ const sdk = new Formance({
 
 sdk.payments.updateMetadata({
   paymentMetadata: {
-    key: "excepturi",
+    key: "repudiandae",
   },
-  paymentId: "ullam",
+  paymentId: "sint",
 }).then((res: UpdateMetadataResponse) => {
   if (res.statusCode == 200) {
     // handle response

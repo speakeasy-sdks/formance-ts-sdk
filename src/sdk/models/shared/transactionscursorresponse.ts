@@ -29,9 +29,6 @@ export class TransactionsCursorResponseCursor extends SpeakeasyBase {
     previous?: string;
 }
 
-/**
- * OK
- */
 export class TransactionsCursorResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "cursor" })

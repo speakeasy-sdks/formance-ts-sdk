@@ -36,11 +36,9 @@ const sdk = new Formance({
 });
 
 sdk.ledger.addMetadataOnTransaction({
-  idempotencyKey: "ipsa",
+  idempotencyKey: "nemo",
   requestBody: {
-    "voluptate": "cum",
-    "perferendis": "doloremque",
-    "reprehenderit": "ut",
+    "minima": "excepturi",
   },
   async: true,
   dryRun: true,
@@ -83,9 +81,9 @@ const sdk = new Formance({
 });
 
 sdk.ledger.addMetadataToAccount({
-  idempotencyKey: "maiores",
+  idempotencyKey: "accusantium",
   requestBody: {
-    "corporis": "dolore",
+    "iure": "culpa",
   },
   address: "users:001",
   async: true,
@@ -170,16 +168,14 @@ const sdk = new Formance({
 sdk.ledger.countTransactions({
   account: "users:001",
   destination: "users:001",
-  endTime: new Date("2022-11-18T15:56:41.921Z"),
+  endTime: new Date("2020-02-15T22:48:47.492Z"),
   ledger: "ledger001",
   metadata: {
-    "enim": "accusamus",
-    "commodi": "repudiandae",
-    "quae": "ipsum",
+    "architecto": "mollitia",
   },
   reference: "ref:001",
   source: "users:001",
-  startTime: new Date("2021-11-14T09:53:27.431Z"),
+  startTime: new Date("2022-05-14T04:53:02.888Z"),
 }).then((res: CountTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -217,33 +213,12 @@ const sdk = new Formance({
 });
 
 sdk.ledger.createTransaction({
-  idempotencyKey: "excepturi",
+  idempotencyKey: "consequuntur",
   postTransaction: {
     metadata: {
-      "modi": "praesentium",
-      "rem": "voluptates",
-      "quasi": "repudiandae",
-      "sint": "veritatis",
+      "repellat": "mollitia",
     },
     postings: [
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
       {
         amount: 100,
         asset: "COIN",
@@ -263,7 +238,7 @@ sdk.ledger.createTransaction({
     ",
       vars: {},
     },
-    timestamp: new Date("2022-09-06T17:20:08.756Z"),
+    timestamp: new Date("2022-06-30T02:19:51.375Z"),
   },
   async: true,
   dryRun: true,
@@ -347,7 +322,7 @@ sdk.ledger.getBalances({
   address: "users:001",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
-  pageSize: 9356,
+  pageSize: 414369,
 }).then((res: GetBalancesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -542,11 +517,9 @@ sdk.ledger.listAccounts({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
   metadata: {
-    "quibusdam": "explicabo",
-    "deserunt": "distinctio",
-    "quibusdam": "labore",
+    "quam": "molestiae",
   },
-  pageSize: 264730,
+  pageSize: 244425,
 }).then((res: ListAccountsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -585,10 +558,10 @@ const sdk = new Formance({
 
 sdk.ledger.listLogs({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  endTime: new Date("2022-08-08T19:05:24.174Z"),
+  endTime: new Date("2022-09-06T22:51:09.401Z"),
   ledger: "ledger001",
-  pageSize: 586513,
-  startTime: new Date("2022-12-17T07:42:55.593Z"),
+  pageSize: 338007,
+  startTime: new Date("2022-04-29T17:10:10.440Z"),
 }).then((res: ListLogsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -629,16 +602,15 @@ sdk.ledger.listTransactions({
   account: "users:001",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   destination: "users:001",
-  endTime: new Date("2022-03-04T10:29:07.095Z"),
+  endTime: new Date("2022-05-14T10:37:30.872Z"),
   ledger: "ledger001",
   metadata: {
-    "alias": "fugit",
-    "dolorum": "excepturi",
+    "odit": "quo",
   },
-  pageSize: 270008,
+  pageSize: 196582,
   reference: "ref:001",
   source: "users:001",
-  startTime: new Date("2021-07-13T07:24:02.478Z"),
+  startTime: new Date("2021-11-23T05:54:08.890Z"),
 }).then((res: ListTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response

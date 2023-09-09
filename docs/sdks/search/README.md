@@ -24,25 +24,17 @@ const sdk = new Formance({
 sdk.search.search({
   after: [
     "users:002",
-    "users:002",
-    "users:002",
-    "users:002",
   ],
   cursor: "YXVsdCBhbmQgYSBtYXhpbXVtIG1heF9yZXN1bHRzLol=",
   ledgers: [
     "quickstart",
-    "quickstart",
-    "quickstart",
-    "quickstart",
   ],
-  pageSize: 260341,
+  pageSize: 183191,
   policy: "OR",
   raw: {},
   sort: "txid:asc",
-  target: "maxime",
+  target: "aliquid",
   terms: [
-    "destination=central_bank1",
-    "destination=central_bank1",
     "destination=central_bank1",
   ],
 }).then((res: SearchResponse) => {

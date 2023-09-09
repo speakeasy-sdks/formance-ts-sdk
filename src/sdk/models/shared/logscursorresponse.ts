@@ -29,9 +29,6 @@ export class LogsCursorResponseCursor extends SpeakeasyBase {
     previous?: string;
 }
 
-/**
- * OK
- */
 export class LogsCursorResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "cursor" })

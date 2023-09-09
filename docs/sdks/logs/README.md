@@ -22,10 +22,10 @@ const sdk = new Formance({
 
 sdk.logs.listLogs({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  endTime: new Date("2022-01-14T19:13:42.009Z"),
+  endTime: new Date("2021-05-11T16:11:54.761Z"),
   ledger: "ledger001",
-  pageSize: 433288,
-  startTime: new Date("2022-03-31T00:30:19.135Z"),
+  pageSize: 13571,
+  startTime: new Date("2022-05-18T15:52:05.226Z"),
 }).then((res: ListLogsResponse) => {
   if (res.statusCode == 200) {
     // handle response

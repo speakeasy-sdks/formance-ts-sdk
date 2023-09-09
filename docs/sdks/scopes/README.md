@@ -27,8 +27,8 @@ const sdk = new Formance({
 });
 
 sdk.scopes.addTransientScope({
-  scopeId: "provident",
-  transientScopeId: "quos",
+  scopeId: "veritatis",
+  transientScopeId: "itaque",
 }).then((res: AddTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -66,9 +66,9 @@ const sdk = new Formance({
 });
 
 sdk.scopes.createScope({
-  label: "sint",
+  label: "incidunt",
   metadata: {
-    "mollitia": "reiciendis",
+    "enim": "consequatur",
   },
 }).then((res: CreateScopeResponse) => {
   if (res.statusCode == 200) {
@@ -107,7 +107,7 @@ const sdk = new Formance({
 });
 
 sdk.scopes.deleteScope({
-  scopeId: "mollitia",
+  scopeId: "est",
 }).then((res: DeleteScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -145,8 +145,8 @@ const sdk = new Formance({
 });
 
 sdk.scopes.deleteTransientScope({
-  scopeId: "ad",
-  transientScopeId: "eum",
+  scopeId: "quibusdam",
+  transientScopeId: "explicabo",
 }).then((res: DeleteTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -219,7 +219,7 @@ const sdk = new Formance({
 });
 
 sdk.scopes.readScope({
-  scopeId: "dolor",
+  scopeId: "deserunt",
 }).then((res: ReadScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -258,12 +258,12 @@ const sdk = new Formance({
 
 sdk.scopes.updateScope({
   updateScopeRequest: {
-    label: "necessitatibus",
+    label: "distinctio",
     metadata: {
-      "nemo": "quasi",
+      "quibusdam": "labore",
     },
   },
-  scopeId: "iure",
+  scopeId: "modi",
 }).then((res: UpdateScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response

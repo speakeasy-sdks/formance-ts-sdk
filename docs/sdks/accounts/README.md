@@ -26,9 +26,7 @@ const sdk = new Formance({
 sdk.accounts.addMetadataToAccount({
   idempotencyKey: "corrupti",
   requestBody: {
-    "distinctio": "quibusdam",
-    "unde": "nulla",
-    "corrupti": "illum",
+    "provident": "distinctio",
   },
   address: "users:001",
   async: true,
@@ -156,10 +154,9 @@ sdk.accounts.listAccounts({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
   metadata: {
-    "error": "deserunt",
-    "suscipit": "iure",
+    "quibusdam": "unde",
   },
-  pageSize: 297534,
+  pageSize: 857946,
 }).then((res: ListAccountsResponse) => {
   if (res.statusCode == 200) {
     // handle response

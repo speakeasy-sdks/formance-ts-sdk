@@ -1,7 +1,5 @@
 # RevertTransactionResponse
 
-OK
-
 
 ## Fields
 

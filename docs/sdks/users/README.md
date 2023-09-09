@@ -57,7 +57,7 @@ const sdk = new Formance({
 });
 
 sdk.users.readUser({
-  userId: "corporis",
+  userId: "necessitatibus",
 }).then((res: ReadUserResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -40,7 +40,7 @@ sdk.wallets.confirmHold({
     amount: 100,
     final: true,
   },
-  holdId: "hic",
+  holdId: "sint",
 }).then((res: ConfirmHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -79,11 +79,11 @@ const sdk = new Formance({
 
 sdk.wallets.createBalance({
   createBalanceRequest: {
-    expiresAt: new Date("2021-07-02T12:00:47.197Z"),
-    name: "Beatrice Lebsack II",
-    priority: 199996,
+    expiresAt: new Date("2022-07-22T03:36:34.615Z"),
+    name: "Randal Parisian",
+    priority: 846409,
   },
-  id: "202c73d5-fe9b-490c-a890-9b3fe49a8d9c",
+  id: "fb14cd66-ae39-45ef-b9ba-88f3a6699707",
 }).then((res: CreateBalanceResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -122,11 +122,9 @@ const sdk = new Formance({
 
 sdk.wallets.createWallet({
   metadata: {
-    "delectus": "quaerat",
-    "quos": "aliquid",
-    "dolorem": "dolorem",
+    "magnam": "distinctio",
   },
-  name: "Norma Erdman",
+  name: "Leroy Greenfelder",
 }).then((res: CreateWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -166,39 +164,22 @@ const sdk = new Formance({
 sdk.wallets.creditWallet({
   creditWalletRequest: {
     amount: {
-      amount: 739551,
-      asset: "voluptate",
+      amount: 749170,
+      asset: "eum",
     },
-    balance: "dignissimos",
+    balance: "vero",
     metadata: {
-      "amet": "dolorum",
-      "numquam": "veritatis",
-      "ipsa": "ipsa",
-      "iure": "odio",
+      "aspernatur": "architecto",
     },
-    reference: "quaerat",
+    reference: "magnam",
     sources: [
       {
-        balance: "voluptatibus",
-        identifier: "voluptas",
-        type: "natus",
-      },
-      {
-        identifier: "atque",
-        type: "sit",
-      },
-      {
-        balance: "ab",
-        identifier: "soluta",
-        type: "dolorum",
-      },
-      {
-        identifier: "voluptate",
-        type: "dolorum",
+        identifier: "excepturi",
+        type: "ullam",
       },
     ],
   },
-  id: "89ebf737-ae42-403c-a5e6-a95d8a0d446c",
+  id: "9890afa5-63e2-4516-be4c-8b711e5b7fd2",
 }).then((res: CreditWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -238,25 +219,24 @@ const sdk = new Formance({
 sdk.wallets.debitWallet({
   debitWalletRequest: {
     amount: {
-      amount: 885338,
-      asset: "qui",
+      amount: 904648,
+      asset: "pariatur",
     },
     balances: [
-      "a",
-      "esse",
-      "harum",
+      "accusantium",
     ],
-    description: "iusto",
+    description: "consequuntur",
     destination: {
-      identifier: "quisquam",
-      type: "tenetur",
+      balance: "natus",
+      identifier: "magni",
+      type: "sunt",
     },
     metadata: {
-      "tempore": "accusamus",
+      "quo": "illum",
     },
     pending: false,
   },
-  id: "453f870b-326b-45a7-b429-cdb1a8422bb6",
+  id: "dc692601-fb57-46b0-95f0-d30c5fbb2587",
 }).then((res: DebitWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -294,8 +274,8 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getBalance({
-  balanceName: "quam",
-  id: "9d232271-5bf0-4cbb-9e31-b8b90f3443a1",
+  balanceName: "eaque",
+  id: "53202c73-d5fe-49b9-8c28-909b3fe49a8d",
 }).then((res: GetBalanceResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -333,7 +313,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getHold({
-  holdID: "quae",
+  holdID: "provident",
 }).then((res: GetHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -373,10 +353,10 @@ const sdk = new Formance({
 sdk.wallets.getHolds({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   metadata: {
-    "quas": "itaque",
+    "nobis": "libero",
   },
-  pageSize: 9240,
-  walletID: "est",
+  pageSize: 964490,
+  walletID: "quaerat",
 }).then((res: GetHoldsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -413,8 +393,8 @@ const sdk = new Formance({
 
 sdk.wallets.getTransactions({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 833038,
-  walletID: "porro",
+  pageSize: 554242,
+  walletID: "aliquid",
 }).then((res: GetTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -452,7 +432,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getWallet({
-  id: "f4b92187-9fce-4953-b73e-f7fbc7abd74d",
+  id: "33323f9b-77f3-4a41-8067-4ebf69280d1b",
 }).then((res: GetWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -490,7 +470,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getWalletSummary({
-  id: "d39c0f5d-2cff-47c7-8a45-626d436813f1",
+  id: "a77a89eb-f737-4ae4-a03c-e5e6a95d8a0d",
 }).then((res: GetWalletSummaryResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -528,7 +508,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.listBalances({
-  id: "6d9f5fce-6c55-4614-ac3e-250fb008c42e",
+  id: "446ce2af-7a73-4cf3-be45-3f870b326b5a",
 }).then((res: ListBalancesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -568,10 +548,10 @@ const sdk = new Formance({
 sdk.wallets.listWallets({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   metadata: {
-    "non": "et",
+    "quam": "ipsum",
   },
-  name: "Neal Schroeder",
-  pageSize: 420539,
+  name: "Norma McGlynn",
+  pageSize: 747080,
 }).then((res: ListWalletsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -611,13 +591,10 @@ const sdk = new Formance({
 sdk.wallets.updateWallet({
   requestBody: {
     metadata: {
-      "quas": "assumenda",
-      "nulla": "voluptas",
-      "libero": "quasi",
-      "tempora": "numquam",
+      "dicta": "laborum",
     },
   },
-  id: "29074747-78a7-4bd4-a6d2-8c10ab3cdca4",
+  id: "8422bb67-9d23-4227-95bf-0cbb1e31b8b9",
 }).then((res: UpdateWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -655,7 +632,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.voidHold({
-  holdId: "eos",
+  holdId: "aperiam",
 }).then((res: VoidHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response

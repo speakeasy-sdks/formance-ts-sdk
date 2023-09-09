@@ -1,7 +1,5 @@
 # GetTransactionResponse
 
-OK
-
 
 ## Fields
 

@@ -26,10 +26,9 @@ const sdk = new Formance({
 });
 
 sdk.transactions.addMetadataOnTransaction({
-  idempotencyKey: "facilis",
+  idempotencyKey: "cupiditate",
   requestBody: {
-    "architecto": "architecto",
-    "repudiandae": "ullam",
+    "quos": "perferendis",
   },
   async: true,
   dryRun: true,
@@ -74,17 +73,14 @@ const sdk = new Formance({
 sdk.transactions.countTransactions({
   account: "users:001",
   destination: "users:001",
-  endTime: new Date("2022-01-23T10:45:15.714Z"),
+  endTime: new Date("2022-03-04T10:29:07.095Z"),
   ledger: "ledger001",
   metadata: {
-    "quibusdam": "sed",
-    "saepe": "pariatur",
-    "accusantium": "consequuntur",
-    "praesentium": "natus",
+    "ipsam": "alias",
   },
   reference: "ref:001",
   source: "users:001",
-  startTime: new Date("2022-11-16T19:20:12.159Z"),
+  startTime: new Date("2022-04-28T14:19:37.294Z"),
 }).then((res: CountTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -122,33 +118,12 @@ const sdk = new Formance({
 });
 
 sdk.transactions.createTransaction({
-  idempotencyKey: "quo",
+  idempotencyKey: "excepturi",
   postTransaction: {
     metadata: {
-      "pariatur": "maxime",
-      "ea": "excepturi",
-      "odit": "ea",
-      "accusantium": "ab",
+      "tempora": "facilis",
     },
     postings: [
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
       {
         amount: 100,
         asset: "COIN",
@@ -168,7 +143,7 @@ sdk.transactions.createTransaction({
     ",
       vars: {},
     },
-    timestamp: new Date("2022-04-03T11:56:45.015Z"),
+    timestamp: new Date("2022-06-04T09:53:33.742Z"),
   },
   async: true,
   dryRun: true,
@@ -252,17 +227,15 @@ sdk.transactions.listTransactions({
   account: "users:001",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   destination: "users:001",
-  endTime: new Date("2022-07-31T16:08:22.625Z"),
+  endTime: new Date("2021-09-13T13:11:22.288Z"),
   ledger: "ledger001",
   metadata: {
-    "eaque": "pariatur",
-    "nemo": "voluptatibus",
-    "perferendis": "fugiat",
+    "non": "eligendi",
   },
-  pageSize: 230742,
+  pageSize: 576157,
   reference: "ref:001",
   source: "users:001",
-  startTime: new Date("2022-03-27T19:22:24.458Z"),
+  startTime: new Date("2022-05-29T21:42:45.399Z"),
 }).then((res: ListTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response

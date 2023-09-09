@@ -66,6 +66,10 @@ export type SDKProps = {
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
+    /**
+     * Allows overriding the default retry config used by the SDK
+     */
+    retryConfig?: utils.RetryConfig;
 };
 
 export class SDKConfiguration {
@@ -75,9 +79,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.20230614";
-    sdkVersion = "0.50.0";
-    genVersion = "2.96.3";
-
+    sdkVersion = "0.50.1";
+    genVersion = "2.107.3";
+    retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
     }
@@ -142,6 +146,7 @@ export class Formance {
             security: props?.security,
             serverURL: serverURL,
             serverDefaults: defaults,
+            retryConfig: props?.retryConfig,
         });
 
         this.accounts = new Accounts(this.sdkConfiguration);

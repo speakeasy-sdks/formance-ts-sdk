@@ -39,8 +39,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.addScopeToClient({
-  clientId: "debitis",
-  scopeId: "ipsa",
+  clientId: "corrupti",
+  scopeId: "illum",
 }).then((res: AddScopeToClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -78,8 +78,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.addTransientScope({
-  scopeId: "delectus",
-  transientScopeId: "tempora",
+  scopeId: "vel",
+  transientScopeId: "error",
 }).then((res: AddTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -117,18 +117,17 @@ const sdk = new Formance({
 });
 
 sdk.auth.createClient({
-  description: "suscipit",
+  description: "deserunt",
   metadata: {
-    "minus": "placeat",
-    "voluptatum": "iusto",
+    "suscipit": "iure",
   },
-  name: "Charlie Walsh II",
+  name: "Raquel Bednar",
   postLogoutRedirectUris: [
-    "deserunt",
+    "suscipit",
   ],
   public: false,
   redirectUris: [
-    "ipsam",
+    "molestiae",
   ],
   trusted: false,
 }).then((res: CreateClientResponse) => {
@@ -168,12 +167,9 @@ const sdk = new Formance({
 });
 
 sdk.auth.createScope({
-  label: "repellendus",
+  label: "minus",
   metadata: {
-    "quo": "odit",
-    "at": "at",
-    "maiores": "molestiae",
-    "quod": "quod",
+    "placeat": "voluptatum",
   },
 }).then((res: CreateScopeResponse) => {
   if (res.statusCode == 200) {
@@ -214,12 +210,11 @@ const sdk = new Formance({
 sdk.auth.createSecret({
   createSecretRequest: {
     metadata: {
-      "totam": "porro",
-      "dolorum": "dicta",
+      "iusto": "excepturi",
     },
-    name: "Luke McCullough",
+    name: "Mrs. Sophie Smith MD",
   },
-  clientId: "hic",
+  clientId: "perferendis",
 }).then((res: CreateSecretResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -257,7 +252,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteClient({
-  clientId: "optio",
+  clientId: "ipsam",
 }).then((res: DeleteClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -295,7 +290,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteScope({
-  scopeId: "totam",
+  scopeId: "repellendus",
 }).then((res: DeleteScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -333,8 +328,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteScopeFromClient({
-  clientId: "beatae",
-  scopeId: "commodi",
+  clientId: "sapiente",
+  scopeId: "quo",
 }).then((res: DeleteScopeFromClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -372,8 +367,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteSecret({
-  clientId: "molestiae",
-  secretId: "modi",
+  clientId: "odit",
+  secretId: "at",
 }).then((res: DeleteSecretResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -411,8 +406,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteTransientScope({
-  scopeId: "qui",
-  transientScopeId: "impedit",
+  scopeId: "at",
+  transientScopeId: "maiores",
 }).then((res: DeleteTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -590,7 +585,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.readClient({
-  clientId: "cum",
+  clientId: "molestiae",
 }).then((res: ReadClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -628,7 +623,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.readScope({
-  scopeId: "esse",
+  scopeId: "quod",
 }).then((res: ReadScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -666,7 +661,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.readUser({
-  userId: "ipsum",
+  userId: "quod",
 }).then((res: ReadUserResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -705,24 +700,21 @@ const sdk = new Formance({
 
 sdk.auth.updateClient({
   updateClientRequest: {
-    description: "excepturi",
+    description: "esse",
     metadata: {
-      "perferendis": "ad",
+      "totam": "porro",
     },
-    name: "Louis Moore",
+    name: "Samuel Reichel",
     postLogoutRedirectUris: [
-      "hic",
-      "saepe",
+      "fugit",
     ],
     public: false,
     redirectUris: [
-      "in",
-      "corporis",
-      "iste",
+      "deleniti",
     ],
     trusted: false,
   },
-  clientId: "iure",
+  clientId: "hic",
 }).then((res: UpdateClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -761,14 +753,12 @@ const sdk = new Formance({
 
 sdk.auth.updateScope({
   updateScopeRequest: {
-    label: "saepe",
+    label: "optio",
     metadata: {
-      "architecto": "ipsa",
-      "reiciendis": "est",
-      "mollitia": "laborum",
+      "totam": "beatae",
     },
   },
-  scopeId: "dolores",
+  scopeId: "commodi",
 }).then((res: UpdateScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response

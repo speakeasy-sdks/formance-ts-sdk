@@ -25,7 +25,7 @@ sdk.balances.getBalances({
   address: "users:001",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
-  pageSize: 210382,
+  pageSize: 473600,
 }).then((res: GetBalancesResponse) => {
   if (res.statusCode == 200) {
     // handle response
