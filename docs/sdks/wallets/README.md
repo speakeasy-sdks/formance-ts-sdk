@@ -1,4 +1,4 @@
-# wallets
+# Wallets
 
 ### Available Operations
 

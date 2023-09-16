@@ -1,4 +1,4 @@
-# balances
+# Balances
 
 ### Available Operations
 

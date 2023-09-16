@@ -1,4 +1,4 @@
-# scopes
+# Scopes
 
 ### Available Operations
 

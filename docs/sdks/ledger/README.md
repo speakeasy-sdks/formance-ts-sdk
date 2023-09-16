@@ -1,4 +1,4 @@
-# ledger
+# Ledger
 
 ### Available Operations
 

@@ -1,4 +1,4 @@
-# users
+# Users
 
 ### Available Operations
 
