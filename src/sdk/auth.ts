@@ -164,7 +164,7 @@ export class Auth {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/api/auth/clients";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -252,7 +252,7 @@ export class Auth {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/api/auth/scopes";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -337,7 +337,7 @@ export class Auth {
         );
         const url: string = utils.generateURL(baseURL, "/api/auth/clients/{clientId}/secrets", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
@@ -1245,7 +1245,7 @@ export class Auth {
         );
         const url: string = utils.generateURL(baseURL, "/api/auth/clients/{clientId}", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
@@ -1337,7 +1337,7 @@ export class Auth {
         );
         const url: string = utils.generateURL(baseURL, "/api/auth/scopes/{scopeId}", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
