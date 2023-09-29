@@ -32,7 +32,7 @@ const sdk = new Formance({
 });
 
 sdk.orchestration.cancelEvent({
-  instanceID: "temporibus",
+  instanceID: "revolutionary",
 }).then((res: CancelEventResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -70,10 +70,10 @@ const sdk = new Formance({
 });
 
 sdk.orchestration.createWorkflow({
-  name: "Ryan Witting",
+  name: "amidst leverage kelvin",
   stages: [
     {
-      "nihil": "praesentium",
+      "tempore": "vivaciously",
     },
   ],
 }).then((res: CreateWorkflowResponse) => {
@@ -113,7 +113,7 @@ const sdk = new Formance({
 });
 
 sdk.orchestration.getInstance({
-  instanceID: "voluptatibus",
+  instanceID: "digital North Borders",
 }).then((res: GetInstanceResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -151,7 +151,7 @@ const sdk = new Formance({
 });
 
 sdk.orchestration.getInstanceHistory({
-  instanceID: "ipsa",
+  instanceID: "Bedfordshire",
 }).then((res: GetInstanceHistoryResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -189,8 +189,8 @@ const sdk = new Formance({
 });
 
 sdk.orchestration.getInstanceStageHistory({
-  instanceID: "omnis",
-  number: 451159,
+  instanceID: "UAE Beauty",
+  number: 789895,
 }).then((res: GetInstanceStageHistoryResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -228,7 +228,7 @@ const sdk = new Formance({
 });
 
 sdk.orchestration.getWorkflow({
-  flowId: "cum",
+  flowId: "Security restrain",
 }).then((res: GetWorkflowResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -267,7 +267,7 @@ const sdk = new Formance({
 
 sdk.orchestration.listInstances({
   running: false,
-  workflowID: "perferendis",
+  workflowID: "Hybrid Azerbaijanian",
 }).then((res: ListInstancesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -376,10 +376,10 @@ const sdk = new Formance({
 
 sdk.orchestration.runWorkflow({
   requestBody: {
-    "doloremque": "reprehenderit",
+    "delectus": "Accountability",
   },
   wait: false,
-  workflowID: "ut",
+  workflowID: "newton aggregate Metal",
 }).then((res: RunWorkflowResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -418,9 +418,9 @@ const sdk = new Formance({
 
 sdk.orchestration.sendEvent({
   requestBody: {
-    name: "Willie Hessel",
+    name: "Male lavender Fritsch",
   },
-  instanceID: "dicta",
+  instanceID: "Regional once East",
 }).then((res: SendEventResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -37,9 +37,9 @@ const sdk = new Formance({
 });
 
 sdk.ledger.addMetadataOnTransaction({
-  idempotencyKey: "nemo",
+  idempotencyKey: "Fresh Diesel",
   requestBody: {
-    "minima": "excepturi",
+    "facere": "Tricycle",
   },
   async: true,
   dryRun: true,
@@ -82,9 +82,9 @@ const sdk = new Formance({
 });
 
 sdk.ledger.addMetadataToAccount({
-  idempotencyKey: "accusantium",
+  idempotencyKey: "silver",
   requestBody: {
-    "iure": "culpa",
+    "laborum": "Rubber",
   },
   address: "users:001",
   async: true,
@@ -169,14 +169,14 @@ const sdk = new Formance({
 sdk.ledger.countTransactions({
   account: "users:001",
   destination: "users:001",
-  endTime: new Date("2020-02-15T22:48:47.492Z"),
+  endTime: new Date("2021-07-20T09:59:27.603Z"),
   ledger: "ledger001",
   metadata: {
-    "architecto": "mollitia",
+    "voluptates": "Executive",
   },
   reference: "ref:001",
   source: "users:001",
-  startTime: new Date("2022-05-14T04:53:02.888Z"),
+  startTime: new Date("2021-11-01T08:17:00.866Z"),
 }).then((res: CountTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -214,10 +214,10 @@ const sdk = new Formance({
 });
 
 sdk.ledger.createTransaction({
-  idempotencyKey: "consequuntur",
+  idempotencyKey: "Ball brr what",
   postTransaction: {
     metadata: {
-      "repellat": "mollitia",
+      "quasi": "strategic",
     },
     postings: [
       {
@@ -239,7 +239,7 @@ sdk.ledger.createTransaction({
     ",
       vars: {},
     },
-    timestamp: new Date("2022-06-30T02:19:51.375Z"),
+    timestamp: new Date("2023-04-27T14:31:29.129Z"),
   },
   async: true,
   dryRun: true,
@@ -323,7 +323,7 @@ sdk.ledger.getBalances({
   address: "users:001",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
-  pageSize: 414369,
+  pageSize: 755286,
 }).then((res: GetBalancesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -518,9 +518,9 @@ sdk.ledger.listAccounts({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   ledger: "ledger001",
   metadata: {
-    "quam": "molestiae",
+    "vero": "technologies",
   },
-  pageSize: 244425,
+  pageSize: 530853,
 }).then((res: ListAccountsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -559,10 +559,10 @@ const sdk = new Formance({
 
 sdk.ledger.listLogs({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  endTime: new Date("2022-09-06T22:51:09.401Z"),
+  endTime: new Date("2022-09-04T05:10:40.788Z"),
   ledger: "ledger001",
-  pageSize: 338007,
-  startTime: new Date("2022-04-29T17:10:10.440Z"),
+  pageSize: 657242,
+  startTime: new Date("2021-11-03T02:36:34.808Z"),
 }).then((res: ListLogsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -603,15 +603,15 @@ sdk.ledger.listTransactions({
   account: "users:001",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   destination: "users:001",
-  endTime: new Date("2022-05-14T10:37:30.872Z"),
+  endTime: new Date("2022-09-08T16:09:19.098Z"),
   ledger: "ledger001",
   metadata: {
-    "odit": "quo",
+    "alias": "District",
   },
-  pageSize: 196582,
+  pageSize: 71007,
   reference: "ref:001",
   source: "users:001",
-  startTime: new Date("2021-11-23T05:54:08.890Z"),
+  startTime: new Date("2022-09-12T07:36:38.262Z"),
 }).then((res: ListTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response

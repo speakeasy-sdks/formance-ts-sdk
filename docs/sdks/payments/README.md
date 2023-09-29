@@ -85,7 +85,7 @@ sdk.payments.connectorsTransfer({
     destination: "acct_1Gqj58KZcSIg2N2q",
     source: "acct_1Gqj58KZcSIg2N2q",
   },
-  connector: Connector.CurrencyCloud,
+  connector: Connector.Wise,
 }).then((res: ConnectorsTransferResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -124,8 +124,8 @@ const sdk = new Formance({
 });
 
 sdk.payments.getConnectorTask({
-  connector: Connector.DummyPay,
-  taskId: "accusamus",
+  connector: Connector.BankingCircle,
+  taskId: "Recycled male",
 }).then((res: GetConnectorTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -163,7 +163,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.getPayment({
-  paymentId: "commodi",
+  paymentId: "West",
 }).then((res: GetPaymentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -203,12 +203,11 @@ const sdk = new Formance({
 
 sdk.payments.installConnector({
   requestBody: {
-    authorizationEndpoint: "XXX",
-    endpoint: "XXX",
-    password: "XXX",
-    username: "XXX",
+    directory: "/tmp/dummypay",
+    fileGenerationPeriod: "60s",
+    filePollingPeriod: "60s",
   },
-  connector: Connector.Stripe,
+  connector: Connector.BankingCircle,
 }).then((res: InstallConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -319,7 +318,7 @@ const sdk = new Formance({
 sdk.payments.listConnectorTasks({
   connector: Connector.DummyPay,
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 692472,
+  pageSize: 501686,
 }).then((res: ListConnectorTasksResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -397,9 +396,9 @@ const sdk = new Formance({
 
 sdk.payments.listPayments({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 566602,
+  pageSize: 13778,
   sort: [
-    "pariatur",
+    "harness",
   ],
 }).then((res: ListPaymentsResponse) => {
   if (res.statusCode == 200) {
@@ -474,9 +473,9 @@ const sdk = new Formance({
 
 sdk.payments.paymentslistAccounts({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 265389,
+  pageSize: 227071,
   sort: [
-    "praesentium",
+    "Virginia",
   ],
 }).then((res: PaymentslistAccountsResponse) => {
   if (res.statusCode == 200) {
@@ -516,7 +515,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.readConnectorConfig({
-  connector: Connector.Modulr,
+  connector: Connector.BankingCircle,
 }).then((res: ReadConnectorConfigResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -557,7 +556,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.resetConnector({
-  connector: Connector.BankingCircle,
+  connector: Connector.CurrencyCloud,
 }).then((res: ResetConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -596,7 +595,7 @@ const sdk = new Formance({
 });
 
 sdk.payments.uninstallConnector({
-  connector: Connector.Stripe,
+  connector: Connector.DummyPay,
 }).then((res: UninstallConnectorResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -635,9 +634,9 @@ const sdk = new Formance({
 
 sdk.payments.updateMetadata({
   paymentMetadata: {
-    key: "repudiandae",
+    key: "<key>",
   },
-  paymentId: "sint",
+  paymentId: "Gasoline BMX",
 }).then((res: UpdateMetadataResponse) => {
   if (res.statusCode == 200) {
     // handle response

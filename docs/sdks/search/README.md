@@ -30,11 +30,11 @@ sdk.search.search({
   ledgers: [
     "quickstart",
   ],
-  pageSize: 183191,
+  pageSize: 307631,
   policy: "OR",
   raw: {},
   sort: "txid:asc",
-  target: "aliquid",
+  target: "Movies",
   terms: [
     "destination=central_bank1",
   ],

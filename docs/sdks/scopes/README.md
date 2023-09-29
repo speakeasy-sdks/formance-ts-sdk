@@ -28,8 +28,8 @@ const sdk = new Formance({
 });
 
 sdk.scopes.addTransientScope({
-  scopeId: "veritatis",
-  transientScopeId: "itaque",
+  scopeId: "executive Soul",
+  transientScopeId: "Keyboard neural tan",
 }).then((res: AddTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -67,9 +67,9 @@ const sdk = new Formance({
 });
 
 sdk.scopes.createScope({
-  label: "incidunt",
+  label: "neural Sunrise",
   metadata: {
-    "enim": "consequatur",
+    "vero": "deposit",
   },
 }).then((res: CreateScopeResponse) => {
   if (res.statusCode == 200) {
@@ -108,7 +108,7 @@ const sdk = new Formance({
 });
 
 sdk.scopes.deleteScope({
-  scopeId: "est",
+  scopeId: "impedit Bronze",
 }).then((res: DeleteScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -146,8 +146,8 @@ const sdk = new Formance({
 });
 
 sdk.scopes.deleteTransientScope({
-  scopeId: "quibusdam",
-  transientScopeId: "explicabo",
+  scopeId: "billion Chips",
+  transientScopeId: "Account untidy haptic",
 }).then((res: DeleteTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -220,7 +220,7 @@ const sdk = new Formance({
 });
 
 sdk.scopes.readScope({
-  scopeId: "deserunt",
+  scopeId: "Internal Credit Hermaphrodite",
 }).then((res: ReadScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -259,12 +259,12 @@ const sdk = new Formance({
 
 sdk.scopes.updateScope({
   updateScopeRequest: {
-    label: "distinctio",
+    label: "East South Luxurious",
     metadata: {
-      "quibusdam": "labore",
+      "temporibus": "meh",
     },
   },
-  scopeId: "modi",
+  scopeId: "handcuff Xenon Timmy",
 }).then((res: UpdateScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response

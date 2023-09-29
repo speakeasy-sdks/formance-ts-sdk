@@ -41,7 +41,7 @@ sdk.wallets.confirmHold({
     amount: 100,
     final: true,
   },
-  holdId: "sint",
+  holdId: "Missouri holistic",
 }).then((res: ConfirmHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -80,11 +80,11 @@ const sdk = new Formance({
 
 sdk.wallets.createBalance({
   createBalanceRequest: {
-    expiresAt: new Date("2022-07-22T03:36:34.615Z"),
-    name: "Randal Parisian",
-    priority: 846409,
+    expiresAt: new Date("2023-03-08T09:54:54.366Z"),
+    name: "vortals Lawrence female",
+    priority: 98814,
   },
-  id: "fb14cd66-ae39-45ef-b9ba-88f3a6699707",
+  id: "<ID>",
 }).then((res: CreateBalanceResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -123,9 +123,9 @@ const sdk = new Formance({
 
 sdk.wallets.createWallet({
   metadata: {
-    "magnam": "distinctio",
+    "deleniti": "Hybrid",
   },
-  name: "Leroy Greenfelder",
+  name: "fleck unto Calcium",
 }).then((res: CreateWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -165,22 +165,22 @@ const sdk = new Formance({
 sdk.wallets.creditWallet({
   creditWalletRequest: {
     amount: {
-      amount: 749170,
-      asset: "eum",
+      amount: 201874,
+      asset: "second",
     },
-    balance: "vero",
+    balance: "Bike",
     metadata: {
-      "aspernatur": "architecto",
+      "quidem": "Clifton",
     },
-    reference: "magnam",
+    reference: "purple Shoreline keenly",
     sources: [
       {
-        identifier: "excepturi",
-        type: "ullam",
+        identifier: "intranet haptic East",
+        type: "Rubber ick",
       },
     ],
   },
-  id: "9890afa5-63e2-4516-be4c-8b711e5b7fd2",
+  id: "<ID>",
 }).then((res: CreditWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -220,24 +220,23 @@ const sdk = new Formance({
 sdk.wallets.debitWallet({
   debitWalletRequest: {
     amount: {
-      amount: 904648,
-      asset: "pariatur",
+      amount: 245256,
+      asset: "azure",
     },
     balances: [
-      "accusantium",
+      "Tasty",
     ],
-    description: "consequuntur",
+    description: "Total 6th generation conglomeration",
     destination: {
-      balance: "natus",
-      identifier: "magni",
-      type: "sunt",
+      identifier: "impactful",
+      type: "Trigender SCSI",
     },
     metadata: {
-      "quo": "illum",
+      "commodi": "fluid",
     },
     pending: false,
   },
-  id: "dc692601-fb57-46b0-95f0-d30c5fbb2587",
+  id: "<ID>",
 }).then((res: DebitWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -275,8 +274,8 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getBalance({
-  balanceName: "eaque",
-  id: "53202c73-d5fe-49b9-8c28-909b3fe49a8d",
+  balanceName: "Kids Franc hmph",
+  id: "<ID>",
 }).then((res: GetBalanceResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -314,7 +313,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getHold({
-  holdID: "provident",
+  holdID: "taper",
 }).then((res: GetHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -354,10 +353,10 @@ const sdk = new Formance({
 sdk.wallets.getHolds({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   metadata: {
-    "nobis": "libero",
+    "quidem": "Cotton",
   },
-  pageSize: 964490,
-  walletID: "quaerat",
+  pageSize: 502179,
+  walletID: "quickly deposit plus",
 }).then((res: GetHoldsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -394,8 +393,8 @@ const sdk = new Formance({
 
 sdk.wallets.getTransactions({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 554242,
-  walletID: "aliquid",
+  pageSize: 680555,
+  walletID: "Account",
 }).then((res: GetTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -433,7 +432,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getWallet({
-  id: "33323f9b-77f3-4a41-8067-4ebf69280d1b",
+  id: "<ID>",
 }).then((res: GetWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -471,7 +470,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.getWalletSummary({
-  id: "a77a89eb-f737-4ae4-a03c-e5e6a95d8a0d",
+  id: "<ID>",
 }).then((res: GetWalletSummaryResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -509,7 +508,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.listBalances({
-  id: "446ce2af-7a73-4cf3-be45-3f870b326b5a",
+  id: "<ID>",
 }).then((res: ListBalancesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -549,10 +548,10 @@ const sdk = new Formance({
 sdk.wallets.listWallets({
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   metadata: {
-    "quam": "ipsum",
+    "commodi": "green",
   },
-  name: "Norma McGlynn",
-  pageSize: 747080,
+  name: "Mobility Electric huzzah",
+  pageSize: 194059,
 }).then((res: ListWalletsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -592,10 +591,10 @@ const sdk = new Formance({
 sdk.wallets.updateWallet({
   requestBody: {
     metadata: {
-      "dicta": "laborum",
+      "quas": "Books",
     },
   },
-  id: "8422bb67-9d23-4227-95bf-0cbb1e31b8b9",
+  id: "<ID>",
 }).then((res: UpdateWalletResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -633,7 +632,7 @@ const sdk = new Formance({
 });
 
 sdk.wallets.voidHold({
-  holdId: "aperiam",
+  holdId: "redundant yesterday Hat",
 }).then((res: VoidHoldResponse) => {
   if (res.statusCode == 200) {
     // handle response

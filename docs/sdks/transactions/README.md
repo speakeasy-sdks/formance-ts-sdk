@@ -27,9 +27,9 @@ const sdk = new Formance({
 });
 
 sdk.transactions.addMetadataOnTransaction({
-  idempotencyKey: "cupiditate",
+  idempotencyKey: "Fresh Diesel",
   requestBody: {
-    "quos": "perferendis",
+    "facere": "Tricycle",
   },
   async: true,
   dryRun: true,
@@ -74,14 +74,14 @@ const sdk = new Formance({
 sdk.transactions.countTransactions({
   account: "users:001",
   destination: "users:001",
-  endTime: new Date("2022-03-04T10:29:07.095Z"),
+  endTime: new Date("2021-07-20T09:59:27.603Z"),
   ledger: "ledger001",
   metadata: {
-    "ipsam": "alias",
+    "voluptates": "Executive",
   },
   reference: "ref:001",
   source: "users:001",
-  startTime: new Date("2022-04-28T14:19:37.294Z"),
+  startTime: new Date("2021-11-01T08:17:00.866Z"),
 }).then((res: CountTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -119,10 +119,10 @@ const sdk = new Formance({
 });
 
 sdk.transactions.createTransaction({
-  idempotencyKey: "excepturi",
+  idempotencyKey: "Ball brr what",
   postTransaction: {
     metadata: {
-      "tempora": "facilis",
+      "quasi": "strategic",
     },
     postings: [
       {
@@ -144,7 +144,7 @@ sdk.transactions.createTransaction({
     ",
       vars: {},
     },
-    timestamp: new Date("2022-06-04T09:53:33.742Z"),
+    timestamp: new Date("2023-04-27T14:31:29.129Z"),
   },
   async: true,
   dryRun: true,
@@ -228,15 +228,15 @@ sdk.transactions.listTransactions({
   account: "users:001",
   cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
   destination: "users:001",
-  endTime: new Date("2021-09-13T13:11:22.288Z"),
+  endTime: new Date("2022-09-08T16:09:19.098Z"),
   ledger: "ledger001",
   metadata: {
-    "non": "eligendi",
+    "alias": "District",
   },
-  pageSize: 576157,
+  pageSize: 71007,
   reference: "ref:001",
   source: "users:001",
-  startTime: new Date("2022-05-29T21:42:45.399Z"),
+  startTime: new Date("2022-09-12T07:36:38.262Z"),
 }).then((res: ListTransactionsResponse) => {
   if (res.statusCode == 200) {
     // handle response

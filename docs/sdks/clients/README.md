@@ -30,8 +30,8 @@ const sdk = new Formance({
 });
 
 sdk.clients.addScopeToClient({
-  clientId: "modi",
-  scopeId: "qui",
+  clientId: "East laudantium HTTP",
+  scopeId: "boo Senior",
 }).then((res: AddScopeToClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -69,17 +69,17 @@ const sdk = new Formance({
 });
 
 sdk.clients.createClient({
-  description: "impedit",
+  description: "Managed optimizing help-desk",
   metadata: {
-    "cum": "esse",
+    "vero": "Division",
   },
-  name: "Mrs. Miriam Collier",
+  name: "Station East Functionality",
   postLogoutRedirectUris: [
-    "sed",
+    "24",
   ],
   public: false,
   redirectUris: [
-    "iste",
+    "fuchsia",
   ],
   trusted: false,
 }).then((res: CreateClientResponse) => {
@@ -121,11 +121,11 @@ const sdk = new Formance({
 sdk.clients.createSecret({
   createSecretRequest: {
     metadata: {
-      "dolor": "natus",
+      "aliquid": "Southwest",
     },
-    name: "May Turcotte",
+    name: "olive executive Taka",
   },
-  clientId: "corporis",
+  clientId: "South",
 }).then((res: CreateSecretResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -163,7 +163,7 @@ const sdk = new Formance({
 });
 
 sdk.clients.deleteClient({
-  clientId: "iste",
+  clientId: "salmon synergize",
 }).then((res: DeleteClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -201,8 +201,8 @@ const sdk = new Formance({
 });
 
 sdk.clients.deleteScopeFromClient({
-  clientId: "iure",
-  scopeId: "saepe",
+  clientId: "Northeast synergy zowie",
+  scopeId: "befriend coherent",
 }).then((res: DeleteScopeFromClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -240,8 +240,8 @@ const sdk = new Formance({
 });
 
 sdk.clients.deleteSecret({
-  clientId: "quidem",
-  secretId: "architecto",
+  clientId: "ashamed transform past",
+  secretId: "Afghani rosemary South",
 }).then((res: DeleteSecretResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -314,7 +314,7 @@ const sdk = new Formance({
 });
 
 sdk.clients.readClient({
-  clientId: "ipsa",
+  clientId: "COM Wagon",
 }).then((res: ReadClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -353,21 +353,21 @@ const sdk = new Formance({
 
 sdk.clients.updateClient({
   updateClientRequest: {
-    description: "reiciendis",
+    description: "Secured static model",
     metadata: {
-      "est": "mollitia",
+      "temporibus": "Northwest",
     },
-    name: "Ernest Ebert",
+    name: "BMW XML",
     postLogoutRedirectUris: [
-      "nobis",
+      "magenta",
     ],
     public: false,
     redirectUris: [
-      "enim",
+      "collaborative",
     ],
     trusted: false,
   },
-  clientId: "omnis",
+  clientId: "male gold",
 }).then((res: UpdateClientResponse) => {
   if (res.statusCode == 200) {
     // handle response

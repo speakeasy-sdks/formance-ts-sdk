@@ -40,8 +40,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.addScopeToClient({
-  clientId: "corrupti",
-  scopeId: "illum",
+  clientId: "East laudantium HTTP",
+  scopeId: "boo Senior",
 }).then((res: AddScopeToClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -79,8 +79,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.addTransientScope({
-  scopeId: "vel",
-  transientScopeId: "error",
+  scopeId: "executive Soul",
+  transientScopeId: "Keyboard neural tan",
 }).then((res: AddTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -118,17 +118,17 @@ const sdk = new Formance({
 });
 
 sdk.auth.createClient({
-  description: "deserunt",
+  description: "Managed optimizing help-desk",
   metadata: {
-    "suscipit": "iure",
+    "vero": "Division",
   },
-  name: "Raquel Bednar",
+  name: "Station East Functionality",
   postLogoutRedirectUris: [
-    "suscipit",
+    "24",
   ],
   public: false,
   redirectUris: [
-    "molestiae",
+    "fuchsia",
   ],
   trusted: false,
 }).then((res: CreateClientResponse) => {
@@ -168,9 +168,9 @@ const sdk = new Formance({
 });
 
 sdk.auth.createScope({
-  label: "minus",
+  label: "neural Sunrise",
   metadata: {
-    "placeat": "voluptatum",
+    "vero": "deposit",
   },
 }).then((res: CreateScopeResponse) => {
   if (res.statusCode == 200) {
@@ -211,11 +211,11 @@ const sdk = new Formance({
 sdk.auth.createSecret({
   createSecretRequest: {
     metadata: {
-      "iusto": "excepturi",
+      "aliquid": "Southwest",
     },
-    name: "Mrs. Sophie Smith MD",
+    name: "olive executive Taka",
   },
-  clientId: "perferendis",
+  clientId: "South",
 }).then((res: CreateSecretResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -253,7 +253,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteClient({
-  clientId: "ipsam",
+  clientId: "salmon synergize",
 }).then((res: DeleteClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -291,7 +291,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteScope({
-  scopeId: "repellendus",
+  scopeId: "impedit Bronze",
 }).then((res: DeleteScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -329,8 +329,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteScopeFromClient({
-  clientId: "sapiente",
-  scopeId: "quo",
+  clientId: "Northeast synergy zowie",
+  scopeId: "befriend coherent",
 }).then((res: DeleteScopeFromClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -368,8 +368,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteSecret({
-  clientId: "odit",
-  secretId: "at",
+  clientId: "ashamed transform past",
+  secretId: "Afghani rosemary South",
 }).then((res: DeleteSecretResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -407,8 +407,8 @@ const sdk = new Formance({
 });
 
 sdk.auth.deleteTransientScope({
-  scopeId: "at",
-  transientScopeId: "maiores",
+  scopeId: "billion Chips",
+  transientScopeId: "Account untidy haptic",
 }).then((res: DeleteTransientScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -586,7 +586,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.readClient({
-  clientId: "molestiae",
+  clientId: "COM Wagon",
 }).then((res: ReadClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -624,7 +624,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.readScope({
-  scopeId: "quod",
+  scopeId: "Internal Credit Hermaphrodite",
 }).then((res: ReadScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -662,7 +662,7 @@ const sdk = new Formance({
 });
 
 sdk.auth.readUser({
-  userId: "quod",
+  userId: "Goodwin Folding always",
 }).then((res: ReadUserResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -701,21 +701,21 @@ const sdk = new Formance({
 
 sdk.auth.updateClient({
   updateClientRequest: {
-    description: "esse",
+    description: "Secured static model",
     metadata: {
-      "totam": "porro",
+      "temporibus": "Northwest",
     },
-    name: "Samuel Reichel",
+    name: "BMW XML",
     postLogoutRedirectUris: [
-      "fugit",
+      "magenta",
     ],
     public: false,
     redirectUris: [
-      "deleniti",
+      "collaborative",
     ],
     trusted: false,
   },
-  clientId: "hic",
+  clientId: "male gold",
 }).then((res: UpdateClientResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -754,12 +754,12 @@ const sdk = new Formance({
 
 sdk.auth.updateScope({
   updateScopeRequest: {
-    label: "optio",
+    label: "East South Luxurious",
     metadata: {
-      "totam": "beatae",
+      "temporibus": "meh",
     },
   },
-  scopeId: "commodi",
+  scopeId: "handcuff Xenon Timmy",
 }).then((res: UpdateScopeResponse) => {
   if (res.statusCode == 200) {
     // handle response
