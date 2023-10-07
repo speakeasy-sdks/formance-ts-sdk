@@ -14,19 +14,20 @@ List users
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListUsersResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.users.listUsers().then((res: ListUsersResponse) => {
+  const res = await sdk.users.listUsers();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -49,21 +50,22 @@ Read user
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadUserResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.users.readUser({
-  userId: "Goodwin Folding always",
-}).then((res: ReadUserResponse) => {
+  const res = await sdk.users.readUser({
+    userId: "Goodwin Folding always",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

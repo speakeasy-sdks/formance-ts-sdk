@@ -13,19 +13,20 @@ Show server information
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.server.getInfo().then((res: GetInfoResponse) => {
+  const res = await sdk.server.getInfo();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

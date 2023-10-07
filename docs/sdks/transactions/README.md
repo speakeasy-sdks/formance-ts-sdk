@@ -18,28 +18,28 @@ Set the metadata of a transaction by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddMetadataOnTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.transactions.addMetadataOnTransaction({
-  idempotencyKey: "Fresh Diesel",
-  requestBody: {
-    "facere": "Tricycle",
-  },
-  async: true,
-  dryRun: true,
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: AddMetadataOnTransactionResponse) => {
+  const res = await sdk.transactions.addMetadataOnTransaction({
+    requestBody: {
+      "admin": "true",
+    },
+    async: true,
+    dryRun: true,
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -63,30 +63,29 @@ Count the transactions from a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CountTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.transactions.countTransactions({
-  account: "users:001",
-  destination: "users:001",
-  endTime: new Date("2021-07-20T09:59:27.603Z"),
-  ledger: "ledger001",
-  metadata: {
-    "voluptates": "Executive",
-  },
-  reference: "ref:001",
-  source: "users:001",
-  startTime: new Date("2021-11-01T08:17:00.866Z"),
-}).then((res: CountTransactionsResponse) => {
+  const res = await sdk.transactions.countTransactions({
+    account: "users:001",
+    destination: "users:001",
+    ledger: "ledger001",
+    metadata: {
+      "Automotive": "Executive",
+    },
+    reference: "ref:001",
+    source: "users:001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -110,50 +109,49 @@ Create a new transaction to a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.transactions.createTransaction({
-  idempotencyKey: "Ball brr what",
-  postTransaction: {
-    metadata: {
-      "quasi": "strategic",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-    postings: [
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
+  });
+
+  const res = await sdk.transactions.createTransaction({
+    postTransaction: {
+      metadata: {
+        "admin": "true",
       },
-    ],
-    reference: "ref:001",
-    script: {
-      plain: "vars {
-    account $user
-    }
-    send [COIN 10] (
-    	source = @world
-    	destination = $user
-    )
-    ",
-      vars: {},
+      postings: [
+        {
+          amount: 100,
+          asset: "COIN",
+          destination: "users:002",
+          source: "users:001",
+        },
+      ],
+      reference: "ref:001",
+      script: {
+        plain: "vars {
+      account $user
+      }
+      send [COIN 10] (
+      	source = @world
+      	destination = $user
+      )
+      ",
+        vars: {},
+      },
     },
-    timestamp: new Date("2023-04-27T14:31:29.129Z"),
-  },
-  async: true,
-  dryRun: true,
-  ledger: "ledger001",
-}).then((res: CreateTransactionResponse) => {
+    async: true,
+    dryRun: true,
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -177,22 +175,23 @@ Get transaction from a ledger by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.transactions.getTransaction({
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: GetTransactionResponse) => {
+  const res = await sdk.transactions.getTransaction({
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -216,32 +215,30 @@ List transactions from a ledger, sorted by txid in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.transactions.listTransactions({
-  account: "users:001",
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  destination: "users:001",
-  endTime: new Date("2022-09-08T16:09:19.098Z"),
-  ledger: "ledger001",
-  metadata: {
-    "alias": "District",
-  },
-  pageSize: 71007,
-  reference: "ref:001",
-  source: "users:001",
-  startTime: new Date("2022-09-12T07:36:38.262Z"),
-}).then((res: ListTransactionsResponse) => {
+  const res = await sdk.transactions.listTransactions({
+    account: "users:001",
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    destination: "users:001",
+    ledger: "ledger001",
+    metadata: {
+      "alias": "District",
+    },
+    reference: "ref:001",
+    source: "users:001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -265,22 +262,23 @@ Revert a ledger transaction by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { RevertTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.transactions.revertTransaction({
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: RevertTransactionResponse) => {
+  const res = await sdk.transactions.revertTransaction({
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

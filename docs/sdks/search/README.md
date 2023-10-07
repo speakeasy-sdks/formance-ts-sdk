@@ -14,35 +14,75 @@ ElasticSearch query engine
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { SearchResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.search.search({
-  after: [
-    "users:002",
-  ],
-  cursor: "YXVsdCBhbmQgYSBtYXhpbXVtIG1heF9yZXN1bHRzLol=",
-  ledgers: [
-    "quickstart",
-  ],
-  pageSize: 307631,
-  policy: "OR",
-  raw: {},
-  sort: "txid:asc",
-  target: "Movies",
-  terms: [
-    "destination=central_bank1",
-  ],
-}).then((res: SearchResponse) => {
+  const res = await sdk.search.search({
+    after: [
+      "u",
+      "s",
+      "e",
+      "r",
+      "s",
+      ":",
+      "0",
+      "0",
+      "2",
+    ],
+    cursor: "YXVsdCBhbmQgYSBtYXhpbXVtIG1heF9yZXN1bHRzLol=",
+    ledgers: [
+      "q",
+      "u",
+      "i",
+      "c",
+      "k",
+      "s",
+      "t",
+      "a",
+      "r",
+      "t",
+    ],
+    policy: "OR",
+    raw: {},
+    sort: "txid:asc",
+    terms: [
+      "d",
+      "e",
+      "s",
+      "t",
+      "i",
+      "n",
+      "a",
+      "t",
+      "i",
+      "o",
+      "n",
+      "=",
+      "c",
+      "e",
+      "n",
+      "t",
+      "r",
+      "a",
+      "l",
+      "_",
+      "b",
+      "a",
+      "n",
+      "k",
+      "1",
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -66,19 +106,20 @@ Get server info
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { SearchgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.search.searchgetServerInfo().then((res: SearchgetServerInfoResponse) => {
+  const res = await sdk.search.searchgetServerInfo();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -23,21 +23,22 @@ Cancel a running workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CancelEventResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.cancelEvent({
-  instanceID: "revolutionary",
-}).then((res: CancelEventResponse) => {
+  const res = await sdk.orchestration.cancelEvent({
+    instanceID: "revolutionary",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -61,26 +62,26 @@ Create a workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.orchestration.createWorkflow({
-  name: "amidst leverage kelvin",
-  stages: [
-    {
-      "tempore": "vivaciously",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-  ],
-}).then((res: CreateWorkflowResponse) => {
+  });
+
+  const res = await sdk.orchestration.createWorkflow({
+    stages: [
+      {
+        "why": "Maryland",
+      },
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -104,21 +105,22 @@ Get a workflow instance by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetInstanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.getInstance({
-  instanceID: "digital North Borders",
-}).then((res: GetInstanceResponse) => {
+  const res = await sdk.orchestration.getInstance({
+    instanceID: "digital North Borders",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -142,21 +144,22 @@ Get a workflow instance history by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetInstanceHistoryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.getInstanceHistory({
-  instanceID: "Bedfordshire",
-}).then((res: GetInstanceHistoryResponse) => {
+  const res = await sdk.orchestration.getInstanceHistory({
+    instanceID: "Bedfordshire",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -180,22 +183,23 @@ Get a workflow instance stage history
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetInstanceStageHistoryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.getInstanceStageHistory({
-  instanceID: "UAE Beauty",
-  number: 789895,
-}).then((res: GetInstanceStageHistoryResponse) => {
+  const res = await sdk.orchestration.getInstanceStageHistory({
+    instanceID: "UAE Beauty",
+    number: 789895,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -219,21 +223,22 @@ Get a flow by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.getWorkflow({
-  flowId: "Security restrain",
-}).then((res: GetWorkflowResponse) => {
+  const res = await sdk.orchestration.getWorkflow({
+    flowId: "Security restrain",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -257,22 +262,20 @@ List instances of a workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListInstancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.listInstances({
-  running: false,
-  workflowID: "Hybrid Azerbaijanian",
-}).then((res: ListInstancesResponse) => {
+  const res = await sdk.orchestration.listInstances({});
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -296,19 +299,20 @@ List registered workflows
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListWorkflowsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.listWorkflows().then((res: ListWorkflowsResponse) => {
+  const res = await sdk.orchestration.listWorkflows();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -331,19 +335,20 @@ Get server info
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { OrchestrationgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.orchestrationgetServerInfo().then((res: OrchestrationgetServerInfoResponse) => {
+  const res = await sdk.orchestration.orchestrationgetServerInfo();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -366,25 +371,25 @@ Run workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { RunWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.runWorkflow({
-  requestBody: {
-    "delectus": "Accountability",
-  },
-  wait: false,
-  workflowID: "newton aggregate Metal",
-}).then((res: RunWorkflowResponse) => {
+  const res = await sdk.orchestration.runWorkflow({
+    requestBody: {
+      "off": "quick",
+    },
+    workflowID: "Ball female loyally",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -408,24 +413,25 @@ Send an event to a running workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { SendEventResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.sendEvent({
-  requestBody: {
-    name: "Male lavender Fritsch",
-  },
-  instanceID: "Regional once East",
-}).then((res: SendEventResponse) => {
+  const res = await sdk.orchestration.sendEvent({
+    requestBody: {
+      name: "Male lavender Fritsch",
+    },
+    instanceID: "Regional once East",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

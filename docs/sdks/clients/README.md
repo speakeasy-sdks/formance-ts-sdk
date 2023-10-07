@@ -21,22 +21,23 @@ Add scope to client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddScopeToClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.clients.addScopeToClient({
-  clientId: "East laudantium HTTP",
-  scopeId: "boo Senior",
-}).then((res: AddScopeToClientResponse) => {
+  const res = await sdk.clients.addScopeToClient({
+    clientId: "East laudantium HTTP",
+    scopeId: "boo Senior",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -60,33 +61,31 @@ Create client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.clients.createClient({
-  description: "Managed optimizing help-desk",
-  metadata: {
-    "vero": "Division",
-  },
-  name: "Station East Functionality",
-  postLogoutRedirectUris: [
-    "24",
-  ],
-  public: false,
-  redirectUris: [
-    "fuchsia",
-  ],
-  trusted: false,
-}).then((res: CreateClientResponse) => {
+  const res = await sdk.clients.createClient({
+    metadata: {
+      "Dobra": "invoice",
+    },
+    name: "Dong Station",
+    postLogoutRedirectUris: [
+      "East",
+    ],
+    redirectUris: [
+      "Functionality",
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -110,27 +109,28 @@ Add a secret to a client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.clients.createSecret({
-  createSecretRequest: {
-    metadata: {
-      "aliquid": "Southwest",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-    name: "olive executive Taka",
-  },
-  clientId: "South",
-}).then((res: CreateSecretResponse) => {
+  });
+
+  const res = await sdk.clients.createSecret({
+    createSecretRequest: {
+      metadata: {
+        "architecture": "hmph",
+      },
+      name: "National",
+    },
+    clientId: "Taka Alabama",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -154,21 +154,22 @@ Delete client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.clients.deleteClient({
-  clientId: "salmon synergize",
-}).then((res: DeleteClientResponse) => {
+  const res = await sdk.clients.deleteClient({
+    clientId: "salmon synergize",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -192,22 +193,23 @@ Delete scope from client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteScopeFromClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.clients.deleteScopeFromClient({
-  clientId: "Northeast synergy zowie",
-  scopeId: "befriend coherent",
-}).then((res: DeleteScopeFromClientResponse) => {
+  const res = await sdk.clients.deleteScopeFromClient({
+    clientId: "Northeast synergy zowie",
+    scopeId: "befriend coherent",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -231,22 +233,23 @@ Delete a secret from a client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.clients.deleteSecret({
-  clientId: "ashamed transform past",
-  secretId: "Afghani rosemary South",
-}).then((res: DeleteSecretResponse) => {
+  const res = await sdk.clients.deleteSecret({
+    clientId: "ashamed transform past",
+    secretId: "Afghani rosemary South",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -270,19 +273,20 @@ List clients
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListClientsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.clients.listClients().then((res: ListClientsResponse) => {
+  const res = await sdk.clients.listClients();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -305,21 +309,22 @@ Read client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.clients.readClient({
-  clientId: "COM Wagon",
-}).then((res: ReadClientResponse) => {
+  const res = await sdk.clients.readClient({
+    clientId: "COM Wagon",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -343,36 +348,34 @@ Update client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.clients.updateClient({
-  updateClientRequest: {
-    description: "Secured static model",
-    metadata: {
-      "temporibus": "Northwest",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-    name: "BMW XML",
-    postLogoutRedirectUris: [
-      "magenta",
-    ],
-    public: false,
-    redirectUris: [
-      "collaborative",
-    ],
-    trusted: false,
-  },
-  clientId: "male gold",
-}).then((res: UpdateClientResponse) => {
+  });
+
+  const res = await sdk.clients.updateClient({
+    updateClientRequest: {
+      metadata: {
+        "fuchsia": "Configuration",
+      },
+      name: "Creative",
+      postLogoutRedirectUris: [
+        "shofar",
+      ],
+      redirectUris: [
+        "Specialist",
+      ],
+    },
+    clientId: "payment finally Chevrolet",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

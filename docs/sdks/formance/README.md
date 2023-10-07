@@ -28,19 +28,20 @@ Show stack version information
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetVersionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.formance.getVersions().then((res: GetVersionsResponse) => {
+  const res = await sdk.formance.getVersions();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

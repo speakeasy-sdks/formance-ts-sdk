@@ -13,25 +13,23 @@ List the logs from a ledger, sorted by ID in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListLogsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.logs.listLogs({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  endTime: new Date("2022-09-04T05:10:40.788Z"),
-  ledger: "ledger001",
-  pageSize: 657242,
-  startTime: new Date("2021-11-03T02:36:34.808Z"),
-}).then((res: ListLogsResponse) => {
+  const res = await sdk.logs.listLogs({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

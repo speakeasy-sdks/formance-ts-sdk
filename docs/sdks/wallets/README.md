@@ -28,25 +28,26 @@ Confirm a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ConfirmHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.confirmHold({
-  confirmHoldRequest: {
-    amount: 100,
-    final: true,
-  },
-  holdId: "Missouri holistic",
-}).then((res: ConfirmHoldResponse) => {
+  const res = await sdk.wallets.confirmHold({
+    confirmHoldRequest: {
+      amount: 100,
+      final: true,
+    },
+    holdId: "Missouri holistic",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -70,26 +71,25 @@ Create a balance
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.createBalance({
-  createBalanceRequest: {
-    expiresAt: new Date("2023-03-08T09:54:54.366Z"),
-    name: "vortals Lawrence female",
-    priority: 98814,
-  },
-  id: "<ID>",
-}).then((res: CreateBalanceResponse) => {
+  const res = await sdk.wallets.createBalance({
+    createBalanceRequest: {
+      name: "Cab Lawrence female",
+    },
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -113,24 +113,25 @@ Create a new wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.createWallet({
-  metadata: {
-    "deleniti": "Hybrid",
-  },
-  name: "fleck unto Calcium",
-}).then((res: CreateWalletResponse) => {
+  const res = await sdk.wallets.createWallet({
+    metadata: {
+      "array": "Islands",
+    },
+    name: "Versatile what orchid",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -154,38 +155,34 @@ Credit a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreditWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.creditWallet({
-  creditWalletRequest: {
-    amount: {
-      amount: 201874,
-      asset: "second",
-    },
-    balance: "Bike",
-    metadata: {
-      "quidem": "Clifton",
-    },
-    reference: "purple Shoreline keenly",
-    sources: [
-      {
-        identifier: "intranet haptic East",
-        type: "Rubber ick",
+  const res = await sdk.wallets.creditWallet({
+    creditWalletRequest: {
+      amount: {
+        amount: 201874,
+        asset: "second",
       },
-    ],
-  },
-  id: "<ID>",
-}).then((res: CreditWalletResponse) => {
+      metadata: {
+        "Bedfordshire": "Samarium",
+      },
+      sources: [
+        "Handcrafted",
+      ],
+    },
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -209,39 +206,35 @@ Debit a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DebitWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.debitWallet({
-  debitWalletRequest: {
-    amount: {
-      amount: 245256,
-      asset: "azure",
+  const res = await sdk.wallets.debitWallet({
+    debitWalletRequest: {
+      amount: {
+        amount: 245256,
+        asset: "azure",
+      },
+      balances: [
+        "Tasty",
+      ],
+      destination: "blindly",
+      metadata: {
+        "Bike": "Bedfordshire",
+      },
     },
-    balances: [
-      "Tasty",
-    ],
-    description: "Total 6th generation conglomeration",
-    destination: {
-      identifier: "impactful",
-      type: "Trigender SCSI",
-    },
-    metadata: {
-      "commodi": "fluid",
-    },
-    pending: false,
-  },
-  id: "<ID>",
-}).then((res: DebitWalletResponse) => {
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -265,22 +258,23 @@ Get detailed balance
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.getBalance({
-  balanceName: "Kids Franc hmph",
-  id: "<ID>",
-}).then((res: GetBalanceResponse) => {
+  const res = await sdk.wallets.getBalance({
+    balanceName: "Kids Franc hmph",
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -304,21 +298,22 @@ Get a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.getHold({
-  holdID: "taper",
-}).then((res: GetHoldResponse) => {
+  const res = await sdk.wallets.getHold({
+    holdID: "taper",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -342,26 +337,25 @@ Get all holds for a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetHoldsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.getHolds({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  metadata: {
-    "quidem": "Cotton",
-  },
-  pageSize: 502179,
-  walletID: "quickly deposit plus",
-}).then((res: GetHoldsResponse) => {
+  const res = await sdk.wallets.getHolds({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    metadata: {
+      "Engineer": "Folding",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -383,23 +377,22 @@ sdk.wallets.getHolds({
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.getTransactions({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 680555,
-  walletID: "Account",
-}).then((res: GetTransactionsResponse) => {
+  const res = await sdk.wallets.getTransactions({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -423,21 +416,22 @@ Get a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.getWallet({
-  id: "<ID>",
-}).then((res: GetWalletResponse) => {
+  const res = await sdk.wallets.getWallet({
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -461,21 +455,22 @@ Get wallet summary
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWalletSummaryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.getWalletSummary({
-  id: "<ID>",
-}).then((res: GetWalletSummaryResponse) => {
+  const res = await sdk.wallets.getWalletSummary({
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -499,21 +494,22 @@ List balances of a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.listBalances({
-  id: "<ID>",
-}).then((res: ListBalancesResponse) => {
+  const res = await sdk.wallets.listBalances({
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -537,26 +533,25 @@ List all wallets
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListWalletsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.listWallets({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  metadata: {
-    "commodi": "green",
-  },
-  name: "Mobility Electric huzzah",
-  pageSize: 194059,
-}).then((res: ListWalletsResponse) => {
+  const res = await sdk.wallets.listWallets({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    metadata: {
+      "Auto": "Mobility",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -580,26 +575,27 @@ Update a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.wallets.updateWallet({
-  requestBody: {
-    metadata: {
-      "quas": "Books",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-  },
-  id: "<ID>",
-}).then((res: UpdateWalletResponse) => {
+  });
+
+  const res = await sdk.wallets.updateWallet({
+    requestBody: {
+      metadata: {
+        "override": "South",
+      },
+    },
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -623,21 +619,22 @@ Cancel a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { VoidHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.voidHold({
-  holdId: "redundant yesterday Hat",
-}).then((res: VoidHoldResponse) => {
+  const res = await sdk.wallets.voidHold({
+    holdId: "redundant yesterday Hat",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -661,19 +658,20 @@ Get server info
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { WalletsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.wallets.walletsgetServerInfo().then((res: WalletsgetServerInfoResponse) => {
+  const res = await sdk.wallets.walletsgetServerInfo();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

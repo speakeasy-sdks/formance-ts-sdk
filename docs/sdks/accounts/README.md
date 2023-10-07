@@ -16,28 +16,28 @@ Add metadata to an account
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddMetadataToAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.accounts.addMetadataToAccount({
-  idempotencyKey: "silver",
-  requestBody: {
-    "laborum": "Rubber",
-  },
-  address: "users:001",
-  async: true,
-  dryRun: true,
-  ledger: "ledger001",
-}).then((res: AddMetadataToAccountResponse) => {
+  const res = await sdk.accounts.addMetadataToAccount({
+    requestBody: {
+      "admin": "true",
+    },
+    address: "users:001",
+    async: true,
+    dryRun: true,
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -61,23 +61,24 @@ Count the accounts from a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CountAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.accounts.countAccounts({
-  address: "users:.+",
-  ledger: "ledger001",
-  metadata: {},
-}).then((res: CountAccountsResponse) => {
+  const res = await sdk.accounts.countAccounts({
+    address: "users:.+",
+    ledger: "ledger001",
+    metadata: {},
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -101,22 +102,23 @@ Get account by its address
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.accounts.getAccount({
-  address: "users:001",
-  ledger: "ledger001",
-}).then((res: GetAccountResponse) => {
+  const res = await sdk.accounts.getAccount({
+    address: "users:001",
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -140,29 +142,30 @@ List accounts from a ledger, sorted by address in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListAccountsBalanceOperator, ListAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { ListAccountsBalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.accounts.listAccounts({
-  address: "users:.+",
-  balance: 2400,
-  balanceOperator: ListAccountsBalanceOperator.Gte,
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  ledger: "ledger001",
-  metadata: {
-    "vero": "technologies",
-  },
-  pageSize: 530853,
-}).then((res: ListAccountsResponse) => {
+  const res = await sdk.accounts.listAccounts({
+    address: "users:.+",
+    balance: 2400,
+    balanceOperator: ListAccountsBalanceOperator.Gte,
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    ledger: "ledger001",
+    metadata: {
+      "glistening": "Loan",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

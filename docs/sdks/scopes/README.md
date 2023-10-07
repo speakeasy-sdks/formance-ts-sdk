@@ -19,22 +19,23 @@ Add a transient scope to a scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.scopes.addTransientScope({
-  scopeId: "executive Soul",
-  transientScopeId: "Keyboard neural tan",
-}).then((res: AddTransientScopeResponse) => {
+  const res = await sdk.scopes.addTransientScope({
+    scopeId: "executive Soul",
+    transientScopeId: "Keyboard neural tan",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -58,24 +59,25 @@ Create scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.scopes.createScope({
-  label: "neural Sunrise",
-  metadata: {
-    "vero": "deposit",
-  },
-}).then((res: CreateScopeResponse) => {
+  const res = await sdk.scopes.createScope({
+    label: "neural Sunrise",
+    metadata: {
+      "internal": "Northwest",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -99,21 +101,22 @@ Delete scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.scopes.deleteScope({
-  scopeId: "impedit Bronze",
-}).then((res: DeleteScopeResponse) => {
+  const res = await sdk.scopes.deleteScope({
+    scopeId: "impedit Bronze",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -137,22 +140,23 @@ Delete a transient scope from a scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.scopes.deleteTransientScope({
-  scopeId: "billion Chips",
-  transientScopeId: "Account untidy haptic",
-}).then((res: DeleteTransientScopeResponse) => {
+  const res = await sdk.scopes.deleteTransientScope({
+    scopeId: "billion Chips",
+    transientScopeId: "Account untidy haptic",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -176,19 +180,20 @@ List Scopes
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListScopesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.scopes.listScopes().then((res: ListScopesResponse) => {
+  const res = await sdk.scopes.listScopes();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -211,21 +216,22 @@ Read scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.scopes.readScope({
-  scopeId: "Internal Credit Hermaphrodite",
-}).then((res: ReadScopeResponse) => {
+  const res = await sdk.scopes.readScope({
+    scopeId: "Internal Credit Hermaphrodite",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -249,27 +255,28 @@ Update scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.scopes.updateScope({
-  updateScopeRequest: {
-    label: "East South Luxurious",
-    metadata: {
-      "temporibus": "meh",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-  },
-  scopeId: "handcuff Xenon Timmy",
-}).then((res: UpdateScopeResponse) => {
+  });
+
+  const res = await sdk.scopes.updateScope({
+    updateScopeRequest: {
+      label: "East South Luxurious",
+      metadata: {
+        "Martin": "meh",
+      },
+    },
+    scopeId: "handcuff Xenon Timmy",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

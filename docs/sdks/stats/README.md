@@ -14,21 +14,22 @@ Get statistics from a ledger. (aggregate metrics on accounts and transactions)
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadStatsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.stats.readStats({
-  ledger: "ledger001",
-}).then((res: ReadStatsResponse) => {
+  const res = await sdk.stats.readStats({
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
