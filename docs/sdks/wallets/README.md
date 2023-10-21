@@ -41,7 +41,7 @@ import { Formance } from "@speakeasy-sdks/formance";
       amount: 100,
       final: true,
     },
-    holdId: "Missouri holistic",
+    holdId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -81,7 +81,7 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.wallets.createBalance({
     createBalanceRequest: {
-      name: "Cab Lawrence female",
+      name: "string",
     },
     id: "<ID>",
   });
@@ -123,9 +123,9 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.wallets.createWallet({
     metadata: {
-      "array": "Islands",
+      "key": "string",
     },
-    name: "Versatile what orchid",
+    name: "string",
   });
 
   if (res.statusCode == 200) {
@@ -167,13 +167,13 @@ import { Formance } from "@speakeasy-sdks/formance";
     creditWalletRequest: {
       amount: {
         amount: 201874,
-        asset: "second",
+        asset: "string",
       },
       metadata: {
-        "Bedfordshire": "Samarium",
+        "key": "string",
       },
       sources: [
-        "Handcrafted",
+        "string",
       ],
     },
     id: "<ID>",
@@ -218,14 +218,14 @@ import { Formance } from "@speakeasy-sdks/formance";
     debitWalletRequest: {
       amount: {
         amount: 245256,
-        asset: "azure",
+        asset: "string",
       },
       balances: [
-        "Tasty",
+        "string",
       ],
-      destination: "blindly",
+      destination: "string",
       metadata: {
-        "Bike": "Bedfordshire",
+        "key": "string",
       },
     },
     id: "<ID>",
@@ -267,7 +267,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.wallets.getBalance({
-    balanceName: "Kids Franc hmph",
+    balanceName: "string",
     id: "<ID>",
   });
 
@@ -307,7 +307,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.wallets.getHold({
-    holdID: "taper",
+    holdID: "string",
   });
 
   if (res.statusCode == 200) {
@@ -348,7 +348,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.wallets.getHolds({
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     metadata: {
-      "Engineer": "Folding",
+      "key": "string",
     },
   });
 
@@ -544,7 +544,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.wallets.listWallets({
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     metadata: {
-      "Auto": "Mobility",
+      "key": "string",
     },
   });
 
@@ -586,7 +586,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.wallets.updateWallet({
     requestBody: {
       metadata: {
-        "override": "South",
+        "key": "string",
       },
     },
     id: "<ID>",
@@ -628,7 +628,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.wallets.voidHold({
-    holdId: "redundant yesterday Hat",
+    holdId: "string",
   });
 
   if (res.statusCode == 200) {

@@ -59,7 +59,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.users.readUser({
-    userId: "Goodwin Folding always",
+    userId: "string",
   });
 
   if (res.statusCode == 200) {

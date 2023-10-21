@@ -127,7 +127,7 @@ import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
   const res = await sdk.payments.getConnectorTask({
     connector: Connector.BankingCircle,
-    taskId: "Recycled male",
+    taskId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -166,7 +166,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.payments.getPayment({
-    paymentId: "West",
+    paymentId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -206,8 +206,8 @@ import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
   });
 
   const res = await sdk.payments.installConnector({
-    requestBody: "Salad",
-    connector: Connector.CurrencyCloud,
+    requestBody: "string",
+    connector: Connector.DummyPay,
   });
 
   if (res.statusCode == 200) {
@@ -401,7 +401,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.payments.listPayments({
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     sort: [
-      "East",
+      "string",
     ],
   });
 
@@ -479,7 +479,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.payments.paymentslistAccounts({
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     sort: [
-      "Rustic",
+      "string",
     ],
   });
 
@@ -642,7 +642,7 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.payments.updateMetadata({
     paymentMetadata: {},
-    paymentId: "Gasoline BMX",
+    paymentId: "string",
   });
 
   if (res.statusCode == 200) {

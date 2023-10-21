@@ -158,7 +158,7 @@ import { ListAccountsBalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/m
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     ledger: "ledger001",
     metadata: {
-      "glistening": "Loan",
+      "key": "string",
     },
   });
 

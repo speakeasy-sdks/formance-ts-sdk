@@ -28,8 +28,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.scopes.addTransientScope({
-    scopeId: "executive Soul",
-    transientScopeId: "Keyboard neural tan",
+    scopeId: "string",
+    transientScopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -68,9 +68,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.scopes.createScope({
-    label: "neural Sunrise",
+    label: "string",
     metadata: {
-      "internal": "Northwest",
+      "key": "string",
     },
   });
 
@@ -110,7 +110,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.scopes.deleteScope({
-    scopeId: "impedit Bronze",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -149,8 +149,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.scopes.deleteTransientScope({
-    scopeId: "billion Chips",
-    transientScopeId: "Account untidy haptic",
+    scopeId: "string",
+    transientScopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -225,7 +225,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.scopes.readScope({
-    scopeId: "Internal Credit Hermaphrodite",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -265,12 +265,12 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.scopes.updateScope({
     updateScopeRequest: {
-      label: "East South Luxurious",
+      label: "string",
       metadata: {
-        "Martin": "meh",
+        "key": "string",
       },
     },
-    scopeId: "handcuff Xenon Timmy",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {

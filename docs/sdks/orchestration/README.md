@@ -32,7 +32,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.orchestration.cancelEvent({
-    instanceID: "revolutionary",
+    instanceID: "string",
   });
 
   if (res.statusCode == 200) {
@@ -73,7 +73,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.orchestration.createWorkflow({
     stages: [
       {
-        "why": "Maryland",
+        "key": "string",
       },
     ],
   });
@@ -114,7 +114,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.orchestration.getInstance({
-    instanceID: "digital North Borders",
+    instanceID: "string",
   });
 
   if (res.statusCode == 200) {
@@ -153,7 +153,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.orchestration.getInstanceHistory({
-    instanceID: "Bedfordshire",
+    instanceID: "string",
   });
 
   if (res.statusCode == 200) {
@@ -192,8 +192,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.orchestration.getInstanceStageHistory({
-    instanceID: "UAE Beauty",
-    number: 789895,
+    instanceID: "string",
+    number: 600636,
   });
 
   if (res.statusCode == 200) {
@@ -232,7 +232,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.orchestration.getWorkflow({
-    flowId: "Security restrain",
+    flowId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -381,9 +381,9 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.orchestration.runWorkflow({
     requestBody: {
-      "off": "quick",
+      "key": "string",
     },
-    workflowID: "Ball female loyally",
+    workflowID: "string",
   });
 
   if (res.statusCode == 200) {
@@ -423,9 +423,9 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.orchestration.sendEvent({
     requestBody: {
-      name: "Male lavender Fritsch",
+      name: "string",
     },
-    instanceID: "Regional once East",
+    instanceID: "string",
   });
 
   if (res.statusCode == 200) {

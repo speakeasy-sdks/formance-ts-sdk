@@ -4,18 +4,19 @@
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
-  const sdk = new Formance({
-    security: {
-      authorization: "",
-    },
-  });
+(async () => {
+    const sdk = new Formance({
+        security: {
+            authorization: "",
+        },
+    });
 
-  const res = await sdk.getVersions();
+    const res = await sdk.formance.getVersions();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
 <!-- End SDK Example Usage -->

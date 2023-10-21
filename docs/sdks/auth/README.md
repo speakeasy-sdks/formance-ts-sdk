@@ -40,8 +40,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.addScopeToClient({
-    clientId: "East laudantium HTTP",
-    scopeId: "boo Senior",
+    clientId: "string",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -80,8 +80,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.addTransientScope({
-    scopeId: "executive Soul",
-    transientScopeId: "Keyboard neural tan",
+    scopeId: "string",
+    transientScopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -121,14 +121,14 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.auth.createClient({
     metadata: {
-      "Dobra": "invoice",
+      "key": "string",
     },
-    name: "Dong Station",
+    name: "string",
     postLogoutRedirectUris: [
-      "East",
+      "string",
     ],
     redirectUris: [
-      "Functionality",
+      "string",
     ],
   });
 
@@ -168,9 +168,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.createScope({
-    label: "neural Sunrise",
+    label: "string",
     metadata: {
-      "internal": "Northwest",
+      "key": "string",
     },
   });
 
@@ -212,11 +212,11 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.auth.createSecret({
     createSecretRequest: {
       metadata: {
-        "architecture": "hmph",
+        "key": "string",
       },
-      name: "National",
+      name: "string",
     },
-    clientId: "Taka Alabama",
+    clientId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -255,7 +255,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.deleteClient({
-    clientId: "salmon synergize",
+    clientId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -294,7 +294,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.deleteScope({
-    scopeId: "impedit Bronze",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -333,8 +333,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.deleteScopeFromClient({
-    clientId: "Northeast synergy zowie",
-    scopeId: "befriend coherent",
+    clientId: "string",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -373,8 +373,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.deleteSecret({
-    clientId: "ashamed transform past",
-    secretId: "Afghani rosemary South",
+    clientId: "string",
+    secretId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -413,8 +413,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.deleteTransientScope({
-    scopeId: "billion Chips",
-    transientScopeId: "Account untidy haptic",
+    scopeId: "string",
+    transientScopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -597,7 +597,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.readClient({
-    clientId: "COM Wagon",
+    clientId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -636,7 +636,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.readScope({
-    scopeId: "Internal Credit Hermaphrodite",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -675,7 +675,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.auth.readUser({
-    userId: "Goodwin Folding always",
+    userId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -716,17 +716,17 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.auth.updateClient({
     updateClientRequest: {
       metadata: {
-        "fuchsia": "Configuration",
+        "key": "string",
       },
-      name: "Creative",
+      name: "string",
       postLogoutRedirectUris: [
-        "shofar",
+        "string",
       ],
       redirectUris: [
-        "Specialist",
+        "string",
       ],
     },
-    clientId: "payment finally Chevrolet",
+    clientId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -766,12 +766,12 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.auth.updateScope({
     updateScopeRequest: {
-      label: "East South Luxurious",
+      label: "string",
       metadata: {
-        "Martin": "meh",
+        "key": "string",
       },
     },
-    scopeId: "handcuff Xenon Timmy",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {

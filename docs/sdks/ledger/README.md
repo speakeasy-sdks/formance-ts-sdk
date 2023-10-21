@@ -172,7 +172,7 @@ import { Formance } from "@speakeasy-sdks/formance";
     destination: "users:001",
     ledger: "ledger001",
     metadata: {
-      "Automotive": "Executive",
+      "key": "string",
     },
     reference: "ref:001",
     source: "users:001",
@@ -523,7 +523,7 @@ import { ListAccountsBalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/m
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     ledger: "ledger001",
     metadata: {
-      "glistening": "Loan",
+      "key": "string",
     },
   });
 
@@ -608,7 +608,7 @@ import { Formance } from "@speakeasy-sdks/formance";
     destination: "users:001",
     ledger: "ledger001",
     metadata: {
-      "alias": "District",
+      "key": "string",
     },
     reference: "ref:001",
     source: "users:001",

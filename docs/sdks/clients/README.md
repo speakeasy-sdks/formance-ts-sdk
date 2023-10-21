@@ -30,8 +30,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.clients.addScopeToClient({
-    clientId: "East laudantium HTTP",
-    scopeId: "boo Senior",
+    clientId: "string",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -71,14 +71,14 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.clients.createClient({
     metadata: {
-      "Dobra": "invoice",
+      "key": "string",
     },
-    name: "Dong Station",
+    name: "string",
     postLogoutRedirectUris: [
-      "East",
+      "string",
     ],
     redirectUris: [
-      "Functionality",
+      "string",
     ],
   });
 
@@ -120,11 +120,11 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.clients.createSecret({
     createSecretRequest: {
       metadata: {
-        "architecture": "hmph",
+        "key": "string",
       },
-      name: "National",
+      name: "string",
     },
-    clientId: "Taka Alabama",
+    clientId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -163,7 +163,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.clients.deleteClient({
-    clientId: "salmon synergize",
+    clientId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -202,8 +202,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.clients.deleteScopeFromClient({
-    clientId: "Northeast synergy zowie",
-    scopeId: "befriend coherent",
+    clientId: "string",
+    scopeId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -242,8 +242,8 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.clients.deleteSecret({
-    clientId: "ashamed transform past",
-    secretId: "Afghani rosemary South",
+    clientId: "string",
+    secretId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -318,7 +318,7 @@ import { Formance } from "@speakeasy-sdks/formance";
   });
 
   const res = await sdk.clients.readClient({
-    clientId: "COM Wagon",
+    clientId: "string",
   });
 
   if (res.statusCode == 200) {
@@ -359,17 +359,17 @@ import { Formance } from "@speakeasy-sdks/formance";
   const res = await sdk.clients.updateClient({
     updateClientRequest: {
       metadata: {
-        "fuchsia": "Configuration",
+        "key": "string",
       },
-      name: "Creative",
+      name: "string",
       postLogoutRedirectUris: [
-        "shofar",
+        "string",
       ],
       redirectUris: [
-        "Specialist",
+        "string",
       ],
     },
-    clientId: "payment finally Chevrolet",
+    clientId: "string",
   });
 
   if (res.statusCode == 200) {

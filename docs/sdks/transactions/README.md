@@ -76,7 +76,7 @@ import { Formance } from "@speakeasy-sdks/formance";
     destination: "users:001",
     ledger: "ledger001",
     metadata: {
-      "Automotive": "Executive",
+      "key": "string",
     },
     reference: "ref:001",
     source: "users:001",
@@ -229,7 +229,7 @@ import { Formance } from "@speakeasy-sdks/formance";
     destination: "users:001",
     ledger: "ledger001",
     metadata: {
-      "alias": "District",
+      "key": "string",
     },
     reference: "ref:001",
     source: "users:001",
