@@ -1,4 +1,5 @@
-# balances
+# Balances
+(*balances*)
 
 ### Available Operations
 
@@ -13,25 +14,24 @@ Get the balances from a ledger's account
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.balances.getBalances({
-  address: "users:001",
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  ledger: "ledger001",
-  pageSize: 210382,
-}).then((res: GetBalancesResponse) => {
+  const res = await sdk.balances.getBalances({
+    address: "users:001",
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -55,23 +55,23 @@ Get the aggregated balances from selected accounts
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetBalancesAggregatedResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.balances.getBalancesAggregated({
-  address: "users:001",
-  ledger: "ledger001",
-}).then((res: GetBalancesAggregatedResponse) => {
+  const res = await sdk.balances.getBalancesAggregated({
+    address: "users:001",
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

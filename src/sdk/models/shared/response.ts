@@ -50,9 +50,6 @@ export class ResponseCursor extends SpeakeasyBase {
  */
 export class ResponseData extends SpeakeasyBase {}
 
-/**
- * Success
- */
 export class Response extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "cursor" })

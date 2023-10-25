@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Workflow } from "./workflow";
 import { Expose, Type } from "class-transformer";
 
-/**
- * List of workflows
- */
 export class ListWorkflowsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: Workflow })
     @Expose({ name: "data" })

@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Secret } from "./secret";
 import { Expose, Type } from "class-transformer";
 
-/**
- * Created secret
- */
 export class CreateSecretResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })

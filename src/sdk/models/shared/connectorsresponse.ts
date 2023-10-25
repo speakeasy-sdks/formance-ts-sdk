@@ -16,9 +16,6 @@ export class ConnectorsResponseData extends SpeakeasyBase {
     provider?: Connector;
 }
 
-/**
- * OK
- */
 export class ConnectorsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: ConnectorsResponseData })
     @Expose({ name: "data" })

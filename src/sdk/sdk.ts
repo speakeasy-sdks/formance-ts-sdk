@@ -9,6 +9,7 @@ import { Balances } from "./balances";
 import { Clients } from "./clients";
 import { Ledger } from "./ledger";
 import { Logs } from "./logs";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { Orchestration } from "./orchestration";
@@ -22,7 +23,7 @@ import { Users } from "./users";
 import { Wallets } from "./wallets";
 import { Webhooks } from "./webhooks";
 import axios from "axios";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 /**
  * Contains the list of servers available to the SDK
@@ -45,7 +46,8 @@ export type SDKProps = {
     /**
      * The security details required to authenticate the SDK
      */
-    security?: shared.Security;
+    security?: shared.Security | (() => Promise<shared.Security>);
+
     /**
      * Allows overriding the default axios client used by the SDK
      */
@@ -65,18 +67,23 @@ export type SDKProps = {
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
+    /**
+     * Allows overriding the default retry config used by the SDK
+     */
+    retryConfig?: utils.RetryConfig;
 };
 
 export class SDKConfiguration {
     defaultClient: AxiosInstance;
-    securityClient: AxiosInstance;
+    security?: shared.Security | (() => Promise<shared.Security>);
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.20230614";
-    sdkVersion = "0.30.0";
-    genVersion = "2.43.2";
-
+    sdkVersion = "0.56.0";
+    genVersion = "2.171.0";
+    userAgent = "speakeasy-sdk/typescript 0.56.0 2.171.0 v1.0.20230614 @speakeasy-sdks/formance";
+    retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
     }
@@ -136,21 +143,12 @@ export class Formance {
         }
 
         const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
-        let securityClient = defaultClient;
-
-        if (props?.security) {
-            let security: shared.Security = props.security;
-            if (!(props.security instanceof utils.SpeakeasyBase)) {
-                security = new shared.Security(props.security);
-            }
-            securityClient = utils.createSecurityClient(defaultClient, security);
-        }
-
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
-            securityClient: securityClient,
+            security: props?.security,
             serverURL: serverURL,
             serverDefaults: defaults,
+            retryConfig: props?.retryConfig,
         });
 
         this.accounts = new Accounts(this.sdkConfiguration);
@@ -180,15 +178,19 @@ export class Formance {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = baseURL.replace(/\/$/, "") + "/versions";
-
-        const client: AxiosInstance =
-            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
-
-        const headers = { ...config?.headers };
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -217,6 +219,13 @@ export class Formance {
                     res.getVersionsResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.GetVersionsResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

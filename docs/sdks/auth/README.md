@@ -1,4 +1,5 @@
-# auth
+# Auth
+(*auth*)
 
 ### Available Operations
 
@@ -30,22 +31,23 @@ Add scope to client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddScopeToClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.addScopeToClient({
-  clientId: "debitis",
-  scopeId: "ipsa",
-}).then((res: AddScopeToClientResponse) => {
+  const res = await sdk.auth.addScopeToClient({
+    clientId: "string",
+    scopeId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -69,22 +71,23 @@ Add a transient scope to a scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.addTransientScope({
-  scopeId: "delectus",
-  transientScopeId: "tempora",
-}).then((res: AddTransientScopeResponse) => {
+  const res = await sdk.auth.addTransientScope({
+    scopeId: "string",
+    transientScopeId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -108,34 +111,31 @@ Create client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.createClient({
-  description: "suscipit",
-  metadata: {
-    "minus": "placeat",
-    "voluptatum": "iusto",
-  },
-  name: "Charlie Walsh II",
-  postLogoutRedirectUris: [
-    "deserunt",
-  ],
-  public: false,
-  redirectUris: [
-    "ipsam",
-  ],
-  trusted: false,
-}).then((res: CreateClientResponse) => {
+  const res = await sdk.auth.createClient({
+    metadata: {
+      "key": "string",
+    },
+    name: "string",
+    postLogoutRedirectUris: [
+      "string",
+    ],
+    redirectUris: [
+      "string",
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -159,27 +159,25 @@ Create scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.createScope({
-  label: "repellendus",
-  metadata: {
-    "quo": "odit",
-    "at": "at",
-    "maiores": "molestiae",
-    "quod": "quod",
-  },
-}).then((res: CreateScopeResponse) => {
+  const res = await sdk.auth.createScope({
+    label: "string",
+    metadata: {
+      "key": "string",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -203,28 +201,28 @@ Add a secret to a client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.auth.createSecret({
-  createSecretRequest: {
-    metadata: {
-      "totam": "porro",
-      "dolorum": "dicta",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-    name: "Luke McCullough",
-  },
-  clientId: "hic",
-}).then((res: CreateSecretResponse) => {
+  });
+
+  const res = await sdk.auth.createSecret({
+    createSecretRequest: {
+      metadata: {
+        "key": "string",
+      },
+      name: "string",
+    },
+    clientId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -248,21 +246,22 @@ Delete client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.deleteClient({
-  clientId: "optio",
-}).then((res: DeleteClientResponse) => {
+  const res = await sdk.auth.deleteClient({
+    clientId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -286,21 +285,22 @@ Delete scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.deleteScope({
-  scopeId: "totam",
-}).then((res: DeleteScopeResponse) => {
+  const res = await sdk.auth.deleteScope({
+    scopeId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -324,22 +324,23 @@ Delete scope from client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteScopeFromClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.deleteScopeFromClient({
-  clientId: "beatae",
-  scopeId: "commodi",
-}).then((res: DeleteScopeFromClientResponse) => {
+  const res = await sdk.auth.deleteScopeFromClient({
+    clientId: "string",
+    scopeId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -363,22 +364,23 @@ Delete a secret from a client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.deleteSecret({
-  clientId: "molestiae",
-  secretId: "modi",
-}).then((res: DeleteSecretResponse) => {
+  const res = await sdk.auth.deleteSecret({
+    clientId: "string",
+    secretId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -402,22 +404,23 @@ Delete a transient scope from a scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.deleteTransientScope({
-  scopeId: "qui",
-  transientScopeId: "impedit",
-}).then((res: DeleteTransientScopeResponse) => {
+  const res = await sdk.auth.deleteTransientScope({
+    scopeId: "string",
+    transientScopeId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -441,19 +444,20 @@ Get server info
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.getServerInfo().then((res: GetServerInfoResponse) => {
+  const res = await sdk.auth.getServerInfo();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -476,19 +480,20 @@ List clients
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListClientsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.listClients().then((res: ListClientsResponse) => {
+  const res = await sdk.auth.listClients();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -511,19 +516,20 @@ List Scopes
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListScopesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.listScopes().then((res: ListScopesResponse) => {
+  const res = await sdk.auth.listScopes();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -546,19 +552,20 @@ List users
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListUsersResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.listUsers().then((res: ListUsersResponse) => {
+  const res = await sdk.auth.listUsers();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -581,21 +588,22 @@ Read client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.readClient({
-  clientId: "cum",
-}).then((res: ReadClientResponse) => {
+  const res = await sdk.auth.readClient({
+    clientId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -619,21 +627,22 @@ Read scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.readScope({
-  scopeId: "esse",
-}).then((res: ReadScopeResponse) => {
+  const res = await sdk.auth.readScope({
+    scopeId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -657,21 +666,22 @@ Read user
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadUserResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.auth.readUser({
-  userId: "ipsum",
-}).then((res: ReadUserResponse) => {
+  const res = await sdk.auth.readUser({
+    userId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -695,39 +705,34 @@ Update client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.auth.updateClient({
-  updateClientRequest: {
-    description: "excepturi",
-    metadata: {
-      "perferendis": "ad",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-    name: "Louis Moore",
-    postLogoutRedirectUris: [
-      "hic",
-      "saepe",
-    ],
-    public: false,
-    redirectUris: [
-      "in",
-      "corporis",
-      "iste",
-    ],
-    trusted: false,
-  },
-  clientId: "iure",
-}).then((res: UpdateClientResponse) => {
+  });
+
+  const res = await sdk.auth.updateClient({
+    updateClientRequest: {
+      metadata: {
+        "key": "string",
+      },
+      name: "string",
+      postLogoutRedirectUris: [
+        "string",
+      ],
+      redirectUris: [
+        "string",
+      ],
+    },
+    clientId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -751,29 +756,28 @@ Update scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.auth.updateScope({
-  updateScopeRequest: {
-    label: "saepe",
-    metadata: {
-      "architecto": "ipsa",
-      "reiciendis": "est",
-      "mollitia": "laborum",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-  },
-  scopeId: "dolores",
-}).then((res: UpdateScopeResponse) => {
+  });
+
+  const res = await sdk.auth.updateScope({
+    updateScopeRequest: {
+      label: "string",
+      metadata: {
+        "key": "string",
+      },
+    },
+    scopeId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

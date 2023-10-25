@@ -1,4 +1,5 @@
-# orchestration
+# Orchestration
+(*orchestration*)
 
 ### Available Operations
 
@@ -22,22 +23,22 @@ Cancel a running workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CancelEventResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.cancelEvent({
-  instanceID: "sint",
-}).then((res: CancelEventResponse) => {
+  const res = await sdk.orchestration.cancelEvent({
+    instanceID: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -61,30 +62,26 @@ Create a workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
-
-sdk.orchestration.createWorkflow({
-  name: "Sherri Tremblay",
-  stages: [
-    {
-      "a": "dolorum",
-      "in": "in",
-      "illum": "maiores",
-      "rerum": "dicta",
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
     },
-  ],
-}).then((res: CreateWorkflowResponse) => {
+  });
+
+  const res = await sdk.orchestration.createWorkflow({
+    stages: [
+      {
+        "key": "string",
+      },
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -108,22 +105,22 @@ Get a workflow instance by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetInstanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.getInstance({
-  instanceID: "magnam",
-}).then((res: GetInstanceResponse) => {
+  const res = await sdk.orchestration.getInstance({
+    instanceID: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -147,22 +144,22 @@ Get a workflow instance history by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetInstanceHistoryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.getInstanceHistory({
-  instanceID: "cumque",
-}).then((res: GetInstanceHistoryResponse) => {
+  const res = await sdk.orchestration.getInstanceHistory({
+    instanceID: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -186,23 +183,23 @@ Get a workflow instance stage history
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetInstanceStageHistoryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector, ErrorErrorCode, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.getInstanceStageHistory({
-  instanceID: "facere",
-  number: 411820,
-}).then((res: GetInstanceStageHistoryResponse) => {
+  const res = await sdk.orchestration.getInstanceStageHistory({
+    instanceID: "string",
+    number: 600636,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -226,22 +223,22 @@ Get a flow by id
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.getWorkflow({
-  flowId: "aliquid",
-}).then((res: GetWorkflowResponse) => {
+  const res = await sdk.orchestration.getWorkflow({
+    flowId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -265,23 +262,20 @@ List instances of a workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListInstancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.listInstances({
-  running: false,
-  workflowID: "laborum",
-}).then((res: ListInstancesResponse) => {
+  const res = await sdk.orchestration.listInstances({});
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -305,20 +299,20 @@ List registered workflows
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListWorkflowsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.listWorkflows().then((res: ListWorkflowsResponse) => {
+  const res = await sdk.orchestration.listWorkflows();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -341,20 +335,20 @@ Get server info
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { OrchestrationgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.orchestrationgetServerInfo().then((res: OrchestrationgetServerInfoResponse) => {
+  const res = await sdk.orchestration.orchestrationgetServerInfo();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -377,29 +371,25 @@ Run workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { RunWorkflowResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.runWorkflow({
-  requestBody: {
-    "non": "occaecati",
-    "enim": "accusamus",
-    "delectus": "quidem",
-    "provident": "nam",
-  },
-  wait: false,
-  workflowID: "id",
-}).then((res: RunWorkflowResponse) => {
+  const res = await sdk.orchestration.runWorkflow({
+    requestBody: {
+      "key": "string",
+    },
+    workflowID: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -423,25 +413,25 @@ Send an event to a running workflow
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { SendEventResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.orchestration.sendEvent({
-  requestBody: {
-    name: "Jaime Will",
-  },
-  instanceID: "nisi",
-}).then((res: SendEventResponse) => {
+  const res = await sdk.orchestration.sendEvent({
+    requestBody: {
+      name: "string",
+    },
+    instanceID: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

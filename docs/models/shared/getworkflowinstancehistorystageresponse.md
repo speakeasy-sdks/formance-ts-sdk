@@ -1,7 +1,5 @@
 # GetWorkflowInstanceHistoryStageResponse
 
-The workflow instance stage history
-
 
 ## Fields
 

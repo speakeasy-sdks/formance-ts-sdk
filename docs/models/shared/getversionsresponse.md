@@ -1,7 +1,5 @@
 # GetVersionsResponse
 
-OK
-
 
 ## Fields
 

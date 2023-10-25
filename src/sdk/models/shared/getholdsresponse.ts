@@ -29,9 +29,6 @@ export class GetHoldsResponseCursor extends SpeakeasyBase {
     previous?: string;
 }
 
-/**
- * Holds
- */
 export class GetHoldsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "cursor" })

@@ -1,7 +1,5 @@
 # GetWalletSummaryResponse
 
-Wallet summary
-
 
 ## Fields
 

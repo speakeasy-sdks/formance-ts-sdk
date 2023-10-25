@@ -1,4 +1,5 @@
-# webhooks
+# Webhooks
+(*webhooks*)
 
 ### Available Operations
 
@@ -18,22 +19,22 @@ Activate a webhooks config by ID, to start receiving webhooks to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ActivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.webhooks.activateConfig({
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: ActivateConfigResponse) => {
+  const res = await sdk.webhooks.activateConfig({
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -61,25 +62,25 @@ The format is a random string of bytes of size 24, base64 encoded. (larger size 
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ChangeConfigSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.webhooks.changeConfigSecret({
-  configChangeSecret: {
-    secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
-  },
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: ChangeConfigSecretResponse) => {
+  const res = await sdk.webhooks.changeConfigSecret({
+    configChangeSecret: {
+      secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
+    },
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -103,22 +104,22 @@ Deactivate a webhooks config by ID, to stop receiving webhooks to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeactivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.webhooks.deactivateConfig({
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: DeactivateConfigResponse) => {
+  const res = await sdk.webhooks.deactivateConfig({
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -142,22 +143,22 @@ Delete a webhooks config by ID.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.webhooks.deleteConfig({
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: DeleteConfigResponse) => {
+  const res = await sdk.webhooks.deleteConfig({
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -181,23 +182,23 @@ Sorted by updated date descending
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetManyConfigsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.webhooks.getManyConfigs({
-  endpoint: "https://example.com",
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: GetManyConfigsResponse) => {
+  const res = await sdk.webhooks.getManyConfigs({
+    endpoint: "https://example.com",
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -230,27 +231,27 @@ All eventTypes are converted to lower-case when inserted.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { InsertConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.webhooks.insertConfig({
-  endpoint: "https://example.com",
-  eventTypes: [
-    "TYPE1",
-    "TYPE1",
-  ],
-  secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
-}).then((res: InsertConfigResponse) => {
+  const res = await sdk.webhooks.insertConfig({
+    endpoint: "https://example.com",
+    eventTypes: [
+      "TYPE1",
+      "TYPE2",
+    ],
+    secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -274,22 +275,22 @@ Test a config by sending a webhook to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { TestConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+(async() => {
+  const sdk = new Formance({
+    security: {
+      authorization: "",
+    },
+  });
 
-sdk.webhooks.testConfig({
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: TestConfigResponse) => {
+  const res = await sdk.webhooks.testConfig({
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

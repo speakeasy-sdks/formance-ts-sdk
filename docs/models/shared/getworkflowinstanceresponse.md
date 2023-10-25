@@ -1,7 +1,5 @@
 # GetWorkflowInstanceResponse
 
-The workflow instance
-
 
 ## Fields
 

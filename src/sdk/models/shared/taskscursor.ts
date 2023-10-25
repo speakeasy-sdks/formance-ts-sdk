@@ -27,9 +27,6 @@ export class TasksCursorCursor extends SpeakeasyBase {
     previous?: string;
 }
 
-/**
- * OK
- */
 export class TasksCursor extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "cursor" })

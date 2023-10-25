@@ -1,7 +1,5 @@
 # RunWorkflowResponse
 
-The workflow instance
-
 
 ## Fields
 

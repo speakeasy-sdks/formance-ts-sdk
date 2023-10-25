@@ -1,7 +1,5 @@
 # GetWorkflowInstanceHistoryResponse
 
-The workflow instance history
-
 
 ## Fields
 
