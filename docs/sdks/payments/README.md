@@ -1,4 +1,5 @@
-# payments
+# Payments
+(*payments*)
 
 ### Available Operations
 
@@ -27,24 +28,24 @@ Execute a transfer between two Stripe accounts.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ConnectorsStripeTransferResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.connectorsStripeTransfer({
-  amount: 100,
-  asset: "USD",
-  destination: "acct_1Gqj58KZcSIg2N2q",
-  metadata: {},
-}).then((res: ConnectorsStripeTransferResponse) => {
+  const res = await sdk.payments.connectorsStripeTransfer({
+    amount: 100,
+    asset: "USD",
+    destination: "acct_1Gqj58KZcSIg2N2q",
+    metadata: {},
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -68,28 +69,28 @@ Execute a transfer between two accounts.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ConnectorsTransferResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.connectorsTransfer({
-  transferRequest: {
-    amount: 100,
-    asset: "USD",
-    destination: "acct_1Gqj58KZcSIg2N2q",
-    source: "acct_1Gqj58KZcSIg2N2q",
-  },
-  connector: Connector.Wise,
-}).then((res: ConnectorsTransferResponse) => {
+  const res = await sdk.payments.connectorsTransfer({
+    transferRequest: {
+      amount: 100,
+      asset: "USD",
+      destination: "acct_1Gqj58KZcSIg2N2q",
+      source: "acct_1Gqj58KZcSIg2N2q",
+    },
+    connector: Connector.Wise,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -113,23 +114,23 @@ Get a specific task associated to the connector.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetConnectorTaskResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.getConnectorTask({
-  connector: Connector.Modulr,
-  taskId: "omnis",
-}).then((res: GetConnectorTaskResponse) => {
+  const res = await sdk.payments.getConnectorTask({
+    connector: Connector.BankingCircle,
+    taskId: "string",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -153,22 +154,21 @@ Get a payment
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetPaymentResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.getPayment({
-  paymentId: "molestiae",
-}).then((res: GetPaymentResponse) => {
+  const res = await sdk.payments.getPayment({
+    paymentId: "string",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -192,27 +192,23 @@ Install a connector by its name and config.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { InstallConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.installConnector({
-  requestBody: {
-    apiKey: "XXX",
-    pageSize: 50,
-    pollingPeriod: "60s",
-  },
-  connector: Connector.Wise,
-}).then((res: InstallConnectorResponse) => {
+  const res = await sdk.payments.installConnector({
+    requestBody: "string",
+    connector: Connector.DummyPay,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -236,20 +232,19 @@ List all installed connectors.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListAllConnectorsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.listAllConnectors().then((res: ListAllConnectorsResponse) => {
+  const res = await sdk.payments.listAllConnectors();
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -272,19 +267,19 @@ List the configs of each available connector.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListConfigsAvailableConnectorsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.listConfigsAvailableConnectors().then((res: ListConfigsAvailableConnectorsResponse) => {
+  const res = await sdk.payments.listConfigsAvailableConnectors();
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -307,24 +302,23 @@ List all tasks associated with this connector.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListConnectorTasksResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.listConnectorTasks({
-  connector: Connector.DummyPay,
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 716075,
-}).then((res: ListConnectorTasksResponse) => {
+  const res = await sdk.payments.listConnectorTasks({
+    connector: Connector.DummyPay,
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -348,22 +342,22 @@ List transfers
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListConnectorsTransfersResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.listConnectorsTransfers({
-  connector: Connector.Modulr,
-}).then((res: ListConnectorsTransfersResponse) => {
+  const res = await sdk.payments.listConnectorsTransfers({
+    connector: Connector.Modulr,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -387,27 +381,24 @@ List payments
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListPaymentsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector, PaymentScheme, PaymentStatus, PaymentType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.listPayments({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 287991,
-  sort: [
-    "suscipit",
-    "natus",
-  ],
-}).then((res: ListPaymentsResponse) => {
+  const res = await sdk.payments.listPayments({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    sort: [
+      "string",
+    ],
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -431,19 +422,19 @@ Get server info
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { PaymentsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.paymentsgetServerInfo().then((res: PaymentsgetServerInfoResponse) => {
+  const res = await sdk.payments.paymentsgetServerInfo();
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -466,27 +457,24 @@ List accounts
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { PaymentslistAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { Connector, PaymentsAccountType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.paymentslistAccounts({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 749170,
-  sort: [
-    "vero",
-    "aspernatur",
-  ],
-}).then((res: PaymentslistAccountsResponse) => {
+  const res = await sdk.payments.paymentslistAccounts({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    sort: [
+      "string",
+    ],
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -510,22 +498,22 @@ Read connector config
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadConnectorConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.readConnectorConfig({
-  connector: Connector.Stripe,
-}).then((res: ReadConnectorConfigResponse) => {
+  const res = await sdk.payments.readConnectorConfig({
+    connector: Connector.BankingCircle,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -551,22 +539,22 @@ It will remove the connector and ALL PAYMENTS generated with it.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ResetConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.resetConnector({
-  connector: Connector.DummyPay,
-}).then((res: ResetConnectorResponse) => {
+  const res = await sdk.payments.resetConnector({
+    connector: Connector.CurrencyCloud,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -590,22 +578,22 @@ Uninstall a connector by its name.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UninstallConnectorResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 import { Connector } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.uninstallConnector({
-  connector: Connector.Stripe,
-}).then((res: UninstallConnectorResponse) => {
+  const res = await sdk.payments.uninstallConnector({
+    connector: Connector.DummyPay,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -629,24 +617,22 @@ Update metadata
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateMetadataResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.payments.updateMetadata({
-  paymentMetadata: {
-    key: "excepturi",
-  },
-  paymentId: "ullam",
-}).then((res: UpdateMetadataResponse) => {
+  const res = await sdk.payments.updateMetadata({
+    paymentMetadata: {},
+    paymentId: "string",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

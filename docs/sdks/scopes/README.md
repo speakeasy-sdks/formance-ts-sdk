@@ -1,4 +1,5 @@
-# scopes
+# Scopes
+(*scopes*)
 
 ### Available Operations
 
@@ -18,22 +19,22 @@ Add a transient scope to a scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.scopes.addTransientScope({
-  scopeId: "provident",
-  transientScopeId: "quos",
-}).then((res: AddTransientScopeResponse) => {
+  const res = await sdk.scopes.addTransientScope({
+    scopeId: "string",
+    transientScopeId: "string",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -57,24 +58,24 @@ Create scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.scopes.createScope({
-  label: "sint",
-  metadata: {
-    "mollitia": "reiciendis",
-  },
-}).then((res: CreateScopeResponse) => {
+  const res = await sdk.scopes.createScope({
+    label: "string",
+    metadata: {
+      "key": "string",
+    },
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -98,21 +99,21 @@ Delete scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.scopes.deleteScope({
-  scopeId: "mollitia",
-}).then((res: DeleteScopeResponse) => {
+  const res = await sdk.scopes.deleteScope({
+    scopeId: "string",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -136,22 +137,22 @@ Delete a transient scope from a scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteTransientScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.scopes.deleteTransientScope({
-  scopeId: "ad",
-  transientScopeId: "eum",
-}).then((res: DeleteTransientScopeResponse) => {
+  const res = await sdk.scopes.deleteTransientScope({
+    scopeId: "string",
+    transientScopeId: "string",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -175,19 +176,19 @@ List Scopes
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListScopesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.scopes.listScopes().then((res: ListScopesResponse) => {
+  const res = await sdk.scopes.listScopes();
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -210,21 +211,21 @@ Read scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.scopes.readScope({
-  scopeId: "dolor",
-}).then((res: ReadScopeResponse) => {
+  const res = await sdk.scopes.readScope({
+    scopeId: "string",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -248,27 +249,27 @@ Update scope
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateScopeResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.scopes.updateScope({
-  updateScopeRequest: {
-    label: "necessitatibus",
-    metadata: {
-      "nemo": "quasi",
+  const res = await sdk.scopes.updateScope({
+    updateScopeRequest: {
+      label: "string",
+      metadata: {
+        "key": "string",
+      },
     },
-  },
-  scopeId: "iure",
-}).then((res: UpdateScopeResponse) => {
+    scopeId: "string",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -29,9 +29,6 @@ export class ConnectorsConfigsResponseData extends SpeakeasyBase {
     connector: ConnectorsConfigsResponseDataConnector;
 }
 
-/**
- * OK
- */
 export class ConnectorsConfigsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })

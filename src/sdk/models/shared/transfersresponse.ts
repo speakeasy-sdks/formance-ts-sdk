@@ -39,9 +39,6 @@ export class TransfersResponseData extends SpeakeasyBase {
     status?: string;
 }
 
-/**
- * OK
- */
 export class TransfersResponse extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: TransfersResponseData })
     @Expose({ name: "data" })

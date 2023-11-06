@@ -19,14 +19,6 @@ export class PostTransactionScript extends SpeakeasyBase {
     vars?: PostTransactionScriptVars;
 }
 
-/**
- * The request body must contain at least one of the following objects:
- *
- * @remarks
- *   - `postings`: suitable for simple transactions
- *   - `script`: enabling more complex transactions with Numscript
- *
- */
 export class PostTransaction extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })

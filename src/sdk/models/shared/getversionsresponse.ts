@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Version } from "./version";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class GetVersionsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "env" })

@@ -10,9 +10,6 @@ export enum ErrorErrorCode {
     NotFound = "NOT_FOUND",
 }
 
-/**
- * General error
- */
 export class ErrorT extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errorCode" })

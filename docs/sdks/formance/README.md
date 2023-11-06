@@ -1,5 +1,6 @@
 # Formance SDK
 
+
 ## Overview
 
 Formance Stack API: Open, modular foundation for unique payments flows
@@ -27,19 +28,19 @@ Show stack version information
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetVersionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.formance.getVersions().then((res: GetVersionsResponse) => {
+  const res = await sdk.formance.getVersions();
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

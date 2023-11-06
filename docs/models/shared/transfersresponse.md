@@ -1,7 +1,5 @@
 # TransfersResponse
 
-OK
-
 
 ## Fields
 

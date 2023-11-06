@@ -1,4 +1,5 @@
-# transactions
+# Transactions
+(*transactions*)
 
 ### Available Operations
 
@@ -17,30 +18,27 @@ Set the metadata of a transaction by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddMetadataOnTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.transactions.addMetadataOnTransaction({
-  idempotencyKey: "facilis",
-  requestBody: {
-    "architecto": "architecto",
-    "repudiandae": "ullam",
-  },
-  async: true,
-  dryRun: true,
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: AddMetadataOnTransactionResponse) => {
+  const res = await sdk.transactions.addMetadataOnTransaction({
+    requestBody: {
+      "admin": "true",
+    },
+    async: true,
+    dryRun: true,
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -64,34 +62,28 @@ Count the transactions from a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CountTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.transactions.countTransactions({
-  account: "users:001",
-  destination: "users:001",
-  endTime: new Date("2022-01-23T10:45:15.714Z"),
-  ledger: "ledger001",
-  metadata: {
-    "quibusdam": "sed",
-    "saepe": "pariatur",
-    "accusantium": "consequuntur",
-    "praesentium": "natus",
-  },
-  reference: "ref:001",
-  source: "users:001",
-  startTime: new Date("2022-11-16T19:20:12.159Z"),
-}).then((res: CountTransactionsResponse) => {
+  const res = await sdk.transactions.countTransactions({
+    account: "users:001",
+    destination: "users:001",
+    ledger: "ledger001",
+    metadata: {
+      "key": "string",
+    },
+    reference: "ref:001",
+    source: "users:001",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -115,72 +107,48 @@ Create a new transaction to a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.transactions.createTransaction({
-  idempotencyKey: "quo",
-  postTransaction: {
-    metadata: {
-      "pariatur": "maxime",
-      "ea": "excepturi",
-      "odit": "ea",
-      "accusantium": "ab",
+  const res = await sdk.transactions.createTransaction({
+    postTransaction: {
+      metadata: {
+        "admin": "true",
+      },
+      postings: [
+        {
+          amount: 100,
+          asset: "COIN",
+          destination: "users:002",
+          source: "users:001",
+        },
+      ],
+      reference: "ref:001",
+      script: {
+        plain: "vars {
+      account $user
+      }
+      send [COIN 10] (
+      	source = @world
+      	destination = $user
+      )
+      ",
+        vars: {},
+      },
     },
-    postings: [
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-    ],
-    reference: "ref:001",
-    script: {
-      plain: "vars {
-    account $user
-    }
-    send [COIN 10] (
-    	source = @world
-    	destination = $user
-    )
-    ",
-      vars: {},
-    },
-    timestamp: new Date("2022-04-03T11:56:45.015Z"),
-  },
-  async: true,
-  dryRun: true,
-  ledger: "ledger001",
-}).then((res: CreateTransactionResponse) => {
+    async: true,
+    dryRun: true,
+    ledger: "ledger001",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -204,23 +172,22 @@ Get transaction from a ledger by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.transactions.getTransaction({
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: GetTransactionResponse) => {
+  const res = await sdk.transactions.getTransaction({
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -244,35 +211,29 @@ List transactions from a ledger, sorted by txid in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.transactions.listTransactions({
-  account: "users:001",
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  destination: "users:001",
-  endTime: new Date("2022-07-31T16:08:22.625Z"),
-  ledger: "ledger001",
-  metadata: {
-    "eaque": "pariatur",
-    "nemo": "voluptatibus",
-    "perferendis": "fugiat",
-  },
-  pageSize: 230742,
-  reference: "ref:001",
-  source: "users:001",
-  startTime: new Date("2022-03-27T19:22:24.458Z"),
-}).then((res: ListTransactionsResponse) => {
+  const res = await sdk.transactions.listTransactions({
+    account: "users:001",
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    destination: "users:001",
+    ledger: "ledger001",
+    metadata: {
+      "key": "string",
+    },
+    reference: "ref:001",
+    source: "users:001",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -296,23 +257,22 @@ Revert a ledger transaction by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { RevertTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.transactions.revertTransaction({
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: RevertTransactionResponse) => {
+  const res = await sdk.transactions.revertTransaction({
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

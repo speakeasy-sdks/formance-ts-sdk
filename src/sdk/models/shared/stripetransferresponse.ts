@@ -4,7 +4,4 @@
 
 import { SpeakeasyBase } from "../../../internal/utils";
 
-/**
- * OK
- */
 export class StripeTransferResponse extends SpeakeasyBase {}

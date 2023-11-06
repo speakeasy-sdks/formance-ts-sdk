@@ -1,4 +1,5 @@
-# logs
+# Logs
+(*logs*)
 
 ### Available Operations
 
@@ -12,26 +13,22 @@ List the logs from a ledger, sorted by ID in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListLogsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum, LogType } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
+(async() => {
+  const sdk = new Formance({
     authorization: "",
-  },
-});
+  });
 
-sdk.logs.listLogs({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  endTime: new Date("2022-01-14T19:13:42.009Z"),
-  ledger: "ledger001",
-  pageSize: 433288,
-  startTime: new Date("2022-03-31T00:30:19.135Z"),
-}).then((res: ListLogsResponse) => {
+  const res = await sdk.logs.listLogs({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    ledger: "ledger001",
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
