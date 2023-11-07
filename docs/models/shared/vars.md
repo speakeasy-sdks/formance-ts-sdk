@@ -1,4 +1,4 @@
-# ResponseCursorData
+# Vars
 
 
 ## Fields

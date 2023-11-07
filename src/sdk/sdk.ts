@@ -3,15 +3,15 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { Accounts } from "./accounts";
 import { Auth } from "./auth";
 import { Balances } from "./balances";
 import { Clients } from "./clients";
 import { Ledger } from "./ledger";
 import { Logs } from "./logs";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
 import { Orchestration } from "./orchestration";
 import { Payments } from "./payments";
 import { Scopes } from "./scopes";
@@ -77,9 +77,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.20230614";
-    sdkVersion = "0.31.0";
-    genVersion = "2.173.0";
-    userAgent = "speakeasy-sdk/typescript 0.31.0 2.173.0 v1.0.20230614 @speakeasy-sdks/formance";
+    sdkVersion = "0.32.0";
+    genVersion = "2.181.1";
+    userAgent = "speakeasy-sdk/typescript 0.32.0 2.181.1 v1.0.20230614 @speakeasy-sdks/formance";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -103,20 +103,20 @@ export class SDKConfiguration {
  *
  */
 export class Formance {
-    public accounts: Accounts;
     public auth: Auth;
-    public balances: Balances;
     public clients: Clients;
-    public ledger: Ledger;
-    public logs: Logs;
-    public orchestration: Orchestration;
-    public payments: Payments;
     public scopes: Scopes;
-    public search: Search;
+    public users: Users;
+    public ledger: Ledger;
     public server: Server;
+    public accounts: Accounts;
+    public balances: Balances;
+    public logs: Logs;
     public stats: Stats;
     public transactions: Transactions;
-    public users: Users;
+    public orchestration: Orchestration;
+    public payments: Payments;
+    public search: Search;
     public wallets: Wallets;
     public webhooks: Webhooks;
 
@@ -149,20 +149,20 @@ export class Formance {
             retryConfig: props?.retryConfig,
         });
 
-        this.accounts = new Accounts(this.sdkConfiguration);
         this.auth = new Auth(this.sdkConfiguration);
-        this.balances = new Balances(this.sdkConfiguration);
         this.clients = new Clients(this.sdkConfiguration);
-        this.ledger = new Ledger(this.sdkConfiguration);
-        this.logs = new Logs(this.sdkConfiguration);
-        this.orchestration = new Orchestration(this.sdkConfiguration);
-        this.payments = new Payments(this.sdkConfiguration);
         this.scopes = new Scopes(this.sdkConfiguration);
-        this.search = new Search(this.sdkConfiguration);
+        this.users = new Users(this.sdkConfiguration);
+        this.ledger = new Ledger(this.sdkConfiguration);
         this.server = new Server(this.sdkConfiguration);
+        this.accounts = new Accounts(this.sdkConfiguration);
+        this.balances = new Balances(this.sdkConfiguration);
+        this.logs = new Logs(this.sdkConfiguration);
         this.stats = new Stats(this.sdkConfiguration);
         this.transactions = new Transactions(this.sdkConfiguration);
-        this.users = new Users(this.sdkConfiguration);
+        this.orchestration = new Orchestration(this.sdkConfiguration);
+        this.payments = new Payments(this.sdkConfiguration);
+        this.search = new Search(this.sdkConfiguration);
         this.wallets = new Wallets(this.sdkConfiguration);
         this.webhooks = new Webhooks(this.sdkConfiguration);
     }

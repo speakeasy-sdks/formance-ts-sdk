@@ -1,5 +1,5 @@
 # Search
-(*search*)
+(*.search*)
 
 ### Available Operations
 

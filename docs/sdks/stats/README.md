@@ -1,5 +1,5 @@
 # Stats
-(*stats*)
+(*.stats*)
 
 ### Available Operations
 

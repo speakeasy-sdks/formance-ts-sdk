@@ -1,4 +1,4 @@
-# ErrorErrorCode
+# ErrorCode
 
 
 ## Values

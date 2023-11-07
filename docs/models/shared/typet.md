@@ -1,4 +1,4 @@
-# LogType
+# TypeT
 
 
 ## Values

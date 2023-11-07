@@ -1,5 +1,5 @@
 # Server
-(*server*)
+(*.server*)
 
 ### Available Operations
 

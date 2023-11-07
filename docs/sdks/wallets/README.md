@@ -1,5 +1,5 @@
 # Wallets
-(*wallets*)
+(*.wallets*)
 
 ### Available Operations
 

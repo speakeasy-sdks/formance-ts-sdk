@@ -34,7 +34,7 @@ import { Formance } from "@speakeasy-sdks/formance";
     authorization: "",
   });
 
-  const res = await sdk.formance.getVersions();
+  const res = await sdk.getVersions();
 
 
   if (res.statusCode == 200) {

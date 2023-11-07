@@ -1,5 +1,5 @@
 # Scopes
-(*scopes*)
+(*.scopes*)
 
 ### Available Operations
 

@@ -9,9 +9,9 @@ import { PaymentMetadata } from "./paymentmetadata";
 import { PaymentStatus } from "./paymentstatus";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class PaymentRaw extends SpeakeasyBase {}
+export class Raw extends SpeakeasyBase {}
 
-export enum PaymentScheme {
+export enum Scheme {
     Visa = "visa",
     Mastercard = "mastercard",
     Amex = "amex",
@@ -77,8 +77,8 @@ export class Payment extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "raw" })
-    @Type(() => PaymentRaw)
-    raw: PaymentRaw;
+    @Type(() => Raw)
+    raw: Raw;
 
     @SpeakeasyMetadata()
     @Expose({ name: "reference" })
@@ -86,7 +86,7 @@ export class Payment extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "scheme" })
-    scheme: PaymentScheme;
+    scheme: Scheme;
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

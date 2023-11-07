@@ -1,5 +1,5 @@
 # Transactions
-(*transactions*)
+(*.transactions*)
 
 ### Available Operations
 

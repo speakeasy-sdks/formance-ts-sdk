@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Posting } from "./posting";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class PostTransactionScriptVars extends SpeakeasyBase {}
+export class Vars extends SpeakeasyBase {}
 
-export class PostTransactionScript extends SpeakeasyBase {
+export class Script extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "plain" })
     plain: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "vars" })
-    @Type(() => PostTransactionScriptVars)
-    vars?: PostTransactionScriptVars;
+    @Type(() => Vars)
+    vars?: Vars;
 }
 
 export class PostTransaction extends SpeakeasyBase {
@@ -35,8 +35,8 @@ export class PostTransaction extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "script" })
-    @Type(() => PostTransactionScript)
-    script?: PostTransactionScript;
+    @Type(() => Script)
+    script?: Script;
 
     @SpeakeasyMetadata()
     @Expose({ name: "timestamp" })

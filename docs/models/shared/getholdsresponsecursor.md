@@ -5,7 +5,7 @@
 
 | Field                                        | Type                                         | Required                                     | Description                                  | Example                                      |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `data`                                       | [Hold](../../models/shared/hold.md)[]        | :heavy_check_mark:                           | N/A                                          |                                              |
+| `data`                                       | [shared.Hold](../../models/shared/hold.md)[] | :heavy_check_mark:                           | N/A                                          |                                              |
 | `hasMore`                                    | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          | false                                        |
 | `next`                                       | *string*                                     | :heavy_minus_sign:                           | N/A                                          |                                              |
 | `pageSize`                                   | *number*                                     | :heavy_check_mark:                           | N/A                                          | 15                                           |

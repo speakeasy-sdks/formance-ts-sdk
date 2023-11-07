@@ -1,5 +1,5 @@
 # Users
-(*users*)
+(*.users*)
 
 ### Available Operations
 

@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 /**
@@ -12,7 +12,7 @@ import { AxiosResponse } from "axios";
  * @remarks
  *
  */
-export enum ListAccountsBalanceOperator {
+export enum BalanceOperator {
     Gte = "gte",
     Lte = "lte",
     Gt = "gt",
@@ -41,7 +41,7 @@ export class ListAccountsRequest extends SpeakeasyBase {
      *
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=balanceOperator" })
-    balanceOperator?: ListAccountsBalanceOperator;
+    balanceOperator?: BalanceOperator;
 
     /**
      * Parameter used in pagination requests. Maximum page size is set to 15.

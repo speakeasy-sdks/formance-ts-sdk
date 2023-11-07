@@ -38,7 +38,7 @@ import { Formance } from "@speakeasy-sdks/formance";
         authorization: "",
     });
 
-    const res = await sdk.formance.getVersions();
+    const res = await sdk.getVersions();
 
     if (res.statusCode == 200) {
         // handle response
@@ -55,14 +55,7 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 * [getVersions](docs/sdks/formance/README.md#getversions) - Show stack version information
 
-### [accounts](docs/sdks/accounts/README.md)
-
-* [addMetadataToAccount](docs/sdks/accounts/README.md#addmetadatatoaccount) - Add metadata to an account
-* [countAccounts](docs/sdks/accounts/README.md#countaccounts) - Count the accounts from a ledger
-* [getAccount](docs/sdks/accounts/README.md#getaccount) - Get account by its address
-* [listAccounts](docs/sdks/accounts/README.md#listaccounts) - List accounts from a ledger
-
-### [auth](docs/sdks/auth/README.md)
+### [.auth](docs/sdks/auth/README.md)
 
 * [addScopeToClient](docs/sdks/auth/README.md#addscopetoclient) - Add scope to client
 * [addTransientScope](docs/sdks/auth/README.md#addtransientscope) - Add a transient scope to a scope
@@ -84,12 +77,7 @@ import { Formance } from "@speakeasy-sdks/formance";
 * [updateClient](docs/sdks/auth/README.md#updateclient) - Update client
 * [updateScope](docs/sdks/auth/README.md#updatescope) - Update scope
 
-### [balances](docs/sdks/balances/README.md)
-
-* [getBalances](docs/sdks/balances/README.md#getbalances) - Get the balances from a ledger's account
-* [getBalancesAggregated](docs/sdks/balances/README.md#getbalancesaggregated) - Get the aggregated balances from selected accounts
-
-### [clients](docs/sdks/clients/README.md)
+### [.clients](docs/sdks/clients/README.md)
 
 * [addScopeToClient](docs/sdks/clients/README.md#addscopetoclient) - Add scope to client
 * [createClient](docs/sdks/clients/README.md#createclient) - Create client
@@ -101,7 +89,22 @@ import { Formance } from "@speakeasy-sdks/formance";
 * [readClient](docs/sdks/clients/README.md#readclient) - Read client
 * [updateClient](docs/sdks/clients/README.md#updateclient) - Update client
 
-### [ledger](docs/sdks/ledger/README.md)
+### [.scopes](docs/sdks/scopes/README.md)
+
+* [addTransientScope](docs/sdks/scopes/README.md#addtransientscope) - Add a transient scope to a scope
+* [createScope](docs/sdks/scopes/README.md#createscope) - Create scope
+* [deleteScope](docs/sdks/scopes/README.md#deletescope) - Delete scope
+* [deleteTransientScope](docs/sdks/scopes/README.md#deletetransientscope) - Delete a transient scope from a scope
+* [listScopes](docs/sdks/scopes/README.md#listscopes) - List scopes
+* [readScope](docs/sdks/scopes/README.md#readscope) - Read scope
+* [updateScope](docs/sdks/scopes/README.md#updatescope) - Update scope
+
+### [.users](docs/sdks/users/README.md)
+
+* [listUsers](docs/sdks/users/README.md#listusers) - List users
+* [readUser](docs/sdks/users/README.md#readuser) - Read user
+
+### [.ledger](docs/sdks/ledger/README.md)
 
 * [addMetadataOnTransaction](docs/sdks/ledger/README.md#addmetadataontransaction) - Set the metadata of a transaction by its ID
 * [addMetadataToAccount](docs/sdks/ledger/README.md#addmetadatatoaccount) - Add metadata to an account
@@ -120,11 +123,40 @@ import { Formance } from "@speakeasy-sdks/formance";
 * [readStats](docs/sdks/ledger/README.md#readstats) - Get statistics from a ledger
 * [revertTransaction](docs/sdks/ledger/README.md#reverttransaction) - Revert a ledger transaction by its ID
 
-### [logs](docs/sdks/logs/README.md)
+### [.server](docs/sdks/server/README.md)
+
+* [getInfo](docs/sdks/server/README.md#getinfo) - Show server information
+
+### [.accounts](docs/sdks/accounts/README.md)
+
+* [addMetadataToAccount](docs/sdks/accounts/README.md#addmetadatatoaccount) - Add metadata to an account
+* [countAccounts](docs/sdks/accounts/README.md#countaccounts) - Count the accounts from a ledger
+* [getAccount](docs/sdks/accounts/README.md#getaccount) - Get account by its address
+* [listAccounts](docs/sdks/accounts/README.md#listaccounts) - List accounts from a ledger
+
+### [.balances](docs/sdks/balances/README.md)
+
+* [getBalances](docs/sdks/balances/README.md#getbalances) - Get the balances from a ledger's account
+* [getBalancesAggregated](docs/sdks/balances/README.md#getbalancesaggregated) - Get the aggregated balances from selected accounts
+
+### [.logs](docs/sdks/logs/README.md)
 
 * [listLogs](docs/sdks/logs/README.md#listlogs) - List the logs from a ledger
 
-### [orchestration](docs/sdks/orchestration/README.md)
+### [.stats](docs/sdks/stats/README.md)
+
+* [readStats](docs/sdks/stats/README.md#readstats) - Get statistics from a ledger
+
+### [.transactions](docs/sdks/transactions/README.md)
+
+* [addMetadataOnTransaction](docs/sdks/transactions/README.md#addmetadataontransaction) - Set the metadata of a transaction by its ID
+* [countTransactions](docs/sdks/transactions/README.md#counttransactions) - Count the transactions from a ledger
+* [createTransaction](docs/sdks/transactions/README.md#createtransaction) - Create a new transaction to a ledger
+* [getTransaction](docs/sdks/transactions/README.md#gettransaction) - Get transaction from a ledger by its ID
+* [listTransactions](docs/sdks/transactions/README.md#listtransactions) - List transactions from a ledger
+* [revertTransaction](docs/sdks/transactions/README.md#reverttransaction) - Revert a ledger transaction by its ID
+
+### [.orchestration](docs/sdks/orchestration/README.md)
 
 * [cancelEvent](docs/sdks/orchestration/README.md#cancelevent) - Cancel a running workflow
 * [createWorkflow](docs/sdks/orchestration/README.md#createworkflow) - Create workflow
@@ -138,7 +170,7 @@ import { Formance } from "@speakeasy-sdks/formance";
 * [runWorkflow](docs/sdks/orchestration/README.md#runworkflow) - Run workflow
 * [sendEvent](docs/sdks/orchestration/README.md#sendevent) - Send an event to a running workflow
 
-### [payments](docs/sdks/payments/README.md)
+### [.payments](docs/sdks/payments/README.md)
 
 * [connectorsStripeTransfer](docs/sdks/payments/README.md#connectorsstripetransfer) - Transfer funds between Stripe accounts
 * [connectorsTransfer](docs/sdks/payments/README.md#connectorstransfer) - Transfer funds between Connector accounts
@@ -157,44 +189,12 @@ import { Formance } from "@speakeasy-sdks/formance";
 * [uninstallConnector](docs/sdks/payments/README.md#uninstallconnector) - Uninstall a connector
 * [updateMetadata](docs/sdks/payments/README.md#updatemetadata) - Update metadata
 
-### [scopes](docs/sdks/scopes/README.md)
-
-* [addTransientScope](docs/sdks/scopes/README.md#addtransientscope) - Add a transient scope to a scope
-* [createScope](docs/sdks/scopes/README.md#createscope) - Create scope
-* [deleteScope](docs/sdks/scopes/README.md#deletescope) - Delete scope
-* [deleteTransientScope](docs/sdks/scopes/README.md#deletetransientscope) - Delete a transient scope from a scope
-* [listScopes](docs/sdks/scopes/README.md#listscopes) - List scopes
-* [readScope](docs/sdks/scopes/README.md#readscope) - Read scope
-* [updateScope](docs/sdks/scopes/README.md#updatescope) - Update scope
-
-### [search](docs/sdks/search/README.md)
+### [.search](docs/sdks/search/README.md)
 
 * [search](docs/sdks/search/README.md#search) - Search
 * [searchgetServerInfo](docs/sdks/search/README.md#searchgetserverinfo) - Get server info
 
-### [server](docs/sdks/server/README.md)
-
-* [getInfo](docs/sdks/server/README.md#getinfo) - Show server information
-
-### [stats](docs/sdks/stats/README.md)
-
-* [readStats](docs/sdks/stats/README.md#readstats) - Get statistics from a ledger
-
-### [transactions](docs/sdks/transactions/README.md)
-
-* [addMetadataOnTransaction](docs/sdks/transactions/README.md#addmetadataontransaction) - Set the metadata of a transaction by its ID
-* [countTransactions](docs/sdks/transactions/README.md#counttransactions) - Count the transactions from a ledger
-* [createTransaction](docs/sdks/transactions/README.md#createtransaction) - Create a new transaction to a ledger
-* [getTransaction](docs/sdks/transactions/README.md#gettransaction) - Get transaction from a ledger by its ID
-* [listTransactions](docs/sdks/transactions/README.md#listtransactions) - List transactions from a ledger
-* [revertTransaction](docs/sdks/transactions/README.md#reverttransaction) - Revert a ledger transaction by its ID
-
-### [users](docs/sdks/users/README.md)
-
-* [listUsers](docs/sdks/users/README.md#listusers) - List users
-* [readUser](docs/sdks/users/README.md#readuser) - Read user
-
-### [wallets](docs/sdks/wallets/README.md)
+### [.wallets](docs/sdks/wallets/README.md)
 
 * [confirmHold](docs/sdks/wallets/README.md#confirmhold) - Confirm a hold
 * [createBalance](docs/sdks/wallets/README.md#createbalance) - Create a balance
@@ -213,7 +213,7 @@ import { Formance } from "@speakeasy-sdks/formance";
 * [voidHold](docs/sdks/wallets/README.md#voidhold) - Cancel a hold
 * [walletsgetServerInfo](docs/sdks/wallets/README.md#walletsgetserverinfo) - Get server info
 
-### [webhooks](docs/sdks/webhooks/README.md)
+### [.webhooks](docs/sdks/webhooks/README.md)
 
 * [activateConfig](docs/sdks/webhooks/README.md#activateconfig) - Activate one config
 * [changeConfigSecret](docs/sdks/webhooks/README.md#changeconfigsecret) - Change the signing secret of a config
@@ -228,8 +228,6 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
 
 
@@ -238,8 +236,6 @@ import { Formance } from "@speakeasy-sdks/formance";
 # Error Handling
 
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
-
-
 <!-- End Error Handling -->
 
 
@@ -262,17 +258,16 @@ Some of the server options above contain variables. If you want to set the value
 
 For example:
 
-
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
 (async () => {
     const sdk = new Formance({
-        authorization: "",
         serverIdx: 1,
+        authorization: "",
     });
 
-    const res = await sdk.formance.getVersions();
+    const res = await sdk.getVersions();
 
     if (res.statusCode == 200) {
         // handle response
@@ -286,17 +281,16 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
 
-
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
 (async () => {
     const sdk = new Formance({
-        authorization: "",
         serverURL: "http://localhost",
+        authorization: "",
     });
 
-    const res = await sdk.formance.getVersions();
+    const res = await sdk.getVersions();
 
     if (res.statusCode == 200) {
         // handle response
@@ -327,9 +321,41 @@ const httpClient = axios.create({
 
 const sdk = new Formance({defaultClient: httpClient});
 ```
-
-
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name            | Type            | Scheme          |
+| --------------- | --------------- | --------------- |
+| `authorization` | oauth2          | OAuth2 token    |
+
+To authenticate with the API the `authorization` parameter must be set when initializing the SDK client instance. For example:
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+
+(async () => {
+    const sdk = new Formance({
+        authorization: "",
+    });
+
+    const res = await sdk.getVersions();
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

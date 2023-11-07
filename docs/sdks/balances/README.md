@@ -1,5 +1,5 @@
 # Balances
-(*balances*)
+(*.balances*)
 
 ### Available Operations
 

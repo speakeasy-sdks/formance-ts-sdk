@@ -1,5 +1,5 @@
 # Accounts
-(*accounts*)
+(*.accounts*)
 
 ### Available Operations
 
@@ -139,7 +139,7 @@ List accounts from a ledger, sorted by address in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListAccountsBalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
+import { BalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new Formance({
@@ -149,7 +149,7 @@ import { ListAccountsBalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/m
   const res = await sdk.accounts.listAccounts({
     address: "users:.+",
     balance: 2400,
-    balanceOperator: ListAccountsBalanceOperator.Gte,
+    balanceOperator: BalanceOperator.Gte,
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     ledger: "ledger001",
     metadata: {

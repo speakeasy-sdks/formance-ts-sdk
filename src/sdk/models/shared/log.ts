@@ -7,7 +7,7 @@ import { Expose, Transform, Type } from "class-transformer";
 
 export class LogData extends SpeakeasyBase {}
 
-export enum LogType {
+export enum TypeT {
     NewTransaction = "NEW_TRANSACTION",
     SetMetadata = "SET_METADATA",
     RevertedTransaction = "REVERTED_TRANSACTION",
@@ -34,5 +34,5 @@ export class Log extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
-    type: LogType;
+    type: TypeT;
 }
