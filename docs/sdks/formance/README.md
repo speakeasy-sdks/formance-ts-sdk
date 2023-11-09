@@ -36,7 +36,6 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.getVersions();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -52,5 +51,9 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 ### Response
 
-**Promise<[operations.GetVersionsResponse](../../models/operations/getversionsresponse.md)>**
+**Promise<[operations.GetVersionsResponse](../../sdk/models/operations/getversionsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

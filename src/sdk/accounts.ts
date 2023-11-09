@@ -31,7 +31,7 @@ export class Accounts {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/api/ledger/{ledger}/accounts/{address}/metadata",
             req
@@ -69,7 +69,7 @@ export class Accounts {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -128,7 +128,11 @@ export class Accounts {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/ledger/{ledger}/accounts", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/api/ledger/{ledger}/accounts",
+            req
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -146,7 +150,7 @@ export class Accounts {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "head",
             headers: headers,
             responseType: "arraybuffer",
@@ -204,7 +208,7 @@ export class Accounts {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/api/ledger/{ledger}/accounts/{address}",
             req
@@ -225,7 +229,7 @@ export class Accounts {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -298,7 +302,11 @@ export class Accounts {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/ledger/{ledger}/accounts", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/api/ledger/{ledger}/accounts",
+            req
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -316,7 +324,7 @@ export class Accounts {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",

@@ -1,5 +1,5 @@
 # Server
-(*.server*)
+(*server*)
 
 ### Available Operations
 
@@ -21,7 +21,6 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.server.getInfo();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -37,5 +36,9 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 ### Response
 
-**Promise<[operations.GetInfoResponse](../../models/operations/getinforesponse.md)>**
+**Promise<[operations.GetInfoResponse](../../sdk/models/operations/getinforesponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

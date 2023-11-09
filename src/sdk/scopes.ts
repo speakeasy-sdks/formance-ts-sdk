@@ -34,7 +34,7 @@ export class Scopes {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/api/auth/scopes/{scopeId}/transient/{transientScopeId}",
             req
@@ -55,7 +55,7 @@ export class Scopes {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -99,7 +99,7 @@ export class Scopes {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/api/auth/scopes";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/api/auth/scopes";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -130,7 +130,7 @@ export class Scopes {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -189,7 +189,7 @@ export class Scopes {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/auth/scopes/{scopeId}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/api/auth/scopes/{scopeId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -206,7 +206,7 @@ export class Scopes {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -250,7 +250,7 @@ export class Scopes {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/api/auth/scopes/{scopeId}/transient/{transientScopeId}",
             req
@@ -271,7 +271,7 @@ export class Scopes {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -309,7 +309,7 @@ export class Scopes {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/api/auth/scopes";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/api/auth/scopes";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -326,7 +326,7 @@ export class Scopes {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -384,7 +384,7 @@ export class Scopes {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/auth/scopes/{scopeId}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/api/auth/scopes/{scopeId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -401,7 +401,7 @@ export class Scopes {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -459,7 +459,7 @@ export class Scopes {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/auth/scopes/{scopeId}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/api/auth/scopes/{scopeId}", req);
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -494,7 +494,7 @@ export class Scopes {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",

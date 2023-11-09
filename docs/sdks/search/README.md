@@ -1,5 +1,5 @@
 # Search
-(*.search*)
+(*search*)
 
 ### Available Operations
 
@@ -77,7 +77,6 @@ import { Formance } from "@speakeasy-sdks/formance";
     ],
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -88,14 +87,18 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.Query](../../models/shared/query.md)                 | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [shared.Query](../../sdk/models/shared/query.md)             | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.SearchResponse](../../models/operations/searchresponse.md)>**
+**Promise<[operations.SearchResponse](../../sdk/models/operations/searchresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## searchgetServerInfo
 
@@ -113,7 +116,6 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.search.searchgetServerInfo();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -129,5 +131,9 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 ### Response
 
-**Promise<[operations.SearchgetServerInfoResponse](../../models/operations/searchgetserverinforesponse.md)>**
+**Promise<[operations.SearchgetServerInfoResponse](../../sdk/models/operations/searchgetserverinforesponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

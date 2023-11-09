@@ -1,5 +1,5 @@
 # Users
-(*.users*)
+(*users*)
 
 ### Available Operations
 
@@ -22,7 +22,6 @@ import { Formance } from "@speakeasy-sdks/formance";
 
   const res = await sdk.users.listUsers();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -38,8 +37,12 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 ### Response
 
-**Promise<[operations.ListUsersResponse](../../models/operations/listusersresponse.md)>**
+**Promise<[operations.ListUsersResponse](../../sdk/models/operations/listusersresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## readUser
 
@@ -59,7 +62,6 @@ import { Formance } from "@speakeasy-sdks/formance";
     userId: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -68,13 +70,17 @@ import { Formance } from "@speakeasy-sdks/formance";
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [operations.ReadUserRequest](../../models/operations/readuserrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `request`                                                                    | [operations.ReadUserRequest](../../sdk/models/operations/readuserrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
 
 
 ### Response
 
-**Promise<[operations.ReadUserResponse](../../models/operations/readuserresponse.md)>**
+**Promise<[operations.ReadUserResponse](../../sdk/models/operations/readuserresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

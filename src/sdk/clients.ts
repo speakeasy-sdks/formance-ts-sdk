@@ -31,7 +31,7 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/api/auth/clients/{clientId}/scopes/{scopeId}",
             req
@@ -52,7 +52,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -93,7 +93,7 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/api/auth/clients";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/api/auth/clients";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -124,7 +124,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -180,7 +180,11 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/auth/clients/{clientId}/secrets", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/api/auth/clients/{clientId}/secrets",
+            req
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -215,7 +219,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -271,7 +275,11 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/auth/clients/{clientId}", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/api/auth/clients/{clientId}",
+            req
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -288,7 +296,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -329,7 +337,7 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/api/auth/clients/{clientId}/scopes/{scopeId}",
             req
@@ -350,7 +358,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -392,7 +400,7 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/api/auth/clients/{clientId}/secrets/{secretId}",
             req
@@ -413,7 +421,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -447,7 +455,7 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/api/auth/clients";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/api/auth/clients";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -464,7 +472,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -519,7 +527,11 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/auth/clients/{clientId}", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/api/auth/clients/{clientId}",
+            req
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -536,7 +548,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -591,7 +603,11 @@ export class Clients {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/api/auth/clients/{clientId}", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/api/auth/clients/{clientId}",
+            req
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -626,7 +642,7 @@ export class Clients {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",

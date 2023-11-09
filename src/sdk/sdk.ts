@@ -77,9 +77,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.20230614";
-    sdkVersion = "0.32.0";
-    genVersion = "2.181.1";
-    userAgent = "speakeasy-sdk/typescript 0.32.0 2.181.1 v1.0.20230614 @speakeasy-sdks/formance";
+    sdkVersion = "0.32.1";
+    genVersion = "2.185.0";
+    userAgent = "speakeasy-sdk/typescript 0.32.1 2.185.0 v1.0.20230614 @speakeasy-sdks/formance";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -139,7 +139,7 @@ export class Formance {
             defaults = serverDefaults[serverIdx];
         }
 
-        const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
+        const defaultClient = props?.defaultClient ?? axios.create();
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
             security: new shared.Security({ authorization: props?.authorization }),
@@ -175,7 +175,7 @@ export class Formance {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/versions";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/versions";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -192,7 +192,7 @@ export class Formance {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
