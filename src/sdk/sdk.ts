@@ -77,9 +77,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.20230614";
-    sdkVersion = "0.32.1";
-    genVersion = "2.185.0";
-    userAgent = "speakeasy-sdk/typescript 0.32.1 2.185.0 v1.0.20230614 @speakeasy-sdks/formance";
+    sdkVersion = "0.32.2";
+    genVersion = "2.187.7";
+    userAgent = "speakeasy-sdk/typescript 0.32.2 2.187.7 v1.0.20230614 @speakeasy-sdks/formance";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -199,7 +199,7 @@ export class Formance {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -207,20 +207,20 @@ export class Formance {
 
         const res: operations.GetVersionsResponse = new operations.GetVersionsResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.getVersionsResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.GetVersionsResponse
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes

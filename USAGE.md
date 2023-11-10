@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 

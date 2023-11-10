@@ -2,19 +2,21 @@ configVersion: 1.0.0
 management:
   docChecksum: 2f1ad9a515a2f02418a6e63ef5afbcf5
   docVersion: v1.0.20230614
-  speakeasyVersion: 1.116.0
-  generationVersion: 2.185.0
+  speakeasyVersion: 1.118.3
+  generationVersion: 2.187.7
 generation:
   comments: {}
   sdkClassName: formance
   repoURL: https://github.com/speakeasy-sdks/formance-ts-sdk.git
+  usageSnippets:
+    optionalPropertyRendering: withExample
 features:
   typescript:
-    core: 3.1.2
+    core: 3.1.3
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 0.32.1
+  version: 0.32.2
   author: Speakeasy
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
