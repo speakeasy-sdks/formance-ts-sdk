@@ -15,72 +15,33 @@ ElasticSearch query engine
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.search.search({
     after: [
-      "u",
-      "s",
-      "e",
-      "r",
-      "s",
-      ":",
-      "0",
-      "0",
-      "2",
+      "users:002",
     ],
     cursor: "YXVsdCBhbmQgYSBtYXhpbXVtIG1heF9yZXN1bHRzLol=",
     ledgers: [
-      "q",
-      "u",
-      "i",
-      "c",
-      "k",
-      "s",
-      "t",
-      "a",
-      "r",
-      "t",
+      "quickstart",
     ],
     policy: "OR",
     raw: {},
     sort: "txid:asc",
     terms: [
-      "d",
-      "e",
-      "s",
-      "t",
-      "i",
-      "n",
-      "a",
-      "t",
-      "i",
-      "o",
-      "n",
-      "=",
-      "c",
-      "e",
-      "n",
-      "t",
-      "r",
-      "a",
-      "l",
-      "_",
-      "b",
-      "a",
-      "n",
-      "k",
-      "1",
+      "destination=central_bank1",
     ],
   });
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -109,9 +70,9 @@ Get server info
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.search.searchgetServerInfo();
@@ -119,7 +80,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

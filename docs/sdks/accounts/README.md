@@ -17,9 +17,9 @@ Add metadata to an account
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.accounts.addMetadataToAccount({
@@ -35,7 +35,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -64,9 +66,9 @@ Count the accounts from a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.accounts.countAccounts({
@@ -78,7 +80,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -107,9 +111,9 @@ Get account by its address
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.accounts.getAccount({
@@ -120,7 +124,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -150,9 +156,9 @@ List accounts from a ledger, sorted by address in descending order.
 import { Formance } from "@speakeasy-sdks/formance";
 import { BalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.accounts.listAccounts({
@@ -169,7 +175,9 @@ import { BalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/models/operat
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

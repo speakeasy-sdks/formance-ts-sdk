@@ -20,9 +20,9 @@ Add a transient scope to a scope
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.scopes.addTransientScope({
@@ -33,7 +33,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -62,9 +64,9 @@ Create scope
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.scopes.createScope({
@@ -77,7 +79,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -106,9 +110,9 @@ Delete scope
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.scopes.deleteScope({
@@ -118,7 +122,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -147,9 +153,9 @@ Delete a transient scope from a scope
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.scopes.deleteTransientScope({
@@ -160,7 +166,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -189,9 +197,9 @@ List Scopes
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.scopes.listScopes();
@@ -199,7 +207,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -227,9 +237,9 @@ Read scope
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.scopes.readScope({
@@ -239,7 +249,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -268,9 +280,9 @@ Update scope
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.scopes.updateScope({
@@ -286,7 +298,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

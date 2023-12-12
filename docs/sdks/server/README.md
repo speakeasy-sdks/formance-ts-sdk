@@ -14,9 +14,9 @@ Show server information
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.server.getInfo();
@@ -24,7 +24,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

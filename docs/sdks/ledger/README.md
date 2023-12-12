@@ -29,9 +29,9 @@ Set the metadata of a transaction by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.addMetadataOnTransaction({
@@ -47,7 +47,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -76,9 +78,9 @@ Add metadata to an account
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.addMetadataToAccount({
@@ -94,7 +96,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -123,9 +127,9 @@ Count the accounts from a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.countAccounts({
@@ -137,7 +141,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -166,9 +172,9 @@ Count the transactions from a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.countTransactions({
@@ -185,7 +191,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -214,9 +222,9 @@ Create a new transaction to a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.createTransaction({
@@ -253,7 +261,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -282,9 +292,9 @@ Get account by its address
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.getAccount({
@@ -295,7 +305,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -324,9 +336,9 @@ Get the balances from a ledger's account
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.getBalances({
@@ -338,7 +350,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -367,9 +381,9 @@ Get the aggregated balances from selected accounts
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.getBalancesAggregated({
@@ -380,7 +394,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -409,9 +425,9 @@ Show server information
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.getInfo();
@@ -419,7 +435,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -447,9 +465,9 @@ Get information about a ledger
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.getLedgerInfo({
@@ -459,7 +477,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -488,9 +508,9 @@ Get transaction from a ledger by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.getTransaction({
@@ -501,7 +521,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -531,9 +553,9 @@ List accounts from a ledger, sorted by address in descending order.
 import { Formance } from "@speakeasy-sdks/formance";
 import { BalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.listAccounts({
@@ -550,7 +572,9 @@ import { BalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/models/operat
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -579,9 +603,9 @@ List the logs from a ledger, sorted by ID in descending order.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.listLogs({
@@ -592,7 +616,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -621,9 +647,9 @@ List transactions from a ledger, sorted by txid in descending order.
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.listTransactions({
@@ -641,7 +667,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -671,9 +699,9 @@ Get statistics from a ledger. (aggregate metrics on accounts and transactions)
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.readStats({
@@ -683,7 +711,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -712,9 +742,9 @@ Revert a ledger transaction by its ID
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async() => {
+async function run() {
   const sdk = new Formance({
-    authorization: "",
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   });
 
   const res = await sdk.ledger.revertTransaction({
@@ -725,7 +755,9 @@ import { Formance } from "@speakeasy-sdks/formance";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

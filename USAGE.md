@@ -1,10 +1,10 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
 
-(async () => {
+async function run() {
     const sdk = new Formance({
-        authorization: "",
+        authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     });
 
     const res = await sdk.getVersions();
@@ -12,7 +12,9 @@ import { Formance } from "@speakeasy-sdks/formance";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

@@ -266,7 +266,6 @@ src/sdk/models/shared/security.ts
 src/sdk/models/errors/index.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/index.ts
-USAGE.md
 docs/sdk/models/operations/getversionsresponse.md
 docs/sdk/models/operations/addscopetoclientrequest.md
 docs/sdk/models/operations/addscopetoclientresponse.md
@@ -623,4 +622,5 @@ docs/sdks/payments/README.md
 docs/sdks/search/README.md
 docs/sdks/wallets/README.md
 docs/sdks/webhooks/README.md
+USAGE.md
 .gitattributes
