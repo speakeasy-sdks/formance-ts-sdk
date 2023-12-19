@@ -56,7 +56,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createWorkflow
 
@@ -103,7 +103,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getInstance
 
@@ -146,7 +146,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getInstanceHistory
 
@@ -189,7 +189,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getInstanceStageHistory
 
@@ -233,7 +233,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getWorkflow
 
@@ -276,7 +276,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listInstances
 
@@ -317,7 +317,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listWorkflows
 
@@ -357,7 +357,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## orchestrationgetServerInfo
 
@@ -397,7 +397,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## runWorkflow
 
@@ -443,7 +443,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## sendEvent
 
@@ -489,4 +489,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

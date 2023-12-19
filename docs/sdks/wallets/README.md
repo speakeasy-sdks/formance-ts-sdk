@@ -65,7 +65,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createBalance
 
@@ -111,7 +111,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createWallet
 
@@ -157,7 +157,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## creditWallet
 
@@ -212,7 +212,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## debitWallet
 
@@ -268,7 +268,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getBalance
 
@@ -312,7 +312,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getHold
 
@@ -355,7 +355,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getHolds
 
@@ -401,7 +401,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getTransactions
 
@@ -442,7 +442,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getWallet
 
@@ -485,7 +485,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getWalletSummary
 
@@ -528,7 +528,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listBalances
 
@@ -571,7 +571,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listWallets
 
@@ -617,7 +617,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## updateWallet
 
@@ -665,7 +665,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## voidHold
 
@@ -708,7 +708,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## walletsgetServerInfo
 
@@ -748,4 +748,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

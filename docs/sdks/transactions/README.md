@@ -57,7 +57,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## countTransactions
 
@@ -107,7 +107,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createTransaction
 
@@ -177,7 +177,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getTransaction
 
@@ -221,7 +221,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listTransactions
 
@@ -272,7 +272,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## revertTransaction
 
@@ -316,4 +316,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

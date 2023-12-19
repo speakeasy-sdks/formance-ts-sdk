@@ -64,7 +64,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## connectorsTransfer
 
@@ -114,7 +114,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getConnectorTask
 
@@ -159,7 +159,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getPayment
 
@@ -202,7 +202,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## installConnector
 
@@ -247,7 +247,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listAllConnectors
 
@@ -287,7 +287,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listConfigsAvailableConnectors
 
@@ -327,7 +327,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listConnectorTasks
 
@@ -372,7 +372,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listConnectorsTransfers
 
@@ -416,7 +416,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listPayments
 
@@ -462,7 +462,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## paymentsgetServerInfo
 
@@ -502,7 +502,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## paymentslistAccounts
 
@@ -548,7 +548,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## readConnectorConfig
 
@@ -592,7 +592,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## resetConnector
 
@@ -638,7 +638,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## uninstallConnector
 
@@ -682,7 +682,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## updateMetadata
 
@@ -726,4 +726,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
