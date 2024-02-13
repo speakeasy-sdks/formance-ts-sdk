@@ -176,11 +176,11 @@ async function run() {
   const res = await sdk.wallets.creditWallet({
     creditWalletRequest: {
       amount: {
-        amount: 201874,
-        asset: "string",
+        amount: 100,
+        asset: "USD/2",
       },
       metadata: {
-        "key": "string",
+        "key": "",
       },
       sources: [
         "string",
@@ -231,16 +231,17 @@ async function run() {
   const res = await sdk.wallets.debitWallet({
     debitWalletRequest: {
       amount: {
-        amount: 245256,
-        asset: "string",
+        amount: 100,
+        asset: "USD/2",
       },
       balances: [
         "string",
       ],
       destination: "string",
       metadata: {
-        "key": "string",
+        "key": "",
       },
+      pending: true,
     },
     id: "<ID>",
   });
