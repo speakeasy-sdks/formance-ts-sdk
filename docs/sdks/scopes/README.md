@@ -26,8 +26,8 @@ async function run() {
   });
 
   const res = await sdk.scopes.addTransientScope({
-    scopeId: "string",
-    transientScopeId: "string",
+    scopeId: "<value>",
+    transientScopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -70,9 +70,9 @@ async function run() {
   });
 
   const res = await sdk.scopes.createScope({
-    label: "string",
+    label: "<value>",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   });
 
@@ -116,7 +116,7 @@ async function run() {
   });
 
   const res = await sdk.scopes.deleteScope({
-    scopeId: "string",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -159,8 +159,8 @@ async function run() {
   });
 
   const res = await sdk.scopes.deleteTransientScope({
-    scopeId: "string",
-    transientScopeId: "string",
+    scopeId: "<value>",
+    transientScopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -243,7 +243,7 @@ async function run() {
   });
 
   const res = await sdk.scopes.readScope({
-    scopeId: "string",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -287,12 +287,12 @@ async function run() {
 
   const res = await sdk.scopes.updateScope({
     updateScopeRequest: {
-      label: "string",
+      label: "<value>",
       metadata: {
-        "key": "string",
+        "key": "<value>",
       },
     },
-    scopeId: "string",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {

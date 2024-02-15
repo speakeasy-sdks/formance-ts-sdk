@@ -28,8 +28,8 @@ async function run() {
   });
 
   const res = await sdk.clients.addScopeToClient({
-    clientId: "string",
-    scopeId: "string",
+    clientId: "<value>",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -73,14 +73,14 @@ async function run() {
 
   const res = await sdk.clients.createClient({
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
-    name: "string",
+    name: "<value>",
     postLogoutRedirectUris: [
-      "string",
+      "<value>",
     ],
     redirectUris: [
-      "string",
+      "<value>",
     ],
   });
 
@@ -126,11 +126,11 @@ async function run() {
   const res = await sdk.clients.createSecret({
     createSecretRequest: {
       metadata: {
-        "key": "string",
+        "key": "<value>",
       },
-      name: "string",
+      name: "<value>",
     },
-    clientId: "string",
+    clientId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -173,7 +173,7 @@ async function run() {
   });
 
   const res = await sdk.clients.deleteClient({
-    clientId: "string",
+    clientId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -216,8 +216,8 @@ async function run() {
   });
 
   const res = await sdk.clients.deleteScopeFromClient({
-    clientId: "string",
-    scopeId: "string",
+    clientId: "<value>",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -260,8 +260,8 @@ async function run() {
   });
 
   const res = await sdk.clients.deleteSecret({
-    clientId: "string",
-    secretId: "string",
+    clientId: "<value>",
+    secretId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -344,7 +344,7 @@ async function run() {
   });
 
   const res = await sdk.clients.readClient({
-    clientId: "string",
+    clientId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -389,17 +389,17 @@ async function run() {
   const res = await sdk.clients.updateClient({
     updateClientRequest: {
       metadata: {
-        "key": "string",
+        "key": "<value>",
       },
-      name: "string",
+      name: "<value>",
       postLogoutRedirectUris: [
-        "string",
+        "<value>",
       ],
       redirectUris: [
-        "string",
+        "<value>",
       ],
     },
-    clientId: "string",
+    clientId: "<value>",
   });
 
   if (res.statusCode == 200) {

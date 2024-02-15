@@ -182,7 +182,7 @@ async function run() {
     destination: "users:001",
     ledger: "ledger001",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
     reference: "ref:001",
     source: "users:001",
@@ -565,7 +565,7 @@ async function run() {
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     ledger: "ledger001",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   });
 
@@ -658,7 +658,7 @@ async function run() {
     destination: "users:001",
     ledger: "ledger001",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
     reference: "ref:001",
     source: "users:001",

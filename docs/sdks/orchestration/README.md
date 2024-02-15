@@ -30,7 +30,7 @@ async function run() {
   });
 
   const res = await sdk.orchestration.cancelEvent({
-    instanceID: "string",
+    instanceID: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -75,7 +75,7 @@ async function run() {
   const res = await sdk.orchestration.createWorkflow({
     stages: [
       {
-        "key": "string",
+        "key": "<value>",
       },
     ],
   });
@@ -120,7 +120,7 @@ async function run() {
   });
 
   const res = await sdk.orchestration.getInstance({
-    instanceID: "string",
+    instanceID: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -163,7 +163,7 @@ async function run() {
   });
 
   const res = await sdk.orchestration.getInstanceHistory({
-    instanceID: "string",
+    instanceID: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -206,7 +206,7 @@ async function run() {
   });
 
   const res = await sdk.orchestration.getInstanceStageHistory({
-    instanceID: "string",
+    instanceID: "<value>",
     number: 600636,
   });
 
@@ -250,7 +250,7 @@ async function run() {
   });
 
   const res = await sdk.orchestration.getWorkflow({
-    flowId: "string",
+    flowId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -415,9 +415,9 @@ async function run() {
 
   const res = await sdk.orchestration.runWorkflow({
     requestBody: {
-      "key": "string",
+      "key": "<value>",
     },
-    workflowID: "string",
+    workflowID: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -461,9 +461,9 @@ async function run() {
 
   const res = await sdk.orchestration.sendEvent({
     requestBody: {
-      name: "string",
+      name: "<value>",
     },
-    instanceID: "string",
+    instanceID: "<value>",
   });
 
   if (res.statusCode == 200) {

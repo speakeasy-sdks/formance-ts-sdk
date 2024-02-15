@@ -133,7 +133,7 @@ async function run() {
 
   const res = await sdk.payments.getConnectorTask({
     connector: Connector.BankingCircle,
-    taskId: "string",
+    taskId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -176,7 +176,7 @@ async function run() {
   });
 
   const res = await sdk.payments.getPayment({
-    paymentId: "string",
+    paymentId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -220,7 +220,7 @@ async function run() {
   });
 
   const res = await sdk.payments.installConnector({
-    requestBody: "string",
+    requestBody: "<value>",
     connector: Connector.DummyPay,
   });
 
@@ -435,7 +435,7 @@ async function run() {
   const res = await sdk.payments.listPayments({
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     sort: [
-      "string",
+      "<value>",
     ],
   });
 
@@ -521,7 +521,7 @@ async function run() {
   const res = await sdk.payments.paymentslistAccounts({
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     sort: [
-      "string",
+      "<value>",
     ],
   });
 
@@ -700,7 +700,7 @@ async function run() {
 
   const res = await sdk.payments.updateMetadata({
     paymentMetadata: {},
-    paymentId: "string",
+    paymentId: "<value>",
   });
 
   if (res.statusCode == 200) {

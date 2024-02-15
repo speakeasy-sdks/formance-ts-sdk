@@ -168,7 +168,7 @@ async function run() {
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     ledger: "ledger001",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   });
 

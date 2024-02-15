@@ -39,7 +39,7 @@ async function run() {
       amount: 100,
       final: true,
     },
-    holdId: "string",
+    holdId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -83,9 +83,9 @@ async function run() {
 
   const res = await sdk.wallets.createBalance({
     createBalanceRequest: {
-      name: "string",
+      name: "<value>",
     },
-    id: "<ID>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -129,9 +129,9 @@ async function run() {
 
   const res = await sdk.wallets.createWallet({
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
-    name: "string",
+    name: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -183,10 +183,10 @@ async function run() {
         "key": "",
       },
       sources: [
-        "string",
+        "<value>",
       ],
     },
-    id: "<ID>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -235,15 +235,15 @@ async function run() {
         asset: "USD/2",
       },
       balances: [
-        "string",
+        "<value>",
       ],
-      destination: "string",
+      destination: "<value>",
       metadata: {
         "key": "",
       },
       pending: true,
     },
-    id: "<ID>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -286,8 +286,8 @@ async function run() {
   });
 
   const res = await sdk.wallets.getBalance({
-    balanceName: "string",
-    id: "<ID>",
+    balanceName: "<value>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -330,7 +330,7 @@ async function run() {
   });
 
   const res = await sdk.wallets.getHold({
-    holdID: "string",
+    holdID: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -375,7 +375,7 @@ async function run() {
   const res = await sdk.wallets.getHolds({
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   });
 
@@ -460,7 +460,7 @@ async function run() {
   });
 
   const res = await sdk.wallets.getWallet({
-    id: "<ID>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -503,7 +503,7 @@ async function run() {
   });
 
   const res = await sdk.wallets.getWalletSummary({
-    id: "<ID>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -546,7 +546,7 @@ async function run() {
   });
 
   const res = await sdk.wallets.listBalances({
-    id: "<ID>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -591,7 +591,7 @@ async function run() {
   const res = await sdk.wallets.listWallets({
     cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   });
 
@@ -637,10 +637,10 @@ async function run() {
   const res = await sdk.wallets.updateWallet({
     requestBody: {
       metadata: {
-        "key": "string",
+        "key": "<value>",
       },
     },
-    id: "<ID>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -683,7 +683,7 @@ async function run() {
   });
 
   const res = await sdk.wallets.voidHold({
-    holdId: "string",
+    holdId: "<value>",
   });
 
   if (res.statusCode == 200) {

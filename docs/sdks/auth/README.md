@@ -38,8 +38,8 @@ async function run() {
   });
 
   const res = await sdk.auth.addScopeToClient({
-    clientId: "string",
-    scopeId: "string",
+    clientId: "<value>",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -82,8 +82,8 @@ async function run() {
   });
 
   const res = await sdk.auth.addTransientScope({
-    scopeId: "string",
-    transientScopeId: "string",
+    scopeId: "<value>",
+    transientScopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -127,14 +127,14 @@ async function run() {
 
   const res = await sdk.auth.createClient({
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
-    name: "string",
+    name: "<value>",
     postLogoutRedirectUris: [
-      "string",
+      "<value>",
     ],
     redirectUris: [
-      "string",
+      "<value>",
     ],
   });
 
@@ -178,9 +178,9 @@ async function run() {
   });
 
   const res = await sdk.auth.createScope({
-    label: "string",
+    label: "<value>",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   });
 
@@ -226,11 +226,11 @@ async function run() {
   const res = await sdk.auth.createSecret({
     createSecretRequest: {
       metadata: {
-        "key": "string",
+        "key": "<value>",
       },
-      name: "string",
+      name: "<value>",
     },
-    clientId: "string",
+    clientId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -273,7 +273,7 @@ async function run() {
   });
 
   const res = await sdk.auth.deleteClient({
-    clientId: "string",
+    clientId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -316,7 +316,7 @@ async function run() {
   });
 
   const res = await sdk.auth.deleteScope({
-    scopeId: "string",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -359,8 +359,8 @@ async function run() {
   });
 
   const res = await sdk.auth.deleteScopeFromClient({
-    clientId: "string",
-    scopeId: "string",
+    clientId: "<value>",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -403,8 +403,8 @@ async function run() {
   });
 
   const res = await sdk.auth.deleteSecret({
-    clientId: "string",
-    secretId: "string",
+    clientId: "<value>",
+    secretId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -447,8 +447,8 @@ async function run() {
   });
 
   const res = await sdk.auth.deleteTransientScope({
-    scopeId: "string",
-    transientScopeId: "string",
+    scopeId: "<value>",
+    transientScopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -651,7 +651,7 @@ async function run() {
   });
 
   const res = await sdk.auth.readClient({
-    clientId: "string",
+    clientId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -694,7 +694,7 @@ async function run() {
   });
 
   const res = await sdk.auth.readScope({
-    scopeId: "string",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -737,7 +737,7 @@ async function run() {
   });
 
   const res = await sdk.auth.readUser({
-    userId: "string",
+    userId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -782,17 +782,17 @@ async function run() {
   const res = await sdk.auth.updateClient({
     updateClientRequest: {
       metadata: {
-        "key": "string",
+        "key": "<value>",
       },
-      name: "string",
+      name: "<value>",
       postLogoutRedirectUris: [
-        "string",
+        "<value>",
       ],
       redirectUris: [
-        "string",
+        "<value>",
       ],
     },
-    clientId: "string",
+    clientId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -836,12 +836,12 @@ async function run() {
 
   const res = await sdk.auth.updateScope({
     updateScopeRequest: {
-      label: "string",
+      label: "<value>",
       metadata: {
-        "key": "string",
+        "key": "<value>",
       },
     },
-    scopeId: "string",
+    scopeId: "<value>",
   });
 
   if (res.statusCode == 200) {

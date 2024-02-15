@@ -78,7 +78,7 @@ async function run() {
     destination: "users:001",
     ledger: "ledger001",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
     reference: "ref:001",
     source: "users:001",
@@ -243,7 +243,7 @@ async function run() {
     destination: "users:001",
     ledger: "ledger001",
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
     reference: "ref:001",
     source: "users:001",

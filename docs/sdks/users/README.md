@@ -61,7 +61,7 @@ async function run() {
   });
 
   const res = await sdk.users.readUser({
-    userId: "string",
+    userId: "<value>",
   });
 
   if (res.statusCode == 200) {
