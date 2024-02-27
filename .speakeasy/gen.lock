@@ -4,9 +4,9 @@ management:
   docChecksum: 2f1ad9a515a2f02418a6e63ef5afbcf5
   docVersion: v1.0.20230614
   speakeasyVersion: internal
-  generationVersion: 2.272.4
-  releaseVersion: 0.33.4
-  configChecksum: dbe48706627cc91c517147bc467a339d
+  generationVersion: 2.272.7
+  releaseVersion: 0.33.5
+  configChecksum: 940b1545b69ff0116df4fbd735b99f3f
   repoURL: https://github.com/speakeasy-sdks/formance-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/formance-ts-sdk
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     core: 3.4.8
-    globalSecurity: 2.82.3
+    globalSecurity: 2.82.4
     globalServerURLs: 2.82.1
 generatedFiles:
   - src/sdk/auth.ts
