@@ -77,9 +77,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.20230614";
-    sdkVersion = "0.33.5";
-    genVersion = "2.272.7";
-    userAgent = "speakeasy-sdk/typescript 0.33.5 2.272.7 v1.0.20230614 @speakeasy-sdks/formance";
+    sdkVersion = "0.33.6";
+    genVersion = "2.280.6";
+    userAgent = "speakeasy-sdk/typescript 0.33.6 2.280.6 v1.0.20230614 @speakeasy-sdks/formance";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -132,9 +132,12 @@ export class Formance {
                 organization: props?.organization?.toString() ?? "",
             },
         ];
-        const serverIdx = props?.serverIdx ?? 0;
 
         if (!serverURL) {
+            const serverIdx = props?.serverIdx ?? 0;
+            if (serverIdx < 0 || serverIdx >= ServerList.length) {
+                throw new Error(`Invalid server index ${serverIdx}`);
+            }
             serverURL = ServerList[serverIdx];
             defaults = serverDefaults[serverIdx];
         }
