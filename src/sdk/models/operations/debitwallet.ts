@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class DebitWalletRequest extends SpeakeasyBase {
@@ -15,6 +15,9 @@ export class DebitWalletRequest extends SpeakeasyBase {
 }
 
 export class DebitWalletResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -24,11 +27,17 @@ export class DebitWalletResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     debitWalletResponse?: shared.DebitWalletResponse;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     /**
      * Error

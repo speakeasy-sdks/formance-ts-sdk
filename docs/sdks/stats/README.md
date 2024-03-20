@@ -1,4 +1,5 @@
-# stats
+# Stats
+(*stats*)
 
 ### Available Operations
 
@@ -13,33 +14,37 @@ Get statistics from a ledger. (aggregate metrics on accounts and transactions)
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadStatsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.stats.readStats({
-  ledger: "ledger001",
-}).then((res: ReadStatsResponse) => {
+  const res = await sdk.stats.readStats({
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.ReadStatsRequest](../../models/operations/readstatsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.ReadStatsRequest](../../sdk/models/operations/readstatsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.ReadStatsResponse](../../models/operations/readstatsresponse.md)>**
+**Promise<[operations.ReadStatsResponse](../../sdk/models/operations/readstatsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

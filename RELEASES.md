@@ -427,3 +427,153 @@ Based on:
 - Speakeasy CLI 1.50.1 (2.43.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v0.30.0] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.30.0 - .
+
+## 2023-11-06 00:34:17
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.112.1 (2.173.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.31.0] .
+### Releases
+- [NPM v0.31.0] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.31.0 - .
+
+## 2023-11-07 00:33:31
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.114.1 (2.181.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.32.0] .
+### Releases
+- [NPM v0.32.0] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.32.0 - .
+
+## 2023-11-09 00:33:01
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.116.0 (2.185.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.32.1] .
+### Releases
+- [NPM v0.32.1] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.32.1 - .
+
+## 2023-11-10 00:32:45
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.118.3 (2.187.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.32.2] .
+### Releases
+- [NPM v0.32.2] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.32.2 - .
+
+## 2023-11-16 00:34:56
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.120.3 (2.192.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.32.3] .
+### Releases
+- [NPM v0.32.3] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.32.3 - .
+
+## 2023-11-18 00:33:55
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.121.1 (2.194.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.32.4] .
+### Releases
+- [NPM v0.32.4] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.32.4 - .
+
+## 2023-12-12 00:37:50
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.126.0 (2.213.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.0] .
+### Releases
+- [NPM v0.33.0] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.0 - .
+
+## 2023-12-19 00:11:25
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.127.0 (2.220.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.1] .
+### Releases
+- [NPM v0.33.1] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.1 - .
+
+## 2024-01-05 00:11:58
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.130.1 (2.225.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.1] .
+### Releases
+- [NPM v0.33.1] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.1 - .
+
+## 2024-02-13 00:14:28
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.178.0 (2.253.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.2] .
+### Releases
+- [NPM v0.33.2] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.2 - .
+
+## 2024-02-15 00:14:55
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.180.0 (2.258.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.3] .
+### Releases
+- [NPM v0.33.3] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.3 - .
+
+## 2024-02-24 00:21:57
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.193.4 (2.272.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.4] .
+### Releases
+- [NPM v0.33.4] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.4 - .
+
+## 2024-02-27 00:14:40
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.194.0 (2.272.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.5] .
+### Releases
+- [NPM v0.33.5] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.5 - .
+
+## 2024-03-13 00:19:40
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.207.1 (2.280.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.6] .
+### Releases
+- [NPM v0.33.6] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.6 - .
+
+## 2024-03-20 00:33:21
+### Changes
+Based on:
+- OpenAPI Doc v1.0.20230614 https://prod.speakeasyapi.dev/v1/apis/formance/version/v1.0.0/schema/download
+- Speakeasy CLI 1.213.0 (2.283.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.33.7] .
+### Releases
+- [NPM v0.33.7] https://www.npmjs.com/package/@speakeasy-sdks/formance/v/0.33.7 - .

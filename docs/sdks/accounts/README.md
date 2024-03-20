@@ -1,4 +1,5 @@
-# accounts
+# Accounts
+(*accounts*)
 
 ### Available Operations
 
@@ -15,45 +16,46 @@ Add metadata to an account
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddMetadataToAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.accounts.addMetadataToAccount({
-  idempotencyKey: "corrupti",
-  requestBody: {
-    "distinctio": "quibusdam",
-    "unde": "nulla",
-    "corrupti": "illum",
-  },
-  address: "users:001",
-  async: true,
-  dryRun: true,
-  ledger: "ledger001",
-}).then((res: AddMetadataToAccountResponse) => {
+  const res = await sdk.accounts.addMetadataToAccount({
+    requestBody: {
+      "admin": "true",
+    },
+    address: "users:001",
+    async: true,
+    dryRun: true,
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.AddMetadataToAccountRequest](../../models/operations/addmetadatatoaccountrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [operations.AddMetadataToAccountRequest](../../sdk/models/operations/addmetadatatoaccountrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
 
-**Promise<[operations.AddMetadataToAccountResponse](../../models/operations/addmetadatatoaccountresponse.md)>**
+**Promise<[operations.AddMetadataToAccountResponse](../../sdk/models/operations/addmetadatatoaccountresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## countAccounts
 
@@ -63,38 +65,42 @@ Count the accounts from a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CountAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.accounts.countAccounts({
-  address: "users:.+",
-  ledger: "ledger001",
-  metadata: {},
-}).then((res: CountAccountsResponse) => {
+  const res = await sdk.accounts.countAccounts({
+    address: "users:.+",
+    ledger: "ledger001",
+    metadata: {},
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.CountAccountsRequest](../../models/operations/countaccountsrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.CountAccountsRequest](../../sdk/models/operations/countaccountsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.CountAccountsResponse](../../models/operations/countaccountsresponse.md)>**
+**Promise<[operations.CountAccountsResponse](../../sdk/models/operations/countaccountsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAccount
 
@@ -104,37 +110,41 @@ Get account by its address
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetAccountResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.accounts.getAccount({
-  address: "users:001",
-  ledger: "ledger001",
-}).then((res: GetAccountResponse) => {
+  const res = await sdk.accounts.getAccount({
+    address: "users:001",
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.GetAccountRequest](../../models/operations/getaccountrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.GetAccountRequest](../../sdk/models/operations/getaccountrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.GetAccountResponse](../../models/operations/getaccountresponse.md)>**
+**Promise<[operations.GetAccountResponse](../../sdk/models/operations/getaccountresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listAccounts
 
@@ -144,42 +154,45 @@ List accounts from a ledger, sorted by address in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListAccountsBalanceOperator, ListAccountsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
+import { BalanceOperator } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.accounts.listAccounts({
-  address: "users:.+",
-  balance: 2400,
-  balanceOperator: ListAccountsBalanceOperator.Gte,
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  ledger: "ledger001",
-  metadata: {
-    "error": "deserunt",
-    "suscipit": "iure",
-  },
-  pageSize: 297534,
-}).then((res: ListAccountsResponse) => {
+  const res = await sdk.accounts.listAccounts({
+    address: "users:.+",
+    balance: 2400,
+    balanceOperator: BalanceOperator.Gte,
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    ledger: "ledger001",
+    metadata: {
+      "key": "<value>",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.ListAccountsRequest](../../models/operations/listaccountsrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.ListAccountsRequest](../../sdk/models/operations/listaccountsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.ListAccountsResponse](../../models/operations/listaccountsresponse.md)>**
+**Promise<[operations.ListAccountsResponse](../../sdk/models/operations/listaccountsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

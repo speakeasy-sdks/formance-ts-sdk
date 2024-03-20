@@ -1,4 +1,5 @@
-# clients
+# Clients
+(*clients*)
 
 ### Available Operations
 
@@ -20,36 +21,41 @@ Add scope to client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddScopeToClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.addScopeToClient({
-  clientId: "corporis",
-  scopeId: "explicabo",
-}).then((res: AddScopeToClientResponse) => {
+  const res = await sdk.clients.addScopeToClient({
+    clientId: "<value>",
+    scopeId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.AddScopeToClientRequest](../../models/operations/addscopetoclientrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.AddScopeToClientRequest](../../sdk/models/operations/addscopetoclientrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.AddScopeToClientResponse](../../models/operations/addscopetoclientresponse.md)>**
+**Promise<[operations.AddScopeToClientResponse](../../sdk/models/operations/addscopetoclientresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createClient
 
@@ -59,48 +65,49 @@ Create client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.createClient({
-  description: "nobis",
-  metadata: {
-    "omnis": "nemo",
-    "minima": "excepturi",
-  },
-  name: "Charlene Nicolas",
-  postLogoutRedirectUris: [
-    "mollitia",
-  ],
-  public: false,
-  redirectUris: [
-    "culpa",
-  ],
-  trusted: false,
-}).then((res: CreateClientResponse) => {
+  const res = await sdk.clients.createClient({
+    metadata: {
+      "key": "<value>",
+    },
+    name: "<value>",
+    postLogoutRedirectUris: [
+      "<value>",
+    ],
+    redirectUris: [
+      "<value>",
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [shared.CreateClientRequest](../../models/shared/createclientrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `request`                                                                    | [shared.CreateClientRequest](../../sdk/models/shared/createclientrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
 
 
 ### Response
 
-**Promise<[operations.CreateClientResponse](../../models/operations/createclientresponse.md)>**
+**Promise<[operations.CreateClientResponse](../../sdk/models/operations/createclientresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createSecret
 
@@ -110,41 +117,46 @@ Add a secret to a client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.createSecret({
-  createSecretRequest: {
-    metadata: {
-      "repellat": "mollitia",
+  const res = await sdk.clients.createSecret({
+    createSecretRequest: {
+      metadata: {
+        "key": "<value>",
+      },
+      name: "<value>",
     },
-    name: "Francis Jerde",
-  },
-  clientId: "velit",
-}).then((res: CreateSecretResponse) => {
+    clientId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.CreateSecretRequest](../../models/operations/createsecretrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.CreateSecretRequest](../../sdk/models/operations/createsecretrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.CreateSecretResponse](../../models/operations/createsecretresponse.md)>**
+**Promise<[operations.CreateSecretResponse](../../sdk/models/operations/createsecretresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deleteClient
 
@@ -154,35 +166,40 @@ Delete client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.deleteClient({
-  clientId: "error",
-}).then((res: DeleteClientResponse) => {
+  const res = await sdk.clients.deleteClient({
+    clientId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.DeleteClientRequest](../../models/operations/deleteclientrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.DeleteClientRequest](../../sdk/models/operations/deleteclientrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.DeleteClientResponse](../../models/operations/deleteclientresponse.md)>**
+**Promise<[operations.DeleteClientResponse](../../sdk/models/operations/deleteclientresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deleteScopeFromClient
 
@@ -192,36 +209,41 @@ Delete scope from client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteScopeFromClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.deleteScopeFromClient({
-  clientId: "quia",
-  scopeId: "quis",
-}).then((res: DeleteScopeFromClientResponse) => {
+  const res = await sdk.clients.deleteScopeFromClient({
+    clientId: "<value>",
+    scopeId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.DeleteScopeFromClientRequest](../../models/operations/deletescopefromclientrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                              | [operations.DeleteScopeFromClientRequest](../../sdk/models/operations/deletescopefromclientrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
 
 
 ### Response
 
-**Promise<[operations.DeleteScopeFromClientResponse](../../models/operations/deletescopefromclientresponse.md)>**
+**Promise<[operations.DeleteScopeFromClientResponse](../../sdk/models/operations/deletescopefromclientresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deleteSecret
 
@@ -231,36 +253,41 @@ Delete a secret from a client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.deleteSecret({
-  clientId: "vitae",
-  secretId: "laborum",
-}).then((res: DeleteSecretResponse) => {
+  const res = await sdk.clients.deleteSecret({
+    clientId: "<value>",
+    secretId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.DeleteSecretRequest](../../models/operations/deletesecretrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.DeleteSecretRequest](../../sdk/models/operations/deletesecretrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.DeleteSecretResponse](../../models/operations/deletesecretresponse.md)>**
+**Promise<[operations.DeleteSecretResponse](../../sdk/models/operations/deletesecretresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listClients
 
@@ -270,19 +297,20 @@ List clients
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListClientsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.listClients().then((res: ListClientsResponse) => {
+  const res = await sdk.clients.listClients();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
@@ -294,8 +322,12 @@ sdk.clients.listClients().then((res: ListClientsResponse) => {
 
 ### Response
 
-**Promise<[operations.ListClientsResponse](../../models/operations/listclientsresponse.md)>**
+**Promise<[operations.ListClientsResponse](../../sdk/models/operations/listclientsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## readClient
 
@@ -305,35 +337,40 @@ Read client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ReadClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.readClient({
-  clientId: "animi",
-}).then((res: ReadClientResponse) => {
+  const res = await sdk.clients.readClient({
+    clientId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.ReadClientRequest](../../models/operations/readclientrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.ReadClientRequest](../../sdk/models/operations/readclientrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.ReadClientResponse](../../models/operations/readclientresponse.md)>**
+**Promise<[operations.ReadClientResponse](../../sdk/models/operations/readclientresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## updateClient
 
@@ -343,52 +380,49 @@ Update client
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateClientResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.clients.updateClient({
-  updateClientRequest: {
-    description: "enim",
-    metadata: {
-      "quo": "sequi",
+  const res = await sdk.clients.updateClient({
+    updateClientRequest: {
+      metadata: {
+        "key": "<value>",
+      },
+      name: "<value>",
+      postLogoutRedirectUris: [
+        "<value>",
+      ],
+      redirectUris: [
+        "<value>",
+      ],
     },
-    name: "Vernon Ondricka Sr.",
-    postLogoutRedirectUris: [
-      "temporibus",
-      "laborum",
-      "quasi",
-    ],
-    public: false,
-    redirectUris: [
-      "voluptatibus",
-      "vero",
-      "nihil",
-      "praesentium",
-    ],
-    trusted: false,
-  },
-  clientId: "voluptatibus",
-}).then((res: UpdateClientResponse) => {
+    clientId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.UpdateClientRequest](../../models/operations/updateclientrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.UpdateClientRequest](../../sdk/models/operations/updateclientrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.UpdateClientResponse](../../models/operations/updateclientresponse.md)>**
+**Promise<[operations.UpdateClientResponse](../../sdk/models/operations/updateclientresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

@@ -1,18 +1,20 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetVersionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+    const sdk = new Formance({
+        authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    });
 
-sdk.getVersions().then((res: GetVersionsResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
+    const res = await sdk.getVersions();
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

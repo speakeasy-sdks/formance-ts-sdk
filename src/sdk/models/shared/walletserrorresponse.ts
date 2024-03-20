@@ -9,9 +9,6 @@ export enum WalletsErrorResponseErrorCode {
     Validation = "VALIDATION",
 }
 
-/**
- * Error
- */
 export class WalletsErrorResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errorCode" })

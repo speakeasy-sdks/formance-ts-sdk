@@ -1,4 +1,5 @@
-# webhooks
+# Webhooks
+(*webhooks*)
 
 ### Available Operations
 
@@ -18,36 +19,40 @@ Activate a webhooks config by ID, to start receiving webhooks to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ActivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.webhooks.activateConfig({
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: ActivateConfigResponse) => {
+  const res = await sdk.webhooks.activateConfig({
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.ActivateConfigRequest](../../models/operations/activateconfigrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.ActivateConfigRequest](../../sdk/models/operations/activateconfigrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
 
 
 ### Response
 
-**Promise<[operations.ActivateConfigResponse](../../models/operations/activateconfigresponse.md)>**
+**Promise<[operations.ActivateConfigResponse](../../sdk/models/operations/activateconfigresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## changeConfigSecret
 
@@ -61,39 +66,43 @@ The format is a random string of bytes of size 24, base64 encoded. (larger size 
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ChangeConfigSecretResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.webhooks.changeConfigSecret({
-  configChangeSecret: {
-    secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
-  },
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: ChangeConfigSecretResponse) => {
+  const res = await sdk.webhooks.changeConfigSecret({
+    configChangeSecret: {
+      secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
+    },
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [operations.ChangeConfigSecretRequest](../../models/operations/changeconfigsecretrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.ChangeConfigSecretRequest](../../sdk/models/operations/changeconfigsecretrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
 
-**Promise<[operations.ChangeConfigSecretResponse](../../models/operations/changeconfigsecretresponse.md)>**
+**Promise<[operations.ChangeConfigSecretResponse](../../sdk/models/operations/changeconfigsecretresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deactivateConfig
 
@@ -103,36 +112,40 @@ Deactivate a webhooks config by ID, to stop receiving webhooks to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeactivateConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.webhooks.deactivateConfig({
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: DeactivateConfigResponse) => {
+  const res = await sdk.webhooks.deactivateConfig({
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.DeactivateConfigRequest](../../models/operations/deactivateconfigrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.DeactivateConfigRequest](../../sdk/models/operations/deactivateconfigrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.DeactivateConfigResponse](../../models/operations/deactivateconfigresponse.md)>**
+**Promise<[operations.DeactivateConfigResponse](../../sdk/models/operations/deactivateconfigresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deleteConfig
 
@@ -142,36 +155,40 @@ Delete a webhooks config by ID.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DeleteConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.webhooks.deleteConfig({
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: DeleteConfigResponse) => {
+  const res = await sdk.webhooks.deleteConfig({
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.DeleteConfigRequest](../../models/operations/deleteconfigrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.DeleteConfigRequest](../../sdk/models/operations/deleteconfigrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.DeleteConfigResponse](../../models/operations/deleteconfigresponse.md)>**
+**Promise<[operations.DeleteConfigResponse](../../sdk/models/operations/deleteconfigresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getManyConfigs
 
@@ -181,37 +198,41 @@ Sorted by updated date descending
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetManyConfigsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.webhooks.getManyConfigs({
-  endpoint: "https://example.com",
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: GetManyConfigsResponse) => {
+  const res = await sdk.webhooks.getManyConfigs({
+    endpoint: "https://example.com",
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.GetManyConfigsRequest](../../models/operations/getmanyconfigsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.GetManyConfigsRequest](../../sdk/models/operations/getmanyconfigsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
 
 
 ### Response
 
-**Promise<[operations.GetManyConfigsResponse](../../models/operations/getmanyconfigsresponse.md)>**
+**Promise<[operations.GetManyConfigsResponse](../../sdk/models/operations/getmanyconfigsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## insertConfig
 
@@ -230,41 +251,45 @@ All eventTypes are converted to lower-case when inserted.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { InsertConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.webhooks.insertConfig({
-  endpoint: "https://example.com",
-  eventTypes: [
-    "TYPE1",
-    "TYPE1",
-  ],
-  secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
-}).then((res: InsertConfigResponse) => {
+  const res = await sdk.webhooks.insertConfig({
+    endpoint: "https://example.com",
+    eventTypes: [
+      "TYPE1",
+      "TYPE2",
+    ],
+    secret: "V0bivxRWveaoz08afqjU6Ko/jwO0Cb+3",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.ConfigUser](../../models/shared/configuser.md)       | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [shared.ConfigUser](../../sdk/models/shared/configuser.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.InsertConfigResponse](../../models/operations/insertconfigresponse.md)>**
+**Promise<[operations.InsertConfigResponse](../../sdk/models/operations/insertconfigresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## testConfig
 
@@ -274,33 +299,37 @@ Test a config by sending a webhook to its endpoint.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { TestConfigResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.webhooks.testConfig({
-  id: "4997257d-dfb6-445b-929c-cbe2ab182818",
-}).then((res: TestConfigResponse) => {
+  const res = await sdk.webhooks.testConfig({
+    id: "4997257d-dfb6-445b-929c-cbe2ab182818",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.TestConfigRequest](../../models/operations/testconfigrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.TestConfigRequest](../../sdk/models/operations/testconfigrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.TestConfigResponse](../../models/operations/testconfigresponse.md)>**
+**Promise<[operations.TestConfigResponse](../../sdk/models/operations/testconfigresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

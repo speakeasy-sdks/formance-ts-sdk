@@ -3,13 +3,13 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 /**
  * Filter accounts by metadata key value pairs. The filter can be used like this metadata[key]=value1&metadata[a.nested.key]=value2
  */
-export class CountAccountsMetadata extends SpeakeasyBase {}
+export class Metadata extends SpeakeasyBase {}
 
 export class CountAccountsRequest extends SpeakeasyBase {
     /**
@@ -28,10 +28,13 @@ export class CountAccountsRequest extends SpeakeasyBase {
      * Filter accounts by metadata key value pairs. The filter can be used like this metadata[key]=value1&metadata[a.nested.key]=value2
      */
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=metadata" })
-    metadata?: CountAccountsMetadata;
+    metadata?: Metadata;
 }
 
 export class CountAccountsResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -42,11 +45,17 @@ export class CountAccountsResponse extends SpeakeasyBase {
     errorResponse?: shared.ErrorResponse;
 
     @SpeakeasyMetadata()
-    headers?: Record<string, string[]>;
+    headers: Record<string, string[]>;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 }

@@ -1,4 +1,5 @@
-# wallets
+# Wallets
+(*wallets*)
 
 ### Available Operations
 
@@ -27,40 +28,44 @@ Confirm a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ConfirmHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.confirmHold({
-  confirmHoldRequest: {
-    amount: 100,
-    final: true,
-  },
-  holdId: "hic",
-}).then((res: ConfirmHoldResponse) => {
+  const res = await sdk.wallets.confirmHold({
+    confirmHoldRequest: {
+      amount: 100,
+      final: true,
+    },
+    holdId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.ConfirmHoldRequest](../../models/operations/confirmholdrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.ConfirmHoldRequest](../../sdk/models/operations/confirmholdrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.ConfirmHoldResponse](../../models/operations/confirmholdresponse.md)>**
+**Promise<[operations.ConfirmHoldResponse](../../sdk/models/operations/confirmholdresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createBalance
 
@@ -70,41 +75,43 @@ Create a balance
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.createBalance({
-  createBalanceRequest: {
-    expiresAt: new Date("2021-07-02T12:00:47.197Z"),
-    name: "Beatrice Lebsack II",
-    priority: 199996,
-  },
-  id: "202c73d5-fe9b-490c-a890-9b3fe49a8d9c",
-}).then((res: CreateBalanceResponse) => {
+  const res = await sdk.wallets.createBalance({
+    createBalanceRequest: {
+      name: "<value>",
+    },
+    id: "<id>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.CreateBalanceRequest](../../models/operations/createbalancerequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.CreateBalanceRequest](../../sdk/models/operations/createbalancerequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.CreateBalanceResponse](../../models/operations/createbalanceresponse.md)>**
+**Promise<[operations.CreateBalanceResponse](../../sdk/models/operations/createbalanceresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createWallet
 
@@ -114,41 +121,43 @@ Create a new wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.createWallet({
-  metadata: {
-    "delectus": "quaerat",
-    "quos": "aliquid",
-    "dolorem": "dolorem",
-  },
-  name: "Norma Erdman",
-}).then((res: CreateWalletResponse) => {
+  const res = await sdk.wallets.createWallet({
+    metadata: {
+      "key": "<value>",
+    },
+    name: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [shared.CreateWalletRequest](../../models/shared/createwalletrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `request`                                                                    | [shared.CreateWalletRequest](../../sdk/models/shared/createwalletrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
 
 
 ### Response
 
-**Promise<[operations.CreateWalletResponse](../../models/operations/createwalletresponse.md)>**
+**Promise<[operations.CreateWalletResponse](../../sdk/models/operations/createwalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## creditWallet
 
@@ -158,70 +167,52 @@ Credit a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreditWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.creditWallet({
-  creditWalletRequest: {
-    amount: {
-      amount: 739551,
-      asset: "voluptate",
+  const res = await sdk.wallets.creditWallet({
+    creditWalletRequest: {
+      amount: {
+        amount: 100,
+        asset: "USD/2",
+      },
+      metadata: {
+        "key": "",
+      },
+      sources: [
+        "<value>",
+      ],
     },
-    balance: "dignissimos",
-    metadata: {
-      "amet": "dolorum",
-      "numquam": "veritatis",
-      "ipsa": "ipsa",
-      "iure": "odio",
-    },
-    reference: "quaerat",
-    sources: [
-      {
-        balance: "voluptatibus",
-        identifier: "voluptas",
-        type: "natus",
-      },
-      {
-        identifier: "atque",
-        type: "sit",
-      },
-      {
-        balance: "ab",
-        identifier: "soluta",
-        type: "dolorum",
-      },
-      {
-        identifier: "voluptate",
-        type: "dolorum",
-      },
-    ],
-  },
-  id: "89ebf737-ae42-403c-a5e6-a95d8a0d446c",
-}).then((res: CreditWalletResponse) => {
+    id: "<id>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.CreditWalletRequest](../../models/operations/creditwalletrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.CreditWalletRequest](../../sdk/models/operations/creditwalletrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.CreditWalletResponse](../../models/operations/creditwalletresponse.md)>**
+**Promise<[operations.CreditWalletResponse](../../sdk/models/operations/creditwalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## debitWallet
 
@@ -231,56 +222,54 @@ Debit a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { DebitWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.debitWallet({
-  debitWalletRequest: {
-    amount: {
-      amount: 885338,
-      asset: "qui",
+  const res = await sdk.wallets.debitWallet({
+    debitWalletRequest: {
+      amount: {
+        amount: 100,
+        asset: "USD/2",
+      },
+      balances: [
+        "<value>",
+      ],
+      destination: "<value>",
+      metadata: {
+        "key": "",
+      },
+      pending: true,
     },
-    balances: [
-      "a",
-      "esse",
-      "harum",
-    ],
-    description: "iusto",
-    destination: {
-      identifier: "quisquam",
-      type: "tenetur",
-    },
-    metadata: {
-      "tempore": "accusamus",
-    },
-    pending: false,
-  },
-  id: "453f870b-326b-45a7-b429-cdb1a8422bb6",
-}).then((res: DebitWalletResponse) => {
+    id: "<id>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.DebitWalletRequest](../../models/operations/debitwalletrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.DebitWalletRequest](../../sdk/models/operations/debitwalletrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.DebitWalletResponse](../../models/operations/debitwalletresponse.md)>**
+**Promise<[operations.DebitWalletResponse](../../sdk/models/operations/debitwalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getBalance
 
@@ -290,37 +279,41 @@ Get detailed balance
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetBalanceResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.getBalance({
-  balanceName: "quam",
-  id: "9d232271-5bf0-4cbb-9e31-b8b90f3443a1",
-}).then((res: GetBalanceResponse) => {
+  const res = await sdk.wallets.getBalance({
+    balanceName: "<value>",
+    id: "<id>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.GetBalanceRequest](../../models/operations/getbalancerequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.GetBalanceRequest](../../sdk/models/operations/getbalancerequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.GetBalanceResponse](../../models/operations/getbalanceresponse.md)>**
+**Promise<[operations.GetBalanceResponse](../../sdk/models/operations/getbalanceresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getHold
 
@@ -330,36 +323,40 @@ Get a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.getHold({
-  holdID: "quae",
-}).then((res: GetHoldResponse) => {
+  const res = await sdk.wallets.getHold({
+    holdID: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `request`                                                              | [operations.GetHoldRequest](../../models/operations/getholdrequest.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
-| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [operations.GetHoldRequest](../../sdk/models/operations/getholdrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
 
 
 ### Response
 
-**Promise<[operations.GetHoldResponse](../../models/operations/getholdresponse.md)>**
+**Promise<[operations.GetHoldResponse](../../sdk/models/operations/getholdresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getHolds
 
@@ -369,41 +366,43 @@ Get all holds for a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetHoldsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.getHolds({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  metadata: {
-    "quas": "itaque",
-  },
-  pageSize: 9240,
-  walletID: "est",
-}).then((res: GetHoldsResponse) => {
+  const res = await sdk.wallets.getHolds({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    metadata: {
+      "key": "<value>",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [operations.GetHoldsRequest](../../models/operations/getholdsrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `request`                                                                    | [operations.GetHoldsRequest](../../sdk/models/operations/getholdsrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
 
 
 ### Response
 
-**Promise<[operations.GetHoldsResponse](../../models/operations/getholdsresponse.md)>**
+**Promise<[operations.GetHoldsResponse](../../sdk/models/operations/getholdsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getTransactions
 
@@ -411,38 +410,40 @@ sdk.wallets.getHolds({
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.getTransactions({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  pageSize: 833038,
-  walletID: "porro",
-}).then((res: GetTransactionsResponse) => {
+  const res = await sdk.wallets.getTransactions({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.GetTransactionsRequest](../../models/operations/gettransactionsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [operations.GetTransactionsRequest](../../sdk/models/operations/gettransactionsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response
 
-**Promise<[operations.GetTransactionsResponse](../../models/operations/gettransactionsresponse.md)>**
+**Promise<[operations.GetTransactionsResponse](../../sdk/models/operations/gettransactionsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getWallet
 
@@ -452,36 +453,40 @@ Get a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.getWallet({
-  id: "f4b92187-9fce-4953-b73e-f7fbc7abd74d",
-}).then((res: GetWalletResponse) => {
+  const res = await sdk.wallets.getWallet({
+    id: "<id>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.GetWalletRequest](../../models/operations/getwalletrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetWalletRequest](../../sdk/models/operations/getwalletrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetWalletResponse](../../models/operations/getwalletresponse.md)>**
+**Promise<[operations.GetWalletResponse](../../sdk/models/operations/getwalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getWalletSummary
 
@@ -491,36 +496,40 @@ Get wallet summary
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetWalletSummaryResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.getWalletSummary({
-  id: "d39c0f5d-2cff-47c7-8a45-626d436813f1",
-}).then((res: GetWalletSummaryResponse) => {
+  const res = await sdk.wallets.getWalletSummary({
+    id: "<id>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.GetWalletSummaryRequest](../../models/operations/getwalletsummaryrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.GetWalletSummaryRequest](../../sdk/models/operations/getwalletsummaryrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.GetWalletSummaryResponse](../../models/operations/getwalletsummaryresponse.md)>**
+**Promise<[operations.GetWalletSummaryResponse](../../sdk/models/operations/getwalletsummaryresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listBalances
 
@@ -530,35 +539,40 @@ List balances of a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListBalancesResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.listBalances({
-  id: "6d9f5fce-6c55-4614-ac3e-250fb008c42e",
-}).then((res: ListBalancesResponse) => {
+  const res = await sdk.wallets.listBalances({
+    id: "<id>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.ListBalancesRequest](../../models/operations/listbalancesrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.ListBalancesRequest](../../sdk/models/operations/listbalancesrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.ListBalancesResponse](../../models/operations/listbalancesresponse.md)>**
+**Promise<[operations.ListBalancesResponse](../../sdk/models/operations/listbalancesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listWallets
 
@@ -568,40 +582,43 @@ List all wallets
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListWalletsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.listWallets({
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  metadata: {
-    "non": "et",
-  },
-  name: "Neal Schroeder",
-  pageSize: 420539,
-}).then((res: ListWalletsResponse) => {
+  const res = await sdk.wallets.listWallets({
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    metadata: {
+      "key": "<value>",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.ListWalletsRequest](../../models/operations/listwalletsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.ListWalletsRequest](../../sdk/models/operations/listwalletsrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.ListWalletsResponse](../../models/operations/listwalletsresponse.md)>**
+**Promise<[operations.ListWalletsResponse](../../sdk/models/operations/listwalletsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## updateWallet
 
@@ -611,44 +628,45 @@ Update a wallet
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { UpdateWalletResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.updateWallet({
-  requestBody: {
-    metadata: {
-      "quas": "assumenda",
-      "nulla": "voluptas",
-      "libero": "quasi",
-      "tempora": "numquam",
+  const res = await sdk.wallets.updateWallet({
+    requestBody: {
+      metadata: {
+        "key": "<value>",
+      },
     },
-  },
-  id: "29074747-78a7-4bd4-a6d2-8c10ab3cdca4",
-}).then((res: UpdateWalletResponse) => {
+    id: "<id>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.UpdateWalletRequest](../../models/operations/updatewalletrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.UpdateWalletRequest](../../sdk/models/operations/updatewalletrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.UpdateWalletResponse](../../models/operations/updatewalletresponse.md)>**
+**Promise<[operations.UpdateWalletResponse](../../sdk/models/operations/updatewalletresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## voidHold
 
@@ -658,36 +676,40 @@ Cancel a hold
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { VoidHoldResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.voidHold({
-  holdId: "eos",
-}).then((res: VoidHoldResponse) => {
+  const res = await sdk.wallets.voidHold({
+    holdId: "<value>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [operations.VoidHoldRequest](../../models/operations/voidholdrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `request`                                                                    | [operations.VoidHoldRequest](../../sdk/models/operations/voidholdrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
 
 
 ### Response
 
-**Promise<[operations.VoidHoldResponse](../../models/operations/voidholdresponse.md)>**
+**Promise<[operations.VoidHoldResponse](../../sdk/models/operations/voidholdresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## walletsgetServerInfo
 
@@ -697,20 +719,20 @@ Get server info
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { WalletsgetServerInfoResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { WalletsErrorResponseErrorCode } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.wallets.walletsgetServerInfo().then((res: WalletsgetServerInfoResponse) => {
+  const res = await sdk.wallets.walletsgetServerInfo();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
@@ -722,5 +744,9 @@ sdk.wallets.walletsgetServerInfo().then((res: WalletsgetServerInfoResponse) => {
 
 ### Response
 
-**Promise<[operations.WalletsgetServerInfoResponse](../../models/operations/walletsgetserverinforesponse.md)>**
+**Promise<[operations.WalletsgetServerInfoResponse](../../sdk/models/operations/walletsgetserverinforesponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

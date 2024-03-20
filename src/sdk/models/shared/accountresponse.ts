@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AccountWithVolumesAndBalances } from "./accountwithvolumesandbalances";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class AccountResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })

@@ -1,15 +1,29 @@
-configVersion: 1.0.0
-management:
-  docChecksum: 2f1ad9a515a2f02418a6e63ef5afbcf5
-  docVersion: v1.0.20230614
-  speakeasyVersion: 1.50.1
-  generationVersion: 2.43.2
+configVersion: 2.0.0
 generation:
   sdkClassName: formance
-  singleTagPerOp: false
-  telemetryEnabled: false
+  usageSnippets:
+    optionalPropertyRendering: withExample
+  fixes:
+    nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.30.0
+  version: 0.33.7
   author: Speakeasy
+  clientServerStatusCodesAsErrors: false
+  flattenGlobalSecurity: true
+  imports:
+    option: openapi
+    paths:
+      callbacks: sdk/models/callbacks
+      errors: sdk/models/errors
+      operations: sdk/models/operations
+      shared: sdk/models/shared
+      webhooks: sdk/models/webhooks
+  inputModelSuffix: input
   maxMethodParams: 0
+  outputModelSuffix: output
   packageName: '@speakeasy-sdks/formance'
+  templateVersion: v1

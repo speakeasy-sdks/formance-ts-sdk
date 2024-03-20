@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Config } from "./config";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class ConfigInfoResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "config" })

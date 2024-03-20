@@ -12,7 +12,7 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
 </div>
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -26,41 +26,39 @@ npm add @speakeasy-sdks/formance
 ```bash
 yarn add @speakeasy-sdks/formance
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
+### Example
+
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetVersionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+    const sdk = new Formance({
+        authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    });
 
-sdk.getVersions().then((res: GetVersionsResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
+    const res = await sdk.getVersions();
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [Formance SDK](docs/sdks/formance/README.md)
 
 * [getVersions](docs/sdks/formance/README.md#getversions) - Show stack version information
-
-### [accounts](docs/sdks/accounts/README.md)
-
-* [addMetadataToAccount](docs/sdks/accounts/README.md#addmetadatatoaccount) - Add metadata to an account
-* [countAccounts](docs/sdks/accounts/README.md#countaccounts) - Count the accounts from a ledger
-* [getAccount](docs/sdks/accounts/README.md#getaccount) - Get account by its address
-* [listAccounts](docs/sdks/accounts/README.md#listaccounts) - List accounts from a ledger
 
 ### [auth](docs/sdks/auth/README.md)
 
@@ -84,11 +82,6 @@ sdk.getVersions().then((res: GetVersionsResponse) => {
 * [updateClient](docs/sdks/auth/README.md#updateclient) - Update client
 * [updateScope](docs/sdks/auth/README.md#updatescope) - Update scope
 
-### [balances](docs/sdks/balances/README.md)
-
-* [getBalances](docs/sdks/balances/README.md#getbalances) - Get the balances from a ledger's account
-* [getBalancesAggregated](docs/sdks/balances/README.md#getbalancesaggregated) - Get the aggregated balances from selected accounts
-
 ### [clients](docs/sdks/clients/README.md)
 
 * [addScopeToClient](docs/sdks/clients/README.md#addscopetoclient) - Add scope to client
@@ -100,6 +93,21 @@ sdk.getVersions().then((res: GetVersionsResponse) => {
 * [listClients](docs/sdks/clients/README.md#listclients) - List clients
 * [readClient](docs/sdks/clients/README.md#readclient) - Read client
 * [updateClient](docs/sdks/clients/README.md#updateclient) - Update client
+
+### [scopes](docs/sdks/scopes/README.md)
+
+* [addTransientScope](docs/sdks/scopes/README.md#addtransientscope) - Add a transient scope to a scope
+* [createScope](docs/sdks/scopes/README.md#createscope) - Create scope
+* [deleteScope](docs/sdks/scopes/README.md#deletescope) - Delete scope
+* [deleteTransientScope](docs/sdks/scopes/README.md#deletetransientscope) - Delete a transient scope from a scope
+* [listScopes](docs/sdks/scopes/README.md#listscopes) - List scopes
+* [readScope](docs/sdks/scopes/README.md#readscope) - Read scope
+* [updateScope](docs/sdks/scopes/README.md#updatescope) - Update scope
+
+### [users](docs/sdks/users/README.md)
+
+* [listUsers](docs/sdks/users/README.md#listusers) - List users
+* [readUser](docs/sdks/users/README.md#readuser) - Read user
 
 ### [ledger](docs/sdks/ledger/README.md)
 
@@ -120,9 +128,38 @@ sdk.getVersions().then((res: GetVersionsResponse) => {
 * [readStats](docs/sdks/ledger/README.md#readstats) - Get statistics from a ledger
 * [revertTransaction](docs/sdks/ledger/README.md#reverttransaction) - Revert a ledger transaction by its ID
 
+### [server](docs/sdks/server/README.md)
+
+* [getInfo](docs/sdks/server/README.md#getinfo) - Show server information
+
+### [accounts](docs/sdks/accounts/README.md)
+
+* [addMetadataToAccount](docs/sdks/accounts/README.md#addmetadatatoaccount) - Add metadata to an account
+* [countAccounts](docs/sdks/accounts/README.md#countaccounts) - Count the accounts from a ledger
+* [getAccount](docs/sdks/accounts/README.md#getaccount) - Get account by its address
+* [listAccounts](docs/sdks/accounts/README.md#listaccounts) - List accounts from a ledger
+
+### [balances](docs/sdks/balances/README.md)
+
+* [getBalances](docs/sdks/balances/README.md#getbalances) - Get the balances from a ledger's account
+* [getBalancesAggregated](docs/sdks/balances/README.md#getbalancesaggregated) - Get the aggregated balances from selected accounts
+
 ### [logs](docs/sdks/logs/README.md)
 
 * [listLogs](docs/sdks/logs/README.md#listlogs) - List the logs from a ledger
+
+### [stats](docs/sdks/stats/README.md)
+
+* [readStats](docs/sdks/stats/README.md#readstats) - Get statistics from a ledger
+
+### [transactions](docs/sdks/transactions/README.md)
+
+* [addMetadataOnTransaction](docs/sdks/transactions/README.md#addmetadataontransaction) - Set the metadata of a transaction by its ID
+* [countTransactions](docs/sdks/transactions/README.md#counttransactions) - Count the transactions from a ledger
+* [createTransaction](docs/sdks/transactions/README.md#createtransaction) - Create a new transaction to a ledger
+* [getTransaction](docs/sdks/transactions/README.md#gettransaction) - Get transaction from a ledger by its ID
+* [listTransactions](docs/sdks/transactions/README.md#listtransactions) - List transactions from a ledger
+* [revertTransaction](docs/sdks/transactions/README.md#reverttransaction) - Revert a ledger transaction by its ID
 
 ### [orchestration](docs/sdks/orchestration/README.md)
 
@@ -157,42 +194,10 @@ sdk.getVersions().then((res: GetVersionsResponse) => {
 * [uninstallConnector](docs/sdks/payments/README.md#uninstallconnector) - Uninstall a connector
 * [updateMetadata](docs/sdks/payments/README.md#updatemetadata) - Update metadata
 
-### [scopes](docs/sdks/scopes/README.md)
-
-* [addTransientScope](docs/sdks/scopes/README.md#addtransientscope) - Add a transient scope to a scope
-* [createScope](docs/sdks/scopes/README.md#createscope) - Create scope
-* [deleteScope](docs/sdks/scopes/README.md#deletescope) - Delete scope
-* [deleteTransientScope](docs/sdks/scopes/README.md#deletetransientscope) - Delete a transient scope from a scope
-* [listScopes](docs/sdks/scopes/README.md#listscopes) - List scopes
-* [readScope](docs/sdks/scopes/README.md#readscope) - Read scope
-* [updateScope](docs/sdks/scopes/README.md#updatescope) - Update scope
-
 ### [search](docs/sdks/search/README.md)
 
 * [search](docs/sdks/search/README.md#search) - Search
 * [searchgetServerInfo](docs/sdks/search/README.md#searchgetserverinfo) - Get server info
-
-### [server](docs/sdks/server/README.md)
-
-* [getInfo](docs/sdks/server/README.md#getinfo) - Show server information
-
-### [stats](docs/sdks/stats/README.md)
-
-* [readStats](docs/sdks/stats/README.md#readstats) - Get statistics from a ledger
-
-### [transactions](docs/sdks/transactions/README.md)
-
-* [addMetadataOnTransaction](docs/sdks/transactions/README.md#addmetadataontransaction) - Set the metadata of a transaction by its ID
-* [countTransactions](docs/sdks/transactions/README.md#counttransactions) - Count the transactions from a ledger
-* [createTransaction](docs/sdks/transactions/README.md#createtransaction) - Create a new transaction to a ledger
-* [getTransaction](docs/sdks/transactions/README.md#gettransaction) - Get transaction from a ledger by its ID
-* [listTransactions](docs/sdks/transactions/README.md#listtransactions) - List transactions from a ledger
-* [revertTransaction](docs/sdks/transactions/README.md#reverttransaction) - Revert a ledger transaction by its ID
-
-### [users](docs/sdks/users/README.md)
-
-* [listUsers](docs/sdks/users/README.md#listusers) - List users
-* [readUser](docs/sdks/users/README.md#readuser) - Read user
 
 ### [wallets](docs/sdks/wallets/README.md)
 
@@ -222,6 +227,173 @@ sdk.getVersions().then((res: GetVersionsResponse) => {
 * [getManyConfigs](docs/sdks/webhooks/README.md#getmanyconfigs) - Get many configs
 * [insertConfig](docs/sdks/webhooks/README.md#insertconfig) - Insert a new config
 * [testConfig](docs/sdks/webhooks/README.md#testconfig) - Test one config
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
+
+
+
+
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+Example
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+
+async function run() {
+    const sdk = new Formance({
+        authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    });
+
+    let res;
+    try {
+        res = await sdk.getVersions();
+    } catch (err) {
+        if (err instanceof errors.SDKError) {
+            console.error(err); // handle exception
+            throw err;
+        }
+    }
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
+```
+<!-- End Error Handling [errors] -->
+
+
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost` | None |
+| 1 | `https://{organization}.sandbox.formance.cloud` | `organization` |
+
+#### Example
+
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+
+async function run() {
+    const sdk = new Formance({
+        serverIdx: 1,
+        authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    });
+
+    const res = await sdk.getVersions();
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
+```
+
+#### Variables
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
+ * `organization: string`
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+
+async function run() {
+    const sdk = new Formance({
+        serverURL: "http://localhost",
+        authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    });
+
+    const res = await sdk.getVersions();
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
+```
+<!-- End Server Selection [server] -->
+
+
+
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```typescript
+import { @speakeasy-sdks/formance } from "Formance";
+import axios from "axios";
+
+const httpClient = axios.create({
+    headers: {'x-custom-header': 'someValue'}
+})
+
+const sdk = new Formance({defaultClient: httpClient});
+```
+<!-- End Custom HTTP Client [http-client] -->
+
+
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name            | Type            | Scheme          |
+| --------------- | --------------- | --------------- |
+| `authorization` | oauth2          | OAuth2 token    |
+
+To authenticate with the API the `authorization` parameter must be set when initializing the SDK client instance. For example:
+```typescript
+import { Formance } from "@speakeasy-sdks/formance";
+
+async function run() {
+    const sdk = new Formance({
+        authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    });
+
+    const res = await sdk.getVersions();
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
+```
+<!-- End Authentication [security] -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)

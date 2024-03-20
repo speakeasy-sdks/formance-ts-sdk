@@ -1,4 +1,5 @@
-# transactions
+# Transactions
+(*transactions*)
 
 ### Available Operations
 
@@ -17,44 +18,46 @@ Set the metadata of a transaction by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { AddMetadataOnTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.transactions.addMetadataOnTransaction({
-  idempotencyKey: "facilis",
-  requestBody: {
-    "architecto": "architecto",
-    "repudiandae": "ullam",
-  },
-  async: true,
-  dryRun: true,
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: AddMetadataOnTransactionResponse) => {
+  const res = await sdk.transactions.addMetadataOnTransaction({
+    requestBody: {
+      "admin": "true",
+    },
+    async: true,
+    dryRun: true,
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                | [operations.AddMetadataOnTransactionRequest](../../models/operations/addmetadataontransactionrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                    | [operations.AddMetadataOnTransactionRequest](../../sdk/models/operations/addmetadataontransactionrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `config`                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                 | :heavy_minus_sign:                                                                                           | Available config options for making requests.                                                                |
 
 
 ### Response
 
-**Promise<[operations.AddMetadataOnTransactionResponse](../../models/operations/addmetadataontransactionresponse.md)>**
+**Promise<[operations.AddMetadataOnTransactionResponse](../../sdk/models/operations/addmetadataontransactionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## countTransactions
 
@@ -64,48 +67,47 @@ Count the transactions from a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CountTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.transactions.countTransactions({
-  account: "users:001",
-  destination: "users:001",
-  endTime: new Date("2022-01-23T10:45:15.714Z"),
-  ledger: "ledger001",
-  metadata: {
-    "quibusdam": "sed",
-    "saepe": "pariatur",
-    "accusantium": "consequuntur",
-    "praesentium": "natus",
-  },
-  reference: "ref:001",
-  source: "users:001",
-  startTime: new Date("2022-11-16T19:20:12.159Z"),
-}).then((res: CountTransactionsResponse) => {
+  const res = await sdk.transactions.countTransactions({
+    account: "users:001",
+    destination: "users:001",
+    ledger: "ledger001",
+    metadata: {
+      "key": "<value>",
+    },
+    reference: "ref:001",
+    source: "users:001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.CountTransactionsRequest](../../models/operations/counttransactionsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.CountTransactionsRequest](../../sdk/models/operations/counttransactionsrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.CountTransactionsResponse](../../models/operations/counttransactionsresponse.md)>**
+**Promise<[operations.CountTransactionsResponse](../../sdk/models/operations/counttransactionsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createTransaction
 
@@ -115,86 +117,67 @@ Create a new transaction to a ledger
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { CreateTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.transactions.createTransaction({
-  idempotencyKey: "quo",
-  postTransaction: {
-    metadata: {
-      "pariatur": "maxime",
-      "ea": "excepturi",
-      "odit": "ea",
-      "accusantium": "ab",
+  const res = await sdk.transactions.createTransaction({
+    postTransaction: {
+      metadata: {
+        "admin": "true",
+      },
+      postings: [
+        {
+          amount: 100,
+          asset: "COIN",
+          destination: "users:002",
+          source: "users:001",
+        },
+      ],
+      reference: "ref:001",
+      script: {
+        plain: "vars {
+      account $user
+      }
+      send [COIN 10] (
+      	source = @world
+      	destination = $user
+      )
+      ",
+        vars: {},
+      },
     },
-    postings: [
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-      {
-        amount: 100,
-        asset: "COIN",
-        destination: "users:002",
-        source: "users:001",
-      },
-    ],
-    reference: "ref:001",
-    script: {
-      plain: "vars {
-    account $user
-    }
-    send [COIN 10] (
-    	source = @world
-    	destination = $user
-    )
-    ",
-      vars: {},
-    },
-    timestamp: new Date("2022-04-03T11:56:45.015Z"),
-  },
-  async: true,
-  dryRun: true,
-  ledger: "ledger001",
-}).then((res: CreateTransactionResponse) => {
+    async: true,
+    dryRun: true,
+    ledger: "ledger001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.CreateTransactionRequest](../../models/operations/createtransactionrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.CreateTransactionRequest](../../sdk/models/operations/createtransactionrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.CreateTransactionResponse](../../models/operations/createtransactionresponse.md)>**
+**Promise<[operations.CreateTransactionResponse](../../sdk/models/operations/createtransactionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getTransaction
 
@@ -204,37 +187,41 @@ Get transaction from a ledger by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { GetTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.transactions.getTransaction({
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: GetTransactionResponse) => {
+  const res = await sdk.transactions.getTransaction({
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.GetTransactionRequest](../../models/operations/gettransactionrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.GetTransactionRequest](../../sdk/models/operations/gettransactionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
 
 
 ### Response
 
-**Promise<[operations.GetTransactionResponse](../../models/operations/gettransactionresponse.md)>**
+**Promise<[operations.GetTransactionResponse](../../sdk/models/operations/gettransactionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listTransactions
 
@@ -244,49 +231,48 @@ List transactions from a ledger, sorted by txid in descending order.
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { ListTransactionsResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.transactions.listTransactions({
-  account: "users:001",
-  cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
-  destination: "users:001",
-  endTime: new Date("2022-07-31T16:08:22.625Z"),
-  ledger: "ledger001",
-  metadata: {
-    "eaque": "pariatur",
-    "nemo": "voluptatibus",
-    "perferendis": "fugiat",
-  },
-  pageSize: 230742,
-  reference: "ref:001",
-  source: "users:001",
-  startTime: new Date("2022-03-27T19:22:24.458Z"),
-}).then((res: ListTransactionsResponse) => {
+  const res = await sdk.transactions.listTransactions({
+    account: "users:001",
+    cursor: "aHR0cHM6Ly9nLnBhZ2UvTmVrby1SYW1lbj9zaGFyZQ==",
+    destination: "users:001",
+    ledger: "ledger001",
+    metadata: {
+      "key": "<value>",
+    },
+    reference: "ref:001",
+    source: "users:001",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.ListTransactionsRequest](../../models/operations/listtransactionsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.ListTransactionsRequest](../../sdk/models/operations/listtransactionsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.ListTransactionsResponse](../../models/operations/listtransactionsresponse.md)>**
+**Promise<[operations.ListTransactionsResponse](../../sdk/models/operations/listtransactionsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## revertTransaction
 
@@ -296,34 +282,38 @@ Revert a ledger transaction by its ID
 
 ```typescript
 import { Formance } from "@speakeasy-sdks/formance";
-import { RevertTransactionResponse } from "@speakeasy-sdks/formance/dist/sdk/models/operations";
-import { ErrorsEnum } from "@speakeasy-sdks/formance/dist/sdk/models/shared";
 
-const sdk = new Formance({
-  security: {
-    authorization: "",
-  },
-});
+async function run() {
+  const sdk = new Formance({
+    authorization: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  });
 
-sdk.transactions.revertTransaction({
-  ledger: "ledger001",
-  txid: 1234,
-}).then((res: RevertTransactionResponse) => {
+  const res = await sdk.transactions.revertTransaction({
+    ledger: "ledger001",
+    txid: 1234,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.RevertTransactionRequest](../../models/operations/reverttransactionrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.RevertTransactionRequest](../../sdk/models/operations/reverttransactionrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.RevertTransactionResponse](../../models/operations/reverttransactionresponse.md)>**
+**Promise<[operations.RevertTransactionResponse](../../sdk/models/operations/reverttransactionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

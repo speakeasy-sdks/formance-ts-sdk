@@ -5,9 +5,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export class ResponseCursorData extends SpeakeasyBase {}
+export class ResponseSchemasData extends SpeakeasyBase {}
 
-export class ResponseCursorTotal extends SpeakeasyBase {
+export class Total extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "relation" })
     relation?: string;
@@ -18,10 +18,10 @@ export class ResponseCursorTotal extends SpeakeasyBase {
 }
 
 export class ResponseCursor extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: ResponseCursorData })
+    @SpeakeasyMetadata({ elemType: ResponseSchemasData })
     @Expose({ name: "data" })
-    @Type(() => ResponseCursorData)
-    data?: ResponseCursorData[];
+    @Type(() => ResponseSchemasData)
+    data?: ResponseSchemasData[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "hasMore" })
@@ -41,8 +41,8 @@ export class ResponseCursor extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "total" })
-    @Type(() => ResponseCursorTotal)
-    total?: ResponseCursorTotal;
+    @Type(() => Total)
+    total?: Total;
 }
 
 /**
@@ -50,9 +50,6 @@ export class ResponseCursor extends SpeakeasyBase {
  */
 export class ResponseData extends SpeakeasyBase {}
 
-/**
- * Success
- */
 export class Response extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "cursor" })

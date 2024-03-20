@@ -5,18 +5,15 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum ErrorErrorCode {
+export enum ErrorCode {
     Validation = "VALIDATION",
     NotFound = "NOT_FOUND",
 }
 
-/**
- * General error
- */
 export class ErrorT extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errorCode" })
-    errorCode: ErrorErrorCode;
+    errorCode: ErrorCode;
 
     @SpeakeasyMetadata()
     @Expose({ name: "errorMessage" })

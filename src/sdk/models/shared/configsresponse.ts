@@ -17,9 +17,6 @@ export class ConfigsResponseCursor extends SpeakeasyBase {
     hasMore: boolean;
 }
 
-/**
- * OK
- */
 export class ConfigsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "cursor" })
